@@ -1,5 +1,5 @@
 export const Home = () => {
   return (
-    <h1 className="flex-grow bg-blue-100">Home</h1>
+    <h1>This is Home Page</h1>
   )
 };

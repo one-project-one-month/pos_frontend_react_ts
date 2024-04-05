@@ -2,7 +2,7 @@
 
 const Products = () => {
     return (
-        <div className="flex justify-center items-center h-full bg-red-100">Products</div>
+        <div>This is Products Page</div>
     )
 }
 

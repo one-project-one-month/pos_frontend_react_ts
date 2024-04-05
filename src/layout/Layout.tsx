@@ -1,8 +1,5 @@
 import { Outlet } from "react-router-dom"
-import SideNav from "./SideNav"
-import { Home } from "@/Page/Home"
-
-
+import SideNav from "../components/SideNav"
 
 const Layout = () => {
     return (
@@ -10,16 +7,6 @@ const Layout = () => {
             <SideNav />
             <Outlet />
         </div>
-
-
-
-
-
-
-
-
-
-
     )
 }
 
