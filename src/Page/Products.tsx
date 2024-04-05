@@ -1,7 +1,9 @@
+
+
 import {useQuery} from "@tanstack/react-query";
 import {getProducts} from "@/services/api.ts";
 
-export default function ProductPage(){
+export default function Products(){
     const {data } = useQuery({
         queryKey: ["product"],
         queryFn: getProducts
