@@ -1,17 +1,12 @@
-
-
-import {useQuery} from "@tanstack/react-query";
-import {getProducts} from "@/services/api.ts";
-
-export default function Products(){
-    const {data } = useQuery({
-        queryKey: ["product"],
-        queryFn: getProducts
-    })
-
+import ProductSearchBar from "@/components/ProductSearchBar.tsx";
+import ProductList from "@/components/ProductList.tsx";
+import ProductCategoryFilter from "@/components/ProductCategoryFilter.tsx";
+export default function Products() {
     return (
-        <section>
-            {data && data.map(ele => <h1 key={ele.productCode}>{ele.productName}</h1>)}
+        <section className={"w-full p-8"}>
+            <ProductSearchBar/>
+            <ProductCategoryFilter/>
+            <ProductList/>
         </section>
-    )
+    );
 }

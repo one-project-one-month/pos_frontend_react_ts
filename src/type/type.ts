@@ -31,3 +31,12 @@ export interface TShop {
     address :string;
 }
 
+export interface TJSONServerPaginationResponse<T> {
+    data: T;
+    first: 1;
+    prev: number | null;
+    next: number | null;
+    last: number;
+    page: number;
+    items:number
+}
