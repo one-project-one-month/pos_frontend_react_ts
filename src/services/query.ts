@@ -1,6 +1,13 @@
-import {getProducts} from "@/services/api.ts";
+import {getProducts, getProductsByPage} from "@/services/api.ts";
 
 export const productQuery = () => ({
     queryKey: ["products"],
     queryFn: getProducts,
-})
+});
+
+export const productByPageQuery = (page = 1) => ({
+    queryKey: ["products", page],
+    queryFn: async () => getProductsByPage(page),
+    keepPreviousData: true,
+    staleTime: 1000 * 60 * 60
+});
