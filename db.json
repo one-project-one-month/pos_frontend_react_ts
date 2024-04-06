@@ -186,5 +186,115 @@
       "mobileNo": 7778889999,
       "address": "555 Maple St, Boroughville, USA"
     }
+  ],
+  "saleInvoice": [
+    {
+      "id": 1,
+      "saleInvoiceDateTime": "2024-04-06 10:00:00",
+      "voucherNo": "INV001",
+      "totalAmount": 2397,
+      "discount": 239,
+      "staffCode": "S001",
+      "tax": 239,
+      "paymentType": "Cash",
+      "paymentAmount": 2875,
+      "receiveAmount": 2880,
+      "change": 5,
+      "customerCode": "CUST001"
+    },
+    {
+      "id": 2,
+      "saleInvoiceDateTime": "2024-04-06 10:15:00",
+      "voucherNo": "INV002",
+      "totalAmount": 99,
+      "discount": 9,
+      "staffCode": "S002",
+      "tax": 9,
+      "paymentType": "Cash",
+      "paymentAmount": 99,
+      "receiveAmount": 100,
+      "change": 1,
+      "customerCode": "CUST002"
+    },
+    {
+      "id": 3,
+      "saleInvoiceDateTime": "2024-04-06 10:30:00",
+      "voucherNo": "INV003",
+      "totalAmount": 1996,
+      "discount": 199,
+      "staffCode": "S003",
+      "tax": 199,
+      "paymentType": "Cash",
+      "paymentAmount": 2394,
+      "receiveAmount": 2400,
+      "change": 6,
+      "customerCode": "CUST003"
+    }
+  ],
+  "saleInvoiceDetails": [
+    {
+      "id": 1,
+      "voucherNo": "INV001",
+      "productCode": "P001",
+      "quantity": 1,
+      "price": 999,
+      "amount": 999
+    },
+    {
+      "id": 2,
+      "voucherNo": "INV001",
+      "productCode": "P002",
+      "quantity": 2,
+      "price": 699,
+      "amount": 1398
+    },
+    {
+      "id": 3,
+      "voucherNo": "INV002",
+      "productCode": "P003",
+      "quantity": 1,
+      "price": 99,
+      "amount": 99
+    },
+    {
+      "id": 4,
+      "voucherNo": "INV003",
+      "productCode": "P004",
+      "quantity": 4,
+      "price": 499,
+      "amount": 1996
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "customerCode": "CUST001",
+      "customerName": "John Doe",
+      "mobileNo": 1234567890,
+      "dateOfBirth": "1990-05-15",
+      "gender": "Male",
+      "stateCode": "CA",
+      "townshipCode": "LA"
+    },
+    {
+      "id": 2,
+      "customerCode": "CUST002",
+      "customerName": "Jane Smith",
+      "mobileNo": 9876543210,
+      "dateOfBirth": "1985-08-20",
+      "gender": "Female",
+      "stateCode": "NY",
+      "townshipCode": "NYC"
+    },
+    {
+      "id": 3,
+      "customerCode": "CUST003",
+      "customerName": "Michael Johnson",
+      "mobileNo": 5555555555,
+      "dateOfBirth": "1978-12-10",
+      "gender": "Male",
+      "stateCode": "TX",
+      "townshipCode": "DAL"
+    }
   ]
 }
