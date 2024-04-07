@@ -5,8 +5,7 @@ import Products from "./Page/Products";
 import Layout from "./layout/Layout";
 import Invoice from "./Page/Invoice";
 import InvoiceHistory from "./Page/InvoiceHistory";
-
-
+import InvoiceDetail from "./Page/InvoiceDetail";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/invoice",
         Component: Invoice
+      },
+      {
+        path: "/invoiceDetail",
+        Component: InvoiceDetail
       },
       {
         path: "/history",

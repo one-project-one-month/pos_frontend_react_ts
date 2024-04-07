@@ -31,3 +31,17 @@ export interface TShop {
     address :string;
 }
 
+export interface TInvoice {
+    id: number,
+    saleInvoiceDateTime: string,
+    voucherNo: string,
+    totalAmount: number,
+    discount: number,
+    staffCode: string,
+    tax: number,
+    paymentType: string,
+    paymentAmount: number,
+    receiveAmount: number,
+    change: number,
+    customerCode: string
+}
