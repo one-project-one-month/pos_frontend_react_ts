@@ -1,14 +1,14 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import { Home } from "./Page/Home";
 import Products from "./Page/Products";
 import Layout from "./layout/Layout";
 import Invoice from "./Page/Invoice";
 import InvoiceHistory from "./Page/InvoiceHistory";
-import {QueryClient} from "@tanstack/react-query";
-import {productsByPageLoader} from "@/services/loader.ts";
+import { QueryClient } from "@tanstack/react-query";
+import { productsByPageLoader } from "@/services/loader.ts";
+import { Home } from "./Page/Home/Home";
 
-const queryClient = new  QueryClient();
+const queryClient = new QueryClient();
 
 
 const router = createBrowserRouter([
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-      <RouterProvider router={router} />
+    <RouterProvider router={router} />
   )
 }
 
