@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { Home, Package, NotepadText, History, Store } from 'lucide-react';
+import { Home, Package, NotepadText, UserCog, Store } from 'lucide-react';
 import { NavLink } from "react-router-dom"
 
 const navLinks = [
@@ -9,20 +9,22 @@ const navLinks = [
         route: "/"
     },
     {
+        routeName: "Management",
+        icon: <UserCog />,
+        route: "/management"
+    },
+    {
         routeName: "Products",
         icon: <Package />,
         route: "/products"
     },
+
     {
         routeName: "Invoice",
         icon: <NotepadText />,
-        route: "/invoice"
+        route: "/sale-invoice"
     },
-    {
-        routeName: "History",
-        icon: <History />,
-        route: "/history"
-    },
+
 ]
 
 const SideNav = () => {

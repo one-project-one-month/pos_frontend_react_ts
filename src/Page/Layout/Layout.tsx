@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom"
-import SideNav from "../components/SideNav"
+import SideNav from "../../components/SideNav/SideNav"
 
 const Layout = () => {
     return (
