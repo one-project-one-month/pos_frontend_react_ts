@@ -1,15 +1,14 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import { Home } from "./Page/Home";
-import Products from "./Page/Products";
-import Layout from "./layout/Layout";
-import Invoice from "./Page/Invoice";
-import InvoiceHistory from "./Page/InvoiceHistory";
-import {QueryClient} from "@tanstack/react-query";
-import {productsByPageLoader} from "@/services/loader.ts";
-
-const queryClient = new  QueryClient();
-
+import { Home } from "./Page/Home/Home";
+import Layout from "./Page/Layout/Layout";
+import Products from "./Page/Products/Products";
+import Customers from "./Page/Management/Customers";
+import Shops from "./Page/Management/Shops";
+import Staffs from "./Page/Management/Staffs";
+import SaleInvoice from "./Page/SaleInvoice/SaleInvoice";
+import ProductsCategory from "./Page/Products/ProductsCategory";
+import SaleInvoiceHistory from "./Page/SaleInvoice/SaleInvoiceHistory";
 
 const router = createBrowserRouter([
   {
@@ -21,18 +20,71 @@ const router = createBrowserRouter([
         Component: Home
       },
       {
-        path: "/products",
-        Component: Products,
-        loader: productsByPageLoader(queryClient),
+        path: "management",
+        children: [
+          {
+            index: true,
+            Component: Customers,
+          },
+          {
+            path: "staffs",
+            children: [
+              {
+                index: true,
+                Component: Staffs,
+              }
+            ]
+
+          },
+          {
+            path: "shops",
+            children: [
+              {
+                index: true,
+                Component: Shops
+              }
+            ]
+          }
+        ]
       },
       {
-        path: "/invoice",
-        Component: Invoice
+        path: "products",
+        children: [
+          {
+            index: true,
+            Component: Products
+          },
+          {
+            path: "category",
+            children: [
+              {
+                index: true,
+                Component: ProductsCategory
+              }
+            ]
+
+          }
+        ]
       },
       {
-        path: "/history",
-        Component: InvoiceHistory
+        path: "sale-invoice",
+        children: [
+          {
+            index: true,
+            Component: SaleInvoice
+          },
+          {
+            path: "history",
+            children: [
+              {
+                index: true,
+                Component: SaleInvoiceHistory
+              }
+            ]
+          }
+        ]
       }
+
     ]
 
   }
@@ -40,7 +92,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-      <RouterProvider router={router} />
+    <RouterProvider router={router} />
   )
 }
 
