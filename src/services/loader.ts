@@ -1,5 +1,6 @@
 import {QueryClient, QueryFilters} from "@tanstack/react-query";
 import {productByPageQuery, productQuery} from "@/services/query.ts";
+import {redirect} from "react-router-dom";
 
 
 export const productsLoader = (queryClient: QueryClient) => async () => {
@@ -16,4 +17,8 @@ export const productsByPageLoader = (queryClient: QueryClient) => async  () => {
     return (
         queryClient.getQueriesData(query.queryKey as QueryFilters) ?? (await queryClient.fetchQuery(query))
     )
+}
+
+export const productRouteProtector = () => {
+    return redirect("/products/1")
 }

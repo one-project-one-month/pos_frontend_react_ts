@@ -1,12 +1,13 @@
-import ProductSearchBar from "@/components/ProductSearchBar.tsx";
+
 import ProductList from "@/components/ProductList.tsx";
-import ProductCategoryFilter from "@/components/ProductCategoryFilter.tsx";
+
+import ProductCategorySelectSection from "@/components/ProductCategorySelectSection.tsx";
 export default function Products() {
     return (
         <section className={"w-full p-8"}>
-            <ProductSearchBar/>
-            <ProductCategoryFilter/>
+            <ProductCategorySelectSection/>
             <ProductList/>
+
         </section>
     );
 }

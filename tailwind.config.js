@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      maxWidth: {
+        productList: "600px"
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
