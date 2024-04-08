@@ -13,82 +13,40 @@ import SaleInvoiceHistory from "./Page/SaleInvoice/SaleInvoiceHistory";
 const router = createBrowserRouter([
   {
     path: "/",
-    Component: Layout,
+    element: <Layout />,
     children: [
       {
         index: true,
-        Component: Home
+        element: <Home />
       },
       {
         path: "management",
         children: [
-          {
-            index: true,
-            Component: Customers,
-          },
-          {
-            path: "staffs",
-            children: [
-              {
-                index: true,
-                Component: Staffs,
-              }
-            ]
-
-          },
-          {
-            path: "shops",
-            children: [
-              {
-                index: true,
-                Component: Shops
-              }
-            ]
-          }
+          { path: "shops", element: <Shops />, index: true },
+          { path: "customers", element: <Customers /> },
+          { path: "staffs", element: <Staffs /> },
         ]
       },
       {
         path: "products",
         children: [
-          {
-            index: true,
-            Component: Products
-          },
-          {
-            path: "category",
-            children: [
-              {
-                index: true,
-                Component: ProductsCategory
-              }
-            ]
-
-          }
+          { index: true, element: <Products /> },
+          { path: "category", element: <ProductsCategory /> }
         ]
       },
       {
         path: "sale-invoice",
         children: [
-          {
-            index: true,
-            Component: SaleInvoice
-          },
-          {
-            path: "history",
-            children: [
-              {
-                index: true,
-                Component: SaleInvoiceHistory
-              }
-            ]
-          }
+          { index: true, element: <SaleInvoice /> },
+          { path: "history", element: <SaleInvoiceHistory /> }
         ]
       }
-
     ]
-
   }
+
 ])
+
+
 
 function App() {
   return (
