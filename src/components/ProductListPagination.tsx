@@ -2,14 +2,17 @@ import {Pagination, PaginationContent, PaginationItem} from "@/components/ui/pag
 import {Button} from "@/components/ui/button.tsx";
 import {Dispatch, SetStateAction} from "react";
 
+import {cn} from "@/lib/utils.ts";
+
 type ProductListPaginationProps =
     {
         handler: Dispatch<SetStateAction<number>>;
-        next: number | null | undefined;
-        prev: number | null | undefined;
+        next: number | null;
+        prev: number | null;
+        hidden?: boolean;
     }
 
-export default function ProductListPagination({handler, next, prev}:ProductListPaginationProps) {
+export default function ProductListPagination({handler, next, prev,hidden}:ProductListPaginationProps) {
     const nextBtnHandler = () => {
         console.log("next", next);
         if (next) {
@@ -25,7 +28,7 @@ export default function ProductListPagination({handler, next, prev}:ProductListP
     };
 
     return (
-        <Pagination className={"max-w-[600px] mt-4 ml-0"}>
+        <Pagination className={cn("max-w-[600px] mt-4 ml-0", hidden && "hidden")}>
             <PaginationContent>
                 <PaginationItem>
                     <Button onClick={prevBtnHandler} disabled={!prev}>Previous</Button>
