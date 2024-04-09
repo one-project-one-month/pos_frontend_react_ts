@@ -8,8 +8,6 @@ export default function ProductListSection() {
 
     const searchString = searchParams.get("search") as string;
 
-    console.log(searchString);
-
     return (
         <div className={"my-4"}>
             <ProductSearchBar/>
