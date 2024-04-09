@@ -8,7 +8,7 @@ import Shops from "./Page/Management/Shops";
 import Staffs from "./Page/Management/Staffs";
 import SaleInvoice from "./Page/SaleInvoice/SaleInvoice";
 import ProductsCategory from "./Page/Products/ProductsCategory";
-import SaleInvoiceHistory from "./Page/SaleInvoice/SaleInvoiceHistory";
+import SaleInvoiceDetails from "./Page/SaleInvoice/SaleInvoiceDetail";
 
 const router = createBrowserRouter([
   {
@@ -74,11 +74,11 @@ const router = createBrowserRouter([
             Component: SaleInvoice
           },
           {
-            path: "history",
+            path: "detail",
             children: [
               {
                 index: true,
-                Component: SaleInvoiceHistory
+                Component: SaleInvoiceDetails
               }
             ]
           }

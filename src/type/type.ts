@@ -1,42 +1,57 @@
 export interface TProduct {
-    id: number;
-    productCode: string;
-    productName: string;
-    price: 999;
-    productCategoryCode: string;
+  id: number;
+  productCode: string;
+  productName: string;
+  price: 999;
+  productCategoryCode: string;
 }
 
 export interface TProductCategory {
-    id: number;
-    productCategoryCode: string;
-    productCategoryName: string;
+  id: number;
+  productCategoryCode: string;
+  productCategoryName: string;
 }
 
 export interface TStaff {
-    id: number;
-    staffCode: string;
-    staffName: string;
-    dateOfBirth: Date;
-    mobileNo: string;
-    address: string;
-    gender: "Male" | "Female" | "Other";
-    position: string;
+  id: number;
+  staffCode: string;
+  staffName: string;
+  dateOfBirth: Date;
+  mobileNo: string;
+  address: string;
+  gender: "Male" | "Female" | "Other";
+  position: string;
 }
 
 export interface TShop {
-    id: number;
-    shopCode: string;
-    shopName: string;
-    mobileNo : string;
-    address :string;
+  id: number;
+  shopCode: string;
+  shopName: string;
+  mobileNo: string;
+  address: string;
 }
 
 export interface TJSONServerPaginationResponse<T> {
-    data: T;
-    first: 1;
-    prev: number | null;
-    next: number | null;
-    last: number;
-    page: number;
-    items:number
+  data: T;
+  first: 1;
+  prev: number | null;
+  next: number | null;
+  last: number;
+  page: number;
+  items: number;
+}
+
+export interface TInvoice {
+  id: number;
+  saleInvoiceDateTime: string;
+  voucherNo: string;
+  totalAmount: number;
+  discount: number;
+  staffCode: string;
+  tax: number;
+  paymentType: string;
+  paymentAmount: number;
+  receiveAmount: number;
+  change: number;
+  customerCode: string;
 }

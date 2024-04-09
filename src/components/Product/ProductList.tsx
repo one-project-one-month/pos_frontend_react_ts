@@ -1,13 +1,13 @@
-import {useQuery, useQueryClient} from "@tanstack/react-query";
-import {productByPageQuery} from "@/services/query.ts";
-import {useProductCategoryFilterState} from "@/store/productCategoryFilerState.ts";
-import {TProduct, TProductCategory} from "@/type/type.ts";
-import {Badge} from "@/components/ui/badge.tsx";
-import ProductListPagination from "@/components/ProductListPagination.tsx";
-import {useState} from "react";
-import ProductSearchBar from "@/components/ProductSearchBar.tsx";
-import {useSearchParams} from "react-router-dom";
-import {getProductByName} from "@/services/api.ts";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { productByPageQuery } from "@/services/query.ts";
+import { useProductCategoryFilterState } from "@/store/productCategoryFilerState.ts";
+import { TProduct, TProductCategory } from "@/type/type.ts";
+import { Badge } from "@/components/ui/badge.tsx";
+import ProductListPagination from "@/components/Product/ProductListPagination";
+import { useState } from "react";
+import ProductSearchBar from "@/components/Product/ProductSearchBar";
+import { useSearchParams } from "react-router-dom";
+import { getProductByName } from "@/services/productApi";
 
 
 export default function ProductList() {
@@ -16,8 +16,8 @@ export default function ProductList() {
     const searchString = searchParams.get("search") as string;
 
     const [page, setPage] = useState(1);
-    const {data} = useQuery(productByPageQuery(page));
-    const {currCategory} = useProductCategoryFilterState();
+    const { data } = useQuery(productByPageQuery(page));
+    const { currCategory } = useProductCategoryFilterState();
     const filteredData = currCategory.length !== 0 ? data && data.data.filter(item => currCategory.indexOf(item.productCategoryCode) !== -1) : data?.data;
     const searchQuery = useQuery({
         queryKey: ["search", "products", searchString],
@@ -27,19 +27,19 @@ export default function ProductList() {
 
     return (
         <div className={"my-4"}>
-            <ProductSearchBar/>
+            <ProductSearchBar />
             <ul className={"max-w-productList p-6 flex flex-col gap-y-5 rounded bg-[#eee]"}>
                 {searchQuery.data && searchQuery.data.map(ele => <ProductListItem key={ele.productCode}
-                                                                                  productData={ele}/>)}
+                    productData={ele} />)}
                 {!searchQuery.data && filteredData && filteredData.map(ele => <ProductListItem key={ele.productCode}
-                                                                                               productData={ele}/>)}
+                    productData={ele} />)}
             </ul>
-            <ProductListPagination handler={setPage} next={(data ? data.next : null)} prev={(data ? data.prev : null)} hidden={!!searchQuery.data}/>
+            <ProductListPagination handler={setPage} next={(data ? data.next : null)} prev={(data ? data.prev : null)} hidden={!!searchQuery.data} />
         </div>
     );
 }
 
-function ProductListItem({productData}: { productData: TProduct }) {
+function ProductListItem({ productData }: { productData: TProduct }) {
 
     const queryClient = useQueryClient();
     const data = queryClient.getQueryData<TProductCategory[]>(["categories"]);
@@ -53,8 +53,8 @@ function ProductListItem({productData}: { productData: TProduct }) {
                 {currentCategory && <Badge>{currentCategory.productCategoryName}</Badge>}
             </div>
             <span>
-            ${productData.price}
-        </span>
+                ${productData.price}
+            </span>
         </li>
     );
 }
