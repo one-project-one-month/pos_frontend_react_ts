@@ -1,7 +1,9 @@
 import {TProduct, TProductCategory} from "@/type/type.ts";
 import {useQueryClient} from "@tanstack/react-query";
 import {Badge} from "@/components/ui/badge.tsx";
-export default function ProductListItem({ productData }: { productData: TProduct }) {
+import ProductOptionDropDown from "@/components/Product/ProductOptionDropDown.tsx";
+
+export default function ProductListItem({productData}: { productData: TProduct }) {
 
     const queryClient = useQueryClient();
     const data = queryClient.getQueryData<TProductCategory[]>(["categories"]);
@@ -14,9 +16,12 @@ export default function ProductListItem({ productData }: { productData: TProduct
                 <span className={"pl-2"}>{productData.productName}</span>
                 {currentCategory && <Badge>{currentCategory.productCategoryName}</Badge>}
             </div>
-            <span>
-                ${productData.price}
-            </span>
+            <div className={"flex items-center gap-x-10"}>
+                <span>
+                    ${productData.price}
+                </span>
+                <ProductOptionDropDown product={productData}/>
+            </div>
         </li>
     );
 }
