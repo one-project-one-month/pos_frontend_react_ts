@@ -18,7 +18,7 @@ export default function ProductCategoryFilter() {
     });
 
     return (
-        <div>
+        <div className={"mb-4"}>
             <DropdownMenu>
                 <DropdownMenuTrigger className={"outline-none"}>
                     <Badge className={"py-2 px-6 rounded bg-green-500 font-bold text-md"}
@@ -70,7 +70,7 @@ function ProductCategoryFilterItem({data}: { data: TProductCategory }) {
                 <span>{data.productCategoryName}</span>
                 <svg xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 448 512"
-                     className={cn("aspect-square h-5", isAlreadyPresent ? "block" : "hidden")}
+                     className={cn("aspect-square h-5 fill-blue-500", isAlreadyPresent ? "block" : "hidden")}
                 >
                     <path
                         d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>

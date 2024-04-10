@@ -1,11 +1,14 @@
 import ProductListSection from "@/components/Product/ProductListSection.tsx";
-import ProductCategoryFilter from "@/components/Product/ProductCategoryFilter.tsx";
+import BillingSection from "@/components/Product/BillingSection.tsx";
+
 
 export default function Products() {
     return (
         <section className={"w-full p-8"}>
-            <ProductCategoryFilter />
-            <ProductListSection />
+            <div className={"grid grid-cols-2 gap-x-8"}>
+                <ProductListSection />
+                <BillingSection/>
+            </div>
         </section>
     );
 }
