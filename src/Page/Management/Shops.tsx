@@ -4,7 +4,6 @@ const Shops = () => {
     return (
         <>
             <p>Shop</p>
-
         </>
 
     )

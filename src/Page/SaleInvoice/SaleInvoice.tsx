@@ -36,7 +36,7 @@ import {
 import { useQuery } from "@tanstack/react-query"
 import { TInvoice } from "@/type/type.ts";
 import { useNavigate } from "react-router-dom"
-import { getInvoices } from "@/services/invoiceApi"
+import { getInvoices } from "@/services/api/invoiceApi"
 
 const SaleInvoice = () => {
     const { data }: { data?: TInvoice[] } = useQuery({
