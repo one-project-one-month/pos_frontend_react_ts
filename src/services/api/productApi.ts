@@ -32,3 +32,10 @@ export const getProductByName = async (searchParam: string) => {
   );
   return response.data;
 };
+
+export const getProductByCode = async (productCode: string) => {
+  const response = await apiClient.get<TProduct[]>(
+      `/products?productCode=${capitalize(productCode)}`
+  );
+  return response.data;
+};

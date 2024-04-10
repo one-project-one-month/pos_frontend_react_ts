@@ -1,9 +1,46 @@
 import {Button} from "@/components/ui/button.tsx";
+import {ChangeEvent, useState} from "react";
+import {QueryClient} from "@tanstack/react-query";
+import {productByCodeQuery} from "@/services/api/query.ts";
+import {useBillingCartStore} from "@/store/billingCartStore.ts";
+import Error from "@/components/Product/Error.tsx";
+import {cn} from "@/lib/utils.ts";
+
+
+const queryClient = new QueryClient();
 
 export default function BillingSectionSearchBar() {
+
+    const [input, setInput] = useState("");
+    const [isError, setIsError] = useState(false);
+    const {addToCart, clearCart} = useBillingCartStore();
+
+
+    const inputHandler = (evt: ChangeEvent<HTMLInputElement>) => {
+        setInput(evt.target.value);
+    };
+
+    const addBtnHandler = () => {
+        queryClient.fetchQuery(productByCodeQuery(input))
+            .then(product => {
+                if (product.length !== 0) {
+                    addToCart(product[0], 1);
+                    setInput("");
+                    setIsError(false);
+                } else {
+                    setIsError(true);
+                }
+            });
+    };
+
+
+    const clearCartBtnHandler = () => {
+        clearCart();
+    };
+
     return (
-        <div className={"flex items-center gap-x-4"}>
-            <div className={"w-fit p-2 flex items-center border-2 border-cyan-800 rounded flex-1"}>
+        <div className={cn("flex items-center gap-x-4", isError && "mt-8")}>
+            <div className={"w-fit p-2 relative flex items-center border-2 border-cyan-800 rounded flex-1"}>
                 <label htmlFor={"product"} className={"mr-2"}>
                     <span className={"sr-only"}>Search product by product id</span>
                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -17,12 +54,15 @@ export default function BillingSectionSearchBar() {
                 <input type="text" id={"product"}
                        className={"flex-1 bg-transparent outline-none"}
                        placeholder={"Add Items by code"}
+                       value={input}
+                       onChange={inputHandler}
                 />
+                {isError && <Error className={"-top-8"}>There is no such element</Error>}
             </div>
-            <Button className={"block p-2 bg-green-500 font-bold"}>
+            <Button className={"block p-2 bg-green-500 font-bold"} onClick={addBtnHandler}>
                 Add Product
             </Button>
-            <Button className={"block p-2 bg-orange-300 font-bold text-orange-500"}>
+            <Button className={"block p-2 bg-orange-300 font-bold text-orange-500"} onClick={clearCartBtnHandler}>
                 Clear Cart
             </Button>
         </div>
