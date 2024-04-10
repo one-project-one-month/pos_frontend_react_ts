@@ -55,3 +55,8 @@ export interface TInvoice {
   change: number;
   customerCode: string;
 }
+
+export interface TProductInCart {
+  product: TProduct,
+  count: number,
+}
