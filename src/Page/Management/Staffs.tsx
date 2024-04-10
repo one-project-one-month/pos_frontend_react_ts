@@ -1,6 +1,8 @@
+
+
 const Staffs = () => {
     return (
-        <div>Staffs</div>
+        <h1>Staff</h1>
     )
 }
 
