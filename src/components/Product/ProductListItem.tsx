@@ -20,7 +20,7 @@ export default function ProductListItem({productData}: { productData: TProduct }
                 <span>
                     ${productData.price}
                 </span>
-                <ProductOptionDropDown/>
+                <ProductOptionDropDown product={productData}/>
             </div>
         </li>
     );

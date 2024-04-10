@@ -2,6 +2,7 @@ import {create} from "zustand";
 import {immer} from "zustand/middleware/immer";
 import {TProduct, TProductInCart} from "@/type/type.ts";
 
+
 type BillingCartStoreState = {
     cart: TProductInCart[],
 }
@@ -17,8 +18,15 @@ export const useBillingCartStore = create<TBillingCartStore>()(
     immer((set) => ({
         cart: [],
         addToCart: (product, count) => (set(state => {
-            if (state.cart.length === 0) {
+            const itemsInCart = state.cart.map(item => item.product.productCode);
+            if (itemsInCart.length === 0 || !itemsInCart.includes(product.productCode)) {
                 state.cart.push({product, count});
+            } else if(itemsInCart.includes(product.productCode)) {
+                state.cart.map(item => {
+                    if(item.product.productCode === product.productCode){
+                        item.count += 1;
+                    }
+                })
             }
         })),
         removeFromCart: (product) => (set(state => {

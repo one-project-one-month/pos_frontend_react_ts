@@ -4,8 +4,32 @@ import {
     DropdownMenuPortal,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu.tsx";
+import {Button} from "@/components/ui/button.tsx";
+import {useBillingCartStore} from "@/store/billingCartStore.ts";
+import {TProduct} from "@/type/type.ts";
+import {useNavigate} from "react-router-dom";
 
-export default function ProductOptionDropDown() {
+type ProductOptionDropDownProp = {
+    product: TProduct
+}
+
+export default function ProductOptionDropDown({product}: ProductOptionDropDownProp) {
+
+    const {addToCart} = useBillingCartStore()
+    const navigate = useNavigate();
+
+    const addToCartBtnHandler = () => {
+        addToCart(product, 1)
+    }
+
+    const editProductBtnHandler = () => {
+        navigate("/products/edit")
+    }
+
+    const deleteProductBtnHandler = () => {
+        navigate("/products/new")
+    }
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger>
@@ -18,15 +42,17 @@ export default function ProductOptionDropDown() {
                 </svg>
             </DropdownMenuTrigger>
             <DropdownMenuPortal>
-                <DropdownMenuContent>
+                <DropdownMenuContent sideOffset={5}>
                     <DropdownMenuItem>
-                        Add to cart
+                        <Button className={"w-full"}  variant={"outline"} onClick={addToCartBtnHandler}>
+                            Add to cart
+                        </Button>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                        Edit
+                        <Button  className={"w-full"} variant={"outline"} onClick={editProductBtnHandler}>Edit</Button>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                        Delete
+                        <Button className={"w-full"}  variant={"outline"} onClick={deleteProductBtnHandler}>Delete</Button>
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenuPortal>

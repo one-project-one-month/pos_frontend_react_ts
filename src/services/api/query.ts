@@ -1,4 +1,4 @@
-import { getProducts, getProductsByPage } from "@/services/api/productApi";
+import { getProducts, getProductsByPage } from "./productApi.ts";
 
 export const productQuery = () => ({
   queryKey: ["products"],

@@ -1,4 +1,4 @@
-import {useBillingCartStore} from "@/store/billingCartState.ts";
+import {useBillingCartStore} from "@/store/billingCartStore.ts";
 import BillingSectionSearchBar from "@/components/Product/BillingSectionSearchBar.tsx";
 
 export default function BillingSection() {

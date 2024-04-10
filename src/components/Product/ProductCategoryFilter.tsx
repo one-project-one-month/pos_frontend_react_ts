@@ -1,5 +1,5 @@
 import {useQuery} from "@tanstack/react-query";
-import {getProductCategories} from "@/services/productApi";
+
 import {TProductCategory} from "@/type/type.ts";
 import {useProductCategoryFilterState} from "@/store/productCategoryFilerState.ts";
 import {
@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu.tsx";
 import {Badge} from "@/components/ui/badge.tsx";
 import {cn} from "@/lib/utils.ts";
+import {getProductCategories} from "@/services/api/productApi.ts";
 
 export default function ProductCategoryFilter() {
     const {data} = useQuery({
