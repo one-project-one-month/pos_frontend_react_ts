@@ -1,9 +1,10 @@
+import ShopList from "@/components/Management/ShopList"
 
 
 const Shops = () => {
     return (
         <>
-            <p>Shop</p>
+            <ShopList />
         </>
 
     )

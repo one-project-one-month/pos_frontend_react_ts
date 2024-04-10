@@ -148,6 +148,16 @@
       "address": " 555 Maple St, Boroughville, USA",
       "gender": "Male",
       "position": "Storekeeper"
+    },
+    {
+      "id": 6,
+      "staffCode": "S006",
+      "staffName": "Jennie",
+      "dateOfBirth": "1990-05-18",
+      "mobileNo": 990003333,
+      "address": " 555 Maple St, Boroughville, USA",
+      "gender": "Female",
+      "position": "Storekeeper"
     }
   ],
   "shops": [
@@ -185,6 +195,13 @@
       "shopName": "Bookworm's Delight",
       "mobileNo": 7778889999,
       "address": "555 Maple St, Boroughville, USA"
+    },
+    {
+      "id": 6,
+      "shopCode": "SH006",
+      "shopName": "Ocean Supercenter",
+      "mobileNo": 773333000,
+      "address": "555 Maple St, Boroughville, Japan"
     }
   ],
   "saleInvoice": [
