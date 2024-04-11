@@ -1,8 +1,9 @@
+import StaffList from "@/components/Management/StaffList"
 
 
 const Staffs = () => {
     return (
-        <h1>Staff</h1>
+        <StaffList />
     )
 }
 
