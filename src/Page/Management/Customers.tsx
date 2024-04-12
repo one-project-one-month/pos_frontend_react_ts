@@ -1,4 +1,6 @@
-import CustomerList from "@/components/Management/CustomerList"
+import CustomerList from "@/components/Management/customer/CustomerList"
+
+
 
 const Customers = () => {
     return (

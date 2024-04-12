@@ -1,4 +1,6 @@
-import ShopList from "@/components/Management/ShopList"
+import ShopList from "@/components/Management/shop/ShopList"
+
+
 
 
 const Shops = () => {

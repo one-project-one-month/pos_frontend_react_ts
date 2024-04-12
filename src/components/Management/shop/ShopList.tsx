@@ -1,9 +1,10 @@
 import { useCustomQuery } from "@/hook/management/useCustomQuery"
-import { Table, TableHeader, TableBody, TableCell, TableRow, TableHead } from "../ui/table"
+import { Table, TableHeader, TableBody, TableCell, TableRow, TableHead } from "../../ui/table"
 import { queryFn } from "@/services/api/management/queryFn"
 import { TShop } from "@/type/type"
-import { Button } from "../ui/button"
+import { Button } from "../../ui/button"
 import { Plus } from "lucide-react"
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -14,6 +15,8 @@ const ShopList = () => {
         0,
     )
 
+    const navigate = useNavigate()
+
     return (
 
 
@@ -23,8 +26,7 @@ const ShopList = () => {
                 <Button
                     variant="outline"
                     size="default"
-                // onClick={() => table.nextPage()}
-                // disabled={!table.getCanNextPage()}
+                    onClick={() => navigate("/management/shops/create")}
                 >
                     <Plus size={18} className="mr-2" /> Add Shop
                 </Button>

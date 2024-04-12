@@ -9,11 +9,11 @@ export const navLinks = [
   {
     routeName: "Management",
     icon: <UserCog />,
-    route: "/management",
+    route: "/management/shops",
     subRoutes: [
       {
         routeName: "Shops",
-        route: "/management",
+        route: "/management/shops",
       },
       {
         routeName: "Customers",
