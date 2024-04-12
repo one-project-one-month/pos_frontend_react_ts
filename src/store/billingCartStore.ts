@@ -9,7 +9,9 @@ type BillingCartStoreState = {
 
 type BillCartStoreActions = {
     addToCart: (product: TProduct, count: number) => void,
-    removeFromCart: (product: TProduct) => void,
+    increaseItemCount: (productCode: TProduct["productCode"]) => void
+    reduceItemCount: (productCode: TProduct["productCode"]) => void,
+    removeItemFromCart: (productCode: TProduct["productCode"]) => void
     clearCart: () => void
 }
 
@@ -29,8 +31,15 @@ export const useBillingCartStore = create<TBillingCartStore>()(
                 })
             }
         })),
-        removeFromCart: (product) => (set(state => {
-            state.cart = state.cart.filter(item => item.product.productCode === product.productCategoryCode);
+        increaseItemCount: (productCode) => (set(state=> {
+            state.cart.map(item => {if(item.product.productCode === productCode) {item.count += 1}})
+        })) ,
+        reduceItemCount: (productCode) => (set(state => {
+            state.cart.map(item => {if(item.product.productCode === productCode) {item.count -= 1}})
+            state.cart = state.cart.filter(item => item.count !== 0)
+        })),
+        removeItemFromCart: (productCode) => (set(state  => {
+            state.cart = state.cart.filter(item => item.product.productCode !== productCode)
         })),
         clearCart: () => (set(state => {
             state.cart = [];
