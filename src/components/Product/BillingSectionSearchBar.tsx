@@ -5,6 +5,7 @@ import {productByCodeQuery} from "@/services/api/query.ts";
 import {useBillingCartStore} from "@/store/billingCartStore.ts";
 import Error from "@/components/Product/Error.tsx";
 import {cn} from "@/lib/utils.ts";
+import {useDiscountStore} from "@/store/discountStore.ts";
 
 
 const queryClient = new QueryClient();
@@ -14,6 +15,7 @@ export default function BillingSectionSearchBar() {
     const [input, setInput] = useState("");
     const [isError, setIsError] = useState(false);
     const {addToCart, clearCart} = useBillingCartStore();
+    const {setNoDiscount} = useDiscountStore()
 
 
     const inputHandler = (evt: ChangeEvent<HTMLInputElement>) => {
@@ -36,6 +38,7 @@ export default function BillingSectionSearchBar() {
 
     const clearCartBtnHandler = () => {
         clearCart();
+        setNoDiscount();
     };
 
     return (
