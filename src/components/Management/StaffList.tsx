@@ -14,14 +14,16 @@ const StaffList = () => {
         0,
     )
 
+
+
+
+
     return (
         <div className="w-[80%] flex flex-col m-8">
             <div className="flex justify-end mb-2">
                 <Button
                     variant="outline"
                     size="default"
-                // onClick={() => table.nextPage()}
-                // disabled={!table.getCanNextPage()}
                 >
                     <Plus size={18} className="mr-2" /> Add staff
                 </Button>
@@ -30,26 +32,29 @@ const StaffList = () => {
             <Table className="rounded-md border">
                 <TableHeader>
                     <TableRow>
-                        {/* {
-                            Object.keys(staffs).map((staff, i) => (
-                                <TableHead key={staff.id} className="w-[100px]">{Object.keys(staff)[i]}</TableHead>
-                            ))
-                        } */}
+                        {
+                            staffs ? (
+                                Object.keys(staffs[0]).map((key) => (
+                                    <TableHead key={key} className="w-[100px]">{key}</TableHead>
+                                ))
+                            ) : null
+                        }
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {staffs?.map(staff => (
-                        <TableRow key={staff.id}>
-                            <TableCell className="font-mediun">{staff.id}</TableCell>
-                            <TableCell className="font-mediun">{staff.staffCode}</TableCell>
-                            <TableCell className="font-mediun">{staff.staffName}</TableCell>
-                            <TableCell className="font-mediun">{staff.position}</TableCell>
-                            <TableCell className="font-mediun">{staff.gender}</TableCell>
-                            <TableCell className="font-mediun">{staff.dateOfBirth.toString()}</TableCell>
-                            <TableCell className="font-mediun">{staff.address}</TableCell>
-                            <TableCell className="font-mediun">{staff.mobileNo}</TableCell>
-                        </TableRow>
-                    ))}
+
+                    {
+                        staffs ? (
+                            staffs.map((staff) => (
+                                <TableRow key={staff.id}>
+                                    {Object.values(staff).map((value) => (
+                                        <TableCell key={value} className="font-mediun">{value}</TableCell>
+                                    ))}
+                                </TableRow>
+                            ))
+
+                        ) : null
+                    }
                 </TableBody>
             </Table>
         </div>

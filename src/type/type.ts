@@ -2,8 +2,19 @@ export interface TProduct {
   id: number;
   productCode: string;
   productName: string;
-  price: 999;
+  price: number;
   productCategoryCode: string;
+}
+
+export interface TCustomer {
+  id: string;
+  customerCode: string;
+  customerName: string;
+  mobileNo: number;
+  dateOfBirth: string;
+  gender: string;
+  stateCode: string;
+  townshipCode: string;
 }
 
 export interface TProductCategory {
@@ -57,6 +68,6 @@ export interface TInvoice {
 }
 
 export interface TProductInCart {
-  product: TProduct,
-  count: number,
+  product: TProduct;
+  count: number;
 }

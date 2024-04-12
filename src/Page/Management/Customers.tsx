@@ -1,6 +1,8 @@
+import CustomerList from "@/components/Management/CustomerList"
+
 const Customers = () => {
     return (
-        <div>Customers</div>
+        <CustomerList />
     )
 }
 
