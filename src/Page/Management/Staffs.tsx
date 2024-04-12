@@ -1,4 +1,6 @@
-import StaffList from "@/components/Management/StaffList"
+import StaffList from "@/components/Management/staff/StaffList"
+
+
 
 
 const Staffs = () => {

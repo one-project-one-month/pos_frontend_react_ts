@@ -1,20 +1,20 @@
 import { useCustomQuery } from "@/hook/management/useCustomQuery"
+import { Table, TableHead, TableHeader, TableBody, TableCell, TableRow } from "../../ui/table"
 import { queryFn } from "@/services/api/management/queryFn"
-import { TCustomer } from "@/type/type"
-import { Button } from "../ui/button"
+import { TStaff } from "@/type/type"
+import { Button } from "../../ui/button"
 import { Plus } from "lucide-react"
-
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table"
-import { useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 
-const CustomerList = () => {
 
-    const { data: customers } = useCustomQuery<TCustomer[]>(
-        "customers",
-        () => queryFn("customers"),
+const StaffList = () => {
+    const { data: staffs } = useCustomQuery<TStaff[]>(
+        "staffs",
+        () => queryFn("staffs"),
         0,
     )
+    const navigate = useNavigate()
 
 
 
@@ -25,8 +25,9 @@ const CustomerList = () => {
                 <Button
                     variant="outline"
                     size="default"
+                    onClick={() => navigate("/management/staffs/create")}
                 >
-                    <Plus size={18} className="mr-2" /> Add customer
+                    <Plus size={18} className="mr-2" /> Add staff
                 </Button>
             </div>
 
@@ -34,8 +35,8 @@ const CustomerList = () => {
                 <TableHeader>
                     <TableRow>
                         {
-                            customers ? (
-                                Object.keys(customers[0]).map((key) => (
+                            staffs ? (
+                                Object.keys(staffs[0]).map((key) => (
                                     <TableHead key={key} className="w-[100px]">{key}</TableHead>
                                 ))
                             ) : null
@@ -45,14 +46,12 @@ const CustomerList = () => {
                 <TableBody>
 
                     {
-                        customers ? (
-                            customers.map((customer) => (
-                                <TableRow key={customer.id}>
-                                    {Object.values(customer).map((value) => {
-                                        return (
-                                            <TableCell key={value} className="font-mediun">{value}</TableCell>
-                                        )
-                                    })}
+                        staffs ? (
+                            staffs.map((staff) => (
+                                <TableRow key={staff.id}>
+                                    {Object.values(staff).map((value) => (
+                                        <TableCell key={value} className="font-mediun">{value}</TableCell>
+                                    ))}
                                 </TableRow>
                             ))
 
@@ -64,4 +63,4 @@ const CustomerList = () => {
     )
 }
 
-export default CustomerList
+export default StaffList
