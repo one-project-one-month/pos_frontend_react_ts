@@ -7,7 +7,6 @@ import { capitalize } from "@/lib/utils.ts";
 import apiClient from "./api-client";
 
 export const getProducts = async () => {
-  console.log("res")
   const response = await apiClient.get<TProduct[]>(`/products`);
   return response.data;
 };

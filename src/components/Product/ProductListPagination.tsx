@@ -14,14 +14,12 @@ type ProductListPaginationProps =
 
 export default function ProductListPagination({handler, next, prev,hidden}:ProductListPaginationProps) {
     const nextBtnHandler = () => {
-        console.log("next", next);
         if (next) {
             handler(next);
         }
     };
 
     const prevBtnHandler = () => {
-        console.log("prev", prev);
         if (prev) {
             handler(prev);
         }
