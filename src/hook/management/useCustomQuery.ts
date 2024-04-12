@@ -10,5 +10,6 @@ export const useCustomQuery = <T>(
     queryKey: queryKey,
     queryFn: queryFn,
     placeholderData: keepPreviousData,
+    staleTime: 5 * 60 * 1000,
   });
 };
