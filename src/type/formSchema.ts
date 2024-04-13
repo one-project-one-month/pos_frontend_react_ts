@@ -6,7 +6,7 @@ export const formSchema = z.object({
   password: z.string().min(6),
   customerCode: z.string(),
   customerName: z.string(),
-  mobileNo: z.string(),
+  mobileNo: z.number(),
   dateOfBirth: z.date(),
   gender: z.enum(["Male", "Female", "Other"]),
   stateCode: z.string(),
@@ -16,8 +16,6 @@ export const formSchema = z.object({
   position: z.string(),
   shopCode: z.string(),
   shopName: z.string(),
-  // mobileNo: z.string(),
-  // address: z.string(),
 });
 
 export type Inputs = z.infer<typeof formSchema>;

@@ -17,6 +17,7 @@ const SideNavLink = ({ navLink }: { navLink: TRoutes }) => {
                     to={navLink.route}
                     className={({ isActive }) => cn("flex justify-between items-center rounded-lg px-3 py-2 text-slate-900  dark:text-white dark:hover:bg-slate-700", { "bg-slate-900 text-white": isActive })}
                     onClick={toggleDropDown}
+
                 >
                     <div className='flex items-center'>
                         {navLink.icon}
@@ -36,6 +37,7 @@ const SideNavLink = ({ navLink }: { navLink: TRoutes }) => {
                     key={subroute.routeName}
                     to={subroute.route}
                     className={({ isActive }) => cn("flex items-center rounded-lg px-8 py-2 text-slate-900  dark:text-white dark:hover:bg-gray-100 ", { "text-slate-600": isActive })}
+                    end
                 >
                     <span>{subroute.routeName}</span>
                 </NavLink>

@@ -9,7 +9,7 @@ export const navLinks = [
   {
     routeName: "Management",
     icon: <UserCog />,
-    route: "/management/shops",
+    route: "/management",
     subRoutes: [
       {
         routeName: "Shops",

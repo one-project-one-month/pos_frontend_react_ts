@@ -11,6 +11,8 @@ import ProductsCategory from "./Page/Products/ProductsCategory";
 import SaleInvoiceDetails from "./Page/SaleInvoice/SaleInvoiceDetail";
 import ShopForm from "./components/Management/shop/ShopForm";
 import StaffForm from "./components/Management/staff/StaffForm";
+import ManagementWrapper from "./components/Management/ManagementWrapper";
+import CustomerForm from "./components/Management/customer/CustomerForm";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +25,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "management",
+                element: <ManagementWrapper />,
                 children: [
                     {
                         path: "shops",
@@ -35,7 +38,7 @@ const router = createBrowserRouter([
                         path: "customers",
                         children: [
                             { index: true, element: <Customers /> },
-                            { path: "create", element: <ShopForm /> }
+                            { path: "create", element: <CustomerForm /> }
                         ]
                     },
                     {

@@ -1,70 +1,70 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "productCode": "P001",
       "productName": "Laptop",
       "price": 999,
       "productCategoryCode": "PC"
     },
     {
-      "id": 2,
+      "id": "2",
       "productCode": "P002",
       "productName": "Smartphone",
       "price": 699,
       "productCategoryCode": "Mobile"
     },
     {
-      "id": 3,
+      "id": "3",
       "productCode": "P003",
       "productName": "Headphones",
       "price": 99,
       "productCategoryCode": "Accessories"
     },
     {
-      "id": 4,
+      "id": "4",
       "productCode": "P004",
       "productName": "Tablet",
       "price": 499,
       "productCategoryCode": "PC"
     },
     {
-      "id": 5,
+      "id": "5",
       "productCode": "P005",
       "productName": "Smartwatch",
       "price": 299,
       "productCategoryCode": "Wearable"
     },
     {
-      "id": 6,
+      "id": "6",
       "productCode": "P006",
       "productName": "Camera",
       "price": 799,
       "productCategoryCode": "Electronics"
     },
     {
-      "id": 7,
+      "id": "7",
       "productCode": "P007",
       "productName": "Keyboard",
       "price": 49,
       "productCategoryCode": "Accessories"
     },
     {
-      "id": 8,
+      "id": "8",
       "productCode": "P008",
       "productName": "Mouse",
       "price": 29,
       "productCategoryCode": "Accessories"
     },
     {
-      "id": 9,
+      "id": "9",
       "productCode": "P009",
       "productName": "Monitor",
       "price": 399,
       "productCategoryCode": "PC"
     },
     {
-      "id": 10,
+      "id": "10",
       "productCode": "P010",
       "productName": "Speaker",
       "price": 149,
@@ -73,34 +73,34 @@
   ],
   "product-Categories": [
     {
-      "id": 1,
+      "id": "1",
       "productCategoryCode": "PC",
       "productCategoryName": "Personal Computers"
     },
     {
-      "id": 2,
+      "id": "2",
       "productCategoryCode": "Mobile",
       "productCategoryName": "Mobile Devices"
     },
     {
-      "id": 3,
+      "id": "3",
       "productCategoryCode": "Accessories",
       "productCategoryName": "Accessories"
     },
     {
-      "id": 4,
+      "id": "4",
       "productCategoryCode": "Wearable",
       "productCategoryName": "Wearable Technology"
     },
     {
-      "id": 5,
+      "id": "5",
       "productCategoryCode": "Electronics",
       "productCategoryName": "Electronic Devices"
     }
   ],
   "staffs": [
     {
-      "id": 1,
+      "id": "1",
       "staffCode": "S001",
       "staffName": "John Smith",
       "dateOfBirth": "1985-07-15",
@@ -110,7 +110,7 @@
       "position": "Manager"
     },
     {
-      "id": 2,
+      "id": "2",
       "staffCode": "S002",
       "staffName": "Emily Johnson",
       "dateOfBirth": "1990-03-22   ",
@@ -120,7 +120,7 @@
       "position": "Sales Associate"
     },
     {
-      "id": 3,
+      "id": "3",
       "staffCode": "S003",
       "staffName": "Michael Brown",
       "dateOfBirth": "1988-11-10",
@@ -130,7 +130,7 @@
       "position": "Customer Service Representative"
     },
     {
-      "id": 4,
+      "id": "4",
       "staffCode": "S004",
       "staffName": "Sarah Lee",
       "dateOfBirth": "1995-05-03",
@@ -140,7 +140,7 @@
       "position": "Assistant Manager"
     },
     {
-      "id": 5,
+      "id": "5",
       "staffCode": "S005",
       "staffName": "David Chen",
       "dateOfBirth": "1987-02-18",
@@ -150,7 +150,7 @@
       "position": "Storekeeper"
     },
     {
-      "id": 6,
+      "id": "6",
       "staffCode": "S006",
       "staffName": "Jennie",
       "dateOfBirth": "1990-05-18",
@@ -162,51 +162,86 @@
   ],
   "shops": [
     {
-      "id": 1,
+      "id": "1",
       "shopCode": "SH001",
       "shopName": "Tech Haven ",
       "mobileNo": 1234567890,
       "address": "123 Main St, Cityville, USA"
     },
     {
-      "id": 2,
+      "id": "2",
       "shopCode": "SH002",
       "shopName": "Mobile Central",
       "mobileNo": 9876543210,
       "address": "456 Elm St, Townsville, USA"
     },
     {
-      "id": 3,
+      "id": "3",
       "shopCode": "SH003",
       "shopName": "Gadget Emporium",
       "mobileNo": 5551234567,
       "address": "789 Oak St, Villagetown, USA"
     },
     {
-      "id": 4,
+      "id": "4",
       "shopCode": "SH004",
       "shopName": "Appliance Outlet",
       "mobileNo": 2223334444,
       "address": "321 Pine St, Hamletville, USA"
     },
     {
-      "id": 5,
+      "id": "5",
       "shopCode": "SH005",
       "shopName": "Bookworm's Delight",
       "mobileNo": 7778889999,
       "address": "555 Maple St, Boroughville, USA"
     },
     {
-      "id": 6,
+      "id": "6",
       "shopCode": "SH006",
       "shopName": "Ocean Supercenter",
       "mobileNo": 773333000,
       "address": "555 Maple St, Boroughville, Japan"
+    },
+    {
+      "id": 31,
+      "shopCode": "SHOPEEEE",
+      "shopName": "Ocean",
+      "mobileNo": "09255882712",
+      "address": "Aung street"
+    },
+    {
+      "id": "a718",
+      "shopCode": "SHOP67",
+      "shopName": "Ocean Tarmwe",
+      "mobileNo": "0976622233",
+      "address": "Yangon"
+    },
+    {
+      "id": "3599",
+      "shopCode": "SHOP90",
+      "shopName": "Grocery store",
+      "mobileNo": "09555556667",
+      "address": "Mandalay"
+    },
+    {
+      "id": "9f6e",
+      "shopCode": "SHOP86",
+      "shopName": "ZB",
+      "mobileNo": "09333222398",
+      "address": "Nay Pyi Thaw"
+    },
+    {
+      "id": "a9c6",
+      "shopCode": "dfmasnfdmas",
+      "shopName": "dfmdfsnma",
+      "mobileNo": "dd",
+      "address": "Nay Pyi Thaw"
     }
   ],
   "saleInvoice": [
     {
-      "id": 1,
+      "id": "1",
       "saleInvoiceDateTime": "2024-04-06 10:00:00",
       "voucherNo": "INV001",
       "totalAmount": 2397,
@@ -220,7 +255,7 @@
       "customerCode": "CUST001"
     },
     {
-      "id": 2,
+      "id": "2",
       "saleInvoiceDateTime": "2024-04-06 10:15:00",
       "voucherNo": "INV002",
       "totalAmount": 99,
@@ -234,7 +269,7 @@
       "customerCode": "CUST002"
     },
     {
-      "id": 3,
+      "id": "3",
       "saleInvoiceDateTime": "2024-04-06 10:30:00",
       "voucherNo": "INV003",
       "totalAmount": 1996,
@@ -250,7 +285,7 @@
   ],
   "saleInvoiceDetails": [
     {
-      "id": 1,
+      "id": "1",
       "voucherNo": "INV001",
       "productCode": "P001",
       "quantity": 1,
@@ -258,7 +293,7 @@
       "amount": 999
     },
     {
-      "id": 2,
+      "id": "2",
       "voucherNo": "INV001",
       "productCode": "P002",
       "quantity": 2,
@@ -266,7 +301,7 @@
       "amount": 1398
     },
     {
-      "id": 3,
+      "id": "3",
       "voucherNo": "INV002",
       "productCode": "P003",
       "quantity": 1,
@@ -274,7 +309,7 @@
       "amount": 99
     },
     {
-      "id": 4,
+      "id": "4",
       "voucherNo": "INV003",
       "productCode": "P004",
       "quantity": 4,
@@ -284,7 +319,7 @@
   ],
   "customers": [
     {
-      "id": 1,
+      "id": "1",
       "customerCode": "CUST001",
       "customerName": "John Doe",
       "mobileNo": 1234567890,
@@ -294,7 +329,7 @@
       "townshipCode": "LA"
     },
     {
-      "id": 2,
+      "id": "2",
       "customerCode": "CUST002",
       "customerName": "Jane Smith",
       "mobileNo": 9876543210,
@@ -304,7 +339,7 @@
       "townshipCode": "NYC"
     },
     {
-      "id": 3,
+      "id": "3",
       "customerCode": "CUST003",
       "customerName": "Michael Johnson",
       "mobileNo": 5555555555,

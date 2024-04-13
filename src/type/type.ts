@@ -31,7 +31,7 @@ export interface TStaff {
   mobileNo: string;
   address: string;
   gender: "Male" | "Female" | "Other";
-  position: string;
+  position: "Manager" | "Sales Associate" | "Storekeeper";
 }
 
 export interface TShop {
