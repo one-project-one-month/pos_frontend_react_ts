@@ -204,7 +204,7 @@
       "address": "555 Maple St, Boroughville, Japan"
     },
     {
-      "id": 31,
+      "id": "31",
       "shopCode": "SHOPEEEE",
       "shopName": "Ocean",
       "mobileNo": "09255882712",
@@ -237,6 +237,78 @@
       "shopName": "dfmdfsnma",
       "mobileNo": "dd",
       "address": "Nay Pyi Thaw"
+    },
+    {
+      "id": "2e84",
+      "shopCode": "SHOP998",
+      "shopName": "Ocean MyanKone",
+      "mobileNo": "0922666673",
+      "address": "Mawlamyine"
+    },
+    {
+      "id": "34",
+      "shopCode": "SHOPEEEE",
+      "shopName": "Ocean",
+      "mobileNo": "09255882712",
+      "address": "Aung street"
+    },
+    {
+      "id": "a0cb",
+      "shopCode": "SHOP860",
+      "shopName": "YKKO",
+      "mobileNo": "09233338999",
+      "address": "Yangon"
+    },
+    {
+      "id": "8777",
+      "shopCode": "SHOP1224",
+      "shopName": "Life is Good",
+      "mobileNo": "09666777",
+      "address": "Bangkok"
+    },
+    {
+      "id": "e02a",
+      "shopCode": "SHOP789",
+      "shopName": "HP",
+      "mobileNo": "09222222",
+      "address": "Yangon"
+    },
+    {
+      "id": "ef72",
+      "shopCode": "SHOP6782",
+      "shopName": "Mini Mart",
+      "mobileNo": "123455555",
+      "address": "Mandalay"
+    },
+    {
+      "id": "8551",
+      "staffCode": "S100",
+      "staffName": "U Ba",
+      "dateOfBirth": "2003-01-11",
+      "mobileNo": "09222222222222",
+      "address": "Yangon",
+      "gender": "Male",
+      "position": "Sales Associate"
+    },
+    {
+      "id": "026d",
+      "staffCode": "S100",
+      "staffName": "U Ba",
+      "dateOfBirth": "2019-01-14",
+      "mobileNo": "09255882712",
+      "address": "Mawlamyine",
+      "gender": "Male",
+      "position": "Manager"
+    },
+    {
+      "id": "746d",
+      "customerCode": "Cu34",
+      "customerName": "Aung Aung",
+      "mobileNo": "0976622233",
+      "dateOfBirth": "2024-04-24",
+      "gender": "Male",
+      "stateCode": "12001",
+      "townshipCode": "Chigago"
     }
   ],
   "saleInvoice": [
@@ -347,6 +419,16 @@
       "gender": "Male",
       "stateCode": "TX",
       "townshipCode": "DAL"
+    },
+    {
+      "id": "8360",
+      "customerCode": "Cu67",
+      "customerName": "Ye Kyaw",
+      "mobileNo": "7799999999",
+      "dateOfBirth": "2000-06-19",
+      "gender": "Male",
+      "stateCode": "234",
+      "townshipCode": "Chigago"
     }
   ]
 }
