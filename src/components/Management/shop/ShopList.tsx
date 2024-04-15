@@ -5,6 +5,7 @@ import { TShop } from "@/type/type"
 import { Button } from "../../ui/button"
 import { Plus } from "lucide-react"
 import { useNavigate } from "react-router-dom"
+import { useDeleteQuery } from "@/hook/management/useDeleteQuery"
 
 
 
@@ -14,6 +15,8 @@ const ShopList = () => {
         () => queryFn("shops"),
         0,
     )
+
+    const { mutate } = useDeleteQuery("shops")
 
     const navigate = useNavigate()
 
@@ -38,10 +41,13 @@ const ShopList = () => {
                         {
                             shops ? (
                                 Object.keys(shops[0]).map((key) => (
+
                                     <TableHead key={key} className="w-[100px]">{key}</TableHead>
+
                                 ))
                             ) : null
                         }
+                        <TableHead >Actions</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -52,11 +58,13 @@ const ShopList = () => {
                                     {Object.values(shop).map((value) => (
                                         <TableCell key={value} className="font-mediun">{value}</TableCell>
                                     ))}
+                                    <TableCell onClick={() => mutate({ url: "shops", id: shop.id })} className="pointer">Delete</TableCell>
                                 </TableRow>
                             ))
 
                         ) : null
                     }
+
                 </TableBody>
             </Table>
         </div>
