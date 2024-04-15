@@ -71,3 +71,17 @@ export interface TProductInCart {
   product: TProduct;
   count: number;
 }
+
+export interface TInvoiceFormValues {
+  "Voucher No": string,
+  "Customers": string,
+  "Staffs": string,
+  "Payment Type": string,
+  "Payment Amount": number,
+  "Receive Amount": number,
+}
+
+export interface TInvoiceItemProps {
+  label: string;
+  value: string | number;
+}

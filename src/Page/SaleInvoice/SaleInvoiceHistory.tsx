@@ -64,7 +64,7 @@ const SaleInvoiceHistory = () => {
         },
         {
             accessorKey: "voucherNo",
-            header: "Vouncher No",
+            header: "Voucher No",
             cell: ({ row }) => (
                 <div className="capitalize">{row.getValue("voucherNo")}</div>
             ),
@@ -157,21 +157,13 @@ const SaleInvoiceHistory = () => {
             <div className="w-full">
                 <div className="flex justify-end gap-5 py-4">
                     {/* <Input
-            placeholder="Filter vouncher no...."
+            placeholder="Filter voucher no...."
             value={(table.getColumn("voucherNo")?.getFilterValue() as string) ?? ""}
             onChange={(event) =>
               table.getColumn("voucherNo")?.setFilterValue(event.target.value)
             }
             className="max-w-sm"
           /> */}
-                    <Button
-                        variant="outline"
-                        size="default"
-                        onClick={() => table.nextPage()}
-                        disabled={!table.getCanNextPage()}
-                    >
-                        <Plus size={18} className="mr-2" /> Add Invoice
-                    </Button>
                 </div>
                 <div className="rounded-md border">
                     <Table>
