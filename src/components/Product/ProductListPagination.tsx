@@ -1,27 +1,32 @@
 import {Pagination, PaginationContent, PaginationItem} from "@/components/ui/pagination.tsx";
 import {Button} from "@/components/ui/button.tsx";
-import {Dispatch, SetStateAction} from "react";
+
 
 import {cn} from "@/lib/utils.ts";
+import {useSearchParams} from "react-router-dom";
 
 type ProductListPaginationProps =
     {
-        handler: Dispatch<SetStateAction<number>>;
+
         next: number | null;
         prev: number | null;
         hidden?: boolean;
     }
 
-export default function ProductListPagination({handler, next, prev,hidden}:ProductListPaginationProps) {
+export default function ProductListPagination({ next, prev,hidden}:ProductListPaginationProps) {
+    const [serachParams,setSearchParams] = useSearchParams()
+
     const nextBtnHandler = () => {
         if (next) {
-            handler(next);
+            //@ts-expect-error I don't have trick to type this shit
+            setSearchParams({page: next})
         }
     };
 
     const prevBtnHandler = () => {
         if (prev) {
-            handler(prev);
+            //@ts-expect-error I don't have trick to type this shit
+            setSearchParams({page: prev})
         }
     };
 

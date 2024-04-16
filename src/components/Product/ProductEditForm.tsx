@@ -4,7 +4,7 @@ import {Inputs} from "@/type/formSchema.ts";
 import SubmitButton from "@/components/ui/submit-button.tsx";
 import {productFormConst} from "@/constants/form-constate.ts";
 import useRenderForm from "@/hook/useRenderForm.tsx";
-import {editProductById} from "@/services/api/productApi.ts";
+import {useEditProduct} from "@/services/mutation.ts";
 
 
 export default function ProductEditForm() {
@@ -20,12 +20,11 @@ export default function ProductEditForm() {
     });
 
     const formElements = useRenderForm({formconst: productFormConst, errors, register});
-
+    const mutation = useEditProduct(state.page, state.product.id);
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
-        console.log(data);
-        editProductById(state.product.id, data)
-        navigate("..", {relative: "path"})
+        mutation.mutate(data);
+        navigate(`..?page=${state.page}`, {relative: "path"});
     };
 
     return (
