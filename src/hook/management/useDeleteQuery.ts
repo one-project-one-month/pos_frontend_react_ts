@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 type TParams = {
   url: string;
-  id: number;
+  id: string;
 };
 
 const deleteData = async ({ url, id }: TParams): Promise<void> => {

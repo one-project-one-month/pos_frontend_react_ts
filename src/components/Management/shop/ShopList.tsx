@@ -3,9 +3,10 @@ import { Table, TableHeader, TableBody, TableCell, TableRow, TableHead } from ".
 import { queryFn } from "@/services/api/management/queryFn"
 import { TShop } from "@/type/type"
 import { Button } from "../../ui/button"
-import { Plus } from "lucide-react"
+import { EllipsisVertical, Plus } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 import { useDeleteQuery } from "@/hook/management/useDeleteQuery"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuPortal, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 
 
@@ -41,9 +42,7 @@ const ShopList = () => {
                         {
                             shops ? (
                                 Object.keys(shops[0]).map((key) => (
-
                                     <TableHead key={key} className="w-[100px]">{key}</TableHead>
-
                                 ))
                             ) : null
                         }
@@ -58,11 +57,30 @@ const ShopList = () => {
                                     {Object.values(shop).map((value) => (
                                         <TableCell key={value} className="font-mediun">{value}</TableCell>
                                     ))}
-                                    <TableCell onClick={() => mutate({ url: "shops", id: shop.id })} className="pointer">Delete</TableCell>
+                                    <TableCell>
+                                        <DropdownMenu>
+                                            <DropdownMenuTrigger>
+                                                <EllipsisVertical />
+                                            </DropdownMenuTrigger>
+                                            <DropdownMenuPortal>
+                                                <DropdownMenuContent sideOffset={6} className="min-w-6">
+                                                    <DropdownMenuItem className="flex flex-col">
+                                                        <Button className="w-full mb-2" variant={"outline"} onClick={() => mutate({ url: "shops", id: shop.id })}>Delete</Button>
+                                                        <Button className="w-full" variant={"outline"} onClick={() => mutate({ url: "shops", id: shop.id })}>Edit</Button>
+                                                    </DropdownMenuItem>
+                                                </DropdownMenuContent>
+                                            </DropdownMenuPortal>
+                                        </DropdownMenu>
+                                    </TableCell>
                                 </TableRow>
                             ))
 
-                        ) : null
+                        ) : <TableRow>
+                            <TableCell>
+                                No Data
+                            </TableCell>
+                        </TableRow>
+
                     }
 
                 </TableBody>

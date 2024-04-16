@@ -2,10 +2,13 @@ import { useCustomQuery } from "@/hook/management/useCustomQuery"
 import { queryFn } from "@/services/api/management/queryFn"
 import { TCustomer } from "@/type/type"
 import { Button } from "../../ui/button"
-import { Plus } from "lucide-react"
+import { EllipsisVertical, Plus } from "lucide-react"
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../ui/table"
 import { useNavigate } from "react-router-dom"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuPortal } from "@/components/ui/dropdown-menu"
+import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
+import { useDeleteQuery } from "@/hook/management/useDeleteQuery"
 
 
 
@@ -16,6 +19,7 @@ const CustomerList = () => {
         () => queryFn("customers"),
         0,
     )
+    const { mutate } = useDeleteQuery("customers")
 
     const navigate = useNavigate()
 
@@ -44,10 +48,11 @@ const CustomerList = () => {
                                 ))
                             ) : null
                         }
+                        <TableHead>Actions</TableHead>
                     </TableRow>
+
                 </TableHeader>
                 <TableBody>
-
                     {
                         customers ? (
                             customers.map((customer) => (
@@ -57,10 +62,29 @@ const CustomerList = () => {
                                             <TableCell key={value} className="font-mediun">{value}</TableCell>
                                         )
                                     })}
+                                    <TableCell>
+                                        <DropdownMenu>
+                                            <DropdownMenuTrigger>
+                                                <EllipsisVertical />
+                                            </DropdownMenuTrigger>
+                                            <DropdownMenuPortal>
+                                                <DropdownMenuContent sideOffset={6} className="min-w-6">
+                                                    <DropdownMenuItem >
+                                                        <Button className="w-full" variant={"outline"} onClick={() => mutate({ url: "customers", id: customer.id })}>Delete</Button>
+                                                    </DropdownMenuItem>
+                                                </DropdownMenuContent>
+                                            </DropdownMenuPortal>
+                                        </DropdownMenu>
+                                    </TableCell>
                                 </TableRow>
                             ))
 
-                        ) : null
+                        ) : <TableRow>
+                            <TableCell>
+                                No Data
+                            </TableCell>
+                        </TableRow>
+
                     }
                 </TableBody>
             </Table>
