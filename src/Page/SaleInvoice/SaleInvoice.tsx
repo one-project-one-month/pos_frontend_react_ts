@@ -1,277 +1,155 @@
-import * as React from "react"
-import {
-    ColumnDef,
-    ColumnFiltersState,
-    SortingState,
-    VisibilityState,
-    flexRender,
-    getCoreRowModel,
-    getFilteredRowModel,
-    getPaginationRowModel,
-    getSortedRowModel,
-    useReactTable,
-} from "@tanstack/react-table"
-import { ArrowUpDown, Plus } from "lucide-react"
+import { useCustomQuery } from "@/hook/management/useCustomQuery"
+import { queryFn } from "@/services/api/management/queryFn"
+import { TCustomer, TInvoiceFormValues, TStaff, TInvoiceItemProps } from "@/type/type"
+import { useRef } from "react"
+import { Path, useForm, UseFormRegister, SubmitHandler, FieldErrors } from "react-hook-form"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../components/ui/table"
+  
+  type InputProps = {
+    label: Path<TInvoiceFormValues>
+    register: UseFormRegister<TInvoiceFormValues>,
+    errors: FieldErrors<TInvoiceFormValues>,
+    datas?: (TCustomer | TStaff)[] | undefined,
+    required: boolean,
+  }
+  
+  const Input = ({ label, register,errors }: InputProps) =>  {
 
-import { Button } from "@/components/ui/button"
-// import { Input } from "@/components/ui/input"
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
-// import {
-//   Pagination,
-//   PaginationContent,
-//   PaginationEllipsis,
-//   PaginationItem,
-//   PaginationLink,
-//   PaginationNext,
-//   PaginationPrevious,
-// } from "@/components/ui/pagination"
-
-import { useQuery } from "@tanstack/react-query"
-import { TInvoice } from "@/type/type.ts";
-import { useNavigate } from "react-router-dom"
-import { getInvoices } from "@/services/api/invoiceApi"
-
-const SaleInvoice = () => {
-    const { data }: { data?: TInvoice[] } = useQuery({
-        queryKey: ["invoice"],
-        queryFn: getInvoices
-    })
-
-    const [sorting, setSorting] = React.useState<SortingState>([])
-    const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-        []
-    )
-    const [columnVisibility, setColumnVisibility] =
-        React.useState<VisibilityState>({})
-    const [rowSelection, setRowSelection] = React.useState({})
-
-    const navigate = useNavigate();
-
-    const columns: ColumnDef<TInvoice, any>[] = [
-        {
-            accessorKey: "id",
-            header: "No.",
-            cell: ({ row }) => (
-                <p>{row.getValue("id")}</p>
-            ),
-        },
-        {
-            accessorKey: "voucherNo",
-            header: "Vouncher No",
-            cell: ({ row }) => (
-                <div className="capitalize">{row.getValue("voucherNo")}</div>
-            ),
-        },
-        {
-            accessorKey: "customerCode",
-            header: "Customer Name",
-            cell: ({ row }) => (
-                <div className="capitalize">{row.getValue("customerCode")}</div>
-            )
-        },
-        {
-            accessorKey: "saleInvoiceDateTime",
-            header: ({ column }) => {
-                return (
-                    <Button
-                        variant="ghost"
-                        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                    >
-                        Date
-                        <ArrowUpDown className="ml-2 h-4 w-4" />
-                    </Button>
-                )
-            },
-            cell: ({ row }) => <div className="lowercase">{row.getValue("saleInvoiceDateTime")}</div>,
-        },
-        {
-            accessorKey: "totalAmount",
-            header: "Total Amount",
-            cell: ({ row }) => {
-                const amount = parseFloat(row.getValue("totalAmount"))
-                const formatted = new Intl.NumberFormat("en-US", {
-                    style: "currency",
-                    currency: "MMK",
-                }).format(amount)
-
-                return <div>{formatted}</div>
-            },
-        },
-        {
-            accessorKey: "paymentType",
-            header: "Payment",
-            cell: ({ row }) => (
-                <div className="capitalize">{row.getValue("paymentType")}</div>
-            )
-        },
-
-        {
-            accessorKey: "staffCode",
-            header: "Staff Name",
-            cell: ({ row }) => (
-                <div className="capitalize">{row.getValue("staffCode")}</div>
-            )
-        },
-        {
-            accessorKey: "detail",
-            header: "Detail",
-            cell: ({ row }) => (
-                <p className="underline cursor-pointer" onClick={() => navigate(`/sale-invoice/detail`,
-                    {
-                        state: {
-                            voucherNo: row.getValue("voucherNo")
-                        }
-                    })}>Detail</p>
-            )
-        }
-    ]
-
-    const table = useReactTable({
-        data: data ? data : [],
-        columns,
-        onSortingChange: setSorting,
-        onColumnFiltersChange: setColumnFilters,
-        getCoreRowModel: getCoreRowModel(),
-        getPaginationRowModel: getPaginationRowModel(),
-        getSortedRowModel: getSortedRowModel(),
-        getFilteredRowModel: getFilteredRowModel(),
-        onColumnVisibilityChange: setColumnVisibility,
-        onRowSelectionChange: setRowSelection,
-        state: {
-            sorting,
-            columnFilters,
-            columnVisibility,
-            rowSelection,
-        },
-    })
+    const isNumberInput = label === "Payment Amount" || label === "Receive Amount";
 
     return (
-        <div className="w-[80%] mx-auto my-10">
-            <div className="w-full">
-                <div className="flex justify-end gap-5 py-4">
-                    {/* <Input
-            placeholder="Filter vouncher no...."
-            value={(table.getColumn("voucherNo")?.getFilterValue() as string) ?? ""}
-            onChange={(event) =>
-              table.getColumn("voucherNo")?.setFilterValue(event.target.value)
-            }
-            className="max-w-sm"
-          /> */}
-                    <Button
-                        variant="outline"
-                        size="default"
-                        onClick={() => table.nextPage()}
-                        disabled={!table.getCanNextPage()}
-                    >
-                        <Plus size={18} className="mr-2" /> Add Invoice
-                    </Button>
-                </div>
-                <div className="rounded-md border">
-                    <Table>
-                        <TableHeader>
-                            {table.getHeaderGroups().map((headerGroup) => (
-                                <TableRow key={headerGroup.id}>
-                                    {headerGroup.headers.map((header) => {
-                                        return (
-                                            <TableHead key={header.id}>
-                                                {header.isPlaceholder
-                                                    ? null
-                                                    : flexRender(
-                                                        header.column.columnDef.header,
-                                                        header.getContext()
-                                                    )}
-                                            </TableHead>
-                                        )
-                                    })}
-                                </TableRow>
-                            ))}
-                        </TableHeader>
-                        <TableBody>
-                            {table.getRowModel().rows?.length ? (
-                                table.getRowModel().rows.map((row) => (
-                                    <TableRow
-                                        key={row.id}
-                                        data-state={row.getIsSelected() && "selected"}
-                                    >
-                                        {row.getVisibleCells().map((cell) => (
-                                            <TableCell key={cell.id}>
-                                                {flexRender(
-                                                    cell.column.columnDef.cell,
-                                                    cell.getContext()
-                                                )}
-                                            </TableCell>
-                                        ))}
-                                    </TableRow>
-                                ))
-                            ) : (
-                                <TableRow>
-                                    <TableCell
-                                        colSpan={columns.length}
-                                        className="h-24 text-center"
-                                    >
-                                        No results.
-                                    </TableCell>
-                                </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
-                </div>
-                {/* <div className="flex items-center justify-end space-x-2 py-4">
-          <div className="space-x-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => table.previousPage()}
-              disabled={!table.getCanPreviousPage()}
-            >
-              Previous
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => table.nextPage()}
-              disabled={!table.getCanNextPage()}
-            >
-              Next
-            </Button>
-          </div>
-        </div> */}
-                {/* <div className="flex justify-end space-x-2 py-4">
-          <Pagination>
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious href="#" />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">1</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#" isActive>
-                  2
-                </PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">3</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationNext href="#" />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
-        </div> */}
+      <div className="flex my-2 items-center justify-between">
+        <label className="mb-1">{label}</label>
+        <div className="flex flex-col">
+          <input 
+          {...register(label, { 
+            required: `${label} is required`, 
+            ...(isNumberInput && { 
+              pattern: {
+                value: /^[0-9]*$/,
+                message: "Please enter a number value only"
+              } 
+            }) 
+          })} type={isNumberInput ? 'number' : 'text'} step={isNumberInput ? '1' : undefined} placeholder={`Enter ${label}`} className="w-64 border border-gray-300 rounded-lg p-2" />  
+          {errors?.[label] ? <p className="text-red-400">{errors?.[label]?.message}</p> : null}
+        </div>
+      </div>
+    )
+  }
+
+  const Select = ({ label, register, errors, datas }: InputProps) => (
+      <div className="flex my-2 items-center justify-between">
+        <label className="mb-1">{label}</label>
+        <div className="flex flex-col">
+          <select {...register(label, { required: `${label} is required` })} className="w-64 border border-gray-300 rounded-lg p-2 bg-white">
+            <option value="" hidden>{`Select ${label}`}</option>
+            {label === "Payment Type" ? (
+              ['Cash', 'Mobile Payment'].map((data) => (
+                <option key={data} value={data}>
+                  {data}
+                </option>
+              ))
+            ) : (
+              datas?.map((data) => (
+                <option key={data.id} value={data.id}>
+                  {label === "Customers" ? (data as TCustomer).customerName : label === "Staffs" ? (data as TStaff).staffName : null}
+                </option>
+              ))
+            )}
+          </select>
+        {errors?.[label] ? <p className="text-red-400">{errors?.[label]?.message}</p> : null}
+        </div>
+      </div>
+  )
+
+  const InvoiceItem: React.FC<TInvoiceItemProps> = ({ label, value }) => (
+    <div className="flex justify-between">
+      <p>{label}</p>
+      <p>{value}</p>
+    </div>
+  );
+
+const SaleInvoice = () => {
+  const { register, handleSubmit, formState: { errors }} = useForm<TInvoiceFormValues>()
+  const ref = useRef<HTMLFormElement>(null);
+  const { data: customers } = useCustomQuery<TCustomer[]>(
+    "customers",
+    () => queryFn("customers"),
+    0,
+)
+const { data: staffs } = useCustomQuery<TStaff[]>(
+  "staffs",
+  () => queryFn("staffs"),
+  0,
+)
+
+  const onSubmit: SubmitHandler<TInvoiceFormValues> = (data) => {
+    console.log(data);    
+  }
+
+  const handleSave = () => {  
+    if(ref.current){
+      handleSubmit(onSubmit)()
+    }
+  }
+
+  return (
+    <div className="w-9/12 mx-auto my-10">
+        <div className="flex justify-between items-center">
+            <h1 className="text-3xl">New Invoice</h1>
+            <button className="bg-gray-900 text-white inline-block py-2 px-4 rounded-md" onClick={handleSave}>Save</button>
+        </div>
+        <div className="mt-5 bg-gray-100 py-3 px-5 rounded-sm">
+            <form className="grid grid-cols-2 gap-x-40" ref={ref}>
+              <Input label="Voucher No" register={register} required errors={errors} />
+              <Select label="Payment Type" register={register} required errors={errors} />
+              <Select label="Customers" datas={customers} register={register} required errors={errors} />
+              <Input label="Payment Amount" register={register} required errors={errors} />
+              <Select label="Staffs" datas={staffs} register={register} required errors={errors} />
+              <Input label="Receive Amount" register={register} required errors={errors} />  
+            </form>
+            <Table className="rounded-md border my-5 bg-white">
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[100px]">No.</TableHead>
+                  <TableHead>Product Name</TableHead>
+                  <TableHead>Quantity</TableHead>
+                  <TableHead>Price</TableHead>
+                  <TableHead className="text-right">Total Amount</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">1</TableCell>
+                  <TableCell>Bag</TableCell>
+                  <TableCell>1</TableCell>
+                  <TableCell>40,000</TableCell>
+                  <TableCell className="text-right">40,000 MMK</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">2</TableCell>
+                  <TableCell>Top</TableCell>
+                  <TableCell>2</TableCell>
+                  <TableCell>15,000</TableCell>
+                  <TableCell className="text-right">30,000 MMK</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+            <div className="flex justify-end">
+              <div className="w-1/4 flex flex-col gap-2">
+              <InvoiceItem label="Subtotal" value="70,000 MMK" />
+      <InvoiceItem label="Discount" value="500 MMK" />
+      <InvoiceItem label="Tax" value="0.00" />
+              <div className="w-full h-[1px] bg-gray-300" />
+              <InvoiceItem label="Total" value="65,000 MMK" />
+              <InvoiceItem label="Amount Paid" value="70,000 MMK" />
+              <div className="w-full h-[1px] bg-gray-300" />
+              <InvoiceItem label="Changed" value="500 MMK" />
+              </div>
             </div>
         </div>
-    )
+    </div>
+  )
 }
 
-export default SaleInvoice;
+export default SaleInvoice
