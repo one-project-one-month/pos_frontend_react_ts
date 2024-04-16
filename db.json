@@ -98,87 +98,11 @@
       "productCategoryName": "Electronic Devices"
     }
   ],
-  "staffs": [
-    {
-      "id": "1",
-      "staffCode": "S001",
-      "staffName": "John Smith",
-      "dateOfBirth": "1985-07-15",
-      "mobileNo": 1234567890,
-      "address": "123 Main St, Cityville, USA",
-      "gender": "Male",
-      "position": "Manager"
-    },
-    {
-      "id": "2",
-      "staffCode": "S002",
-      "staffName": "Emily Johnson",
-      "dateOfBirth": "1990-03-22   ",
-      "mobileNo": 9876543210,
-      "address": "456 Elm St, Townsville, USA",
-      "gender": "Female",
-      "position": "Sales Associate"
-    },
-    {
-      "id": "3",
-      "staffCode": "S003",
-      "staffName": "Michael Brown",
-      "dateOfBirth": "1988-11-10",
-      "mobileNo": 5551234567,
-      "address": "789 Oak St, Villagetown, USA",
-      "gender": "Male",
-      "position": "Customer Service Representative"
-    },
-    {
-      "id": "4",
-      "staffCode": "S004",
-      "staffName": "Sarah Lee",
-      "dateOfBirth": "1995-05-03",
-      "mobileNo": 2223334444,
-      "address": "321 Pine St, Hamletville, USA",
-      "gender": "Female",
-      "position": "Assistant Manager"
-    },
-    {
-      "id": "5",
-      "staffCode": "S005",
-      "staffName": "David Chen",
-      "dateOfBirth": "1987-02-18",
-      "mobileNo": 7778889999,
-      "address": " 555 Maple St, Boroughville, USA",
-      "gender": "Male",
-      "position": "Storekeeper"
-    },
-    {
-      "id": "6",
-      "staffCode": "S006",
-      "staffName": "Jennie",
-      "dateOfBirth": "1990-05-18",
-      "mobileNo": 990003333,
-      "address": " 555 Maple St, Boroughville, USA",
-      "gender": "Female",
-      "position": "Storekeeper"
-    }
-  ],
   "shops": [
-    {
-      "id": "a718",
-      "shopCode": "SHOP67",
-      "shopName": "Ocean Tarmwe",
-      "mobileNo": "0976622233",
-      "address": "Yangon"
-    },
-    {
-      "id": "3599",
-      "shopCode": "SHOP90",
-      "shopName": "Grocery store",
-      "mobileNo": "09555556667",
-      "address": "Mandalay"
-    },
     {
       "id": "9f6e",
       "shopCode": "SHOP86",
-      "shopName": "ZB",
+      "shopName": "Lazada",
       "mobileNo": "09333222398",
       "address": "Nay Pyi Thaw"
     },
@@ -232,41 +156,63 @@
       "address": "Mandalay"
     },
     {
-      "id": "8551",
-      "staffCode": "S100",
-      "staffName": "U Ba",
-      "dateOfBirth": "2003-01-11",
-      "mobileNo": "09222222222222",
-      "address": "Yangon",
-      "gender": "Male",
-      "position": "Sales Associate"
-    },
-    {
-      "id": "026d",
-      "staffCode": "S100",
-      "staffName": "U Ba",
-      "dateOfBirth": "2019-01-14",
-      "mobileNo": "09255882712",
-      "address": "Mawlamyine",
-      "gender": "Male",
-      "position": "Manager"
-    },
-    {
-      "id": "746d",
-      "customerCode": "Cu34",
-      "customerName": "Aung Aung",
-      "mobileNo": "0976622233",
-      "dateOfBirth": "2024-04-24",
-      "gender": "Male",
-      "stateCode": "12001",
-      "townshipCode": "Chigago"
-    },
-    {
       "id": "b6d0",
       "shopCode": "SHOP88932",
       "shopName": "KFC",
       "mobileNo": "09555556667",
       "address": "Mawamyine"
+    }
+  ],
+  "staffs": [
+    {
+      "id": "2",
+      "staffCode": "S002",
+      "staffName": "Emily Johnson",
+      "dateOfBirth": "1990-03-22   ",
+      "mobileNo": 9876543210,
+      "address": "456 Elm St, Townsville, USA",
+      "gender": "Female",
+      "position": "Sales Associate"
+    },
+    {
+      "id": "3",
+      "staffCode": "S003",
+      "staffName": "Michael Brown",
+      "dateOfBirth": "1988-11-10",
+      "mobileNo": 5551234567,
+      "address": "789 Oak St, Villagetown, USA",
+      "gender": "Male",
+      "position": "Customer Service Representative"
+    },
+    {
+      "id": "4",
+      "staffCode": "S004",
+      "staffName": "Sarah Lee",
+      "dateOfBirth": "1995-05-03",
+      "mobileNo": 2223334444,
+      "address": "321 Pine St, Hamletville, USA",
+      "gender": "Female",
+      "position": "Assistant Manager"
+    },
+    {
+      "id": "5",
+      "staffCode": "S005",
+      "staffName": "David Chen",
+      "dateOfBirth": "1987-02-18",
+      "mobileNo": 7778889999,
+      "address": " 555 Maple St, Boroughville, USA",
+      "gender": "Male",
+      "position": "Storekeeper"
+    },
+    {
+      "id": "6",
+      "staffCode": "S006",
+      "staffName": "Jennie",
+      "dateOfBirth": "1990-05-18",
+      "mobileNo": 990003333,
+      "address": " 555 Maple St, Boroughville, USA",
+      "gender": "Female",
+      "position": "Storekeeper"
     }
   ],
   "saleInvoice": [
@@ -348,16 +294,6 @@
     }
   ],
   "customers": [
-    {
-      "id": "1",
-      "customerCode": "CUST001",
-      "customerName": "John Doe",
-      "mobileNo": 1234567890,
-      "dateOfBirth": "1990-05-15",
-      "gender": "Male",
-      "stateCode": "CA",
-      "townshipCode": "LA"
-    },
     {
       "id": "2",
       "customerCode": "CUST002",

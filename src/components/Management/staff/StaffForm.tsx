@@ -20,7 +20,6 @@ const StaffForm = () => {
         mutate({ formData: data, route: 'staffs' })
         navigate('/management/staffs')
         toast({ description: "Success" })
-
     }
 
     return (

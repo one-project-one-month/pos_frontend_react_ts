@@ -24,7 +24,7 @@ export interface TProductCategory {
 }
 
 export interface TStaff {
-  id: number;
+  id: string;
   staffCode: string;
   staffName: string;
   dateOfBirth: Date;
@@ -35,7 +35,7 @@ export interface TStaff {
 }
 
 export interface TShop {
-  id: number;
+  id: string;
   shopCode: string;
   shopName: string;
   mobileNo: string;
