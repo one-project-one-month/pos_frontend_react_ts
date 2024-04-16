@@ -7,7 +7,7 @@ import {
 import {Button} from "@/components/ui/button.tsx";
 import {useBillingCartStore} from "@/store/billingCartStore.ts";
 import {TProduct} from "@/type/type.ts";
-import {useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 type ProductOptionDropDownProp = {
     product: TProduct
@@ -15,20 +15,15 @@ type ProductOptionDropDownProp = {
 
 export default function ProductOptionDropDown({product}: ProductOptionDropDownProp) {
 
-    const {addToCart} = useBillingCartStore()
-    const navigate = useNavigate();
+    const {addToCart} = useBillingCartStore();
 
     const addToCartBtnHandler = () => {
-        addToCart(product, 1)
-    }
-
-    const editProductBtnHandler = () => {
-        navigate("/products/edit")
-    }
+        addToCart(product, 1);
+    };
 
     const deleteProductBtnHandler = () => {
-        navigate("/products/new")
-    }
+        console.log("delete");
+    };
 
     return (
         <DropdownMenu>
@@ -44,15 +39,18 @@ export default function ProductOptionDropDown({product}: ProductOptionDropDownPr
             <DropdownMenuPortal>
                 <DropdownMenuContent sideOffset={5}>
                     <DropdownMenuItem>
-                        <Button className={"w-full"}  variant={"outline"} onClick={addToCartBtnHandler}>
+                        <Button className={"w-full"} variant={"outline"} onClick={addToCartBtnHandler}>
                             Add to cart
                         </Button>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                        <Button  className={"w-full"} variant={"outline"} onClick={editProductBtnHandler}>Edit</Button>
+                        <Button className={"w-full h-full px-0 py-0"} variant={"outline"}>
+                            <Link to={"edit"} state={{productId: product.productCode}} className={"w-full py-2 "}>Edit</Link>
+                        </Button>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                        <Button className={"w-full"}  variant={"outline"} onClick={deleteProductBtnHandler}>Delete</Button>
+                        <Button className={"w-full"} variant={"outline"}
+                                onClick={deleteProductBtnHandler}>Delete</Button>
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenuPortal>
