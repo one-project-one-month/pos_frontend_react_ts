@@ -429,6 +429,16 @@
       "gender": "Male",
       "stateCode": "234",
       "townshipCode": "Chigago"
+    },
+    {
+      "id": "6bec",
+      "customerCode": "8377",
+      "customerName": "Pale Edelweiss",
+      "mobileNo": "0988776542",
+      "dateOfBirth": "1987-03-15",
+      "gender": "Male",
+      "stateCode": "9800",
+      "townshipCode": "9811"
     }
   ]
 }
