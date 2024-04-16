@@ -14,6 +14,8 @@ import StaffForm from "./components/Management/staff/StaffForm";
 import ManagementWrapper from "./components/Management/ManagementWrapper";
 import CustomerForm from "./components/Management/customer/CustomerForm";
 import ProductEditForm from "@/components/Product/ProductEditForm.tsx";
+import SaleInvoiceHistory from "./Page/SaleInvoice/SaleInvoiceHistory";
+
 
 const router = createBrowserRouter([
     {
@@ -61,8 +63,9 @@ const router = createBrowserRouter([
             {
                 path: "sale-invoice",
                 children: [
-                    {index: true, element: <SaleInvoice/>},
-                    {path: "history", element: <SaleInvoiceDetails/>}
+                    { index: true, element: <SaleInvoice /> },
+                    { path: "history", element: <SaleInvoiceHistory /> },
+                    { path: "detail", element: <SaleInvoiceDetails /> }
                 ]
             }
         ]
