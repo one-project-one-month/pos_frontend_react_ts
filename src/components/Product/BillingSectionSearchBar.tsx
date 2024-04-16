@@ -15,7 +15,7 @@ export default function BillingSectionSearchBar() {
     const [input, setInput] = useState("");
     const [isError, setIsError] = useState(false);
     const {addToCart, clearCart} = useBillingCartStore();
-    const {setNoDiscount} = useDiscountStore()
+    const {setNoDiscount} = useDiscountStore();
 
 
     const inputHandler = (evt: ChangeEvent<HTMLInputElement>) => {

@@ -11,3 +11,4 @@ export const capitalize = (input: string) => produce([...input], (input) => {inp
 export const getTotal = () => useBillingCartStore.getState().cart.reduce((total, cartItem) => {
     return total += (cartItem.count * cartItem.product.price)
 }, 0 )
+

@@ -10,6 +10,7 @@ export const productByPageQuery = (page = 1) => ({
   queryFn: async () => getProductsByPage(page),
   keepPreviousData: true,
   staleTime: 1000 * 60 * 60,
+  refetchOnWindowFocus: true
 });
 
 export const productByCodeQuery = (productCode: string) => ({
