@@ -38,3 +38,11 @@ export const getProductByCode = async (productCode: string) => {
     );
     return response.data;
 };
+
+export const editProductById = async (productId: number, payload: Partial<TProduct>) => {
+    console.log(productId)
+    const response = await apiClient.patch<TProduct>(
+        `/products/${productId}`, payload
+    )
+    return response.data
+}

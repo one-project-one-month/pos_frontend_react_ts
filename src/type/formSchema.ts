@@ -16,6 +16,10 @@ export const formSchema = z.object({
   position: z.string(),
   shopCode: z.string(),
   shopName: z.string(),
+  productCode: z.string(),
+  productName: z.string(),
+  price: z.number().min(1),
+  productCategoryCode: z.string()
 });
 
 export type Inputs = z.infer<typeof formSchema>;

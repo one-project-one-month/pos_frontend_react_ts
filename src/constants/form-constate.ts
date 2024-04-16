@@ -109,3 +109,26 @@ export const customerFormConst: TFromConst[] = [
     type: "text",
   },
 ];
+
+export const productFormConst: TFromConst[] = [
+  {
+    name: "productCode",
+    placeholder: "Product Code",
+    type: "text",
+  },
+  {
+    name: "productName",
+    placeholder: "Product Name",
+    type: "text"
+  },
+  {
+    name: "price",
+    placeholder: "Product Price",
+    type: "number"
+  },
+  {
+    name: "productCategoryCode",
+    placeholder: "Product CategoryCode",
+    type: "text",
+  }
+]
