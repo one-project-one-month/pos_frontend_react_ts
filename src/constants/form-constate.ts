@@ -133,3 +133,15 @@ export const productFormConst: TFromConst[] = [
   }
 ]
 
+export const categoryFormConst : TFromConst[] = [
+  {
+    name: "productCategoryCode",
+    placeholder: "Product CategoryCode",
+    type: "text",
+  },
+  {
+    name: "productCategoryName",
+    placeholder: "Product Category Name",
+    type: "text",
+  }
+]

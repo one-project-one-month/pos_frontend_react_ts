@@ -1,6 +1,10 @@
+import CategoryList from "@/components/Category/CategoryList.tsx";
+
 const ProductsCategory = () => {
+
+
     return (
-        <div>ProductsCategory</div>
+        <CategoryList/>
     )
 }
 

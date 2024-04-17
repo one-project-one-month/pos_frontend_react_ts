@@ -18,6 +18,9 @@ import SaleInvoiceHistory from "./Page/SaleInvoice/SaleInvoiceHistory";
 import ShopEditForm from "./components/Management/shop/ShopEditForm";
 import CustomerEditForm from "./components/Management/customer/CustomerEditForm";
 import StaffEditForm from "./components/Management/staff/StaffEditForm";
+import CategoryEditForm from "@/components/Category/CategoryEditForm.tsx";
+import CategoryCreateForm from "@/components/Category/CategoryCreateForm.tsx";
+
 
 
 const router = createBrowserRouter([
@@ -62,9 +65,13 @@ const router = createBrowserRouter([
             {
                 path: "products",
                 children: [
-                    { index: true, element: <Products /> },
-                    { path: "edit", element: <ProductEditForm /> },
-                    { path: "category", element: <ProductsCategory /> }
+                    {index: true, element: <Products/>},
+                    {path: "edit", element: <ProductEditForm/>},
+                    {path: "category", children: [
+                            {index: true, element: <ProductsCategory/>},
+                            {path: "edit", element: <CategoryEditForm/>},
+                            {path: "new", element: <CategoryCreateForm/>}
+                        ]}
                 ]
             },
             {

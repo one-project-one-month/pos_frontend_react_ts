@@ -5,25 +5,23 @@ import SubmitButton from "@/components/ui/submit-button.tsx";
 import {productFormConst} from "@/constants/form-constate.ts";
 import useRenderForm from "@/hook/useRenderForm.tsx";
 import {useEditProduct} from "@/services/mutation.ts";
+import {useFormDefaultValue} from "@/hook/useFormDefaultValue.ts";
 
 
 export default function ProductEditForm() {
     const navigate = useNavigate();
     const {state} = useLocation();
+    const {defaultValues} = useFormDefaultValue(state.product)
+
     const {register, handleSubmit, formState: {errors}} = useForm<Inputs>({
-        defaultValues: {
-            productCode: state.product.productCode,
-            productName: state.product.productName,
-            productCategoryCode: state.product.productCategoryCode,
-            price: state.product.price
-        }
+        defaultValues
     });
 
     const formElements = useRenderForm({formconst: productFormConst, errors, register});
     const mutation = useEditProduct(state.page, state.product.id);
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
-        mutation.mutate(data);
+        mutation.mutate({id: state.product.id, ...data});
         navigate(`..?page=${state.page}`, {relative: "path"});
     };
 

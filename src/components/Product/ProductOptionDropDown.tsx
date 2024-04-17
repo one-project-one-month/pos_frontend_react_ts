@@ -7,7 +7,8 @@ import {
 import {Button} from "@/components/ui/button.tsx";
 import {useBillingCartStore} from "@/store/billingCartStore.ts";
 import {TProduct} from "@/type/type.ts";
-import {Link, useSearchParams} from "react-router-dom";
+import {Link} from "react-router-dom";
+import {useCurrentPage} from "@/hook/useCurrentPage.ts";
 
 type ProductOptionDropDownProp = {
     product: TProduct
@@ -15,8 +16,7 @@ type ProductOptionDropDownProp = {
 
 export default function ProductOptionDropDown({product}: ProductOptionDropDownProp) {
 
-    const [searchParams] = useSearchParams()
-    const currPage = searchParams.get("page") ?? 1
+    const {page} = useCurrentPage();
 
     const {addToCart} = useBillingCartStore();
 
@@ -48,7 +48,7 @@ export default function ProductOptionDropDown({product}: ProductOptionDropDownPr
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                         <Button className={"w-full h-full px-0 py-0"} variant={"outline"}>
-                            <Link to={"edit"} state={{product, page: +currPage}} className={"w-full py-2 "}>Edit</Link>
+                            <Link to={"edit"} state={{product, page}} className={"w-full py-2 "}>Edit</Link>
                         </Button>
                     </DropdownMenuItem>
                     <DropdownMenuItem>

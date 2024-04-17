@@ -3,7 +3,7 @@
     {
       "id": "1",
       "productCode": "P001",
-      "productName": "Laptop",
+      "productName": "OLED Laptop",
       "price": 999,
       "productCategoryCode": "PC"
     },
@@ -96,6 +96,16 @@
       "id": "5",
       "productCategoryCode": "Electronics",
       "productCategoryName": "Electronic Devices"
+    },
+    {
+      "id": "bafd",
+      "productCategoryCode": "OLED",
+      "productCategoryName": "OLED PC"
+    },
+    {
+      "id": "3d66",
+      "productCategoryCode": "STV",
+      "productCategoryName": "Smart TV"
     }
   ],
   "shops": [
