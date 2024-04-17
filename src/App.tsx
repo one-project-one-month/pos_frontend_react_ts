@@ -15,6 +15,8 @@ import ManagementWrapper from "./components/Management/ManagementWrapper";
 import CustomerForm from "./components/Management/customer/CustomerForm";
 import ProductEditForm from "@/components/Product/ProductEditForm.tsx";
 import SaleInvoiceHistory from "./Page/SaleInvoice/SaleInvoiceHistory";
+import CategoryEditForm from "@/components/Category/CategoryEditForm.tsx";
+import CategoryCreateForm from "@/components/Category/CategoryCreateForm.tsx";
 
 
 const router = createBrowserRouter([
@@ -57,7 +59,11 @@ const router = createBrowserRouter([
                 children: [
                     {index: true, element: <Products/>},
                     {path: "edit", element: <ProductEditForm/>},
-                    {path: "category", element: <ProductsCategory/>}
+                    {path: "category", children: [
+                            {index: true, element: <ProductsCategory/>},
+                            {path: "edit", element: <CategoryEditForm/>},
+                            {path: "new", element: <CategoryCreateForm/>}
+                        ]}
                 ]
             },
             {

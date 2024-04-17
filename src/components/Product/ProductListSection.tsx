@@ -1,13 +1,12 @@
 import ProductSearchBar from "@/components/Product/ProductSearchBar";
-import { useSearchParams } from "react-router-dom";
 import ProductList from "@/components/Product/ProductList.tsx";
 import SearchedProductList from "@/components/Product/SearchedProductList.tsx";
 import ProductCategoryFilter from "@/components/Product/ProductCategoryFilter.tsx";
+import {useSearchString} from "@/hook/useSearchString.ts";
 
 export default function ProductListSection() {
-    const [searchParams] = useSearchParams();
 
-    const searchString = searchParams.get("search") as string;
+    const {searchString} = useSearchString("search")
 
     return (
         <div className={"my-4"}>
