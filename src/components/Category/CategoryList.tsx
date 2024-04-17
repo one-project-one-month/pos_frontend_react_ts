@@ -9,9 +9,13 @@ import {
 } from "@/components/ui/dropdown-menu.tsx";
 import {useProductCategories} from "@/services/api/query.ts";
 import {Link, useNavigate} from "react-router-dom";
+import {capitalize} from "@/lib/utils.ts";
+import {useDeleteQuery} from "@/hook/management/useDeleteQuery.ts";
 
 export default function CategoryList(){
     const {data} = useProductCategories();
+
+    const {mutate} = useDeleteQuery("categories")
 
     const navigate = useNavigate();
 
@@ -34,7 +38,7 @@ export default function CategoryList(){
                         {
                             data ? (
                                 Object.keys(data[0]).map((key) => (
-                                    <TableHead key={key} className="w-[100px]">{key}</TableHead>
+                                    <TableHead key={key} className="w-[100px]">{capitalize(key)}</TableHead>
                                 ))
                             ) : null
                         }
@@ -58,7 +62,7 @@ export default function CategoryList(){
                                                 <DropdownMenuContent sideOffset={6} className="min-w-6">
                                                     <DropdownMenuItem className="flex flex-col">
                                                         <Button className="w-full mb-2" variant={"outline"}
-                                                                onClick={() => console.log("clicked")}>Delete</Button>
+                                                                onClick={() => mutate({url: "product-Categories", id:category.id.toString()})}>Delete</Button>
                                                         <Button className={"w-full h-full px-0 py-0"} variant={"outline"}>
                                                             <Link to={"edit"} state={category} className={"w-full py-2 "}>Edit</Link>
                                                         </Button>
