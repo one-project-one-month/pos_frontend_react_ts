@@ -1,6 +1,6 @@
-import ProductSearchBar from "@/components/Product/ProductSearchBar";
-import ProductList from "@/components/Product/ProductList.tsx";
-import SearchedProductList from "@/components/Product/SearchedProductList.tsx";
+import ProductSearchBar from "@/components/Product/ProductSearchBar.tsx";
+import ProductList from "@/components/Product/ProductList/ProductList.tsx";
+import SearchedProductList from "@/components/Product/ProductList/SearchedProductList.tsx";
 import ProductCategoryFilter from "@/components/Product/ProductCategoryFilter.tsx";
 import {useSearchString} from "@/hook/useSearchString.ts";
 

@@ -1,4 +1,4 @@
-import ProductListSection from "@/components/Product/ProductListSection.tsx";
+import ProductListSection from "@/components/Product/ProductList/ProductListSection.tsx";
 import BillingSection from "@/components/Product/BillingSection.tsx";
 
 

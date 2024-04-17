@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { getProductByName } from "@/services/api/productApi";
-import ProductListItem from "@/components/Product/ProductListItem.tsx";
+import { getProductByName } from "@/services/api/productApi.ts";
+import ProductListItem from "@/components/Product/ProductList/ProductListItem.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { useNavigate } from "react-router-dom";
 

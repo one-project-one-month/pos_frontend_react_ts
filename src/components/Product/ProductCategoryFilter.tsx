@@ -9,14 +9,17 @@ import {
 import {Badge} from "@/components/ui/badge.tsx";
 import {cn} from "@/lib/utils.ts";
 import {useProductCategories} from "@/services/api/query.ts";
+import {Link} from "react-router-dom";
+import {useCurrentPage} from "@/hook/useCurrentPage.ts";
 
 export default function ProductCategoryFilter() {
     const {data} = useProductCategories();
+    const {page} = useCurrentPage();
 
     return (
-        <div className={"mb-4"}>
+        <div className={"mb-4 flex justify-between items-center"}>
             <DropdownMenu>
-                <DropdownMenuTrigger className={"outline-none"}>
+                <DropdownMenuTrigger className={"p-0 outline-none"}>
                     <Badge className={"py-2 px-6 rounded bg-green-500 font-bold text-md"}
                            aria-label={"Choose Categories"}>
                         <span>Categories</span>
@@ -38,6 +41,9 @@ export default function ProductCategoryFilter() {
                     </DropdownMenuContent>
                 </DropdownMenuPortal>
             </DropdownMenu>
+            <Link to={"create"} className={"p-3 bg-emerald-400 rounded text-white font-bold"} state={page}>
+                Create New Product
+            </Link>
         </div>
     );
 }

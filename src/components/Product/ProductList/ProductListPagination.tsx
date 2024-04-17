@@ -7,7 +7,6 @@ import {useSearchParams} from "react-router-dom";
 
 type ProductListPaginationProps =
     {
-
         next: number | null;
         prev: number | null;
         hidden?: boolean;

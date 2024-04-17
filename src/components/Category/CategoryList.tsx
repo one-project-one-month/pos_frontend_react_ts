@@ -26,7 +26,7 @@ export default function CategoryList(){
                 <Button
                     variant="outline"
                     size="default"
-                    onClick={() => navigate("new")}
+                    onClick={() => navigate("create")}
                 >
                     <Plus size={18} className="mr-2"/> Add Categories
                 </Button>

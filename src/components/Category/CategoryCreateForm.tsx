@@ -14,7 +14,6 @@ export default function CategoryCreateForm(){
     const { mutate } = useCreateNew("categories");
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
-        console.log(data)
         mutate({formData: data, route: "product-Categories"})
         navigate("..", {relative: "path"})
     };
