@@ -7,6 +7,7 @@ import { EllipsisVertical, Plus } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuPortal, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { useDeleteQuery } from "@/hook/management/useDeleteQuery"
+import { toast } from "@/components/ui/use-toast"
 
 
 
@@ -18,6 +19,11 @@ const StaffList = () => {
     )
     const { mutate } = useDeleteQuery("staffs")
     const navigate = useNavigate()
+
+    const handleDelete = (id: string) => {
+        mutate({ url: "staffs", id })
+        toast({ description: "Successfully Deleted" })
+    }
 
 
 
@@ -64,8 +70,9 @@ const StaffList = () => {
                                             </DropdownMenuTrigger>
                                             <DropdownMenuPortal>
                                                 <DropdownMenuContent sideOffset={6} className="min-w-6">
-                                                    <DropdownMenuItem >
-                                                        <Button className="w-full" variant={"outline"} onClick={() => mutate({ url: "staffs", id: staff.id })}>Delete</Button>
+                                                    <DropdownMenuItem className="flex flex-col">
+                                                        <Button className="w-full  mb-2" variant={"outline"} onClick={() => handleDelete(staff.id)}>Delete</Button>
+                                                        <Button className="w-full" variant={"outline"} onClick={() => navigate(`edit/${staff.id}`)}>Edit</Button>
                                                     </DropdownMenuItem>
                                                 </DropdownMenuContent>
                                             </DropdownMenuPortal>
