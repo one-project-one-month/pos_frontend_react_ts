@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuPortal } from "@/components/ui/dropdown-menu"
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
 import { useDeleteQuery } from "@/hook/management/useDeleteQuery"
+import { toast } from "@/components/ui/use-toast"
 
 
 
@@ -22,6 +23,11 @@ const CustomerList = () => {
     const { mutate } = useDeleteQuery("customers")
 
     const navigate = useNavigate()
+
+    const handleDelete = (id: string) => {
+        mutate({ url: "customers", id })
+        toast({ description: "Successfully Deleted" })
+    }
 
 
 
@@ -69,8 +75,9 @@ const CustomerList = () => {
                                             </DropdownMenuTrigger>
                                             <DropdownMenuPortal>
                                                 <DropdownMenuContent sideOffset={6} className="min-w-6">
-                                                    <DropdownMenuItem >
-                                                        <Button className="w-full" variant={"outline"} onClick={() => mutate({ url: "customers", id: customer.id })}>Delete</Button>
+                                                    <DropdownMenuItem className="flex flex-col">
+                                                        <Button className="w-full  mb-2" variant={"outline"} onClick={() => handleDelete(customer.id)}>Delete</Button>
+                                                        <Button className="w-full" variant={"outline"} onClick={() => navigate(`edit/${customer.id}`)}>Edit</Button>
                                                     </DropdownMenuItem>
                                                 </DropdownMenuContent>
                                             </DropdownMenuPortal>

@@ -1,6 +1,6 @@
-import {RouterProvider, createBrowserRouter} from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import {Home} from "./Page/Home/Home";
+import { Home } from "./Page/Home/Home";
 import Layout from "./Page/Layout/Layout";
 import Products from "./Page/Products/Products";
 import Customers from "./Page/Management/Customers";
@@ -15,39 +15,46 @@ import ManagementWrapper from "./components/Management/ManagementWrapper";
 import CustomerForm from "./components/Management/customer/CustomerForm";
 import ProductEditForm from "@/components/Product/ProductEditForm.tsx";
 import SaleInvoiceHistory from "./Page/SaleInvoice/SaleInvoiceHistory";
+import ShopEditForm from "./components/Management/shop/ShopEditForm";
+import CustomerEditForm from "./components/Management/customer/CustomerEditForm";
+import StaffEditForm from "./components/Management/staff/StaffEditForm";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Layout/>,
+        element: <Layout />,
         children: [
             {
                 index: true,
-                element: <Home/>
+                element: <Home />
             },
             {
                 path: "management",
-                element: <ManagementWrapper/>,
+                element: <ManagementWrapper />,
                 children: [
                     {
                         path: "shops",
                         children: [
-                            {index: true, element: <Shops/>},
-                            {path: "create", element: <ShopForm/>}
+
+                            { index: true, element: <Shops /> },
+                            { path: "edit/:shopId", element: <ShopEditForm /> },
+                            { path: "create", element: <ShopForm /> }
                         ]
                     },
                     {
                         path: "customers",
                         children: [
-                            {index: true, element: <Customers/>},
-                            {path: "create", element: <CustomerForm/>}
+                            { index: true, element: <Customers /> },
+                            { path: "edit/:customerId", element: <CustomerEditForm /> },
+                            { path: "create", element: <CustomerForm /> }
                         ]
                     },
                     {
                         path: "staffs", children: [
-                            {index: true, element: <Staffs/>},
-                            {path: "create", element: <StaffForm/>}
+                            { index: true, element: <Staffs /> },
+                            { path: "edit/:staffId", element: <StaffEditForm /> },
+                            { path: "create", element: <StaffForm /> }
                         ]
                     },
                 ]
@@ -55,9 +62,9 @@ const router = createBrowserRouter([
             {
                 path: "products",
                 children: [
-                    {index: true, element: <Products/>},
-                    {path: "edit", element: <ProductEditForm/>},
-                    {path: "category", element: <ProductsCategory/>}
+                    { index: true, element: <Products /> },
+                    { path: "edit", element: <ProductEditForm /> },
+                    { path: "category", element: <ProductsCategory /> }
                 ]
             },
             {
@@ -76,7 +83,7 @@ const router = createBrowserRouter([
 
 function App() {
     return (
-        <RouterProvider router={router}/>
+        <RouterProvider router={router} />
     );
 }
 

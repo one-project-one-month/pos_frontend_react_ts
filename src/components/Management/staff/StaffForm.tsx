@@ -18,8 +18,8 @@ const StaffForm = () => {
     const { mutate } = useCreateNew("staffs")
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         mutate({ formData: data, route: 'staffs' })
-        navigate('/management/staffs')
-        toast({ description: "Success" })
+        navigate("..")
+        toast({ description: "Success added" })
     }
 
     return (
