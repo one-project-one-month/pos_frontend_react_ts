@@ -15,8 +15,8 @@ const CustomerForm = () => {
     const { mutate } = useCreateNew<Inputs>("customers")
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         mutate({ formData: data, route: 'customers' })
-        navigate('/management/customers')
-        toast({ description: "Success" })
+        navigate('..')
+        toast({ description: "Successfully added" })
     }
 
     return (

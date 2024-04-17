@@ -20,8 +20,8 @@ const ShopForm = () => {
     const { mutate } = useCreateNew("shops");
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         mutate({ formData: data, route: 'shops' })
-        navigate('/management/shops')
-        toast({ description: "Success" })
+        navigate('..')
+        toast({ description: "Successfully added" })
     }
 
 
