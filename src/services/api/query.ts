@@ -1,19 +1,23 @@
-import {getProductByCode, getProducts, getProductsByPage} from "./productApi.ts";
+import {getProductByCode, getProductCategories, getProductsByPage} from "./productApi.ts";
+import {useQuery} from "@tanstack/react-query";
 
-export const productQuery = () => ({
-  queryKey: ["products"],
-  queryFn: getProducts,
-});
-
-export const productByPageQuery = (page = 1) => ({
-  queryKey: ["products", page],
-  queryFn: async () => getProductsByPage(page),
-  keepPreviousData: true,
-  staleTime: 1000 * 60 * 60,
-  refetchOnWindowFocus: true
-});
 
 export const productByCodeQuery = (productCode: string) => ({
-  queryKey: ["product", "billing", "productCode"],
-  queryFn: async () => getProductByCode(productCode),
-})
+    queryKey: ["product", "billing", "productCode"],
+    queryFn: async () => getProductByCode(productCode),
+});
+
+export const useProductByPage = (page: number) => {
+  return useQuery({
+    queryKey: ["products", page],
+    queryFn: async () => getProductsByPage(page),
+    staleTime: 1000 * 60 * 60,
+  })
+}
+
+export const useProductCategories = () => {
+  return useQuery({
+    queryKey: ["categories"],
+    queryFn: getProductCategories,
+  })
+}

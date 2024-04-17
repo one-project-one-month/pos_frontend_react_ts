@@ -1,16 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
 import { useProductCategoryFilterState } from "@/store/productCategoryFilerStore.ts";
 import ProductListItem from "@/components/Product/ProductListItem.tsx";
 import ProductListPagination from "@/components/Product/ProductListPagination.tsx";
-import { productByPageQuery } from "@/services/api/query";
-import {useSearchParams} from "react-router-dom";
+import {useProductByPage} from "@/services/api/query";
+import {useCurrentPage} from "@/hook/useCurrentPage.ts";
 
 
 export default function ProductList() {
-    const [searchParams] = useSearchParams()
-    const currPage = searchParams.get("page") ?? 1;
 
-    const { data } = useQuery(productByPageQuery(+currPage));
+    const {page} = useCurrentPage();
+
+    const {data} = useProductByPage(page)
     const { currCategory } = useProductCategoryFilterState();
     const filteredData = currCategory.length !== 0 ? data && data.data.filter(item => currCategory.indexOf(item.productCategoryCode) !== -1) : data?.data;
     return (
