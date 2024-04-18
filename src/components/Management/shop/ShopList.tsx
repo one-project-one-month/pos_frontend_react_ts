@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom"
 import { useDeleteQuery } from "@/hook/management/useDeleteQuery"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuPortal, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { toast } from "@/components/ui/use-toast"
+import { capitalize } from "@/lib/utils"
 
 
 
@@ -45,7 +46,7 @@ const ShopList = () => {
                         {
                             shops ? (
                                 Object.keys(shops[0]).map((key) => (
-                                    <TableHead key={key} className="w-[100px]">{key}</TableHead>
+                                    <TableHead key={key} className="w-[100px]">{capitalize(key)}</TableHead>
                                 ))
                             ) : null
                         }

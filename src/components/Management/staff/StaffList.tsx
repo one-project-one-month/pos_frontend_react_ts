@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuPortal, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { useDeleteQuery } from "@/hook/management/useDeleteQuery"
 import { toast } from "@/components/ui/use-toast"
+import { capitalize } from "@/lib/utils"
+
 
 
 
@@ -46,7 +48,7 @@ const StaffList = () => {
                         {
                             staffs ? (
                                 Object.keys(staffs[0]).map((key) => (
-                                    <TableHead key={key} className="w-[100px]">{key}</TableHead>
+                                    <TableHead key={key} className="w-[100px]">{capitalize(key)}</TableHead>
                                 ))
                             ) : null
 
