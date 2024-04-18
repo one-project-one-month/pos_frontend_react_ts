@@ -14,8 +14,9 @@ export default function CategoryCreateForm() {
     const { mutate } = useCreateNew(pathName);
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
+
         mutate({ formData: data, route: "product-Categories" })
-        navigate("..", { relative: "path" })
+        navigate("..", { relative: "path" });
     };
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="w-4/6 m-auto">

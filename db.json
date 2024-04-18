@@ -69,6 +69,13 @@
       "productName": "Speaker",
       "price": 165,
       "productCategoryCode": "Electronics"
+    },
+    {
+      "id": "952c",
+      "productCode": "P011",
+      "productName": "IPad",
+      "price": 1299,
+      "productCategoryCode": "Mobile"
     }
   ],
   "product-Categories": [
@@ -96,16 +103,6 @@
       "id": "5",
       "productCategoryCode": "Electronics",
       "productCategoryName": "Electronic Devices"
-    },
-    {
-      "id": "bafd",
-      "productCategoryCode": "OLED",
-      "productCategoryName": "OLED PC"
-    },
-    {
-      "id": "3d66",
-      "productCategoryCode": "STV",
-      "productCategoryName": "Smart TV"
     }
   ],
   "shops": [

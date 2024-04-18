@@ -1,7 +1,7 @@
 import { useProductCategoryFilterState } from "@/store/productCategoryFilerStore.ts";
-import ProductListItem from "@/components/Product/ProductListItem.tsx";
-import ProductListPagination from "@/components/Product/ProductListPagination.tsx";
-import {useProductByPage} from "@/services/api/query";
+import ProductListItem from "@/components/Product/ProductList/ProductListItem.tsx";
+import ProductListPagination from "@/components/Product/ProductList/ProductListPagination.tsx";
+import {useProductByPage} from "@/services/api/query.ts";
 import {useCurrentPage} from "@/hook/useCurrentPage.ts";
 
 

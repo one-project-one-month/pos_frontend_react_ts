@@ -52,3 +52,10 @@ export const editCategoryById = async (productCategoryId: number, payload: Parti
     );
     return response.data;
 };
+
+export const postProduct = async (payload: Partial<TProduct>) => {
+    const response = await apiClient.post<Partial<TProduct>>(
+        `products`, payload
+    )
+    return response.data
+}

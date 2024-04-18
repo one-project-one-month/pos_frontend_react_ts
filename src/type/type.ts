@@ -48,7 +48,7 @@ export interface TJSONServerPaginationResponse<T> {
   prev: number | null;
   next: number | null;
   last: number;
-  page: number;
+  pages: number;
   items: number;
 }
 

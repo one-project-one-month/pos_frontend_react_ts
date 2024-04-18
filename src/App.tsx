@@ -13,13 +13,14 @@ import ShopForm from "./components/Management/shop/ShopForm";
 import StaffForm from "./components/Management/staff/StaffForm";
 import ManagementWrapper from "./components/Management/ManagementWrapper";
 import CustomerForm from "./components/Management/customer/CustomerForm";
-import ProductEditForm from "@/components/Product/ProductEditForm.tsx";
+import ProductEditForm from "@/components/Product/ProductForm/ProductEditForm.tsx";
 import SaleInvoiceHistory from "./Page/SaleInvoice/SaleInvoiceHistory";
 import ShopEditForm from "./components/Management/shop/ShopEditForm";
 import CustomerEditForm from "./components/Management/customer/CustomerEditForm";
 import StaffEditForm from "./components/Management/staff/StaffEditForm";
 import CategoryEditForm from "@/components/Category/CategoryEditForm.tsx";
 import CategoryCreateForm from "@/components/Category/CategoryCreateForm.tsx";
+import ProductCreateFrom from "@/components/Product/ProductForm/ProductCreateFrom.tsx";
 
 
 
@@ -67,10 +68,11 @@ const router = createBrowserRouter([
                 children: [
                     {index: true, element: <Products/>},
                     {path: "edit", element: <ProductEditForm/>},
+                    {path: "create", element: <ProductCreateFrom/>},
                     {path: "category", children: [
                             {index: true, element: <ProductsCategory/>},
                             {path: "edit", element: <CategoryEditForm/>},
-                            {path: "new", element: <CategoryCreateForm/>}
+                            {path: "create", element: <CategoryCreateForm/>}
                         ]}
                 ]
             },
