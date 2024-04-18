@@ -52,6 +52,16 @@ export interface TJSONServerPaginationResponse<T> {
   items: number;
 }
 
+export interface TJSONServerPaginationResponse<T> {
+  data: T;
+  first: 1;
+  prev: number | null;
+  next: number | null;
+  last: number;
+  pages: number;
+  items: number;
+}
+
 export interface TInvoice {
   id: number;
   saleInvoiceDateTime: string;
@@ -73,12 +83,12 @@ export interface TProductInCart {
 }
 
 export interface TInvoiceFormValues {
-  "Voucher No": string,
-  "Customers": string,
-  "Staffs": string,
-  "Payment Type": string,
-  "Payment Amount": number,
-  "Receive Amount": number,
+  "Voucher No": string;
+  Customers: string;
+  Staffs: string;
+  "Payment Type": string;
+  "Payment Amount": number;
+  "Receive Amount": number;
 }
 
 export interface TInvoiceItemProps {

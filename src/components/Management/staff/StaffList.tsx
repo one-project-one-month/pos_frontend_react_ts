@@ -1,6 +1,6 @@
-import { useCustomQuery } from "@/hook/management/useCustomQuery"
+import { useCustomQueryByPage } from "@/hook/management/useCustomQuery"
 import { Table, TableHead, TableHeader, TableBody, TableCell, TableRow } from "../../ui/table"
-import { queryFn } from "@/services/api/management/queryFn"
+
 import { TStaff } from "@/type/type"
 import { Button } from "../../ui/button"
 import { EllipsisVertical, Plus } from "lucide-react"
@@ -14,10 +14,9 @@ import { capitalize } from "@/lib/utils"
 
 
 const StaffList = () => {
-    const { data: staffs } = useCustomQuery<TStaff[]>(
+    const { data: staffs } = useCustomQueryByPage<TStaff>(
         "staffs",
-        () => queryFn("staffs"),
-        0,
+        1,
     )
     const { mutate } = useDeleteQuery("staffs")
     const navigate = useNavigate()
@@ -46,8 +45,8 @@ const StaffList = () => {
                 <TableHeader>
                     <TableRow>
                         {
-                            staffs ? (
-                                Object.keys(staffs[0]).map((key) => (
+                            staffs?.data ? (
+                                Object.keys(staffs.data[0]).map((key) => (
                                     <TableHead key={key} className="w-[100px]">{capitalize(key)}</TableHead>
                                 ))
                             ) : null
@@ -59,8 +58,8 @@ const StaffList = () => {
                 </TableHeader>
                 <TableBody>
                     {
-                        staffs ? (
-                            staffs.map((staff) => (
+                        staffs?.data ? (
+                            staffs.data.map((staff) => (
                                 <TableRow key={staff.id}>
                                     {Object.values(staff).map((value) => (
                                         <TableCell key={value} className="font-mediun">{value}</TableCell>
