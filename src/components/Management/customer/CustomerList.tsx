@@ -74,7 +74,7 @@ const CustomerList = () => {
                                                 <EllipsisVertical />
                                             </DropdownMenuTrigger>
                                             <DropdownMenuPortal>
-                                                <DropdownMenuContent sideOffset={6} className="min-w-6">
+                                                <DropdownMenuContent sideOffset={6} className="min-w-2">
                                                     <DropdownMenuItem className="flex flex-col">
                                                         <Button className="w-full  mb-2" variant={"outline"} onClick={() => handleDelete(customer.id)}>Delete</Button>
                                                         <Button className="w-full" variant={"outline"} onClick={() => navigate(`edit/${customer.id}`)}>Edit</Button>
