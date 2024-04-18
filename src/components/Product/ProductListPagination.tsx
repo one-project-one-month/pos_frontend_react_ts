@@ -1,9 +1,9 @@
-import {Pagination, PaginationContent, PaginationItem} from "@/components/ui/pagination.tsx";
-import {Button} from "@/components/ui/button.tsx";
+import { Pagination, PaginationContent, PaginationItem } from "@/components/ui/pagination.tsx";
+import { Button } from "@/components/ui/button.tsx";
 
 
-import {cn} from "@/lib/utils.ts";
-import {useSearchParams} from "react-router-dom";
+import { cn } from "@/lib/utils.ts";
+import { useSearchParams } from "react-router-dom";
 
 type ProductListPaginationProps =
     {
@@ -13,20 +13,20 @@ type ProductListPaginationProps =
         hidden?: boolean;
     }
 
-export default function ProductListPagination({ next, prev,hidden}:ProductListPaginationProps) {
-    const [serachParams,setSearchParams] = useSearchParams()
+export default function ProductListPagination({ next, prev, hidden }: ProductListPaginationProps) {
+    const [serachParams, setSearchParams] = useSearchParams()
 
     const nextBtnHandler = () => {
         if (next) {
             //@ts-expect-error I don't have trick to type this shit
-            setSearchParams({page: next})
+            setSearchParams({ page: next })
         }
     };
 
     const prevBtnHandler = () => {
         if (prev) {
             //@ts-expect-error I don't have trick to type this shit
-            setSearchParams({page: prev})
+            setSearchParams({ page: prev })
         }
     };
 

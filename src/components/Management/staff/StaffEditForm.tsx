@@ -1,4 +1,3 @@
-import SubmitButton from "@/components/ui/submit-button"
 import { toast } from "@/components/ui/use-toast"
 import { staffFormConst } from "@/constants/form-constate"
 import { useUpdateQuery } from "@/hook/management/useUpateQuery"
@@ -20,7 +19,7 @@ const StaffEditForm = () => {
             return data
         }
     })
-    const formElements = useRenderForm({ formconst: staffFormConst, errors, register })
+    const formElements = useRenderForm({ formconst: staffFormConst, errors, register, title: "Staff Edit" })
     const onSubmit: SubmitHandler<Inputs> = (data: Inputs) => {
         mutate({ formData: data, route: 'staffs', id: staffId! })
         navigate('..')
@@ -32,7 +31,6 @@ const StaffEditForm = () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="w-4/6 m-auto" >
             {formElements}
-            <SubmitButton />
         </form>
     )
 }

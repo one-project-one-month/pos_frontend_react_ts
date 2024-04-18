@@ -1,4 +1,3 @@
-import SubmitButton from "@/components/ui/submit-button"
 import { toast } from "@/components/ui/use-toast"
 import { shopFormConst } from "@/constants/form-constate"
 import { useUpdateQuery } from "@/hook/management/useUpateQuery"
@@ -19,7 +18,7 @@ const ShopEditForm = () => {
             return data
         }
     })
-    const formElements = useRenderForm({ formconst: shopFormConst, errors, register })
+    const formElements = useRenderForm({ formconst: shopFormConst, errors, register, title: "Shop Edit" })
     const onSubmit: SubmitHandler<Inputs> = (data: Inputs) => {
         updateForm({ formData: data, route: 'shops', id: shopId! })
         navigate('..')
@@ -33,7 +32,6 @@ const ShopEditForm = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="w-4/6 m-auto" >
             {formElements}
-            <SubmitButton />
         </form>
     )
 }
