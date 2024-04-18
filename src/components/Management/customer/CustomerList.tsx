@@ -1,5 +1,4 @@
-import { useCustomQuery } from "@/hook/management/useCustomQuery"
-import { queryFn } from "@/services/api/management/queryFn"
+import { useCustomQueryByPage } from "@/hook/management/useCustomQuery"
 import { TCustomer } from "@/type/type"
 import { Button } from "../../ui/button"
 import { EllipsisVertical, Plus } from "lucide-react"
@@ -10,15 +9,16 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuPortal
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
 import { useDeleteQuery } from "@/hook/management/useDeleteQuery"
 import { toast } from "@/components/ui/use-toast"
+import { capitalize } from "@/lib/utils"
+
 
 
 
 const CustomerList = () => {
 
-    const { data: customers } = useCustomQuery<TCustomer[]>(
+    const { data: customers } = useCustomQueryByPage<TCustomer>(
         "customers",
-        () => queryFn("customers"),
-        0,
+        1,
     )
     const { mutate } = useDeleteQuery("customers")
 
@@ -48,9 +48,9 @@ const CustomerList = () => {
                 <TableHeader>
                     <TableRow>
                         {
-                            customers ? (
-                                Object.keys(customers[0]).map((key) => (
-                                    <TableHead key={key} className="w-[100px]">{key}</TableHead>
+                            customers?.data ? (
+                                Object.keys(customers.data[0]).map((key) => (
+                                    <TableHead key={key} className="w-[100px]">{capitalize(key)}</TableHead>
                                 ))
                             ) : null
                         }
@@ -60,8 +60,8 @@ const CustomerList = () => {
                 </TableHeader>
                 <TableBody>
                     {
-                        customers ? (
-                            customers.map((customer) => (
+                        customers?.data ? (
+                            customers.data.map((customer) => (
                                 <TableRow key={customer.id}>
                                     {Object.values(customer).map((value) => {
                                         return (

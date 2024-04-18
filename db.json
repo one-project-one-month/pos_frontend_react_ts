@@ -147,6 +147,27 @@
       "shopName": "KFC",
       "mobileNo": "09555556667",
       "address": "Mawamyine"
+    },
+    {
+      "id": "971d",
+      "shopCode": "SHOP978",
+      "shopName": "FashinShop",
+      "mobileNo": "09766555322",
+      "address": "Nay Pyi Thaw"
+    },
+    {
+      "id": "c430",
+      "shopCode": "SHOP997",
+      "shopName": "Ocean",
+      "mobileNo": "7777777777",
+      "address": "Mawlamyine"
+    },
+    {
+      "id": "c4e2",
+      "shopCode": "SHOP9",
+      "shopName": "Fashion Shop",
+      "mobileNo": "0999999999",
+      "address": "Yangon"
     }
   ],
   "staffs": [
