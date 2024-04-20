@@ -5,16 +5,22 @@ import useRenderForm from "@/hook/useRenderForm.tsx";
 import {categoryFormConst} from "@/constants/form-constate.ts";
 
 import {useUpdateQuery} from "@/hook/management/useUpateQuery.ts";
+import {useQueryClient} from "@tanstack/react-query";
+import {TProductCategory} from "@/type/type.ts";
 
 export default function CategoryEditForm() {
     const navigate = useNavigate();
     const params = useParams();
     const categoryId = params["categoryId"] ?? "";
     const {mutate} = useUpdateQuery("categories");
+    //TODO: Refactor this chunk of messy code into custom hook later
+    const queryClient= useQueryClient()
+    const data : TProductCategory[]  = queryClient.getQueryData(["categories"]) ?? []
+    const currentCategory = data.filter(category => category.id.toString() === categoryId)[0]
 
 
     const {register, handleSubmit, formState: {errors}} = useForm<Inputs>({
-        // defaultValues
+        defaultValues : {productCategoryCode: currentCategory.productCategoryCode, productCategoryName: currentCategory.productCategoryName}
     });
 
     const formElements = useRenderForm({
