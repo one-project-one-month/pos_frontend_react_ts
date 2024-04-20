@@ -16,9 +16,15 @@ export const useProductByPage = (page: number) => {
   })
 }
 
-export const useProductCategories = () => {
+export const useCategories = () => {
   return useQuery({
     queryKey: ["categories"],
     queryFn: getProductCategories,
+  })
+}
+
+export const useCategoriesById = (id: string | number) => {
+  return useQuery({
+    queryKey: ["categories", id],
   })
 }

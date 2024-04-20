@@ -8,12 +8,12 @@ import {
 } from "@/components/ui/dropdown-menu.tsx";
 import {Badge} from "@/components/ui/badge.tsx";
 import {cn} from "@/lib/utils.ts";
-import {useProductCategories} from "@/services/api/query.ts";
+import {useCategories} from "@/services/api/query.ts";
 import {Link} from "react-router-dom";
 import {useCurrentPage} from "@/hook/useCurrentPage.ts";
 
 export default function ProductCategoryFilter() {
-    const {data} = useProductCategories();
+    const {data} = useCategories();
     const {page} = useCurrentPage();
 
     return (

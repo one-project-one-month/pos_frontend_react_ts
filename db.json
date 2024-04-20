@@ -103,6 +103,16 @@
       "id": "5",
       "productCategoryCode": "Electronics",
       "productCategoryName": "Electronic Devices"
+    },
+    {
+      "id": "a3e0",
+      "productCategoryCode": "OLED",
+      "productCategoryName": "OLED PC"
+    },
+    {
+      "id": "ab94",
+      "productCategoryCode": "STV",
+      "productCategoryName": "Smart TV"
     }
   ],
   "shops": [

@@ -7,13 +7,13 @@ import {
     DropdownMenuPortal,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu.tsx";
-import {useProductCategories} from "@/services/api/query.ts";
+import {useCategories} from "@/services/api/query.ts";
 import {Link, useNavigate} from "react-router-dom";
 import {capitalize} from "@/lib/utils.ts";
 import {useDeleteQuery} from "@/hook/management/useDeleteQuery.ts";
 
 export default function CategoryList(){
-    const {data} = useProductCategories();
+    const {data} = useCategories();
 
     const {mutate} = useDeleteQuery("categories")
 
@@ -64,7 +64,7 @@ export default function CategoryList(){
                                                         <Button className="w-full mb-2" variant={"outline"}
                                                                 onClick={() => mutate({url: "product-Categories", id:category.id.toString()})}>Delete</Button>
                                                         <Button className={"w-full h-full px-0 py-0"} variant={"outline"}>
-                                                            <Link to={"edit"} state={category} className={"w-full py-2 "}>Edit</Link>
+                                                            <Link to={`edit/${category.id}`} className={"w-full py-2 "}>Edit</Link>
                                                         </Button>
                                                     </DropdownMenuItem>
                                                 </DropdownMenuContent>

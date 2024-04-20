@@ -71,7 +71,7 @@ const router = createBrowserRouter([
                     {path: "create", element: <ProductCreateFrom/>},
                     {path: "category", children: [
                             {index: true, element: <ProductsCategory/>},
-                            {path: "edit", element: <CategoryEditForm/>},
+                            {path: "edit/:categoryId", element: <CategoryEditForm/>},
                             {path: "create", element: <CategoryCreateForm/>}
                         ]}
                 ]
