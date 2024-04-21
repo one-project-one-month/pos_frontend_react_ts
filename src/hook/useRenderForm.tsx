@@ -27,7 +27,7 @@ const useRenderForm = ({ formconst, errors, register, title }: TRenderFormProps)
                                     id={item.placeholder}
                                     {...register(item.name, isRequired)}
                                     placeholder={`Enter ${item.placeholder}`}
-                                    className="border border-gray-300 rounded-lg p-2 placeholder:text-sm"
+                                    className="border border-gray-300 rounded-lg py-2 px-4 placeholder:text-sm"
                                 />
                             );
                             break;
@@ -37,7 +37,7 @@ const useRenderForm = ({ formconst, errors, register, title }: TRenderFormProps)
                                     type="date"
                                     id={item.placeholder}
                                     {...register(item.name, isRequired)}
-                                    className="border border-gray-300 rounded-lg p-2"
+                                    className="border border-gray-300 rounded-lg py-2 px-4  placeholder:text-sm"
                                 />
                             );
                             break;
@@ -46,7 +46,7 @@ const useRenderForm = ({ formconst, errors, register, title }: TRenderFormProps)
                                 <select
                                     id={item.placeholder}
                                     {...register(item.name, isRequired)}
-                                    className="border border-gray-300 rounded-lg p-2"
+                                    className="border border-gray-300 rounded-lg py-2 px-4  placeholder:text-sm"
                                 >
                                     {item.selectValue?.map((value, index) => (
                                         <option key={index} value={value}>
@@ -63,7 +63,7 @@ const useRenderForm = ({ formconst, errors, register, title }: TRenderFormProps)
                                     id={item.placeholder}
                                     {...register(item.name, { ...isRequired, valueAsNumber: true })}
                                     placeholder={`Enter ${item.placeholder}`}
-                                    className="border border-gray-300 rounded-lg p-2"
+                                    className="border border-gray-300 rounded-lg py-2 placeholder:text-sm"
                                 />
                             )
                             break;
@@ -81,7 +81,7 @@ const useRenderForm = ({ formconst, errors, register, title }: TRenderFormProps)
                 })}
             </div>
             <div className="flex justify-center">
-                <button type="submit" className={cn("bg-blue-900 rounded py-2 text-white mt-3 w-full", { " w-3/6": formconst.length > 4 })}>Submit</button>
+                <button type="submit" className={cn("bg-slate-900 rounded py-2 text-white mt-3 w-full", { " w-3/6": formconst.length > 4 })}>Submit</button>
             </div>
         </div >
 
