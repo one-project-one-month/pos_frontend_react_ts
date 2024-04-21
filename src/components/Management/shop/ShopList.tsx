@@ -2,45 +2,33 @@ import { useCustomQueryByPage } from "@/hook/management/useCustomQuery"
 import { Table, TableHeader, TableBody, TableCell, TableRow, TableHead, TableFooter } from "../../ui/table"
 import { TShop } from "@/type/type"
 import { Button } from "../../ui/button"
-import { EllipsisVertical, Plus } from "lucide-react"
+import { Plus } from "lucide-react"
 import { useNavigate, useSearchParams } from "react-router-dom"
 import { useDeleteQuery } from "@/hook/management/useDeleteQuery"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuPortal, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { toast } from "@/components/ui/use-toast"
 import { capitalize } from "@/lib/utils"
 import { useCurrentPage } from "@/hook/useCurrentPage"
 import useRenderPagination from "@/hook/management/useRenderPagination"
-import { useEffect, useState } from "react"
+import DropdownComponnet from "@/components/ui/dropdown-component"
 
 
 const ShopList = () => {
+    const [serachParams, setSearchParams] = useSearchParams()
     const { page } = useCurrentPage()
     const { data: shops } = useCustomQueryByPage<TShop>(
         "shops",
         page,
     )
 
-
-    const [serachParams, setSearchParams] = useSearchParams()
-
-    // useEffect(() => {
-    //     setCurrentPage())
-    // }, [shops])
-
-
-
-
-
-    const mutation = useDeleteQuery("shops")
+    const { mutate } = useDeleteQuery("shops")
 
     const navigate = useNavigate()
 
-    const handleDelete = async (id: string) => {
-        await mutation.mutateAsync({ url: "shops", id })
+    const handleDelete = (id: string) => {
+        mutate({ url: "shops", id })
         if (shops?.items! % 5 === 1) {
             setSearchParams({ page: String(Math.ceil((shops?.items! / 5) - 1)) })
         }
-
         toast({ description: "Successfully Deleted" })
     }
 
@@ -48,8 +36,6 @@ const ShopList = () => {
     const paginationElement = useRenderPagination({ next: shops?.next, prev: shops?.prev, page: page })
 
     return (
-
-
         <div className="w-[80%] flex flex-col m-8">
             <div className="flex justify-end mb-2">
                 <Button
@@ -83,19 +69,12 @@ const ShopList = () => {
                                         <TableCell key={value} className="font-mediun">{value}</TableCell>
                                     ))}
                                     <TableCell>
-                                        <DropdownMenu>
-                                            <DropdownMenuTrigger>
-                                                <EllipsisVertical />
-                                            </DropdownMenuTrigger>
-                                            <DropdownMenuPortal>
-                                                <DropdownMenuContent sideOffset={6} className="min-w-6">
-                                                    <DropdownMenuItem className="flex flex-col">
-                                                        <Button className="w-full mb-2" variant={"outline"} onClick={async () => await handleDelete(shop.id)}>Delete</Button>
-                                                        <Button className="w-full" variant={"outline"} onClick={() => navigate(`edit/${shop.id}`)}>Edit</Button>
-                                                    </DropdownMenuItem>
-                                                </DropdownMenuContent>
-                                            </DropdownMenuPortal>
-                                        </DropdownMenu>
+                                        <DropdownComponnet>
+                                            <Button className="w-full mb-2" variant={"outline"} onClick={() => handleDelete(shop.id)}>Delete</Button>
+                                            <Button className="w-full" variant={"outline"} onClick={() => navigate(`edit/${shop.id}`)}>Edit</Button>
+                                        </DropdownComponnet>
+
+
                                     </TableCell>
                                 </TableRow>
                             ))
