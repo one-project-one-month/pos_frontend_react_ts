@@ -112,17 +112,10 @@
   ],
   "shops": [
     {
-      "id": "c430",
-      "shopCode": "SHOP997",
-      "shopName": "Ocean",
-      "mobileNo": "7777777777",
-      "address": "Mawlamyine"
-    },
-    {
       "id": "c4e2",
       "shopCode": "SHOP9",
       "shopName": "Fashion Shop",
-      "mobileNo": "0999999999",
+      "mobileNo": "09442343566",
       "address": "Yangon"
     },
     {
@@ -140,18 +133,18 @@
       "address": "Mandalay"
     },
     {
-      "id": "8854",
-      "shopCode": "SHOP90",
-      "shopName": "ZB",
-      "mobileNo": "9876543210",
-      "address": "Nay Pyi Thaw"
+      "id": "334e",
+      "shopCode": "SHOP12",
+      "shopName": "City Express",
+      "mobileNo": "09787654676",
+      "address": "Pyay Road"
     },
     {
-      "id": "1276",
-      "shopCode": "Shop 111",
-      "shopName": "Super One",
-      "mobileNo": "0988776543",
-      "address": "Yangon, Myanmar"
+      "id": "e7d4",
+      "shopCode": "SHOP13",
+      "shopName": "G&G",
+      "mobileNo": "09876545678",
+      "address": "Main Road"
     }
   ],
   "staffs": [

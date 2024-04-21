@@ -113,8 +113,7 @@ const SaleInvoice = () => {
   const totalAmount: number = subTotal - 50
   const currentDate = new Date();
 
-
-  const options: DateTimeOptions = {
+  const options: DateTimeOptions  = {
     day: '2-digit',
     month: 'short',
     year: 'numeric',
@@ -212,11 +211,12 @@ const SaleInvoice = () => {
                   <InvoiceItem label="Total" value={`${totalAmount} MMK`} />
                 </div>
               </div>
-            </>
-            : <></>
-        }
+              </>
+              : <></>
+            }
+           
+        </div>
 
-      </div>
     </div>
   )
 }
