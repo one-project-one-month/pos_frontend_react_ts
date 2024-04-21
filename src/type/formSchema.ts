@@ -19,7 +19,8 @@ export const formSchema = z.object({
   productCode: z.string(),
   productName: z.string(),
   price: z.number().min(1),
-  productCategoryCode: z.string()
+  productCategoryCode: z.string(),
+  productCategoryName: z.string()
 });
 
 export type Inputs = z.infer<typeof formSchema>;

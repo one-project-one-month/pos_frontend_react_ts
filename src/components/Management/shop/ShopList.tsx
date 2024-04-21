@@ -1,31 +1,56 @@
-import { useCustomQuery } from "@/hook/management/useCustomQuery"
-import { Table, TableHeader, TableBody, TableCell, TableRow, TableHead } from "../../ui/table"
-import { queryFn } from "@/services/api/management/queryFn"
+import { useCustomQueryByPage } from "@/hook/management/useCustomQuery"
+import { Table, TableHeader, TableBody, TableCell, TableRow, TableHead, TableFooter } from "../../ui/table"
 import { TShop } from "@/type/type"
 import { Button } from "../../ui/button"
 import { EllipsisVertical, Plus } from "lucide-react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useSearchParams } from "react-router-dom"
 import { useDeleteQuery } from "@/hook/management/useDeleteQuery"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuPortal, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-
+import { toast } from "@/components/ui/use-toast"
+import { capitalize } from "@/lib/utils"
+import { useCurrentPage } from "@/hook/useCurrentPage"
+import useRenderPagination from "@/hook/management/useRenderPagination"
+import { useEffect, useState } from "react"
 
 
 const ShopList = () => {
-    const { data: shops } = useCustomQuery<TShop[]>(
+    const { page } = useCurrentPage()
+    const { data: shops } = useCustomQueryByPage<TShop>(
         "shops",
-        () => queryFn("shops"),
-        0,
+        page,
     )
 
-    const { mutate } = useDeleteQuery("shops")
+
+    const [serachParams, setSearchParams] = useSearchParams()
+
+    // useEffect(() => {
+    //     setCurrentPage())
+    // }, [shops])
+
+
+
+
+
+    const mutation = useDeleteQuery("shops")
 
     const navigate = useNavigate()
+
+    const handleDelete = async (id: string) => {
+        await mutation.mutateAsync({ url: "shops", id })
+        if (shops?.items! % 5 === 1) {
+            setSearchParams({ page: String(Math.ceil((shops?.items! / 5) - 1)) })
+        }
+
+        toast({ description: "Successfully Deleted" })
+    }
+
+
+    const paginationElement = useRenderPagination({ next: shops?.next, prev: shops?.prev, page: page })
 
     return (
 
 
         <div className="w-[80%] flex flex-col m-8">
-
             <div className="flex justify-end mb-2">
                 <Button
                     variant="outline"
@@ -40,9 +65,9 @@ const ShopList = () => {
                 <TableHeader>
                     <TableRow>
                         {
-                            shops ? (
-                                Object.keys(shops[0]).map((key) => (
-                                    <TableHead key={key} className="w-[100px]">{key}</TableHead>
+                            shops?.data ? (
+                                Object.keys(shops?.data[0]).map((key) => (
+                                    <TableHead key={key} className="w-[100px]">{capitalize(key)}</TableHead>
                                 ))
                             ) : null
                         }
@@ -51,8 +76,8 @@ const ShopList = () => {
                 </TableHeader>
                 <TableBody>
                     {
-                        shops ? (
-                            shops.map((shop) => (
+                        shops?.data ? (
+                            shops?.data.map((shop) => (
                                 <TableRow key={shop.id}>
                                     {Object.values(shop).map((value) => (
                                         <TableCell key={value} className="font-mediun">{value}</TableCell>
@@ -65,8 +90,8 @@ const ShopList = () => {
                                             <DropdownMenuPortal>
                                                 <DropdownMenuContent sideOffset={6} className="min-w-6">
                                                     <DropdownMenuItem className="flex flex-col">
-                                                        <Button className="w-full mb-2" variant={"outline"} onClick={() => mutate({ url: "shops", id: shop.id })}>Delete</Button>
-                                                        <Button className="w-full" variant={"outline"} onClick={() => mutate({ url: "shops", id: shop.id })}>Edit</Button>
+                                                        <Button className="w-full mb-2" variant={"outline"} onClick={async () => await handleDelete(shop.id)}>Delete</Button>
+                                                        <Button className="w-full" variant={"outline"} onClick={() => navigate(`edit/${shop.id}`)}>Edit</Button>
                                                     </DropdownMenuItem>
                                                 </DropdownMenuContent>
                                             </DropdownMenuPortal>
@@ -82,8 +107,14 @@ const ShopList = () => {
                         </TableRow>
 
                     }
-
                 </TableBody>
+                <TableFooter>
+                    <TableRow>
+                        <TableCell>
+                            {paginationElement}
+                        </TableCell>
+                    </TableRow>
+                </TableFooter>
             </Table>
         </div>
     )

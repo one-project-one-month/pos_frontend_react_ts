@@ -1,5 +1,4 @@
-import { useCustomQuery } from "@/hook/management/useCustomQuery"
-import { queryFn } from "@/services/api/management/queryFn"
+import { useCustomQueryByPage } from "@/hook/management/useCustomQuery"
 import { TCustomer } from "@/type/type"
 import { Button } from "../../ui/button"
 import { EllipsisVertical, Plus } from "lucide-react"
@@ -9,19 +8,26 @@ import { useNavigate } from "react-router-dom"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuPortal } from "@/components/ui/dropdown-menu"
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
 import { useDeleteQuery } from "@/hook/management/useDeleteQuery"
+import { toast } from "@/components/ui/use-toast"
+import { capitalize } from "@/lib/utils"
+
 
 
 
 const CustomerList = () => {
 
-    const { data: customers } = useCustomQuery<TCustomer[]>(
+    const { data: customers } = useCustomQueryByPage<TCustomer>(
         "customers",
-        () => queryFn("customers"),
-        0,
+        1,
     )
     const { mutate } = useDeleteQuery("customers")
 
     const navigate = useNavigate()
+
+    const handleDelete = (id: string) => {
+        mutate({ url: "customers", id })
+        toast({ description: "Successfully Deleted" })
+    }
 
 
 
@@ -42,9 +48,9 @@ const CustomerList = () => {
                 <TableHeader>
                     <TableRow>
                         {
-                            customers ? (
-                                Object.keys(customers[0]).map((key) => (
-                                    <TableHead key={key} className="w-[100px]">{key}</TableHead>
+                            customers?.data ? (
+                                Object.keys(customers.data[0]).map((key) => (
+                                    <TableHead key={key} className="w-[100px]">{capitalize(key)}</TableHead>
                                 ))
                             ) : null
                         }
@@ -54,8 +60,8 @@ const CustomerList = () => {
                 </TableHeader>
                 <TableBody>
                     {
-                        customers ? (
-                            customers.map((customer) => (
+                        customers?.data ? (
+                            customers.data.map((customer) => (
                                 <TableRow key={customer.id}>
                                     {Object.values(customer).map((value) => {
                                         return (
@@ -68,9 +74,10 @@ const CustomerList = () => {
                                                 <EllipsisVertical />
                                             </DropdownMenuTrigger>
                                             <DropdownMenuPortal>
-                                                <DropdownMenuContent sideOffset={6} className="min-w-6">
-                                                    <DropdownMenuItem >
-                                                        <Button className="w-full" variant={"outline"} onClick={() => mutate({ url: "customers", id: customer.id })}>Delete</Button>
+                                                <DropdownMenuContent sideOffset={6} className="min-w-2">
+                                                    <DropdownMenuItem className="flex flex-col">
+                                                        <Button className="w-full  mb-2" variant={"outline"} onClick={() => handleDelete(customer.id)}>Delete</Button>
+                                                        <Button className="w-full" variant={"outline"} onClick={() => navigate(`edit/${customer.id}`)}>Edit</Button>
                                                     </DropdownMenuItem>
                                                 </DropdownMenuContent>
                                             </DropdownMenuPortal>

@@ -40,9 +40,22 @@ export const getProductByCode = async (productCode: string) => {
 };
 
 export const editProductById = async (productId: number, payload: Partial<TProduct>) => {
-    console.log(productId)
     const response = await apiClient.patch<TProduct>(
         `/products/${productId}`, payload
+    );
+    return response.data;
+};
+
+export const editCategoryById = async (productCategoryId: number, payload: Partial<TProductCategory>) => {
+    const response = await apiClient.patch<TProductCategory>(
+        `/product-Categories/${productCategoryId}`, payload
+    );
+    return response.data;
+};
+
+export const postProduct = async (payload: Partial<TProduct>) => {
+    const response = await apiClient.post<Partial<TProduct>>(
+        `products`, payload
     )
     return response.data
 }

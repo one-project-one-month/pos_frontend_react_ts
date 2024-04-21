@@ -48,7 +48,17 @@ export interface TJSONServerPaginationResponse<T> {
   prev: number | null;
   next: number | null;
   last: number;
-  page: number;
+  pages: number;
+  items: number;
+}
+
+export interface TJSONServerPaginationResponse<T> {
+  data: T;
+  first: 1;
+  prev: number | null;
+  next: number | null;
+  last: number;
+  pages: number;
   items: number;
 }
 
@@ -94,3 +104,4 @@ export interface DateTimeOptions {
   minute: 'numeric' | '2-digit' | undefined;
   hour12: boolean | undefined;
 }
+
