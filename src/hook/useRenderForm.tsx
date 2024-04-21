@@ -52,6 +52,17 @@ const useRenderForm = ({ formconst, errors, register }: TRenderFormProps) => {
                             </select>
                         );
                         break;
+                    case "number" :
+                        inputElement = (
+                            <input
+                                type="text"
+                                id={item.placeholder}
+                                {...register(item.name, {...isRequired, valueAsNumber: true})}
+                                placeholder={`Enter ${item.placeholder}`}
+                                className="border border-gray-300 rounded-lg p-2"
+                            />
+                        )
+                        break;
                     default:
                         inputElement = null;
                 }

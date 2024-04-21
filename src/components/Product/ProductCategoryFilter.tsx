@@ -1,7 +1,7 @@
 import {useQuery} from "@tanstack/react-query";
 
 import {TProductCategory} from "@/type/type.ts";
-import {useProductCategoryFilterState} from "@/store/productCategoryFilerState.ts";
+import {useProductCategoryFilterState} from "@/store/productCategoryFilerStore.ts";
 import {
     DropdownMenu,
     DropdownMenuContent, DropdownMenuItem,

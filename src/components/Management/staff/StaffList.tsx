@@ -3,8 +3,10 @@ import { Table, TableHead, TableHeader, TableBody, TableCell, TableRow } from ".
 import { queryFn } from "@/services/api/management/queryFn"
 import { TStaff } from "@/type/type"
 import { Button } from "../../ui/button"
-import { Plus } from "lucide-react"
+import { EllipsisVertical, Plus } from "lucide-react"
 import { useNavigate } from "react-router-dom"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuPortal, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { useDeleteQuery } from "@/hook/management/useDeleteQuery"
 
 
 
@@ -14,6 +16,7 @@ const StaffList = () => {
         () => queryFn("staffs"),
         0,
     )
+    const { mutate } = useDeleteQuery("staffs")
     const navigate = useNavigate()
 
 
@@ -40,11 +43,13 @@ const StaffList = () => {
                                     <TableHead key={key} className="w-[100px]">{key}</TableHead>
                                 ))
                             ) : null
+
                         }
+                        <TableHead> Actions</TableHead>
                     </TableRow>
+
                 </TableHeader>
                 <TableBody>
-
                     {
                         staffs ? (
                             staffs.map((staff) => (
@@ -52,10 +57,29 @@ const StaffList = () => {
                                     {Object.values(staff).map((value) => (
                                         <TableCell key={value} className="font-mediun">{value}</TableCell>
                                     ))}
+                                    <TableCell>
+                                        <DropdownMenu>
+                                            <DropdownMenuTrigger>
+                                                <EllipsisVertical />
+                                            </DropdownMenuTrigger>
+                                            <DropdownMenuPortal>
+                                                <DropdownMenuContent sideOffset={6} className="min-w-6">
+                                                    <DropdownMenuItem >
+                                                        <Button className="w-full" variant={"outline"} onClick={() => mutate({ url: "staffs", id: staff.id })}>Delete</Button>
+                                                    </DropdownMenuItem>
+                                                </DropdownMenuContent>
+                                            </DropdownMenuPortal>
+                                        </DropdownMenu>
+                                    </TableCell>
                                 </TableRow>
                             ))
-
-                        ) : null
+                        ) : (
+                            <TableRow>
+                                <TableCell>
+                                    No Data
+                                </TableCell>
+                            </TableRow>
+                        )
                     }
                 </TableBody>
             </Table>
