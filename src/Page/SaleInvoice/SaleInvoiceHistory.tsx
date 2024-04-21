@@ -10,7 +10,6 @@ import {
     useReactTable,
 } from "@tanstack/react-table"
 
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
     Table,
@@ -21,16 +20,15 @@ import {
     TableRow,
 } from "@/components/ui/table"
 
-import { useQuery } from "@tanstack/react-query"
 import { TInvoice } from "@/type/type.ts";
 import { useNavigate } from "react-router-dom"
-import { getInvoices } from "@/services/api/invoiceApi"
+import useRenderPagination from "@/hook/management/useRenderPagination"
+import { useCustomQueryByPage } from "@/hook/management/useCustomQuery"
+import { useCurrentPage } from "@/hook/useCurrentPage"
 
 const SaleInvoiceHistory = () => {
-    const { data }: { data?: TInvoice[] } = useQuery({
-        queryKey: ["invoice"],
-        queryFn: getInvoices
-    })
+    const { page } = useCurrentPage();
+    const { data: invoices } = useCustomQueryByPage<TInvoice>("saleInvoice",page)
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
         []
     )
@@ -38,6 +36,9 @@ const SaleInvoiceHistory = () => {
         React.useState<VisibilityState>({})
 
     const navigate = useNavigate();
+    const paginationElement = useRenderPagination({next: invoices?.next, prev: invoices?.prev, page: page})
+    console.log(invoices);
+    
 
     const columns: ColumnDef<TInvoice, any>[] = [
         {
@@ -116,8 +117,10 @@ const SaleInvoiceHistory = () => {
         }
     ]
 
+    const invoicesData: TInvoice[] = invoices ? invoices.data : [];
+
     const table = useReactTable({
-        data: data ? data : [],
+        data: invoicesData,
         columns,
         onColumnFiltersChange: setColumnFilters,
         getCoreRowModel: getCoreRowModel(),
@@ -193,26 +196,11 @@ const SaleInvoiceHistory = () => {
                         </TableBody>
                     </Table>
                 </div>
-                <div className="flex items-center justify-end space-x-2 py-4">
-                <div className="space-x-2">
-                    <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => table.previousPage()}
-                    disabled={!table.getCanPreviousPage()}
-                    >
-                    Previous
-                    </Button>
-                    <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => table.nextPage()}
-                    disabled={!table.getCanNextPage()}
-                    >
-                    Next
-                    </Button>
-                </div>
-                </div>
+                {/* <div className="flex items-center justify-end space-x-2 py-4"> */}
+                    {
+                        paginationElement
+                    }
+                {/* </div> */}
             </div>
         </div>
     )

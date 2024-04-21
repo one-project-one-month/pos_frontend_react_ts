@@ -80,32 +80,6 @@ import { useToast } from "@/components/ui/use-toast"
       </div>
     </div>
   )
-}
-
-const Select = ({ label, register, errors, datas }: InputProps) => (
-  <div className="flex my-2 items-center justify-between">
-    <label className="mb-1">{label}</label>
-    <div className="flex flex-col">
-      <select {...register(label, { required: `${label} is required` })} className="w-64 border border-gray-300 rounded-lg p-2 bg-white">
-        <option value="" hidden>{`Select ${label}`}</option>
-        {label === "Payment Type" ? (
-          ['Cash', 'Mobile Payment'].map((data) => (
-            <option key={data} value={data}>
-              {data}
-            </option>
-          ))
-        ) : (
-          datas?.map((data) => (
-            <option key={data.id} value={data.id}>
-              {label === "Customers" ? (data as TCustomer).customerName : label === "Staffs" ? (data as TStaff).staffName : null}
-            </option>
-          ))
-        )}
-      </select>
-      {errors?.[label] ? <p className="text-red-400">{errors?.[label]?.message}</p> : null}
-    </div>
-  </div>
-)
 
 const InvoiceItem: React.FC<TInvoiceItemProps> = ({ label, value }) => (
   <div className="flex justify-between">
@@ -136,7 +110,6 @@ const InvoiceItem: React.FC<TInvoiceItemProps> = ({ label, value }) => (
 
   const totalAmount:number = subTotal - 50
   const currentDate = new Date();
-
 
   const options: DateTimeOptions  = {
     day: '2-digit',
@@ -240,7 +213,6 @@ const InvoiceItem: React.FC<TInvoiceItemProps> = ({ label, value }) => (
             }
            
         </div>
-      </div>
     </div>
   )
 }
