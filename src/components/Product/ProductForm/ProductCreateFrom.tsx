@@ -1,23 +1,23 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { Inputs } from "@/type/formSchema.ts";
+import {useNavigate} from "react-router-dom";
+import {SubmitHandler, useForm} from "react-hook-form";
+import {Inputs} from "@/type/formSchema.ts";
 import useRenderForm from "@/hook/useRenderForm.tsx";
-import { productFormConst } from "@/constants/form-constate.ts";
-
-
-import { useCreateProduct } from "@/services/mutation.ts";
+import {productFormConst} from "@/constants/form-constate.ts";
+import {useToast} from "@/components/ui/use-toast.ts";
+import {useCreateNew} from "@/hook/management/useAddQuery.ts";
 
 export default function ProductCreateFrom() {
     const navigate = useNavigate();
-    const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
-    const formElements = useRenderForm({ formconst: productFormConst, errors, register, title: "Product" });
-    // const { mutate } = useCreateNew("product");
-    const { state } = useLocation();
+    const {toast} = useToast();
+    const pathName = "products";
+    const {register, handleSubmit, formState: {errors}} = useForm<Inputs>();
+    const formElements = useRenderForm({formconst: productFormConst, errors, register, title: "Product"});
+    const {mutate} = useCreateNew(pathName);
 
-    const { mutate } = useCreateProduct(state);
     const onSubmit: SubmitHandler<Inputs> = (data) => {
-        mutate(data);
-        navigate(`..`, { relative: "path" });
+        mutate({formData: data, route: pathName});
+        navigate(`..`, {relative: "path"});
+        toast({description: "Successfully added"});
     };
 
 
