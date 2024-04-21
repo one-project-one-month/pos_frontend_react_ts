@@ -1,24 +1,27 @@
 import { useCustomQueryByPage } from "@/hook/management/useCustomQuery"
 import { TCustomer } from "@/type/type"
 import { Button } from "../../ui/button"
-import { EllipsisVertical, Plus } from "lucide-react"
+import { Plus } from "lucide-react"
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../ui/table"
-import { useNavigate } from "react-router-dom"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuPortal } from "@/components/ui/dropdown-menu"
-import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
+import { useNavigate, useSearchParams } from "react-router-dom"
 import { useDeleteQuery } from "@/hook/management/useDeleteQuery"
 import { toast } from "@/components/ui/use-toast"
 import { capitalize } from "@/lib/utils"
+import DropdownComponnet from "@/components/ui/dropdown-component"
+import { useCurrentPage } from "@/hook/useCurrentPage"
+import useRenderPagination from "@/hook/management/useRenderPagination"
 
 
 
 
 const CustomerList = () => {
+    const { page } = useCurrentPage()
+    const [, setSearchParams] = useSearchParams()
 
     const { data: customers } = useCustomQueryByPage<TCustomer>(
         "customers",
-        1,
+        page,
     )
     const { mutate } = useDeleteQuery("customers")
 
@@ -26,14 +29,19 @@ const CustomerList = () => {
 
     const handleDelete = (id: string) => {
         mutate({ url: "customers", id })
+        if (customers?.items! % 5 === 1) {
+            setSearchParams({ page: String(Math.ceil((customers?.items! / 5) - 1)) })
+        }
         toast({ description: "Successfully Deleted" })
     }
+
+    const paginationElement = useRenderPagination({ next: customers?.next, prev: customers?.prev, page: page })
 
 
 
 
     return (
-        <div className="w-[80%] flex flex-col m-8">
+        <div className="flex flex-col m-8">
             <div className="flex justify-end mb-2">
                 <Button
                     variant="outline"
@@ -59,32 +67,34 @@ const CustomerList = () => {
 
                 </TableHeader>
                 <TableBody>
+
                     {
                         customers?.data ? (
-                            customers.data.map((customer) => (
-                                <TableRow key={customer.id}>
-                                    {Object.values(customer).map((value) => {
-                                        return (
-                                            <TableCell key={value} className="font-mediun">{value}</TableCell>
-                                        )
-                                    })}
+                            <>
+                                {customers.data.map((customer) => (
+                                    <TableRow key={customer.id}>
+                                        {Object.values(customer).map((value) => {
+                                            return (
+                                                <TableCell key={value} className="font-mediun">{value}</TableCell>
+                                            )
+                                        })}
+                                        <TableCell>
+                                            <DropdownComponnet>
+                                                <Button className="w-full  mb-2" variant={"outline"} onClick={() => handleDelete(customer.id)}>Delete</Button>
+                                                <Button className="w-full" variant={"outline"} onClick={() => navigate(`edit/${customer.id}`)}>Edit</Button>
+                                            </DropdownComponnet>
+
+
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                                <TableRow>
                                     <TableCell>
-                                        <DropdownMenu>
-                                            <DropdownMenuTrigger>
-                                                <EllipsisVertical />
-                                            </DropdownMenuTrigger>
-                                            <DropdownMenuPortal>
-                                                <DropdownMenuContent sideOffset={6} className="min-w-2">
-                                                    <DropdownMenuItem className="flex flex-col">
-                                                        <Button className="w-full  mb-2" variant={"outline"} onClick={() => handleDelete(customer.id)}>Delete</Button>
-                                                        <Button className="w-full" variant={"outline"} onClick={() => navigate(`edit/${customer.id}`)}>Edit</Button>
-                                                    </DropdownMenuItem>
-                                                </DropdownMenuContent>
-                                            </DropdownMenuPortal>
-                                        </DropdownMenu>
+                                        {paginationElement}
                                     </TableCell>
                                 </TableRow>
-                            ))
+                            </>
+
 
                         ) : <TableRow>
                             <TableCell>

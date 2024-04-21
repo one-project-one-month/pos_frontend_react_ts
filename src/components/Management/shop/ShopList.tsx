@@ -13,7 +13,7 @@ import DropdownComponnet from "@/components/ui/dropdown-component"
 
 
 const ShopList = () => {
-    const [serachParams, setSearchParams] = useSearchParams()
+    const [, setSearchParams] = useSearchParams()
     const { page } = useCurrentPage()
     const { data: shops } = useCustomQueryByPage<TShop>(
         "shops",
@@ -73,8 +73,6 @@ const ShopList = () => {
                                             <Button className="w-full mb-2" variant={"outline"} onClick={() => handleDelete(shop.id)}>Delete</Button>
                                             <Button className="w-full" variant={"outline"} onClick={() => navigate(`edit/${shop.id}`)}>Edit</Button>
                                         </DropdownComponnet>
-
-
                                     </TableCell>
                                 </TableRow>
                             ))

@@ -204,6 +204,16 @@
       "address": "Nay Pyi Thaw",
       "gender": "Male",
       "position": "Sales Associate"
+    },
+    {
+      "id": "99a3",
+      "staffCode": "S100",
+      "staffName": "U Ba",
+      "dateOfBirth": "2001-04-04",
+      "mobileNo": "09255882712",
+      "address": "Mandalay",
+      "gender": "Male",
+      "position": "Manager"
     }
   ],
   "saleInvoice": [
@@ -286,24 +296,54 @@
   ],
   "customers": [
     {
-      "id": "3",
+      "id": "b40c",
       "customerCode": "CUST003",
-      "customerName": "Jame Tomas",
-      "mobileNo": 5555555555,
-      "dateOfBirth": "1978-12-10",
+      "customerName": "Jame",
+      "mobileNo": "09255882712",
+      "dateOfBirth": "2024-04-02",
       "gender": "Male",
-      "stateCode": "TX",
+      "stateCode": "NY",
       "townshipCode": "DAL"
     },
     {
-      "id": "8360",
-      "customerCode": "Cu67",
-      "customerName": "Ye Kyaw",
-      "mobileNo": "7799999999",
-      "dateOfBirth": "2000-06-19",
-      "gender": "Male",
-      "stateCode": "234",
+      "id": "4bd4",
+      "customerCode": "CUST003",
+      "customerName": "Jame Smith",
+      "mobileNo": "09255882712",
+      "dateOfBirth": "2003-02-21",
+      "gender": "Female",
+      "stateCode": "TX",
       "townshipCode": "Chigago"
+    },
+    {
+      "id": "cc2b",
+      "customerCode": "Cu34",
+      "customerName": "Jame",
+      "mobileNo": "09255882712",
+      "dateOfBirth": "2024-04-03",
+      "gender": "Female",
+      "stateCode": "NY",
+      "townshipCode": "NYC"
+    },
+    {
+      "id": "0328",
+      "customerCode": "CUST002",
+      "customerName": "Jame",
+      "mobileNo": "0976622233",
+      "dateOfBirth": "2024-04-03",
+      "gender": "Other",
+      "stateCode": "TX",
+      "townshipCode": "Chigago"
+    },
+    {
+      "id": "1f44",
+      "customerCode": "CUST003",
+      "customerName": "Jame Smith",
+      "mobileNo": "09255882712",
+      "dateOfBirth": "2024-04-11",
+      "gender": "Female",
+      "stateCode": "TX",
+      "townshipCode": "DAL"
     }
   ]
 }
