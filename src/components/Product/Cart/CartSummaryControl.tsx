@@ -2,8 +2,10 @@ import {Button} from "@/components/ui/button.tsx";
 import {useBillingCartStore} from "@/store/billingCartStore.ts";
 import {useDiscountStore} from "@/store/discountStore.ts";
 import {useInvoiceStore} from "@/store/invoiceStore.ts";
+import {useNavigate} from "react-router-dom";
 
 export default function CartSummaryControl() {
+    const navigate = useNavigate();
     const {cart, clearCart} = useBillingCartStore();
     const {amount, setNoDiscount} = useDiscountStore();
     const {addToInvoiceStore} = useInvoiceStore();
@@ -18,6 +20,7 @@ export default function CartSummaryControl() {
         addToInvoiceStore(cart, amount.coupon + amount.extra);
         clearCart();
         setNoDiscount();
+        navigate("/sale-invoice")
     };
 
     return (

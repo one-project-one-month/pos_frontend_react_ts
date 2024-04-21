@@ -63,7 +63,7 @@ const useRenderForm = ({ formconst, errors, register, title }: TRenderFormProps)
                                     id={item.placeholder}
                                     {...register(item.name, { ...isRequired, valueAsNumber: true })}
                                     placeholder={`Enter ${item.placeholder}`}
-                                    className="border border-gray-300 rounded-lg py-2 placeholder:text-sm"
+                                    className="border border-gray-300 rounded-lg py-2 px-4 placeholder:text-sm"
                                 />
                             )
                             break;

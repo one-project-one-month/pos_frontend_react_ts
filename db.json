@@ -22,13 +22,6 @@
       "productCategoryCode": "Accessories"
     },
     {
-      "id": "4",
-      "productCode": "P004",
-      "productName": "Tablet",
-      "price": 499,
-      "productCategoryCode": "PC"
-    },
-    {
       "id": "5",
       "productCode": "P005",
       "productName": "Smartwatch",
