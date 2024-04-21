@@ -7,8 +7,11 @@ import {
 import {Button} from "@/components/ui/button.tsx";
 import {useBillingCartStore} from "@/store/billingCartStore.ts";
 import {TProduct} from "@/type/type.ts";
-import {Link} from "react-router-dom";
+import {Link, useSearchParams} from "react-router-dom";
 import {useCurrentPage} from "@/hook/useCurrentPage.ts";
+import {useCustomQueryByPage} from "@/hook/management/useCustomQuery.ts";
+import {useDeleteQuery} from "@/hook/management/useDeleteQuery.ts";
+import {toast} from "@/components/ui/use-toast.ts";
 
 type ProductOptionDropDownProp = {
     product: TProduct
@@ -17,15 +20,28 @@ type ProductOptionDropDownProp = {
 export default function ProductOptionDropDown({product}: ProductOptionDropDownProp) {
 
     const {page} = useCurrentPage();
-
+    const [, setSearchParams] = useSearchParams()
     const {addToCart} = useBillingCartStore();
+
+    const { data: products } = useCustomQueryByPage<TProduct>(
+        "shops",
+        page,
+    )
+
+    const { mutate } = useDeleteQuery("products")
 
     const addToCartBtnHandler = () => {
         addToCart(product, 1);
     };
 
     const deleteProductBtnHandler = () => {
-        console.log("delete");
+        mutate({ url: "products", id: product.id.toString() })
+        // @ts-expect-error products !== null
+        if (products?.items % 5 === 1) {
+            // @ts-expect-error products !== null
+            setSearchParams({page: String(Math.ceil((products?.items / 5) - 1))});
+        }
+        toast({ description: "Successfully Deleted" })
     };
 
     return (
