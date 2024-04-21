@@ -105,14 +105,9 @@
       "productCategoryName": "Electronic Devices"
     },
     {
-      "id": "a3e0",
-      "productCategoryCode": "OLED",
-      "productCategoryName": "OLED PC"
-    },
-    {
-      "id": "ab94",
+      "id": "6926",
       "productCategoryCode": "STV",
-      "productCategoryName": "Smart TV"
+      "productCategoryName": "Super TV"
     }
   ],
   "shops": [
@@ -129,13 +124,6 @@
       "shopName": "Fashion Shop",
       "mobileNo": "0999999999",
       "address": "Yangon"
-    },
-    {
-      "id": "f8c1",
-      "shopCode": "SHOP90",
-      "shopName": "dd",
-      "mobileNo": "09255882712",
-      "address": "Mandalay"
     },
     {
       "id": "069f",
@@ -157,6 +145,13 @@
       "shopName": "ZB",
       "mobileNo": "9876543210",
       "address": "Nay Pyi Thaw"
+    },
+    {
+      "id": "1276",
+      "shopCode": "Shop 111",
+      "shopName": "Super One",
+      "mobileNo": "0988776543",
+      "address": "Yangon, Myanmar"
     }
   ],
   "staffs": [
