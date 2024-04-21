@@ -1,11 +1,12 @@
 import CategoryList from "@/components/Category/CategoryList.tsx";
 
+
 const ProductsCategory = () => {
 
 
     return (
-        <CategoryList/>
-    )
-}
+            <CategoryList/>
+    );
+};
 
-export default ProductsCategory
+export default ProductsCategory;

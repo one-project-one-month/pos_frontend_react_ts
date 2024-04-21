@@ -20,6 +20,5 @@
 //     )
 // }
 //
-// export const productRouteProtector = () => {
-//     return redirect("/products/1")
-// }
+
+

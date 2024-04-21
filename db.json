@@ -103,6 +103,11 @@
       "id": "5",
       "productCategoryCode": "Electronics",
       "productCategoryName": "Electronic Devices"
+    },
+    {
+      "id": "6926",
+      "productCategoryCode": "STV",
+      "productCategoryName": "Super TV"
     }
   ],
   "shops": [
@@ -121,13 +126,6 @@
       "address": "Yangon"
     },
     {
-      "id": "f8c1",
-      "shopCode": "SHOP90",
-      "shopName": "dd",
-      "mobileNo": "09255882712",
-      "address": "Mandalay"
-    },
-    {
       "id": "069f",
       "shopCode": "SHOP67",
       "shopName": "Ocean Tarmwe",
@@ -140,6 +138,20 @@
       "shopName": "ZB",
       "mobileNo": "0976622233",
       "address": "Mandalay"
+    },
+    {
+      "id": "8854",
+      "shopCode": "SHOP90",
+      "shopName": "ZB",
+      "mobileNo": "9876543210",
+      "address": "Nay Pyi Thaw"
+    },
+    {
+      "id": "1276",
+      "shopCode": "Shop 111",
+      "shopName": "Super One",
+      "mobileNo": "0988776543",
+      "address": "Yangon, Myanmar"
     }
   ],
   "staffs": [

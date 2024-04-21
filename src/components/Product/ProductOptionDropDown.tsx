@@ -48,7 +48,7 @@ export default function ProductOptionDropDown({product}: ProductOptionDropDownPr
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                         <Button className={"w-full h-full px-0 py-0"} variant={"outline"}>
-                            <Link to={"edit"} state={{product, page}} className={"w-full py-2 "}>Edit</Link>
+                            <Link to={`edit/${product.id}`} state={{product, page}} className={"w-full py-2 "}>Edit</Link>
                         </Button>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
