@@ -3,13 +3,14 @@ import { Table, TableHeader, TableBody, TableCell, TableRow, TableHead, TableFoo
 import { TShop } from "@/type/type"
 import { Button } from "../../ui/button"
 import { EllipsisVertical, Plus } from "lucide-react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useSearchParams } from "react-router-dom"
 import { useDeleteQuery } from "@/hook/management/useDeleteQuery"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuPortal, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { toast } from "@/components/ui/use-toast"
 import { capitalize } from "@/lib/utils"
 import { useCurrentPage } from "@/hook/useCurrentPage"
 import useRenderPagination from "@/hook/management/useRenderPagination"
+import { useEffect, useState } from "react"
 
 
 const ShopList = () => {
@@ -20,13 +21,26 @@ const ShopList = () => {
     )
 
 
+    const [serachParams, setSearchParams] = useSearchParams()
 
-    const { mutate } = useDeleteQuery("shops")
+    // useEffect(() => {
+    //     setCurrentPage())
+    // }, [shops])
+
+
+
+
+
+    const mutation = useDeleteQuery("shops")
 
     const navigate = useNavigate()
 
-    const handleDelete = (id: string) => {
-        mutate({ url: "shops", id })
+    const handleDelete = async (id: string) => {
+        await mutation.mutateAsync({ url: "shops", id })
+        if (shops?.items! % 5 === 1) {
+            setSearchParams({ page: String(Math.ceil((shops?.items! / 5) - 1)) })
+        }
+
         toast({ description: "Successfully Deleted" })
     }
 
@@ -76,7 +90,7 @@ const ShopList = () => {
                                             <DropdownMenuPortal>
                                                 <DropdownMenuContent sideOffset={6} className="min-w-6">
                                                     <DropdownMenuItem className="flex flex-col">
-                                                        <Button className="w-full mb-2" variant={"outline"} onClick={() => handleDelete(shop.id)}>Delete</Button>
+                                                        <Button className="w-full mb-2" variant={"outline"} onClick={async () => await handleDelete(shop.id)}>Delete</Button>
                                                         <Button className="w-full" variant={"outline"} onClick={() => navigate(`edit/${shop.id}`)}>Edit</Button>
                                                     </DropdownMenuItem>
                                                 </DropdownMenuContent>

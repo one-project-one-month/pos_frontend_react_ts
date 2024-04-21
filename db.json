@@ -107,55 +107,6 @@
   ],
   "shops": [
     {
-      "id": "4",
-      "shopCode": "SHOPEEEE",
-      "shopName": "Ocean",
-      "mobileNo": "09255882712",
-      "address": "Aung street"
-    },
-    {
-      "id": "5",
-      "shopCode": "SHOP860",
-      "shopName": "YKKO",
-      "mobileNo": "09233338999",
-      "address": "Yangon"
-    },
-    {
-      "id": "6",
-      "shopCode": "SHOP1224",
-      "shopName": "Life is Good",
-      "mobileNo": "09666777",
-      "address": "Bangkok"
-    },
-    {
-      "id": "7",
-      "shopCode": "SHOP789",
-      "shopName": "HP",
-      "mobileNo": "09222222",
-      "address": "Yangon"
-    },
-    {
-      "id": "8",
-      "shopCode": "SHOP6782",
-      "shopName": "Mini Mart",
-      "mobileNo": "123455555",
-      "address": "Mandalay"
-    },
-    {
-      "id": "9",
-      "shopCode": "SHOP88932",
-      "shopName": "KFC",
-      "mobileNo": "09555556667",
-      "address": "Mawamyine"
-    },
-    {
-      "id": "971d",
-      "shopCode": "SHOP978",
-      "shopName": "FashinShop",
-      "mobileNo": "09766555322",
-      "address": "Nay Pyi Thaw"
-    },
-    {
       "id": "c430",
       "shopCode": "SHOP997",
       "shopName": "Ocean",
@@ -168,6 +119,34 @@
       "shopName": "Fashion Shop",
       "mobileNo": "0999999999",
       "address": "Yangon"
+    },
+    {
+      "id": "f8c1",
+      "shopCode": "SHOP90",
+      "shopName": "dd",
+      "mobileNo": "09255882712",
+      "address": "Mandalay"
+    },
+    {
+      "id": "069f",
+      "shopCode": "SHOP67",
+      "shopName": "Ocean Tarmwe",
+      "mobileNo": "09255882712",
+      "address": "Nay Pyi Thaw"
+    },
+    {
+      "id": "f51a",
+      "shopCode": "SHOP90",
+      "shopName": "ZB",
+      "mobileNo": "0976622233",
+      "address": "Mandalay"
+    },
+    {
+      "id": "8854",
+      "shopCode": "SHOP90",
+      "shopName": "ZB",
+      "mobileNo": "9876543210",
+      "address": "Nay Pyi Thaw"
     }
   ],
   "staffs": [
