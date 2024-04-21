@@ -119,17 +119,10 @@
   ],
   "shops": [
     {
-      "id": "c430",
-      "shopCode": "SHOP997",
-      "shopName": "Ocean",
-      "mobileNo": "7777777777",
-      "address": "Mawlamyine"
-    },
-    {
       "id": "c4e2",
       "shopCode": "SHOP9",
       "shopName": "Fashion Shop",
-      "mobileNo": "0999999999",
+      "mobileNo": "09442343566",
       "address": "Yangon"
     },
     {
@@ -147,18 +140,18 @@
       "address": "Mandalay"
     },
     {
-      "id": "8854",
-      "shopCode": "SHOP90",
-      "shopName": "ZB",
-      "mobileNo": "9876543210",
-      "address": "Nay Pyi Thaw"
+      "id": "334e",
+      "shopCode": "SHOP12",
+      "shopName": "City Express",
+      "mobileNo": "09787654676",
+      "address": "Pyay Road"
     },
     {
-      "id": "1276",
-      "shopCode": "Shop 111",
-      "shopName": "Super One",
-      "mobileNo": "0988776543",
-      "address": "Yangon, Myanmar"
+      "id": "e7d4",
+      "shopCode": "SHOP13",
+      "shopName": "G&G",
+      "mobileNo": "09876545678",
+      "address": "Main Road"
     }
   ],
   "staffs": [
@@ -211,6 +204,16 @@
       "address": "Nay Pyi Thaw",
       "gender": "Male",
       "position": "Sales Associate"
+    },
+    {
+      "id": "99a3",
+      "staffCode": "S100",
+      "staffName": "U Ba",
+      "dateOfBirth": "2001-04-04",
+      "mobileNo": "09255882712",
+      "address": "Mandalay",
+      "gender": "Male",
+      "position": "Manager"
     }
   ],
   "saleInvoice": [
@@ -293,24 +296,54 @@
   ],
   "customers": [
     {
-      "id": "3",
+      "id": "b40c",
       "customerCode": "CUST003",
-      "customerName": "Jame Tomas",
-      "mobileNo": 5555555555,
-      "dateOfBirth": "1978-12-10",
+      "customerName": "Jame",
+      "mobileNo": "09255882712",
+      "dateOfBirth": "2024-04-02",
       "gender": "Male",
-      "stateCode": "TX",
+      "stateCode": "NY",
       "townshipCode": "DAL"
     },
     {
-      "id": "8360",
-      "customerCode": "Cu67",
-      "customerName": "Ye Kyaw",
-      "mobileNo": "7799999999",
-      "dateOfBirth": "2000-06-19",
-      "gender": "Male",
-      "stateCode": "234",
+      "id": "4bd4",
+      "customerCode": "CUST003",
+      "customerName": "Jame Smith",
+      "mobileNo": "09255882712",
+      "dateOfBirth": "2003-02-21",
+      "gender": "Female",
+      "stateCode": "TX",
       "townshipCode": "Chigago"
+    },
+    {
+      "id": "cc2b",
+      "customerCode": "Cu34",
+      "customerName": "Jame",
+      "mobileNo": "09255882712",
+      "dateOfBirth": "2024-04-03",
+      "gender": "Female",
+      "stateCode": "NY",
+      "townshipCode": "NYC"
+    },
+    {
+      "id": "0328",
+      "customerCode": "CUST002",
+      "customerName": "Jame",
+      "mobileNo": "0976622233",
+      "dateOfBirth": "2024-04-03",
+      "gender": "Other",
+      "stateCode": "TX",
+      "townshipCode": "Chigago"
+    },
+    {
+      "id": "1f44",
+      "customerCode": "CUST003",
+      "customerName": "Jame Smith",
+      "mobileNo": "09255882712",
+      "dateOfBirth": "2024-04-11",
+      "gender": "Female",
+      "stateCode": "TX",
+      "townshipCode": "DAL"
     }
   ]
 }
