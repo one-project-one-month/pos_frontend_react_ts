@@ -103,6 +103,11 @@
       "id": "5",
       "productCategoryCode": "Electronics",
       "productCategoryName": "Electronic Devices"
+    },
+    {
+      "id": "6926",
+      "productCategoryCode": "STV",
+      "productCategoryName": "Super TV"
     }
   ],
   "shops": [
@@ -112,13 +117,6 @@
       "shopName": "Fashion Shop",
       "mobileNo": "09442343566",
       "address": "Yangon"
-    },
-    {
-      "id": "f8c1",
-      "shopCode": "SHOP90",
-      "shopName": "dd",
-      "mobileNo": "09255882712",
-      "address": "Mandalay"
     },
     {
       "id": "069f",

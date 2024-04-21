@@ -7,17 +7,41 @@ import {
     DropdownMenuPortal,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu.tsx";
-import {useProductCategories} from "@/services/api/query.ts";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useSearchParams} from "react-router-dom";
 import {capitalize} from "@/lib/utils.ts";
 import {useDeleteQuery} from "@/hook/management/useDeleteQuery.ts";
+import {useCurrentPage} from "@/hook/useCurrentPage.ts";
+import {useCustomQueryByPage} from "@/hook/management/useCustomQuery.ts";
+import {TProductCategory} from "@/type/type.ts";
+import useRenderPagination from "@/hook/management/useRenderPagination.tsx";
+import {toast} from "@/components/ui/use-toast.ts";
 
-export default function CategoryList(){
-    const {data} = useProductCategories();
+export default function CategoryList() {
+    const {page} = useCurrentPage();
+    const {data: categories} = useCustomQueryByPage<TProductCategory>(
+        "product-Categories",
+        page,
+    );
+    
+    const [, setSearchParams] = useSearchParams();
 
-    const {mutate} = useDeleteQuery("categories")
+    const mutation = useDeleteQuery("product-Categories");
 
     const navigate = useNavigate();
+
+    const paginationElement = useRenderPagination({next: categories?.next, prev: categories?.prev, page: page});
+
+    const handleDelete = async (id: string) => {
+        await mutation.mutateAsync({url: "product-Categories", id});
+        // @ts-expect-error categories !== null
+        if (categories?.items % 5 === 1) {
+            // @ts-expect-error categories !== null
+            setSearchParams({page: String(Math.ceil((categories?.items / 5) - 1))});
+        }
+
+        toast({description: "Successfully Deleted"});
+    };
+
 
     return (
         <div className="w-[80%] flex flex-col m-8">
@@ -36,8 +60,8 @@ export default function CategoryList(){
                 <TableHeader>
                     <TableRow>
                         {
-                            data ? (
-                                Object.keys(data[0]).map((key) => (
+                            categories ? (
+                                Object.keys(categories.data[0]).map((key) => (
                                     <TableHead key={key} className="w-[100px]">{capitalize(key)}</TableHead>
                                 ))
                             ) : null
@@ -47,8 +71,8 @@ export default function CategoryList(){
                 </TableHeader>
                 <TableBody>
                     {
-                        data ? (
-                            data.map((category) => (
+                        categories ? (
+                            categories.data.map((category) => (
                                 <TableRow key={category.id}>
                                     {Object.values(category).map((value) => (
                                         <TableCell key={value} className="font-mediun">{value}</TableCell>
@@ -62,9 +86,11 @@ export default function CategoryList(){
                                                 <DropdownMenuContent sideOffset={6} className="min-w-6">
                                                     <DropdownMenuItem className="flex flex-col">
                                                         <Button className="w-full mb-2" variant={"outline"}
-                                                                onClick={() => mutate({url: "product-Categories", id:category.id.toString()})}>Delete</Button>
-                                                        <Button className={"w-full h-full px-0 py-0"} variant={"outline"}>
-                                                            <Link to={"edit"} state={category} className={"w-full py-2 "}>Edit</Link>
+                                                                onClick={async () => await handleDelete(category.id.toString())}>Delete</Button>
+                                                        <Button className={"w-full h-full px-0 py-0"}
+                                                                variant={"outline"}>
+                                                            <Link to={`edit/${category.id}`}
+                                                                  className={"w-full py-2 "}>Edit</Link>
                                                         </Button>
                                                     </DropdownMenuItem>
                                                 </DropdownMenuContent>
@@ -84,6 +110,8 @@ export default function CategoryList(){
 
                 </TableBody>
             </Table>
+
+            {paginationElement}
         </div>
-    )
+    );
 }

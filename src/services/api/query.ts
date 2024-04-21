@@ -1,5 +1,5 @@
-import {getProductByCode, getProductCategories, getProductsByPage} from "./productApi.ts";
-import {keepPreviousData, useQuery} from "@tanstack/react-query";
+import {getProductByCode, getProductCategories} from "./productApi.ts";
+import {useQuery} from "@tanstack/react-query";
 
 
 export const productByCodeQuery = (productCode: string) => ({
@@ -7,18 +7,10 @@ export const productByCodeQuery = (productCode: string) => ({
     queryFn: async () => getProductByCode(productCode),
 });
 
-export const useProductByPage = (page: number) => {
-  return useQuery({
-    queryKey: ["products", page],
-    queryFn: async () => getProductsByPage(page),
-    staleTime: 1000 * 60 * 60,
-    placeholderData: keepPreviousData,
-  })
-}
 
-export const useProductCategories = () => {
-  return useQuery({
-    queryKey: ["categories"],
-    queryFn: getProductCategories,
-  })
-}
+export const useCategories = () => {
+    return useQuery({
+        queryKey: ["categories"],
+        queryFn: getProductCategories,
+    });
+};

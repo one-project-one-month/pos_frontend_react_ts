@@ -1,6 +1,6 @@
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import {TJSONServerPaginationResponse, TProduct, TProductCategory} from "@/type/type.ts";
-import {editCategoryById, editProductById, getProductsByPage, postProduct} from "@/services/api/productApi.ts";
+import {TJSONServerPaginationResponse, TProduct} from "@/type/type.ts";
+import {editProductById, getProductsByPage, postProduct} from "@/services/api/productApi.ts";
 import {produce} from "immer";
 
 export function useEditProduct(page: number, productId: number) {
@@ -35,36 +35,6 @@ export function useEditProduct(page: number, productId: number) {
     });
 }
 
-export function useEditCategory(productCategoryId: number) {
-    const queryClient = useQueryClient();
-
-    return useMutation({
-        mutationFn: async (data: TProductCategory) => {
-            return await editCategoryById(productCategoryId, data);
-        },
-        onSuccess: async (data) => {
-            queryClient.setQueryData<TProductCategory[]>(
-                ["categories"],
-                (oldCategories) => {
-                    if (!oldCategories) return;
-                    return produce(oldCategories, draft => {
-                        draft.map(category => {
-                            if (category.id === data.id) {
-                                category.productCategoryCode = data.productCategoryCode;
-                                category.productCategoryName = data.productCategoryName;
-                            }
-                        });
-                    });
-                }
-            );
-        },
-        onSettled: async () => {
-            return await queryClient.invalidateQueries({queryKey: ["categories"]});
-        }
-
-    });
-}
-
 export const useCreateProduct = (page: number) => {
 
     const queryClient = useQueryClient();
@@ -86,7 +56,6 @@ export const useCreateProduct = (page: number) => {
                 queryClient.setQueryData<TJSONServerPaginationResponse<TProduct[]>>(
                     ["products", pages],
                     (oldProducts) => {
-                        console.log("we are in upper route  ");
                         if (!oldProducts) return;
                         return produce(oldProducts, productDraft => {
                             productDraft.items += 1;
@@ -100,7 +69,6 @@ export const useCreateProduct = (page: number) => {
                 queryClient.setQueryData<TJSONServerPaginationResponse<TProduct[]>>(
                     ["products", pages],
                     (oldProducts) => {
-                        console.log("we are in lower route  ");
                         if (!oldProducts) return;
                         return produce(oldProducts, productDraft => {
                             productDraft.items += 1;

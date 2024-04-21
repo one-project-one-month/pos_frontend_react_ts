@@ -1,5 +1,5 @@
 import {TProductCategory} from "@/type/type.ts";
-import {useProductCategoryFilterState} from "@/store/productCategoryFilerStore.ts";
+import {useProductFilterStore} from "@/store/productFilerStore.ts";
 import {
     DropdownMenu,
     DropdownMenuContent, DropdownMenuItem,
@@ -8,12 +8,12 @@ import {
 } from "@/components/ui/dropdown-menu.tsx";
 import {Badge} from "@/components/ui/badge.tsx";
 import {cn} from "@/lib/utils.ts";
-import {useProductCategories} from "@/services/api/query.ts";
+import {useCategories} from "@/services/api/query.ts";
 import {Link} from "react-router-dom";
 import {useCurrentPage} from "@/hook/useCurrentPage.ts";
 
 export default function ProductCategoryFilter() {
-    const {data} = useProductCategories();
+    const {data} = useCategories();
     const {page} = useCurrentPage();
 
     return (
@@ -49,7 +49,7 @@ export default function ProductCategoryFilter() {
 }
 
 function ProductCategoryFilterItem({data}: { data: TProductCategory }) {
-    const {currCategory, addCategory, removeCategory} = useProductCategoryFilterState();
+    const {currCategory, addCategory, removeCategory} = useProductFilterStore();
 
     const isAlreadyPresent = currCategory.includes(data.productCategoryCode)
 
@@ -83,7 +83,7 @@ function ProductCategoryFilterItem({data}: { data: TProductCategory }) {
 }
 
 function ProductCategoryAll() {
-    const {emptyCategory} = useProductCategoryFilterState();
+    const {emptyCategory} = useProductFilterStore();
 
     const onFilter = () => {
             emptyCategory();
