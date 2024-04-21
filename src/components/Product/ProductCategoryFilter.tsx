@@ -1,5 +1,5 @@
 import {TProductCategory} from "@/type/type.ts";
-import {useProductCategoryFilterState} from "@/store/productCategoryFilerStore.ts";
+import {useProductFilterStore} from "@/store/productFilerStore.ts";
 import {
     DropdownMenu,
     DropdownMenuContent, DropdownMenuItem,
@@ -49,7 +49,7 @@ export default function ProductCategoryFilter() {
 }
 
 function ProductCategoryFilterItem({data}: { data: TProductCategory }) {
-    const {currCategory, addCategory, removeCategory} = useProductCategoryFilterState();
+    const {currCategory, addCategory, removeCategory} = useProductFilterStore();
 
     const isAlreadyPresent = currCategory.includes(data.productCategoryCode)
 
@@ -83,7 +83,7 @@ function ProductCategoryFilterItem({data}: { data: TProductCategory }) {
 }
 
 function ProductCategoryAll() {
-    const {emptyCategory} = useProductCategoryFilterState();
+    const {emptyCategory} = useProductFilterStore();
 
     const onFilter = () => {
             emptyCategory();
