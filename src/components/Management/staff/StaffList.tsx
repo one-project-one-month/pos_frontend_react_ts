@@ -1,30 +1,41 @@
 import { useCustomQueryByPage } from "@/hook/management/useCustomQuery"
-import { Table, TableHead, TableHeader, TableBody, TableCell, TableRow } from "../../ui/table"
+import { Table, TableHead, TableHeader, TableBody, TableCell, TableRow, TableFooter } from "../../ui/table"
 
 import { TStaff } from "@/type/type"
 import { Button } from "../../ui/button"
-import { EllipsisVertical, Plus } from "lucide-react"
-import { useNavigate } from "react-router-dom"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuPortal, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Plus } from "lucide-react"
+import { useNavigate, useSearchParams } from "react-router-dom"
 import { useDeleteQuery } from "@/hook/management/useDeleteQuery"
 import { toast } from "@/components/ui/use-toast"
 import { capitalize } from "@/lib/utils"
+import DropdownComponnet from "@/components/ui/dropdown-component"
+import useRenderPagination from "@/hook/management/useRenderPagination"
+import { useCurrentPage } from "@/hook/useCurrentPage"
 
 
 
 
 const StaffList = () => {
+    const { page } = useCurrentPage()
+    const [, setSearchParams] = useSearchParams()
     const { data: staffs } = useCustomQueryByPage<TStaff>(
         "staffs",
-        1,
+        page,
     )
+
+    console.log(staffs)
     const { mutate } = useDeleteQuery("staffs")
     const navigate = useNavigate()
 
     const handleDelete = (id: string) => {
         mutate({ url: "staffs", id })
+        if (staffs?.items! % 5 === 1) {
+            setSearchParams({ page: String(Math.ceil((staffs?.items! / 5) - 1)) })
+        }
         toast({ description: "Successfully Deleted" })
     }
+
+    const paginationElement = useRenderPagination({ next: staffs?.next, prev: staffs?.prev, page: page })
 
 
 
@@ -65,19 +76,10 @@ const StaffList = () => {
                                         <TableCell key={value} className="font-mediun">{value}</TableCell>
                                     ))}
                                     <TableCell>
-                                        <DropdownMenu>
-                                            <DropdownMenuTrigger>
-                                                <EllipsisVertical />
-                                            </DropdownMenuTrigger>
-                                            <DropdownMenuPortal>
-                                                <DropdownMenuContent sideOffset={6} className="min-w-6">
-                                                    <DropdownMenuItem className="flex flex-col">
-                                                        <Button className="w-full  mb-2" variant={"outline"} onClick={() => handleDelete(staff.id)}>Delete</Button>
-                                                        <Button className="w-full" variant={"outline"} onClick={() => navigate(`edit/${staff.id}`)}>Edit</Button>
-                                                    </DropdownMenuItem>
-                                                </DropdownMenuContent>
-                                            </DropdownMenuPortal>
-                                        </DropdownMenu>
+                                        <DropdownComponnet>
+                                            <Button className="w-full  mb-2" variant={"outline"} onClick={() => handleDelete(staff.id)}>Delete</Button>
+                                            <Button className="w-full" variant={"outline"} onClick={() => navigate(`edit/${staff.id}`)}>Edit</Button>
+                                        </DropdownComponnet>
                                     </TableCell>
                                 </TableRow>
                             ))
@@ -90,6 +92,13 @@ const StaffList = () => {
                         )
                     }
                 </TableBody>
+                <TableFooter>
+                    <TableRow>
+                        <TableCell>
+                            {paginationElement}
+                        </TableCell>
+                    </TableRow>
+                </TableFooter>
             </Table>
         </div>
     )
