@@ -73,15 +73,24 @@ export interface TProductInCart {
 }
 
 export interface TInvoiceFormValues {
-  "Voucher No": string,
-  "Customers": string,
-  "Staffs": string,
-  "Payment Type": string,
-  "Payment Amount": number,
-  "Receive Amount": number,
+  voucherNo: string,
+  customers: string,
+  staffs: string,
+  paymentType: string,
+  paymentAmount: number,
+  receiveAmount: number,
 }
 
 export interface TInvoiceItemProps {
   label: string;
   value: string | number;
+}
+
+export interface DateTimeOptions {
+  year: 'numeric' | '2-digit' | undefined;
+  month: 'numeric' | '2-digit' | 'narrow' | 'short' | 'long' | undefined;
+  day: 'numeric' | '2-digit' | undefined;
+  hour: 'numeric' | '2-digit' | undefined;
+  minute: 'numeric' | '2-digit' | undefined;
+  hour12: boolean | undefined;
 }

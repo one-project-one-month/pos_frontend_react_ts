@@ -2,19 +2,16 @@ import * as React from "react"
 import {
     ColumnDef,
     ColumnFiltersState,
-    SortingState,
     VisibilityState,
     flexRender,
     getCoreRowModel,
     getFilteredRowModel,
     getPaginationRowModel,
-    getSortedRowModel,
     useReactTable,
 } from "@tanstack/react-table"
-import { ArrowUpDown, Plus } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-// import { Input } from "@/components/ui/input"
+import { Input } from "@/components/ui/input"
 import {
     Table,
     TableBody,
@@ -23,15 +20,6 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-// import {
-//   Pagination,
-//   PaginationContent,
-//   PaginationEllipsis,
-//   PaginationItem,
-//   PaginationLink,
-//   PaginationNext,
-//   PaginationPrevious,
-// } from "@/components/ui/pagination"
 
 import { useQuery } from "@tanstack/react-query"
 import { TInvoice } from "@/type/type.ts";
@@ -43,14 +31,11 @@ const SaleInvoiceHistory = () => {
         queryKey: ["invoice"],
         queryFn: getInvoices
     })
-
-    const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
         []
     )
     const [columnVisibility, setColumnVisibility] =
         React.useState<VisibilityState>({})
-    const [rowSelection, setRowSelection] = React.useState({})
 
     const navigate = useNavigate();
 
@@ -78,18 +63,14 @@ const SaleInvoiceHistory = () => {
         },
         {
             accessorKey: "saleInvoiceDateTime",
-            header: ({ column }) => {
+            header: () => {
                 return (
-                    <Button
-                        variant="ghost"
-                        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                    >
+                    <p>
                         Date
-                        <ArrowUpDown className="ml-2 h-4 w-4" />
-                    </Button>
+                    </p>
                 )
             },
-            cell: ({ row }) => <div className="lowercase">{row.getValue("saleInvoiceDateTime")}</div>,
+            cell: ({ row }) => <div>{row.getValue("saleInvoiceDateTime")}</div>,
         },
         {
             accessorKey: "totalAmount",
@@ -98,7 +79,7 @@ const SaleInvoiceHistory = () => {
                 const amount = parseFloat(row.getValue("totalAmount"))
                 const formatted = new Intl.NumberFormat("en-US", {
                     style: "currency",
-                    currency: "MMK",
+                    currency: "USD",
                 }).format(amount)
 
                 return <div>{formatted}</div>
@@ -122,33 +103,30 @@ const SaleInvoiceHistory = () => {
         {
             accessorKey: "detail",
             header: "Detail",
-            cell: ({ row }) => (
-                <p className="underline cursor-pointer" onClick={() => navigate(`/sale-invoice/detail`,
-                    {
-                        state: {
-                            voucherNo: row.getValue("voucherNo")
-                        }
-                    })}>Detail</p>
-            )
+            cell: ({ row }) => {
+                return (
+                    <p className="underline cursor-pointer" onClick={() => navigate(`/sale-invoice/detail`,
+                        {
+                            state: {
+                                detail: row?.original
+                            }
+                        })}>Detail</p>
+                )
+            }
         }
     ]
 
     const table = useReactTable({
         data: data ? data : [],
         columns,
-        onSortingChange: setSorting,
         onColumnFiltersChange: setColumnFilters,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
-        getSortedRowModel: getSortedRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
         onColumnVisibilityChange: setColumnVisibility,
-        onRowSelectionChange: setRowSelection,
         state: {
-            sorting,
             columnFilters,
             columnVisibility,
-            rowSelection,
         },
     })
 
@@ -156,14 +134,14 @@ const SaleInvoiceHistory = () => {
         <div className="w-[80%] mx-auto my-10">
             <div className="w-full">
                 <div className="flex justify-end gap-5 py-4">
-                    {/* <Input
-            placeholder="Filter voucher no...."
-            value={(table.getColumn("voucherNo")?.getFilterValue() as string) ?? ""}
-            onChange={(event) =>
-              table.getColumn("voucherNo")?.setFilterValue(event.target.value)
-            }
-            className="max-w-sm"
-          /> */}
+                    <Input
+                        placeholder="Filter voucher no...."
+                        value={(table.getColumn("voucherNo")?.getFilterValue() as string) ?? ""}
+                        onChange={(event) =>
+                        table.getColumn("voucherNo")?.setFilterValue(event.target.value)
+                        }
+                        className="max-w-sm"
+                    />
                 </div>
                 <div className="rounded-md border">
                     <Table>
@@ -215,52 +193,26 @@ const SaleInvoiceHistory = () => {
                         </TableBody>
                     </Table>
                 </div>
-                {/* <div className="flex items-center justify-end space-x-2 py-4">
-          <div className="space-x-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => table.previousPage()}
-              disabled={!table.getCanPreviousPage()}
-            >
-              Previous
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => table.nextPage()}
-              disabled={!table.getCanNextPage()}
-            >
-              Next
-            </Button>
-          </div>
-        </div> */}
-                {/* <div className="flex justify-end space-x-2 py-4">
-          <Pagination>
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious href="#" />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">1</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#" isActive>
-                  2
-                </PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">3</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationNext href="#" />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
-        </div> */}
+                <div className="flex items-center justify-end space-x-2 py-4">
+                <div className="space-x-2">
+                    <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => table.previousPage()}
+                    disabled={!table.getCanPreviousPage()}
+                    >
+                    Previous
+                    </Button>
+                    <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => table.nextPage()}
+                    disabled={!table.getCanNextPage()}
+                    >
+                    Next
+                    </Button>
+                </div>
+                </div>
             </div>
         </div>
     )
