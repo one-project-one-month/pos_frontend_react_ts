@@ -35,7 +35,7 @@ const useRenderPagination = ({ next, prev, page, hidden }: ProductListPagination
     };
 
     return (
-        <Pagination className={cn("max-w-[600px] mt-4 ml-0", hidden && "hidden")}>
+        <Pagination className={cn("max-w-[600px] mt-4", hidden && "hidden")}>
             <PaginationContent>
                 <PaginationItem>
                     <Button onClick={prevBtnHandler} disabled={!prev}>Previous</Button>
