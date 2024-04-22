@@ -66,7 +66,7 @@ export default function CategoryList() {
                                 ))
                             ) : null
                         }
-                        <TableHead>Actions</TableHead>
+                        <TableHead key={"action"}>Actions</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
