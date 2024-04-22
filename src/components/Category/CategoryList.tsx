@@ -15,6 +15,10 @@ import {useCustomQueryByPage} from "@/hook/management/useCustomQuery.ts";
 import {TProductCategory} from "@/type/type.ts";
 import useRenderPagination from "@/hook/management/useRenderPagination.tsx";
 import {toast} from "@/components/ui/use-toast.ts";
+import {useFilterByKey} from "@/hook/useFilterByKey.ts";
+import {ChangeEvent} from "react";
+import {SearchBar} from "@/components/Product/SearchBar.tsx";
+
 
 export default function CategoryList() {
     const {page} = useCurrentPage();
@@ -41,11 +45,20 @@ export default function CategoryList() {
         toast({description: "Successfully Deleted"});
     };
 
+    const {filteredData, setSearchString} = useFilterByKey<TProductCategory>(categories?.data, "productCategoryName")
+
+    const inputHandler = (evt: ChangeEvent<HTMLInputElement>) => {
+        setSearchString(evt.target.value);
+    };
+
 
     return (
         <div className="w-[80%] flex flex-col m-8">
 
-            <div className="flex justify-end mb-2">
+            <div className="flex items-center justify-end gap-x-10  mb-2">
+
+                <SearchBar handler={inputHandler} label={"Search Category"} placeholder={"Search Category by Name"}/>
+
                 <Button
                     variant="outline"
                     size="default"
@@ -70,8 +83,8 @@ export default function CategoryList() {
                 </TableHeader>
                 <TableBody>
                     {
-                        categories ? (
-                            categories.data.map((category) => (
+                        filteredData ? (
+                            filteredData.map((category) => (
                                 <TableRow key={category.id}>
                                     {Object.values(category).map((value) => (
                                         <TableCell key={value} className="font-mediun">{value}</TableCell>
