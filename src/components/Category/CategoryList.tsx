@@ -33,9 +33,8 @@ export default function CategoryList() {
 
     const handleDelete = async (id: string) => {
         await mutation.mutateAsync({url: "product-Categories", id});
-        // @ts-expect-error categories !== null
-        if (categories?.items % 5 === 1) {
-            // @ts-expect-error categories !== null
+
+        if (categories && categories?.items % 5 === 1) {
             setSearchParams({page: String(Math.ceil((categories?.items / 5) - 1))});
         }
 
