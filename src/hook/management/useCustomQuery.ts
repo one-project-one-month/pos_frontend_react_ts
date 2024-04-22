@@ -32,5 +32,6 @@ export const useCustomQueryByPage = <T>(key: string, page: number) => {
     queryKey: queryKey,
     queryFn: () => queryByPage(key, page),
     placeholderData: keepPreviousData,
+    staleTime: 5 * 60 * 1000,
   });
 };

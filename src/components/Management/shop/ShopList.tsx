@@ -10,12 +10,13 @@ import { capitalize } from "@/lib/utils"
 import { useCurrentPage } from "@/hook/useCurrentPage"
 import useRenderPagination from "@/hook/management/useRenderPagination"
 import DropdownComponnet from "@/components/ui/dropdown-component"
+import Loading from "@/components/ui/loading"
 
 
 const ShopList = () => {
     const [, setSearchParams] = useSearchParams()
     const { page } = useCurrentPage()
-    const { data: shops } = useCustomQueryByPage<TShop>(
+    const { data: shops, isFetching, isLoading } = useCustomQueryByPage<TShop>(
         "shops",
         page,
     )
@@ -34,6 +35,10 @@ const ShopList = () => {
 
 
     const paginationElement = useRenderPagination({ next: shops?.next, prev: shops?.prev, page: page })
+
+    if (isLoading) {
+        return <h1>Loading</h1>
+    }
 
     return (
         <div className="w-[80%] flex flex-col m-8">
@@ -84,6 +89,15 @@ const ShopList = () => {
                         </TableRow>
 
                     }
+                    {isFetching && (
+                        <TableRow>
+                            <TableCell>
+                                <Loading />
+                            </TableCell>
+                        </TableRow>
+                    )}
+
+
                 </TableBody>
                 <TableFooter>
                     <TableRow>

@@ -11,9 +11,9 @@ const CustomerForm = () => {
     const { toast } = useToast()
     const { register, handleSubmit, formState: { errors } } = useForm<Inputs>()
     const formElements = useRenderForm({ formconst: customerFormConst, errors, register, title: "Customer" })
-    const mutation = useCreateNew<Inputs>("customers")
+    const { mutateAsync } = useCreateNew<Inputs>("customers")
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        await mutation.mutateAsync({ formData: data, route: 'customers' })
+        await mutateAsync({ formData: data, route: 'customers' })
         navigate('..')
         toast({ description: "Successfully added" })
     }

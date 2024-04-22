@@ -17,9 +17,9 @@ const ShopForm = () => {
     const pathName = 'shops'
     const { register, handleSubmit, formState: { errors } } = useForm<Inputs>()
     const formElements = useRenderForm({ formconst: shopFormConst, errors, register, title: "Shop" })
-    const { mutate } = useCreateNew(pathName);
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
-        mutate({ formData: data, route: pathName })
+    const { mutateAsync } = useCreateNew(pathName);
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        await mutateAsync({ formData: data, route: pathName })
         navigate('..')
         toast({ description: "Successfully added" })
     }
