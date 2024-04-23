@@ -1,7 +1,7 @@
 import { useCustomQueryByPage } from "@/hook/management/useCustomQuery"
 import { TCustomer } from "@/type/type"
 import { Button } from "../../ui/button"
-import { Plus } from "lucide-react"
+import { BadgeX, Plus } from "lucide-react"
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../ui/table"
 import { useNavigate, useSearchParams } from "react-router-dom"
@@ -11,6 +11,8 @@ import { capitalize } from "@/lib/utils"
 import DropdownComponnet from "@/components/ui/dropdown-component"
 import { useCurrentPage } from "@/hook/useCurrentPage"
 import useRenderPagination from "@/hook/management/useRenderPagination"
+import { useFilterByKey } from "@/hook/useFilterByKey"
+import { SearchBar } from "@/components/Product/SearchBar"
 
 
 
@@ -27,6 +29,11 @@ const CustomerList = () => {
 
     const navigate = useNavigate()
 
+    const { filteredData, setSearchString } = useFilterByKey<TCustomer>(customers?.data, "customerName")
+    const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchString(event.target.value)
+    }
+
     const handleDelete = (id: string) => {
         mutate({ url: "customers", id })
         if (customers?.items! % 5 === 1) {
@@ -42,7 +49,12 @@ const CustomerList = () => {
 
     return (
         <div className="flex flex-col m-8">
-            <div className="flex justify-end mb-2">
+            <div className="flex justify-between mb-2">
+                <SearchBar
+                    handler={inputHandler}
+                    label={"Search Customer"}
+                    placeholder={"Search Customer by Name"}
+                />
                 <Button
                     variant="outline"
                     size="default"
@@ -69,9 +81,9 @@ const CustomerList = () => {
                 <TableBody>
 
                     {
-                        customers?.data ? (
+                        filteredData ? (
                             <>
-                                {customers.data.map((customer) => (
+                                {filteredData.map((customer) => (
                                     <TableRow key={customer.id}>
                                         {Object.values(customer).map((value) => {
                                             return (
@@ -88,13 +100,7 @@ const CustomerList = () => {
                                         </TableCell>
                                     </TableRow>
                                 ))}
-                                <TableRow>
-                                    <TableCell>
-                                        {paginationElement}
-                                    </TableCell>
-                                </TableRow>
                             </>
-
 
                         ) : <TableRow>
                             <TableCell>
@@ -105,6 +111,7 @@ const CustomerList = () => {
                     }
                 </TableBody>
             </Table>
+            {paginationElement}
         </div>
     )
 }
