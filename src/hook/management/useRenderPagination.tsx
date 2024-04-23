@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button.tsx";
 
 
 import { cn } from "@/lib/utils.ts";
-import {useSearchParams} from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 type ProductListPaginationProps =
     {
@@ -21,7 +21,7 @@ const useRenderPagination = ({ next, prev, page, hidden }: ProductListPagination
             setSearchParams(prevState => {
                 prevState.set("page", next.toString())
                 return prevState
-            } )
+            })
         }
     };
 
@@ -33,6 +33,8 @@ const useRenderPagination = ({ next, prev, page, hidden }: ProductListPagination
             });
         }
     };
+
+
 
     return (
         <Pagination className={cn("max-w-[600px] mt-4", hidden && "hidden")}>

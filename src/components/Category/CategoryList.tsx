@@ -1,51 +1,51 @@
-import {Button} from "@/components/ui/button.tsx";
-import {EllipsisVertical, Plus} from "lucide-react";
-import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table.tsx";
+import { Button } from "@/components/ui/button.tsx";
+import { EllipsisVertical, Plus } from "lucide-react";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table.tsx";
 import {
     DropdownMenu,
     DropdownMenuContent, DropdownMenuItem,
     DropdownMenuPortal,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu.tsx";
-import {Link, useNavigate, useSearchParams} from "react-router-dom";
-import {capitalize} from "@/lib/utils.ts";
-import {useDeleteQuery} from "@/hook/management/useDeleteQuery.ts";
-import {useCurrentPage} from "@/hook/useCurrentPage.ts";
-import {useCustomQueryByPage} from "@/hook/management/useCustomQuery.ts";
-import {TProductCategory} from "@/type/type.ts";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { capitalize } from "@/lib/utils.ts";
+import { useDeleteQuery } from "@/hook/management/useDeleteQuery.ts";
+import { useCurrentPage } from "@/hook/useCurrentPage.ts";
+import { useCustomQueryByPage } from "@/hook/management/useCustomQuery.ts";
+import { TProductCategory } from "@/type/type.ts";
 import useRenderPagination from "@/hook/management/useRenderPagination.tsx";
-import {toast} from "@/components/ui/use-toast.ts";
-import {useFilterByKey} from "@/hook/useFilterByKey.ts";
-import {ChangeEvent} from "react";
-import {SearchBar} from "@/components/Product/SearchBar.tsx";
+import { toast } from "@/components/ui/use-toast.ts";
+import { useFilterByKey } from "@/hook/useFilterByKey.ts";
+import { ChangeEvent } from "react";
+import { SearchBar } from "@/components/Product/SearchBar.tsx";
 
 
 export default function CategoryList() {
-    const {page} = useCurrentPage();
-    const {data: categories} = useCustomQueryByPage<TProductCategory>(
+    const { page } = useCurrentPage();
+    const { data: categories } = useCustomQueryByPage<TProductCategory>(
         "product-Categories",
         page,
     );
-    
+
     const [, setSearchParams] = useSearchParams();
 
     const mutation = useDeleteQuery("product-Categories");
 
     const navigate = useNavigate();
 
-    const paginationElement = useRenderPagination({next: categories?.next, prev: categories?.prev, page: page});
+    const paginationElement = useRenderPagination({ next: categories?.next, prev: categories?.prev, page });
 
     const handleDelete = async (id: string) => {
-        await mutation.mutateAsync({url: "product-Categories", id});
+        await mutation.mutateAsync({ url: "product-Categories", id });
 
         if (categories && categories?.items % 5 === 1) {
-            setSearchParams({page: String(Math.ceil((categories?.items / 5) - 1))});
+            setSearchParams({ page: String(Math.ceil((categories?.items / 5) - 1)) });
         }
 
-        toast({description: "Successfully Deleted"});
+        toast({ description: "Successfully Deleted" });
     };
 
-    const {filteredData, setSearchString} = useFilterByKey<TProductCategory>(categories?.data, "productCategoryName")
+    const { filteredData, setSearchString } = useFilterByKey<TProductCategory>(categories?.data, "productCategoryName")
 
     const inputHandler = (evt: ChangeEvent<HTMLInputElement>) => {
         setSearchString(evt.target.value);
@@ -57,14 +57,14 @@ export default function CategoryList() {
 
             <div className="flex items-center justify-end gap-x-10  mb-2">
 
-                <SearchBar handler={inputHandler} label={"Search Category"} placeholder={"Search Category by Name"}/>
+                <SearchBar handler={inputHandler} label={"Search Category"} placeholder={"Search Category by Name"} />
 
                 <Button
                     variant="outline"
                     size="default"
                     onClick={() => navigate("create")}
                 >
-                    <Plus size={18} className="mr-2"/> Add Categories
+                    <Plus size={18} className="mr-2" /> Add Categories
                 </Button>
             </div>
 
@@ -92,17 +92,17 @@ export default function CategoryList() {
                                     <TableCell className={"w-2"}>
                                         <DropdownMenu>
                                             <DropdownMenuTrigger>
-                                                <EllipsisVertical className={"w-fit"}/>
+                                                <EllipsisVertical className={"w-fit"} />
                                             </DropdownMenuTrigger>
                                             <DropdownMenuPortal>
                                                 <DropdownMenuContent sideOffset={6} className="min-w-6">
                                                     <DropdownMenuItem className="flex flex-col">
                                                         <Button className="w-full mb-2" variant={"outline"}
-                                                                onClick={async () => await handleDelete(category.id.toString())}>Delete</Button>
+                                                            onClick={async () => await handleDelete(category.id.toString())}>Delete</Button>
                                                         <Button className={"w-full h-full px-0 py-0"}
-                                                                variant={"outline"}>
+                                                            variant={"outline"}>
                                                             <Link to={`edit/${category.id}`}
-                                                                  className={"w-full py-2 "}>Edit</Link>
+                                                                className={"w-full py-2 "}>Edit</Link>
                                                         </Button>
                                                     </DropdownMenuItem>
                                                 </DropdownMenuContent>
@@ -117,9 +117,7 @@ export default function CategoryList() {
                                 No Data
                             </TableCell>
                         </TableRow>
-
                     }
-
                 </TableBody>
             </Table>
 
