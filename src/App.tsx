@@ -21,6 +21,8 @@ import StaffEditForm from "./components/Management/staff/StaffEditForm";
 import CategoryEditForm from "@/components/Category/CategoryEditForm.tsx";
 import CategoryCreateForm from "@/components/Category/CategoryCreateForm.tsx";
 import ProductCreateFrom from "@/components/Product/ProductForm/ProductCreateFrom.tsx";
+import { Table } from "lucide-react";
+import DataTablePage from "./components/Management/shop/Page";
 
 
 
@@ -41,7 +43,7 @@ const router = createBrowserRouter([
                         path: "shops",
                         children: [
 
-                            { index: true, element: <Shops /> },
+                            { index: true, element: <DataTablePage /> },
                             { path: "edit/:shopId", element: <ShopEditForm /> },
                             { path: "create", element: <ShopForm /> }
                         ]
@@ -66,14 +68,16 @@ const router = createBrowserRouter([
             {
                 path: "products",
                 children: [
-                    {index: true, element: <Products/>},
-                    {path: "edit/:productId", element: <ProductEditForm/>},
-                    {path: "create", element: <ProductCreateFrom/>},
-                    {path: "category", children: [
-                            {index: true, element: <ProductsCategory/>},
-                            {path: "edit/:categoryId", element: <CategoryEditForm/>},
-                            {path: "create", element: <CategoryCreateForm/>}
-                        ]}
+                    { index: true, element: <Products /> },
+                    { path: "edit/:productId", element: <ProductEditForm /> },
+                    { path: "create", element: <ProductCreateFrom /> },
+                    {
+                        path: "category", children: [
+                            { index: true, element: <ProductsCategory /> },
+                            { path: "edit/:categoryId", element: <CategoryEditForm /> },
+                            { path: "create", element: <CategoryCreateForm /> }
+                        ]
+                    }
                 ]
             },
             {
