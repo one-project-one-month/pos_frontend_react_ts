@@ -95,15 +95,11 @@ const SaleInvoice = () => {
   const ref = useRef<HTMLFormElement>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { data: customers } = useCustomQuery<TCustomer[]>(
-    "customers",
-    () => queryFn("customers"),
-    0,
+  const { data: customers } = useCustomQuery<TCustomer>(
+    "customers"
   )
-  const { data: staffs } = useCustomQuery<TStaff[]>(
-    "staffs",
-    () => queryFn("staffs"),
-    0,
+  const { data: staffs } = useCustomQuery<TStaff>(
+    "staffs"
   )
   const orderProducts = useBillingCartStore((state) => state.cart);
 
@@ -113,7 +109,7 @@ const SaleInvoice = () => {
   const totalAmount: number = subTotal - 50
   const currentDate = new Date();
 
-  const options: DateTimeOptions  = {
+  const options: DateTimeOptions = {
     day: '2-digit',
     month: 'short',
     year: 'numeric',
@@ -211,11 +207,11 @@ const SaleInvoice = () => {
                   <InvoiceItem label="Total" value={`${totalAmount} MMK`} />
                 </div>
               </div>
-              </>
-              : <></>
-            }
-           
-        </div>
+            </>
+            : <></>
+        }
+
+      </div>
 
     </div>
   )

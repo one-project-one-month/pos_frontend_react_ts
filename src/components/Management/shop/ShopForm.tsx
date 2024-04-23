@@ -24,7 +24,6 @@ const ShopForm = () => {
         toast({ description: "Successfully added" })
     }
 
-
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="w-4/6 m-auto">
             {formElements}

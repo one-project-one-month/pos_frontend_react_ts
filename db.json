@@ -1,146 +1,4 @@
 {
-  "shops": [
-    {
-      "id": "1",
-      "shopCode": "SHOP001",
-      "shopName": "Lucky Star Grocery",
-      "mobileNo": "09111111111",
-      "address": "Bahan Township, Yangon"
-    },
-    {
-      "id": "2",
-      "shopCode": "SHOP002",
-      "shopName": "Golden Dragon Electronics",
-      "mobileNo": "09222222222",
-      "address": "Tamwe Township, Yangon"
-    },
-    {
-      "id": "3",
-      "shopCode": "SHOP003",
-      "shopName": "Cozy Corner Cafe",
-      "mobileNo": "09333333333",
-      "address": "Dagon Township, Yangon"
-    },
-    {
-      "id": "4",
-      "shopCode": "SHOP004",
-      "shopName": "Tharaphu Fashion Boutique",
-      "mobileNo": "09444444444",
-      "address": "Kyauktada Township, Yangon"
-    },
-    {
-      "id": "5",
-      "shopCode": "SHOP005",
-      "shopName": "Mingalar Supermarket",
-      "mobileNo": "09555555555",
-      "address": "Pabedan Township, Yangon"
-    },
-    {
-      "id": "19",
-      "shopCode": "SHOP019",
-      "shopName": "Jade Harmony Jewelry",
-      "mobileNo": "09999999999",
-      "address": "Bahan Township, Yangon"
-    },
-    {
-      "id": "20",
-      "shopCode": "SHOP020",
-      "shopName": "Sunrise Book Store",
-      "mobileNo": "09888888888",
-      "address": "Lanmadaw Township, Yangon"
-    },
-    {
-      "id": "21",
-      "shopCode": "SHOP021",
-      "shopName": "Shwe Pyi Daw Flowers",
-      "mobileNo": "09101010101",
-      "address": "Insein Township, Yangon"
-    },
-    {
-      "id": "22",
-      "shopCode": "SHOP022",
-      "shopName": "MayKhaung Restaurant",
-      "mobileNo": "09202020202",
-      "address": "Hlaing Township, Yangon"
-    },
-    {
-      "id": "23",
-      "shopCode": "SHOP023",
-      "shopName": "Bagan Tech",
-      "mobileNo": "09303030303",
-      "address": "Thingangyun Township, Yangon"
-    },
-    {
-      "id": "24",
-      "shopCode": "SHOP024",
-      "shopName": "Aung Mingalar Bakery",
-      "mobileNo": "09404040404",
-      "address": "Botataung Township, Yangon"
-    },
-    {
-      "id": "25",
-      "shopCode": "SHOP025",
-      "shopName": "Harmony Beauty Salon",
-      "mobileNo": "09505050505",
-      "address": "Sesotho Township, Yangon"
-    },
-    {
-      "id": "40",
-      "shopCode": "SHOP040",
-      "shopName": "Lucky Star Laundry",
-      "mobileNo": "09909090909",
-      "address": "Bahan Township, Yangon"
-    },
-    {
-      "id": "41",
-      "shopCode": "SHOP041",
-      "shopName": "Dream House Furniture",
-      "mobileNo": "09808080808",
-      "address": "North Okkalapa Township, Yangon"
-    },
-    {
-      "id": "42",
-      "shopCode": "SHOP042",
-      "shopName": "Starlight Mini Mart",
-      "mobileNo": "09151515151",
-      "address": "Ahlone Township, Yangon"
-    },
-    {
-      "id": "43",
-      "shopCode": "SHOP043",
-      "shopName": "Tech Dragon Computers",
-      "mobileNo": "09252525252",
-      "address": "Cocokyang Township, Yangon"
-    },
-    {
-      "id": "44",
-      "shopCode": "SHOP044",
-      "shopName": "Techoland Computers",
-      "mobileNo": "09353535353",
-      "address": "Thaketa Township, Yangon"
-    },
-    {
-      "id": "45",
-      "shopCode": "SHOP045",
-      "shopName": "Aung Mingalar Bakery (North)",
-      "mobileNo": "09454545454",
-      "address": "North Okkalapa Township, Yangon"
-    },
-    {
-      "id": "46",
-      "shopCode": "SHOP046",
-      "shopName": "Serene Spa",
-      "mobileNo": "09555555555",
-      "address": "Bahan Township, Yangon"
-    },
-    {
-      "id": "134d",
-      "shopCode": "SHOP90",
-      "shopName": "E Shop",
-      "mobileNo": "9876543210",
-      "address": "Nay Pyi Thaw"
-    }
-  ],
   "products": [
     {
       "id": "1",
@@ -162,6 +20,13 @@
       "productName": "Headphones",
       "price": 99,
       "productCategoryCode": "Accessories"
+    },
+    {
+      "id": "4",
+      "productCode": "P004",
+      "productName": "Tablet",
+      "price": 499,
+      "productCategoryCode": "PC"
     },
     {
       "id": "5",
@@ -227,7 +92,7 @@
     {
       "id": "3",
       "productCategoryCode": "Accessories",
-      "productCategoryName": "Accessories Items"
+      "productCategoryName": "Accessories"
     },
     {
       "id": "4",
@@ -238,161 +103,107 @@
       "id": "5",
       "productCategoryCode": "Electronics",
       "productCategoryName": "Electronic Devices"
+    }
+  ],
+  "shops": [
+    {
+      "id": "6",
+      "shopCode": "SHOP1224",
+      "shopName": "Life is Good",
+      "mobileNo": "09666777",
+      "address": "Bangkok"
     },
     {
-      "id": "6926",
-      "productCategoryCode": "STV",
-      "productCategoryName": "Super TV"
+      "id": "7",
+      "shopCode": "SHOP789",
+      "shopName": "HP",
+      "mobileNo": "09222222",
+      "address": "Yangon"
+    },
+    {
+      "id": "8",
+      "shopCode": "SHOP6782",
+      "shopName": "Mini Mart",
+      "mobileNo": "123455555",
+      "address": "Mandalay"
+    },
+    {
+      "id": "9",
+      "shopCode": "SHOP88932",
+      "shopName": "KFC",
+      "mobileNo": "09555556667",
+      "address": "Mawamyine"
+    },
+    {
+      "id": "971d",
+      "shopCode": "SHOP978",
+      "shopName": "FashinShop",
+      "mobileNo": "09766555322",
+      "address": "Nay Pyi Thaw"
+    },
+    {
+      "id": "c430",
+      "shopCode": "SHOP997",
+      "shopName": "Ocean",
+      "mobileNo": "7777777777",
+      "address": "Mawlamyine"
+    },
+    {
+      "id": "c4e2",
+      "shopCode": "SHOP9",
+      "shopName": "Fashion Shop",
+      "mobileNo": "0999999999",
+      "address": "Yangon"
     }
   ],
   "staffs": [
     {
-      "id": "4",
-      "staffCode": "S004",
-      "staffName": "Staff 4",
-      "dateOfBirth": "1990-01-01",
-      "mobileNo": 5551234568,
-      "address": "790 Oak St, Villagetown, USA",
+      "id": "3",
+      "staffCode": "S003",
+      "staffName": "Ryab",
+      "dateOfBirth": "1988-11-10",
+      "mobileNo": 5551234567,
+      "address": "789 Oak St, Villagetown, USA",
       "gender": "Male",
       "position": "Sales Associate"
+    },
+    {
+      "id": "4",
+      "staffCode": "S004",
+      "staffName": "Sarah Lee",
+      "dateOfBirth": "1995-05-03",
+      "mobileNo": 2223334444,
+      "address": "321 Pine St, Hamletville, USA",
+      "gender": "Female",
+      "position": "Assistant Manager"
     },
     {
       "id": "5",
       "staffCode": "S005",
-      "staffName": "Staff 5",
-      "dateOfBirth": "1991-01-01",
-      "mobileNo": 5551234569,
-      "address": "791 Oak St, Villagetown, USA",
-      "gender": "Female",
-      "position": "Sales Associate"
+      "staffName": "David Chen",
+      "dateOfBirth": "1987-02-18",
+      "mobileNo": 7778889999,
+      "address": " 555 Maple St, Boroughville, USA",
+      "gender": "Male",
+      "position": "Storekeeper"
     },
     {
       "id": "6",
       "staffCode": "S006",
-      "staffName": "Staff 6",
-      "dateOfBirth": "1992-01-01",
-      "mobileNo": 5551234570,
-      "address": "792 Oak St, Villagetown, USA",
-      "gender": "Male",
-      "position": "Sales Associate"
-    },
-    {
-      "id": "7",
-      "staffCode": "S007",
-      "staffName": "Staff 7",
-      "dateOfBirth": "1993-01-01",
-      "mobileNo": 5551234571,
-      "address": "793 Oak St, Villagetown, USA",
+      "staffName": "Jennie",
+      "dateOfBirth": "1990-05-18",
+      "mobileNo": 990003333,
+      "address": " 555 Maple St, Boroughville, USA",
       "gender": "Female",
-      "position": "Sales Associate"
+      "position": "Storekeeper"
     },
     {
-      "id": "8",
-      "staffCode": "S008",
-      "staffName": "Staff 8",
-      "dateOfBirth": "1994-01-01",
-      "mobileNo": 5551234572,
-      "address": "794 Oak St, Villagetown, USA",
-      "gender": "Male",
-      "position": "Sales Associate"
-    },
-    {
-      "id": "9",
-      "staffCode": "S009",
-      "staffName": "Staff 9",
-      "dateOfBirth": "1995-01-01",
-      "mobileNo": 5551234573,
-      "address": "795 Oak St, Villagetown, USA",
-      "gender": "Female",
-      "position": "Sales Associate"
-    },
-    {
-      "id": "10",
-      "staffCode": "S010",
-      "staffName": "Staff 10",
-      "dateOfBirth": "1996-01-01",
-      "mobileNo": 5551234574,
-      "address": "796 Oak St, Villagetown, USA",
-      "gender": "Male",
-      "position": "Sales Associate"
-    },
-    {
-      "id": "11",
-      "staffCode": "S011",
-      "staffName": "Staff 11",
-      "dateOfBirth": "1997-01-01",
-      "mobileNo": 5551234575,
-      "address": "797 Oak St, Villagetown, USA",
-      "gender": "Female",
-      "position": "Sales Associate"
-    },
-    {
-      "id": "12",
-      "staffCode": "S012",
-      "staffName": "Staff 12",
-      "dateOfBirth": "1998-01-01",
-      "mobileNo": 5551234576,
-      "address": "798 Oak St, Villagetown, USA",
-      "gender": "Male",
-      "position": "Sales Associate"
-    },
-    {
-      "id": "13",
-      "staffCode": "S013",
-      "staffName": "Staff 13",
-      "dateOfBirth": "1999-01-01",
-      "mobileNo": 5551234577,
-      "address": "799 Oak St, Villagetown, USA",
-      "gender": "Female",
-      "position": "Sales Associate"
-    },
-    {
-      "id": "14",
-      "staffCode": "S014",
-      "staffName": "Staff 14",
-      "dateOfBirth": "2000-01-01",
-      "mobileNo": 5551234578,
-      "address": "800 Oak St, Villagetown, USA",
-      "gender": "Male",
-      "position": "Sales Associate"
-    },
-    {
-      "id": "15",
-      "staffCode": "S015",
-      "staffName": "Staff 15",
-      "dateOfBirth": "2001-01-01",
-      "mobileNo": 5551234579,
-      "address": "801 Oak St, Villagetown, USA",
-      "gender": "Female",
-      "position": "Sales Associate"
-    },
-    {
-      "id": "16",
-      "staffCode": "S016",
-      "staffName": "Staff 16",
-      "dateOfBirth": "2002-01-01",
-      "mobileNo": 5551234580,
-      "address": "802 Oak St, Villagetown, USA",
-      "gender": "Male",
-      "position": "Sales Associate"
-    },
-    {
-      "id": "17",
-      "staffCode": "S017",
-      "staffName": "Staff 17",
-      "dateOfBirth": "2003-01-01",
-      "mobileNo": 5551234581,
-      "address": "803 Oak St, Villagetown, USA",
-      "gender": "Female",
-      "position": "Sales Associate"
-    },
-    {
-      "id": "18",
-      "staffCode": "S018",
-      "staffName": "Staff 18",
-      "dateOfBirth": "2004-01-01",
-      "mobileNo": 5551234582,
-      "address": "804 Oak St, Villagetown, USA",
+      "id": "2c1a",
+      "staffCode": "S8431",
+      "staffName": "Fris",
+      "dateOfBirth": "1994-02-14",
+      "mobileNo": "09766222328",
+      "address": "Nay Pyi Thaw",
       "gender": "Male",
       "position": "Sales Associate"
     }
@@ -477,264 +288,24 @@
   ],
   "customers": [
     {
-      "id": "b40c",
+      "id": "3",
       "customerCode": "CUST003",
-      "customerName": "Mr Jame",
-      "mobileNo": "09255882712",
-      "dateOfBirth": "2024-04-02",
+      "customerName": "Jame Tomas",
+      "mobileNo": 5555555555,
+      "dateOfBirth": "1978-12-10",
       "gender": "Male",
-      "stateCode": "NY",
-      "townshipCode": "DAL"
-    },
-    {
-      "id": "4bd4",
-      "customerCode": "CUST003",
-      "customerName": "Ms Jasmine",
-      "mobileNo": "09255882712",
-      "dateOfBirth": "2003-02-21",
-      "gender": "Female",
-      "stateCode": "TX",
-      "townshipCode": "Chigago"
-    },
-    {
-      "id": "cc2b",
-      "customerCode": "Cu34",
-      "customerName": "Ms Taylor",
-      "mobileNo": "09255882712",
-      "dateOfBirth": "2024-04-03",
-      "gender": "Female",
-      "stateCode": "NY",
-      "townshipCode": "NYC"
-    },
-    {
-      "id": "0328",
-      "customerCode": "CUST002",
-      "customerName": "Ms Fuma",
-      "mobileNo": "0976622233",
-      "dateOfBirth": "2024-04-03",
-      "gender": "Other",
-      "stateCode": "TX",
-      "townshipCode": "Chigago"
-    },
-    {
-      "id": "1f44",
-      "customerCode": "CUST003",
-      "customerName": "Ms Lavenda",
-      "mobileNo": "09255882712",
-      "dateOfBirth": "2024-04-11",
-      "gender": "Female",
       "stateCode": "TX",
       "townshipCode": "DAL"
     },
     {
-      "id": "yui8",
-      "customerCode": "CUST001",
-      "customerName": "Ms. Evelyn Lee",
-      "mobileNo": "09456123789",
-      "dateOfBirth": "2000-01-10",
-      "gender": "Female",
-      "stateCode": "CA",
-      "townshipCode": "Suburbia"
-    },
-    {
-      "id": "opkj",
-      "customerCode": "CUST002",
-      "customerName": "Mr. William Jones",
-      "mobileNo": "09789541230",
-      "dateOfBirth": "1985-08-21",
+      "id": "8360",
+      "customerCode": "Cu67",
+      "customerName": "Ye Kyaw",
+      "mobileNo": "7799999999",
+      "dateOfBirth": "2000-06-19",
       "gender": "Male",
-      "stateCode": "TX",
-      "townshipCode": "Oaksville"
-    },
-    {
-      "id": "ghjk",
-      "customerCode": "CUST003",
-      "customerName": "Dr. Olivia Garcia",
-      "mobileNo": "09321478569",
-      "dateOfBirth": "1972-05-17",
-      "gender": "Female",
-      "stateCode": "FL",
-      "townshipCode": "Metroville"
-    },
-    {
-      "id": "nmlo",
-      "customerCode": "CUST004",
-      "customerName": "Mr. Charles Thompson",
-      "mobileNo": "09158237460",
-      "dateOfBirth": "1995-11-03",
-      "gender": "Male",
-      "stateCode": "NY",
-      "townshipCode": "Lakeview"
-    },
-    {
-      "id": "asdf",
-      "customerCode": "CUST005",
-      "customerName": "Ms. Sophia Clark",
-      "mobileNo": "09634781259",
-      "dateOfBirth": "2008-02-28",
-      "gender": "Female",
-      "stateCode": "IL",
-      "townshipCode": "Sunnyville"
-    },
-    {
-      "id": "zcvb",
-      "customerCode": "CUST049",
-      "customerName": "Mr. Ethan Anderson",
-      "mobileNo": "09871234560",
-      "dateOfBirth": "1967-09-12",
-      "gender": "Male",
-      "stateCode": "WA",
-      "townshipCode": "Metroville"
-    },
-    {
-      "id": "xcvb",
-      "customerCode": "CUST050",
-      "customerName": "Ms. Hannah Baker",
-      "mobileNo": "09543678129",
-      "dateOfBirth": "2012-06-25",
-      "gender": "Female",
-      "stateCode": "CA",
-      "townshipCode": "Suburbia"
-    },
-    {
-      "id": "qwer",
-      "customerCode": "CUST051",
-      "customerName": "Mr. Daniel Young",
-      "mobileNo": "09278391560",
-      "dateOfBirth": "1982-03-04",
-      "gender": "Male",
-      "stateCode": "FL",
-      "townshipCode": "Oaksville"
-    },
-    {
-      "id": "asdf",
-      "customerCode": "CUST052",
-      "customerName": "Ms. Isabella Walker",
-      "mobileNo": "09412568937",
-      "dateOfBirth": "2015-10-19",
-      "gender": "Female",
-      "stateCode": "NY",
-      "townshipCode": "Lakeview"
-    },
-    {
-      "id": "zxcv",
-      "customerCode": "CUST053",
-      "customerName": "Dr. Noah Garcia",
-      "mobileNo": "09853612749",
-      "dateOfBirth": "1978-04-22",
-      "gender": "Male",
-      "stateCode": "TX",
-      "townshipCode": "Suburbia"
-    },
-    {
-      "id": "poiu",
-      "customerCode": "CUST054",
-      "customerName": "Ms. Mia Rodriguez",
-      "mobileNo": "09697145823",
-      "dateOfBirth": "2003-12-07",
-      "gender": "Female",
-      "stateCode": "CA",
-      "townshipCode": "Metroville"
-    },
-    {
-      "id": "lkjh",
-      "customerCode": "CUST055",
-      "customerName": "Mr. Benjamin King",
-      "mobileNo": "09315827460",
-      "dateOfBirth": "1992-07-14",
-      "gender": "Male",
-      "stateCode": "IL",
-      "townshipCode": "Sunnyville"
-    },
-    {
-      "id": "ghjk",
-      "customerCode": "CUST099",
-      "customerName": "Ms. Victoria Moore",
-      "mobileNo": "09741258369",
-      "dateOfBirth": "2010-09-01",
-      "gender": "Female",
-      "stateCode": "WA",
-      "townshipCode": "Metroville"
-    },
-    {
-      "id": "nmlo",
-      "customerCode": "CUST100",
-      "customerName": "Mr. Christopher Allen",
-      "mobileNo": "09586431720",
-      "dateOfBirth": "1965-02-18",
-      "gender": "Male",
-      "stateCode": "CA",
-      "townshipCode": "Suburbia"
-    },
-    {
-      "id": "vbnm",
-      "customerCode": "CUST101",
-      "customerName": "Ms. Evelyn Johnson",
-      "mobileNo": "09147258936",
-      "dateOfBirth": "1997-05-21",
-      "gender": "Female",
-      "stateCode": "FL",
-      "townshipCode": "Metroville"
-    },
-    {
-      "id": "poiuy",
-      "customerCode": "CUST102",
-      "customerName": "Mr. William Davis",
-      "mobileNo": "09823569170",
-      "dateOfBirth": "1988-01-12",
-      "gender": "Male",
-      "stateCode": "NY",
-      "townshipCode": "Lakeview"
-    },
-    {
-      "id": "mnbv",
-      "customerCode": "CUST103",
-      "customerName": "Dr. Olivia Brown",
-      "mobileNo": "09567891234",
-      "dateOfBirth": "1975-06-05",
-      "gender": "Female",
-      "stateCode": "TX",
-      "townshipCode": "Suburbia"
-    },
-    {
-      "id": "hjkl",
-      "customerCode": "CUST104",
-      "customerName": "Mr. Charles Miller",
-      "mobileNo": "09385124769",
-      "dateOfBirth": "2001-03-30",
-      "gender": "Male",
-      "stateCode": "CA",
-      "townshipCode": "Metroville"
-    },
-    {
-      "id": "asdf",
-      "customerCode": "CUST105",
-      "customerName": "Ms. Sophia Garcia",
-      "mobileNo": "09761458230",
-      "dateOfBirth": "2009-11-16",
-      "gender": "Female",
-      "stateCode": "IL",
-      "townshipCode": "Sunnyville"
-    },
-    {
-      "id": "zxcv",
-      "customerCode": "CUST199",
-      "customerName": "Mr. Ethan Moore",
-      "mobileNo": "09527813460",
-      "dateOfBirth": "1962-08-27",
-      "gender": "Male",
-      "stateCode": "WA",
-      "townshipCode": "Metroville"
-    },
-    {
-      "id": "xcvb",
-      "customerCode": "CUST200",
-      "customerName": "Ms. Hannah Allen",
-      "mobileNo": "09365147829",
-      "dateOfBirth": "2013-04-10",
-      "gender": "Female",
-      "stateCode": "CA",
-      "townshipCode": "Suburbia"
+      "stateCode": "234",
+      "townshipCode": "Chigago"
     }
   ]
 }
