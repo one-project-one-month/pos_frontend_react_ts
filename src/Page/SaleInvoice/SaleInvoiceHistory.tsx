@@ -23,12 +23,12 @@ import {
 import { TInvoice } from "@/type/type.ts";
 import { useNavigate } from "react-router-dom"
 import useRenderPagination from "@/hook/management/useRenderPagination"
-import { useCustomQueryByPage } from "@/hook/management/useCustomQuery"
+import { useCustomQuery } from "@/hook/management/useCustomQuery"
 import { useCurrentPage } from "@/hook/useCurrentPage"
 
 const SaleInvoiceHistory = () => {
     const { page } = useCurrentPage();
-    const { data: invoices } = useCustomQueryByPage<TInvoice>("saleInvoice",page)
+    const { data: invoices } = useCustomQuery<TInvoice>("saleInvoice")
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
         []
     )
@@ -36,9 +36,9 @@ const SaleInvoiceHistory = () => {
         React.useState<VisibilityState>({})
 
     const navigate = useNavigate();
-    const paginationElement = useRenderPagination({next: invoices?.next, prev: invoices?.prev, page: page})
-    console.log(invoices);
-    
+    // const paginationElement = useRenderPagination({ next: invoices?.next, prev: invoices?.prev, page: page })
+    // console.log(invoices);
+
 
     const columns: ColumnDef<TInvoice, any>[] = [
         {
@@ -117,7 +117,7 @@ const SaleInvoiceHistory = () => {
         }
     ]
 
-    const invoicesData: TInvoice[] = invoices ? invoices.data : [];
+    const invoicesData: TInvoice[] = invoices ? invoices : [];
 
     const table = useReactTable({
         data: invoicesData,
@@ -134,6 +134,7 @@ const SaleInvoiceHistory = () => {
     })
 
     return (
+
         <div className="w-[80%] mx-auto my-10">
             <div className="w-full">
                 <div className="flex justify-end gap-5 py-4">
@@ -141,7 +142,7 @@ const SaleInvoiceHistory = () => {
                         placeholder="Filter voucher no...."
                         value={(table.getColumn("voucherNo")?.getFilterValue() as string) ?? ""}
                         onChange={(event) =>
-                        table.getColumn("voucherNo")?.setFilterValue(event.target.value)
+                            table.getColumn("voucherNo")?.setFilterValue(event.target.value)
                         }
                         className="max-w-sm"
                     />
@@ -197,9 +198,9 @@ const SaleInvoiceHistory = () => {
                     </Table>
                 </div>
                 {/* <div className="flex items-center justify-end space-x-2 py-4"> */}
-                    {
-                        paginationElement
-                    }
+                {/* {
+                    paginationElement
+                } */}
                 {/* </div> */}
             </div>
         </div>

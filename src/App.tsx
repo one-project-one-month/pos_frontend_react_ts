@@ -4,7 +4,6 @@ import { Home } from "./Page/Home/Home";
 import Layout from "./Page/Layout/Layout";
 import Products from "./Page/Products/Products";
 import Customers from "./Page/Management/Customers";
-import Shops from "./Page/Management/Shops";
 import Staffs from "./Page/Management/Staffs";
 import SaleInvoice from "./Page/SaleInvoice/SaleInvoice";
 import ProductsCategory from "./Page/Products/ProductsCategory";
@@ -21,6 +20,7 @@ import StaffEditForm from "./components/Management/staff/StaffEditForm";
 import CategoryEditForm from "@/components/Category/CategoryEditForm.tsx";
 import CategoryCreateForm from "@/components/Category/CategoryCreateForm.tsx";
 import ProductCreateFrom from "@/components/Product/ProductForm/ProductCreateFrom.tsx";
+import ShopList from "./components/Management/shop/ShopList";
 
 
 
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
                         path: "shops",
                         children: [
 
-                            { index: true, element: <Shops /> },
+                            { index: true, element: <ShopList /> },
                             { path: "edit/:shopId", element: <ShopEditForm /> },
                             { path: "create", element: <ShopForm /> }
                         ]
@@ -66,14 +66,16 @@ const router = createBrowserRouter([
             {
                 path: "products",
                 children: [
-                    {index: true, element: <Products/>},
-                    {path: "edit/:productId", element: <ProductEditForm/>},
-                    {path: "create", element: <ProductCreateFrom/>},
-                    {path: "category", children: [
-                            {index: true, element: <ProductsCategory/>},
-                            {path: "edit/:categoryId", element: <CategoryEditForm/>},
-                            {path: "create", element: <CategoryCreateForm/>}
-                        ]}
+                    { index: true, element: <Products /> },
+                    { path: "edit/:productId", element: <ProductEditForm /> },
+                    { path: "create", element: <ProductCreateFrom /> },
+                    {
+                        path: "category", children: [
+                            { index: true, element: <ProductsCategory /> },
+                            { path: "edit/:categoryId", element: <CategoryEditForm /> },
+                            { path: "create", element: <CategoryCreateForm /> }
+                        ]
+                    }
                 ]
             },
             {
