@@ -11,13 +11,12 @@ export default function CategoryList() {
         queryFn: getProductCategories,
     });
 
-    console.log(categories);
 
     return (
         <DataTable
             columns={categoryColumns}
             data={categories ? categories : []}
-            endPont="shops"
+            endPont="categories"
             filterField="productCategoryName"/>
     );
 }

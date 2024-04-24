@@ -7,17 +7,16 @@ import {useUpdateQuery} from "@/hook/management/useUpateQuery.ts";
 import apiClient from "@/services/api/api-client.ts";
 
 export default function CategoryEditForm() {
-    const {categoryId} = useParams()
+    const {categoryId} = useParams();
     const navigate = useNavigate();
 
-    const {mutate} = useUpdateQuery("categories");
-
+    const {mutate} = useUpdateQuery("product-categories");
 
 
     const {register, handleSubmit, formState: {errors}} = useForm<Inputs>({
         defaultValues: async () => {
-            const { data } = await apiClient.get(`product-Categories/${categoryId}`)
-            return data
+            const {data} = await apiClient.get(`product-categories/${categoryId}`);
+            return data.data.category;
         }
     });
 
@@ -31,7 +30,7 @@ export default function CategoryEditForm() {
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         console.log(data);
-        mutate({formData: data, route: "product-Categories", id: categoryId!});
+        mutate({formData: data, route: "product-categories", id: categoryId!});
         navigate(`../..`, {relative: "path"});
     };
 

@@ -26,9 +26,15 @@ export const getProductCategories = async () => {
         `/product-categories`
     );
     const res = data.data as {categories: TProductCategory[]}
-
     return res.categories;
 };
+
+export const getProductCategoriesByID = async (id: string) => {
+    const {data} = await apiClient.get(`product-categories/${id}`);
+    const res = data.data as {category: TProductCategory}
+    return res.category;
+};
+
 
 export const getProductByCode = async (productCode: string) => {
     const response = await apiClient.get<TProduct[]>(
