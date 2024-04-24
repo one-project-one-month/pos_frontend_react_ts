@@ -19,7 +19,7 @@ export const formSchema = z.object({
   productCode: z.string(),
   productName: z.string(),
   price: z.number().min(1),
-  productCategoryCode: z.string(),
+ categoryCode: z.string(),
   productCategoryName: z.string()
 });
 

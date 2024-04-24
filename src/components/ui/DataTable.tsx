@@ -1,7 +1,7 @@
 import { ColumnDef, ColumnFiltersState, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from "@tanstack/react-table"
 import { Table, TableHeader, TableHead, TableCell, TableBody, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import React from "react"
+import React, {useState} from "react";
 import { Input } from "@/components/ui/input"
 import {useLocation, useNavigate} from "react-router-dom";
 import { Plus } from "lucide-react"
@@ -12,35 +12,44 @@ interface DataTableProps<TData, TValue> {
     data: TData[]
     endPont: string,
     filterField: string,
-    className?: string
+    className?: string,
+    pageSize?: number
 }
-const DataTable = <TData, TValue>({ columns, data, endPont, filterField , className}: DataTableProps<TData, TValue>) => {
+const DataTable = <TData, TValue>({ columns, data, endPont, filterField , className, pageSize}: DataTableProps<TData, TValue>) => {
     const navigate = useNavigate();
     const {pathname} = useLocation();
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
+    const [pagination, setPagination] = useState({
+        pageIndex: 0,
+        pageSize: pageSize ?? 10
+    })
+
     const table = useReactTable({
         data,
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
+        onPaginationChange: setPagination,
         onColumnFiltersChange: setColumnFilters,
         getFilteredRowModel: getFilteredRowModel(),
+        autoResetPageIndex: false,
         state: {
-            columnFilters
+            columnFilters,
+            pagination
         }
     })
 
 
     return (
         <div className={cn("flex flex-col w-full m-8", className)}>
-            <div className="flex justify-between mb-2 items-center">
+            <div className="flex justify-between mb-4 items-center">
                 <Input
                     placeholder={`Filter by ${filterField}`}
                     value={(table.getColumn(filterField)?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
                         table.getColumn(filterField)?.setFilterValue(event.target.value)
                     }
-                    className="max-w-sm"
+                    className="w-1/3"
                 />
                 <Button
                     variant="outline"

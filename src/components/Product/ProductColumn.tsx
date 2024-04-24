@@ -61,7 +61,7 @@ export const productColumn: ColumnDef<TProduct>[] = [
     {
         accessorKey: "category",
         header: "Category",
-        cell: cellInfo => (<p>{cellInfo.row.original.category.productCategoryName}</p>)
+        cell: cellInfo => (<p>{cellInfo.row.original?.category?.productCategoryName ?? ""}</p>)
     },
     {
         accessorKey: "price",

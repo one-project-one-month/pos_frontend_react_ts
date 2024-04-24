@@ -1,7 +1,7 @@
 import {useNavigate, useParams} from "react-router-dom";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {Inputs} from "@/type/formSchema.ts";
-import {productFormConst} from "@/constants/form-constate.ts";
+import {productFormConst} from "@/constants/form-constant.ts";
 import useRenderForm from "@/hook/useRenderForm.tsx";
 import apiClient from "@/services/api/api-client.ts";
 import {useUpdateQuery} from "@/hook/management/useUpateQuery.ts";
@@ -18,7 +18,8 @@ export default function ProductEditForm() {
     const {register, handleSubmit, formState: {errors}} = useForm<Inputs>({
         defaultValues: async () => {
             const {data} = await apiClient.get(`products/${productId}`);
-            return data;
+            console.log(data)
+            return data.data.product;
         }
     });
     const formElements = useRenderForm({formconst: productFormConst, errors, register, title: "Product Edit"});

@@ -1,4 +1,4 @@
-import { TFromConst } from "@/constants/form-constate"
+import { TFromConst } from "@/constants/form-constant.ts"
 import { FieldErrors, UseFormRegister } from "react-hook-form"
 import { Inputs } from "@/type/formSchema"
 import { cn } from "@/lib/utils"

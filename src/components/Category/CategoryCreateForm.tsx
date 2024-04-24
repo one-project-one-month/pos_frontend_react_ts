@@ -2,7 +2,7 @@ import {useNavigate} from "react-router-dom";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {Inputs} from "@/type/formSchema.ts";
 import useRenderForm from "@/hook/useRenderForm.tsx";
-import {categoryFormConst} from "@/constants/form-constate.ts";
+import {categoryFormConst} from "@/constants/form-constant.ts";
 import {useCreateNew} from "@/hook/management/useAddQuery.ts";
 import {toast} from "@/components/ui/use-toast.ts";
 

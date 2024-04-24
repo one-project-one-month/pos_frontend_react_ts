@@ -9,6 +9,7 @@ export default function CategoryList() {
     const {data: categories, isFetching} = useQuery<TProductCategory[]>({
         queryKey: ["product-categories"],
         queryFn: getProductCategories,
+        staleTime: 60 * 60 * 1000 * 365
     });
 
 
@@ -20,7 +21,11 @@ export default function CategoryList() {
                 columns={categoryColumns}
                 data={categories ? categories : []}
                 endPont="categories"
-                filterField="productCategoryName"/>
+                filterField="productCategoryName"
+                className={"w-[unset]"}
+                pageSize={8}
+            />
+
         </>
     );
 }
