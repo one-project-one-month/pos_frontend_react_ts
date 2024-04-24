@@ -8,7 +8,6 @@ import { shopColumns } from "./ShopColumns"
 const ShopList = () => {
     const { data: shops, isLoading } = useCustomQuery<TShop>("shops")
 
-
     if (isLoading) {
         return <h1>Loading</h1>
     }

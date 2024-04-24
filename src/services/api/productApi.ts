@@ -1,31 +1,25 @@
 import {
-    TJSONServerPaginationResponse,
     TProduct,
     TProductCategory,
 } from "@/type/type.ts";
 import {capitalize} from "@/lib/utils.ts";
 import apiClient from "./api-client";
 
-
-export const getProductsByPage = async (page: number) => {
-    const response = await apiClient<TJSONServerPaginationResponse<TProduct[]>>(
-        `/products?_page=${page}&_per_page=5`
-    );
-    return response.data;
-};
-
-export const getProductByName = async (searchParam: string) => {
-    const response = await apiClient.get<TProduct[]>(
-        `/products?productName=${capitalize(searchParam)}`
-    );
-    return response.data;
-};
-
 export const getProductCategories = async () => {
-    const response = await apiClient.get<TProductCategory[]>(
-        `/product-Categories`
+    const {data} = await apiClient.get(
+        `/product-categories`
     );
-    return response.data;
+    const res = data.data as {categories: TProductCategory[]}
+    return res.categories;
+};
+
+export const getProducts = async () => {
+    const {data} = await apiClient.get(
+        `/products`
+    );
+    const res = data.data as { products: TProduct[]}
+    console.log(res)
+    return res.products;
 };
 
 export const getProductByCode = async (productCode: string) => {
@@ -42,9 +36,3 @@ export const editProductById = async (productId: number, payload: Partial<TProdu
     return response.data;
 };
 
-export const postProduct = async (payload: Partial<TProduct>) => {
-    const response = await apiClient.post<Partial<TProduct>>(
-        `products`, payload
-    );
-    return response.data;
-};

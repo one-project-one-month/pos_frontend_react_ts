@@ -1,9 +1,10 @@
 export interface TProduct {
-  id: number;
+  productId: string;
   productCode: string;
   productName: string;
   price: number;
-  productCategoryCode: string;
+  categoryCode: string;
+  category: TProductCategory,
 }
 
 export interface TCustomer {
@@ -18,7 +19,7 @@ export interface TCustomer {
 }
 
 export interface TProductCategory {
-  id: number;
+  productCategoryId: string;
   productCategoryCode: string;
   productCategoryName: string;
 }
@@ -52,15 +53,7 @@ export interface TJSONServerPaginationResponse<T> {
   items: number;
 }
 
-export interface TJSONServerPaginationResponse<T> {
-  data: T;
-  first: 1;
-  prev: number | null;
-  next: number | null;
-  last: number;
-  pages: number;
-  items: number;
-}
+
 
 export interface TInvoice {
   id: number;

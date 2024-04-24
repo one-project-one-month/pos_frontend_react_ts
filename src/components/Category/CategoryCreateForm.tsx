@@ -7,7 +7,7 @@ import {useCreateNew} from "@/hook/management/useAddQuery.ts";
 import {toast} from "@/components/ui/use-toast.ts";
 
 export default function CategoryCreateForm() {
-    const pathName = "product-Categories";
+    const pathName = "product-categories";
     const navigate = useNavigate();
 
     const {register, handleSubmit, formState: {errors}} = useForm<Inputs>();
@@ -15,7 +15,7 @@ export default function CategoryCreateForm() {
     const {mutate} = useCreateNew(pathName);
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
-        mutate({formData: data, route: "product-Categories"});
+        mutate({formData: data, route: "product-categories"});
         navigate("..", {relative: "path"});
         toast({description: "Successfully added"});
     };
