@@ -3,7 +3,7 @@ import { Table, TableHeader, TableHead, TableCell, TableBody, TableRow } from "@
 import { Button } from "@/components/ui/button"
 import React from "react"
 import { Input } from "@/components/ui/input"
-import { useNavigate } from "react-router-dom"
+import {useLocation, useNavigate} from "react-router-dom";
 import { Plus } from "lucide-react"
 import { capitalize } from "@/lib/utils"
 
@@ -14,7 +14,8 @@ interface DataTableProps<TData, TValue> {
     filterField: string
 }
 const DataTable = <TData, TValue>({ columns, data, endPont, filterField }: DataTableProps<TData, TValue>) => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const {pathname} = useLocation();
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
     const table = useReactTable({
         data,
@@ -44,7 +45,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField }: DataT
                     variant="outline"
                     size="default"
                     className="ml-2"
-                    onClick={() => navigate(`/management/${endPont}/create`)}
+                    onClick={() => navigate(`${pathname}/create`)}
                 >
                     <Plus size={18} className="mr-2" /> Add {capitalize(endPont)}
                 </Button>
