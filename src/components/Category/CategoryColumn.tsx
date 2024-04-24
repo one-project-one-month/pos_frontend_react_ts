@@ -21,7 +21,7 @@ const CellComponent = ({ row }: { row: {original: TProductCategory} }) => {
             <Button
                 className="w-full
                  mb-2" variant={"outline"}
-                onClick={() => handleDelete(category.id)}
+                onClick={() => handleDelete(category.productCategoryId)}
             >
                 Delete
             </Button>

@@ -34,7 +34,7 @@ export default function ProductCategoryFilter() {
                     </Badge>
                 </DropdownMenuTrigger>
                 <DropdownMenuPortal>
-                    <DropdownMenuContent>
+                    <DropdownMenuContent className={"h-80 overflow-y-scroll"}>
                         <ProductCategoryAll/>
                         {data && data.map(item => <ProductCategoryFilterItem data={item}
                                                                              key={item.productCategoryCode}/>)}

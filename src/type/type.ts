@@ -1,9 +1,10 @@
 export interface TProduct {
-  id: number;
+  productId: string;
   productCode: string;
   productName: string;
   price: number;
-  productCategoryCode: string;
+  categoryCode: string;
+  category: TProductCategory,
 }
 
 export interface TCustomer {

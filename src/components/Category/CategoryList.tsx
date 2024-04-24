@@ -6,17 +6,21 @@ import {getProductCategories} from "@/services/api/productApi.ts";
 
 
 export default function CategoryList() {
-    const {data: categories} = useQuery<TProductCategory[]>({
+    const {data: categories, isFetching} = useQuery<TProductCategory[]>({
         queryKey: ["product-categories"],
         queryFn: getProductCategories,
     });
 
 
     return (
-        <DataTable
-            columns={categoryColumns}
-            data={categories ? categories : []}
-            endPont="categories"
-            filterField="productCategoryName"/>
+
+        <>
+            {isFetching && <h1>Loading</h1>}
+            <DataTable
+                columns={categoryColumns}
+                data={categories ? categories : []}
+                endPont="categories"
+                filterField="productCategoryName"/>
+        </>
     );
 }

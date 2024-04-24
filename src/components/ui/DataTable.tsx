@@ -5,15 +5,16 @@ import React from "react"
 import { Input } from "@/components/ui/input"
 import {useLocation, useNavigate} from "react-router-dom";
 import { Plus } from "lucide-react"
-import { capitalize } from "@/lib/utils"
+import {capitalize, cn} from "@/lib/utils";
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[],
     data: TData[]
     endPont: string,
-    filterField: string
+    filterField: string,
+    className?: string
 }
-const DataTable = <TData, TValue>({ columns, data, endPont, filterField }: DataTableProps<TData, TValue>) => {
+const DataTable = <TData, TValue>({ columns, data, endPont, filterField , className}: DataTableProps<TData, TValue>) => {
     const navigate = useNavigate();
     const {pathname} = useLocation();
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
@@ -31,7 +32,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField }: DataT
 
 
     return (
-        <div className="flex flex-col w-full m-8">
+        <div className={cn("flex flex-col w-full m-8", className)}>
             <div className="flex justify-between mb-2 items-center">
                 <Input
                     placeholder={`Filter by ${filterField}`}
