@@ -1,128 +1,26 @@
-import { Button } from "@/components/ui/button.tsx";
-import { EllipsisVertical, Plus } from "lucide-react";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table.tsx";
-import {
-    DropdownMenu,
-    DropdownMenuContent, DropdownMenuItem,
-    DropdownMenuPortal,
-    DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu.tsx";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { capitalize } from "@/lib/utils.ts";
-import { useDeleteQuery } from "@/hook/management/useDeleteQuery.ts";
-import { useCurrentPage } from "@/hook/useCurrentPage.ts";
-import { } from "@/hook/management/useCustomQuery.ts";
-import { TProductCategory } from "@/type/type.ts";
-import useRenderPagination from "@/hook/management/useRenderPagination.tsx";
-import { toast } from "@/components/ui/use-toast.ts";
-import { useFilterByKey } from "@/hook/useFilterByKey.ts";
-import { ChangeEvent } from "react";
-import { SearchBar } from "@/components/Product/SearchBar.tsx";
+import {TProductCategory} from "@/type/type.ts";
+import {useQuery} from "@tanstack/react-query";
+import apiClient from "@/services/api/api-client.ts";
+import DataTable from "@/components/ui/DataTable.tsx";
+import {categoryColumns} from "@/components/Category/CategoryColumn.tsx";
+
+const tempQueryFn = async () => {
+    const {data} = await  apiClient.get(`/product-categories`)
+    return data.data?.categories
+}
 
 
 export default function CategoryList() {
-    const { page } = useCurrentPage();
-    // const { data: categories } = useCustomQueryByPage<TProductCategory>(
-    //     "product-Categories",
-    //     page,
-    // );
-
-    const [, setSearchParams] = useSearchParams();
-
-    const mutation = useDeleteQuery("product-Categories");
-
-    const navigate = useNavigate();
-
-    // const paginationElement = useRenderPagination({ next: categories?.next, prev: categories?.prev, page });
-
-    // const handleDelete = async (id: string) => {
-    //     await mutation.mutateAsync({ url: "product-Categories", id });
-
-    //     if (categories && categories?.items % 5 === 1) {
-    //         setSearchParams({ page: String(Math.ceil((categories?.items / 5) - 1)) });
-    //     }
-
-    //     toast({ description: "Successfully Deleted" });
-    // };
-
-    // const { filteredData, setSearchString } = useFilterByKey<TProductCategory>(categories?.data, "productCategoryName")
-
-    // const inputHandler = (evt: ChangeEvent<HTMLInputElement>) => {
-    //     setSearchString(evt.target.value);
-    // };
-
+     const {data: categories } = useQuery<TProductCategory[]>({
+         queryKey: ["product-categories"],
+         queryFn: tempQueryFn,
+     })
 
     return (
-        <h1>hello</h1>
-        // <div className="w-[80%] flex flex-col m-8">
-
-        //     <div className="flex items-center justify-end gap-x-10  mb-2">
-
-        //         <SearchBar handler={inputHandler} label={"Search Category"} placeholder={"Search Category by Name"} />
-
-        //         <Button
-        //             variant="outline"
-        //             size="default"
-        //             onClick={() => navigate("create")}
-        //         >
-        //             <Plus size={18} className="mr-2" /> Add Categories
-        //         </Button>
-        //     </div>
-
-        //     <Table className="rounded-md border">
-        //         <TableHeader>
-        //             <TableRow>
-        //                 {
-        //                     categories ? (
-        //                         Object.keys(categories.data[0]).map((key) => (
-        //                             <TableHead key={key} className="w-[100px]">{capitalize(key)}</TableHead>
-        //                         ))
-        //                     ) : null
-        //                 }
-        //                 <TableHead key={"action"}>Actions</TableHead>
-        //             </TableRow>
-        //         </TableHeader>
-        //         <TableBody>
-        //             {
-        //                 filteredData ? (
-        //                     filteredData.map((category) => (
-        //                         <TableRow key={category.id}>
-        //                             {Object.values(category).map((value) => (
-        //                                 <TableCell key={value} className="font-mediun">{value}</TableCell>
-        //                             ))}
-        //                             <TableCell className={"w-2"}>
-        //                                 <DropdownMenu>
-        //                                     <DropdownMenuTrigger>
-        //                                         <EllipsisVertical className={"w-fit"} />
-        //                                     </DropdownMenuTrigger>
-        //                                     <DropdownMenuPortal>
-        //                                         <DropdownMenuContent sideOffset={6} className="min-w-6">
-        //                                             <DropdownMenuItem className="flex flex-col">
-        //                                                 <Button className="w-full mb-2" variant={"outline"}
-        //                                                     onClick={async () => await handleDelete(category.id.toString())}>Delete</Button>
-        //                                                 <Button className={"w-full h-full px-0 py-0"}
-        //                                                     variant={"outline"}>
-        //                                                     <Link to={`edit/${category.id}`}
-        //                                                         className={"w-full py-2 "}>Edit</Link>
-        //                                                 </Button>
-        //                                             </DropdownMenuItem>
-        //                                         </DropdownMenuContent>
-        //                                     </DropdownMenuPortal>
-        //                                 </DropdownMenu>
-        //                             </TableCell>
-        //                         </TableRow>
-        //                     ))
-
-        //                 ) : <TableRow>
-        //                     <TableCell>
-        //                         No Data
-        //                     </TableCell>
-        //                 </TableRow>
-        //             }
-        //         </TableBody>
-        //     </Table>
-
-        //     {paginationElement}
-        // </div>
+        <DataTable
+            columns={categoryColumns}
+            data={categories ? categories : []}
+            endPont="shops"
+            filterField="productCategoryName" />
     );
 }
