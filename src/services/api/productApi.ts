@@ -22,10 +22,12 @@ export const getProductByName = async (searchParam: string) => {
 };
 
 export const getProductCategories = async () => {
-    const response = await apiClient.get<TProductCategory[]>(
-        `/product-Categories`
+    const {data} = await apiClient.get(
+        `/product-categories`
     );
-    return response.data;
+    const res = data.data as {categories: TProductCategory[]}
+
+    return res.categories;
 };
 
 export const getProductByCode = async (productCode: string) => {
