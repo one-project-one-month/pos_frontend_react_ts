@@ -1,45 +1,21 @@
-import { Home, Package, NotepadText, UserCog } from "lucide-react";
+import { Home, NotepadText, Users, UserRound, Layers3, LineChart } from "lucide-react";
 
 export const navLinks = [
   {
-    routeName: "Home",
+    routeName: "Products",
     icon: <Home />,
     route: "/",
   },
   {
-    routeName: "Management",
-    icon: <UserCog />,
-    route: "/management",
-    subRoutes: [
-      {
-        routeName: "Shops",
-        route: "/management/shops",
-      },
-      {
-        routeName: "Customers",
-        route: "/management/customers",
-      },
-
-      {
-        routeName: "Staffs",
-        route: "/management/staffs",
-      },
-    ],
+    routeName: "Dashboard",
+    icon: <LineChart />,
+    route: "/dashboard",
   },
+
   {
-    routeName: "Products",
-    icon: <Package />,
-    route: "/products",
-    subRoutes: [
-      {
-        routeName: "Products",
-        route: "/products",
-      },
-      {
-        routeName: "Category",
-        route: "/products/category",
-      },
-    ],
+    routeName: "Products Category",
+    icon: <Layers3 />,
+    route: "/product-category",
   },
 
   {
@@ -56,5 +32,15 @@ export const navLinks = [
         route: "/sale-invoice/history",
       },
     ],
+  },
+  {
+    routeName: "Customers",
+    icon: <Users />,
+    route: "/customers",
+  },
+  {
+    routeName: "Staffs",
+    icon: <UserRound />,
+    route: "/staffs",
   },
 ];

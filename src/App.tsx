@@ -31,51 +31,41 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Home />
+                element: <Products />,
             },
             {
-                path: "management",
-                element: <ManagementWrapper />,
-                children: [
-                    {
-                        path: "shops",
-                        children: [
-
-                            { index: true, element: <ShopList /> },
-                            { path: "edit/:shopId", element: <ShopEditForm /> },
-                            { path: "create", element: <ShopForm /> }
-                        ]
-                    },
-                    {
-                        path: "customers",
-                        children: [
-                            { index: true, element: <Customers /> },
-                            { path: "edit/:customerId", element: <CustomerEditForm /> },
-                            { path: "create", element: <CustomerForm /> }
-                        ]
-                    },
-                    {
-                        path: "staffs", children: [
-                            { index: true, element: <Staffs /> },
-                            { path: "edit/:staffId", element: <StaffEditForm /> },
-                            { path: "create", element: <StaffForm /> }
-                        ]
-                    },
+                path: "edit/:categoryId",
+                element: <CategoryEditForm />
+            },
+            {
+                path: "create",
+                element: <ProductCreateFrom />
+            },
+            {
+                path: "product-category", children: [
+                    { index: true, element: <ProductsCategory /> },
+                    { path: "edit/:categoryId", element: <CategoryEditForm /> },
+                    { path: "create", element: <CategoryCreateForm /> }
                 ]
             },
             {
-                path: "products",
+                path: "dashboard", children: [
+                    { index: true, element: <Home /> },
+                ]
+            },
+            {
+                path: "customers",
                 children: [
-                    { index: true, element: <Products /> },
-                    { path: "edit/:productId", element: <ProductEditForm /> },
-                    { path: "create", element: <ProductCreateFrom /> },
-                    {
-                        path: "category", children: [
-                            { index: true, element: <ProductsCategory /> },
-                            { path: "edit/:categoryId", element: <CategoryEditForm /> },
-                            { path: "create", element: <CategoryCreateForm /> }
-                        ]
-                    }
+                    { index: true, element: <Customers /> },
+                    { path: "edit/:customerId", element: <CustomerEditForm /> },
+                    { path: "create", element: <CustomerForm /> }
+                ]
+            },
+            {
+                path: "staffs", children: [
+                    { index: true, element: <Staffs /> },
+                    { path: "edit/:staffId", element: <StaffEditForm /> },
+                    { path: "create", element: <StaffForm /> }
                 ]
             },
             {

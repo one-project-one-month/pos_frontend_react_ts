@@ -21,11 +21,11 @@ const StaffEditForm = () => {
         }
 
     })
-    
+
     const formElements = useRenderForm({ formconst: staffFormConst, errors, register, title: "Edit staff info" })
 
     const { mutateAsync } = useUpdateQuery<Inputs>("staffs")
- 
+
     const onSubmit: SubmitHandler<Inputs> = async (data: Inputs) => {
         navigate('..')
         toast({
@@ -45,7 +45,6 @@ const StaffEditForm = () => {
 
     return (
         <>
-
             <form onSubmit={handleSubmit(onSubmit)} className="w-3/6 m-auto" >
                 {formElements}
             </form>
