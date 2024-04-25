@@ -18,7 +18,6 @@ export default function ProductEditForm() {
     const {register, handleSubmit, formState: {errors}} = useForm<Inputs>({
         defaultValues: async () => {
             const {data} = await apiClient.get(`products/${productId}`);
-            console.log(data)
             return data.data.product;
         }
     });

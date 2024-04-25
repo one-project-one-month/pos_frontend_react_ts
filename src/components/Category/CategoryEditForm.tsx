@@ -17,7 +17,6 @@ export default function CategoryEditForm() {
         defaultValues: async () => {
             try {
                 const {data} = await apiClient.get(`product-categories/${categoryId}`);
-
                 return data.data.category;
             } catch (e) {
                 return {};
