@@ -25,14 +25,15 @@ export interface TProductCategory {
 }
 
 export interface TStaff {
-  id: string;
+  staffId: string;
   staffCode: string;
   staffName: string;
+  password: string;
   dateOfBirth: Date;
   mobileNo: string;
   address: string;
-  gender: "Male" | "Female" | "Other";
-  position: "Manager" | "Sales Associate" | "Storekeeper";
+  gender: "male" | "female" | "other";
+  position: "cashier" | "admin";
 }
 
 export interface TShop {

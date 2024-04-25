@@ -5,13 +5,13 @@ import DropdownComponent from "@/components/ui/dropdown-component.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {ColumnDef} from "@tanstack/react-table";
 import {TProduct} from "@/type/type.ts";
-import {useBillingCartStore} from "@/store/billingCartStore.ts";
+import {useCartStore} from "@/store/cartStore.ts";
 
 const CellComponent = ({row}: { row: { original: TProduct } }) => {
     const product = row.original;
     const {mutate} = useDeleteQuery("products");
     const navigator = useNavigate();
-    const { addToCart } = useBillingCartStore();
+    const { addToCart } = useCartStore();
 
     const handleDelete = (id: string) => {
         mutate({url: "products", id});

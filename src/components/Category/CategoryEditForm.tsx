@@ -33,7 +33,6 @@ export default function CategoryEditForm() {
 
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
-        console.log(data);
         mutate({formData: data, route: "product-categories", id: categoryId!});
         navigate(`../..`, {relative: "path"});
     };

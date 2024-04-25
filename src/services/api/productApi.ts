@@ -18,7 +18,6 @@ export const getProducts = async () => {
         `/products`
     );
     const res = data.data as { products: TProduct[]}
-    console.log(res)
     return res.products;
 };
 

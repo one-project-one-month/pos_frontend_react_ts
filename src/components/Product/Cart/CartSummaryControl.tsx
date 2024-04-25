@@ -1,16 +1,12 @@
 import { Button } from "@/components/ui/button.tsx";
-import { useBillingCartStore } from "@/store/billingCartStore.ts";
+import { useCartStore } from "@/store/cartStore.ts";
 import { useDiscountStore } from "@/store/discountStore.ts";
-import { useInvoiceStore } from "@/store/invoiceStore.ts";
-import { useNavigate } from "react-router-dom";
+import {getCart} from "@/lib/utils.ts";
 
 export default function CartSummaryControl() {
-    const navigate = useNavigate();
-    const { cart, clearCart } = useBillingCartStore();
-    const { amount, setNoDiscount } = useDiscountStore();
-    const { addToInvoiceStore, invoice } = useInvoiceStore();
-
-    console.log(invoice)
+    const { staffCode,clearCart } = useCartStore();
+    const {setNoDiscount } = useDiscountStore();
+    const products = getCart();
 
     const cancelOrderBtnHandler = () => {
         clearCart();
@@ -19,17 +15,19 @@ export default function CartSummaryControl() {
 
 
     const placeOrderBtnHandler = () => {
-        addToInvoiceStore(cart, amount.coupon + amount.extra);
         clearCart();
         setNoDiscount();
-        navigate("/sale-invoice")
+        console.log({
+            products: products,
+            staffCode: staffCode,
+        })
     };
 
     return (
         <div className={"flex justify-center items-center gap-x-4"}>
             <Button className={"bg-orange-500 text-[17px] font-bold"} onClick={cancelOrderBtnHandler}>Cancel
                 Order</Button>
-            <Button className={"text-[17px] font-bold"} onClick={placeOrderBtnHandler}>Place Order</Button>
+            <Button className={"text-[17px] font-bold"} onClick={placeOrderBtnHandler} disabled={!staffCode}>Place Order</Button>
         </div>
     );
 }

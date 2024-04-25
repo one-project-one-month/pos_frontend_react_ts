@@ -1,12 +1,12 @@
-import ProductListSection from "@/components/Product/ProductList/ProductListSection.tsx";
 import BillingSection from "@/components/Product/BillingSection.tsx";
+import ProductList from "@/components/Product/ProductList.tsx";
 
 
 export default function Products() {
     return (
         <section className={"w-full p-8"}>
             <div className={"grid grid-cols-2 gap-x-8"}>
-                <ProductListSection />
+                <ProductList/>
                 <BillingSection/>
             </div>
         </section>

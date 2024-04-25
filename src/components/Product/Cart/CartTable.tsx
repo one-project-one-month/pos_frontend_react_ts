@@ -1,11 +1,11 @@
-import {useBillingCartStore} from "@/store/billingCartStore.ts";
+import {useCartStore} from "@/store/cartStore.ts";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table.tsx";
 import {TProductInCart} from "@/type/type.ts";
 import QtyEditor from "@/components/Product/Cart/QtyEditor.tsx";
 import {Button} from "@/components/ui/button.tsx";
 
 export default function CartTable(){
-    const {cart} = useBillingCartStore()
+    const {products} = useCartStore()
 
     return (
         <Table className={"mt-4 mb-8"}>
@@ -18,7 +18,7 @@ export default function CartTable(){
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {cart.map(item => <CartDataRow data={item} key={item.product.productCode}/>)}
+                {products.map(item => <CartDataRow data={item} key={item.product.productId}/>)}
             </TableBody>
         </Table>
     )
@@ -41,7 +41,7 @@ function CartDataRow({data}: {data: TProductInCart}) {
 }
 
 function DeleteBtn({productCode}: {productCode: string}) {
-    const {removeItemFromCart} = useBillingCartStore()
+    const {removeItemFromCart} = useCartStore()
 
     const deleteBtnHandler = () => {
         removeItemFromCart(productCode)

@@ -3,13 +3,13 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from ".
 import { TProduct } from "@/type/type";
 import { useReactToPrint } from 'react-to-print'
 import { useRef } from "react";
-import { useBillingCartStore } from "@/store/billingCartStore";
+import { useCartStore } from "@/store/cartStore.ts";
 
 const SaleInvoiceDetails = () => {
     const location = useLocation();
     const componentRef = useRef<HTMLDivElement | null>(null);
     const {detail} = location.state; 
-    const productList = useBillingCartStore((state) => state.cart);
+    const productList = useCartStore((state) => state.products);
 
     const handlePrint = useReactToPrint({
         content: () => componentRef.current
