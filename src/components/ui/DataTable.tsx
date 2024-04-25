@@ -16,6 +16,7 @@ interface DataTableProps<TData, TValue> {
 const DataTable = <TData, TValue>({ columns, data, endPont, filterField }: DataTableProps<TData, TValue>) => {
     const navigate = useNavigate()
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
+
     const table = useReactTable({
         data,
         columns,

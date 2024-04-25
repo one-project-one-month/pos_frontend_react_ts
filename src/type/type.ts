@@ -7,14 +7,14 @@ export interface TProduct {
 }
 
 export interface TCustomer {
-  id: string;
+  customerId: string;
   customerCode: string;
   customerName: string;
-  mobileNo: number;
-  dateOfBirth: string;
-  gender: string;
-  stateCode: string;
-  townshipCode: string;
+  customerMobileNo: number;
+  customerDOB: string;
+  customerGender: string;
+  customerStateCode: number;
+  customerTownShipCode: number;
 }
 
 export interface TProductCategory {
@@ -52,14 +52,12 @@ export interface TJSONServerPaginationResponse<T> {
   items: number;
 }
 
-export interface TJSONServerPaginationResponse<T> {
-  data: T;
-  first: 1;
-  prev: number | null;
-  next: number | null;
-  last: number;
-  pages: number;
-  items: number;
+export interface TApiResponse<T> {
+  data: {
+    [key: string]: T[];
+  };
+  message: string;
+  result: number;
 }
 
 export interface TInvoice {
@@ -83,12 +81,12 @@ export interface TProductInCart {
 }
 
 export interface TInvoiceFormValues {
-  voucherNo: string,
-  customers: string,
-  staffs: string,
-  paymentType: string,
-  paymentAmount: number,
-  receiveAmount: number,
+  voucherNo: string;
+  customers: string;
+  staffs: string;
+  paymentType: string;
+  paymentAmount: number;
+  receiveAmount: number;
 }
 
 export interface TInvoiceItemProps {
@@ -97,11 +95,10 @@ export interface TInvoiceItemProps {
 }
 
 export interface DateTimeOptions {
-  year: 'numeric' | '2-digit' | undefined;
-  month: 'numeric' | '2-digit' | 'narrow' | 'short' | 'long' | undefined;
-  day: 'numeric' | '2-digit' | undefined;
-  hour: 'numeric' | '2-digit' | undefined;
-  minute: 'numeric' | '2-digit' | undefined;
+  year: "numeric" | "2-digit" | undefined;
+  month: "numeric" | "2-digit" | "narrow" | "short" | "long" | undefined;
+  day: "numeric" | "2-digit" | undefined;
+  hour: "numeric" | "2-digit" | undefined;
+  minute: "numeric" | "2-digit" | undefined;
   hour12: boolean | undefined;
 }
-

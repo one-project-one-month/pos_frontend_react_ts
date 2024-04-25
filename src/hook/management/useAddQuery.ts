@@ -1,3 +1,4 @@
+import { toast } from "@/components/ui/use-toast";
 import apiClient from "@/services/api/api-client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -18,8 +19,21 @@ export const useCreateNew = <T = unknown>(url: string) => {
   const queryClient = useQueryClient();
   return useMutation<T[], Error, TVariable<T>>({
     mutationFn: createNew,
-    onSettled: async () => {
+    onSuccess: async () => {
       return await queryClient.invalidateQueries({ queryKey: [url] });
     },
+    onError: (error) => {
+      toast({ description: error.message });
+    },
+    // onSettled: async () => {
+    //   return await queryClient.invalidateQueries({ queryKey: [url] });
+    // },
+    // mutationKey: ["addNew"],
+    // onMutate: async (newData) => {
+    //   await queryClient.cancelQueries({ queryKey: [url] });
+    //   const previousTodos = queryClient.getQueryData(["todos"]);
+    //   console.log(previousTodos);
+    //   // queryClient.setQueryData(["todos"], (old) => [...old, newData]);
+    // },
   });
 };
