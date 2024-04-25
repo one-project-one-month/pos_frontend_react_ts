@@ -1,3 +1,4 @@
+import { toast } from "@/components/ui/use-toast";
 import apiClient from "@/services/api/api-client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -22,6 +23,11 @@ export const useUpdateQuery = <T = unknown>(key: string) => {
     mutationFn: updateFn,
     onSettled: async () => {
       return await queryClient.invalidateQueries({ queryKey: [key] });
+    },
+    onError: () => {
+      toast({
+        description: "❎ Something went wrong.",
+      });
     },
   });
 };

@@ -19,10 +19,12 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField , classN
     const navigate = useNavigate();
     const {pathname} = useLocation();
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
+
     const [pagination, setPagination] = useState({
         pageIndex: 0,
         pageSize: pageSize ?? 10
     })
+
 
     const table = useReactTable({
         data,

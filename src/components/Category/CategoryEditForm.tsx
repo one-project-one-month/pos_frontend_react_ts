@@ -1,6 +1,6 @@
-import {useNavigate, useParams} from "react-router-dom";
-import {SubmitHandler, useForm} from "react-hook-form";
-import {Inputs} from "@/type/formSchema.ts";
+import { useNavigate, useParams } from "react-router-dom";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { Inputs } from "@/type/formSchema.ts";
 import useRenderForm from "@/hook/useRenderForm.tsx";
 import {categoryFormConst} from "@/constants/form-constant.ts";
 import {useUpdateQuery} from "@/hook/management/useUpateQuery.ts";
@@ -12,8 +12,7 @@ export default function CategoryEditForm() {
 
     const {mutate} = useUpdateQuery("product-categories");
 
-
-    const {register, handleSubmit, formState: {errors}} = useForm<Inputs>({
+    const { register, handleSubmit, formState: { errors } } = useForm<Inputs>({
         defaultValues: async () => {
             try {
                 const {data} = await apiClient.get(`product-categories/${categoryId}`);

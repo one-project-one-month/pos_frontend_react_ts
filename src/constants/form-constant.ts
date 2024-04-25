@@ -1,12 +1,16 @@
+
 import { Inputs } from "@/type/formSchema";
 
 export type TFromConst = {
-  name: keyof Inputs;
+ name: keyof Inputs;
   placeholder: string;
   isSelect?: boolean;
-  selectValue?: string[];
+  selectValue?: {
+    value: string;
+    placeholder: string;
+  }[];
   type: string;
-};
+}
 
 export const shopFormConst: TFromConst[] = [
   {
@@ -60,13 +64,43 @@ export const staffFormConst: TFromConst[] = [
   {
     name: "gender",
     placeholder: "Gender",
-    selectValue: ["Male", "Female", "Other"],
+    selectValue: [
+      {
+        value: "",
+        placeholder: "Gender",
+      },
+      {
+        value: "female",
+        placeholder: "Female",
+      },
+      {
+        value: "male",
+        placeholder: "Male",
+      },
+      {
+        value: "other",
+        placeholder: "Other",
+      },
+    ],
     type: "select",
   },
   {
     name: "position",
     placeholder: "Position",
-    selectValue: ["Manager", "Sales Associate", "Storekeeper"],
+    selectValue: [
+      {
+        value: "",
+        placeholder: "Position",
+      },
+      {
+        value: "cashier",
+        placeholder: "Cashier",
+      },
+      {
+        value: "admin",
+        placeholder: "Admin",
+      },
+    ],
     type: "select",
   },
 ];
@@ -83,30 +117,47 @@ export const customerFormConst: TFromConst[] = [
     type: "text",
   },
   {
-    name: "mobileNo",
+    name: "customerMobilNo",
     placeholder: "Mobile Number",
     type: "text",
   },
   {
-    name: "dateOfBirth",
+    name: "customerDOB",
     placeholder: "Date Of Birth",
     type: "date",
   },
   {
-    name: "gender",
+    name: "customerGender",
     placeholder: "Gender",
     type: "select",
-    selectValue: ["Male", "Female", "Other"],
+    selectValue: [
+      {
+        value: "",
+        placeholder: "Gender",
+      },
+      {
+        value: "female",
+        placeholder: "Female",
+      },
+      {
+        value: "male",
+        placeholder: "Male",
+      },
+      {
+        value: "other",
+        placeholder: "Other",
+      },
+    ],
   },
   {
-    name: "stateCode",
+    name: "cusotmerStateCode",
     placeholder: "State Code",
-    type: "text",
+    type: "number",
   },
   {
-    name: "townshipCode",
+    name: "customerTownShipCode",
     placeholder: "Township Code",
-    type: "text",
+    type: "number",
   },
 ];
 
@@ -119,21 +170,21 @@ export const productFormConst: TFromConst[] = [
   {
     name: "productName",
     placeholder: "Product Name",
-    type: "text"
+    type: "text",
   },
   {
     name: "price",
     placeholder: "Product Price",
-    type: "number"
+    type: "number",
   },
   {
-    name: "categoryCode",
+    name: "productCategoryCode",
     placeholder: "Product CategoryCode",
     type: "text",
-  }
-]
+  },
+];
 
-export const categoryFormConst : TFromConst[] = [
+export const categoryFormConst: TFromConst[] = [
   {
     name: "productCategoryCode",
     placeholder: "Product CategoryCode",
@@ -143,5 +194,6 @@ export const categoryFormConst : TFromConst[] = [
     name: "productCategoryName",
     placeholder: "Product Category Name",
     type: "text",
-  }
-]
+  },
+];
+

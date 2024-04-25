@@ -8,7 +8,7 @@ export const formSchema = z.object({
   customerName: z.string(),
   mobileNo: z.number(),
   dateOfBirth: z.date(),
-  gender: z.enum(["Male", "Female", "Other"]),
+  gender: z.enum(["male", "female", "other"]),
   stateCode: z.string(),
   townshipCode: z.string(),
   staffName: z.string(),
@@ -19,6 +19,12 @@ export const formSchema = z.object({
   productCode: z.string(),
   productName: z.string(),
   price: z.number().min(1),
+  productCategoryCode: z.string(),
+  productCategoryName: z.string(),
+  customerMobileNo: z.number(),
+  customerStateCode: z.number(),
+  customerTownShipCode: z.number(),
+  customerDOB: z.string(),
  categoryCode: z.string(),
   productCategoryName: z.string()
 });

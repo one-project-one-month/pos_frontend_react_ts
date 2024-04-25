@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import DropdownComponent from "@/components/ui/dropdown-component";
 import { toast } from "@/components/ui/use-toast";
 import { useDeleteQuery } from "@/hook/management/useDeleteQuery";
 import { TStaff } from "@/type/type";
@@ -9,29 +8,30 @@ import { useNavigate } from "react-router-dom";
 
 const CellComponent = ({ row }: { row: any }) => {
     const staff = row.original;
-    const { mutate } = useDeleteQuery("staffs")
+    const { mutateAsync } = useDeleteQuery("staffs")
     const navigator = useNavigate()
 
-    const handleDelete = (id: string) => {
-        mutate({ url: "staffs", id })
+    const handleDelete = async (id: string) => {
+        console.log(id)
+        await mutateAsync({ url: "staffs", id })
         toast({ description: "Successfully Deleted" })
     }
 
     return (
-        <DropdownComponent>
+        <div className="flex">
             <Button
-                className="w-full 
-                 mb-2" variant={"outline"}
-                onClick={() => handleDelete(staff.id)}
+                className="mr-3 bg-red-600 text-white"
+                variant={"outline"}
+                onClick={() => handleDelete(staff.staffId)}
             >
                 Delete
             </Button>
             <Button
-                className="w-full"
+                className="bg-green-600 text-white"
                 variant={"outline"}
-                onClick={() => navigator(`edit/${staff.id}`)}>
+                onClick={() => navigator(`edit/${staff.staffId}`)}>
                 Edit</Button>
-        </DropdownComponent>
+        </div>
     )
 
 }
@@ -44,18 +44,18 @@ export const staffColumns: ColumnDef<TStaff>[] = [
         accessorKey: "staffName",
         header: "StaffName"
     },
-    {
-        accessorKey: "dateOfBirth",
-        header: "DateOfBirth"
-    },
-    {
-        accessorKey: "mobileNo",
-        header: "MobileNo"
-    },
-    {
-        accessorKey: "address",
-        header: "Address"
-    },
+    // {
+    //     accessorKey: "dateOfBirth",
+    //     header: "DateOfBirth"
+    // },
+    // {
+    //     accessorKey: "mobileNo",
+    //     header: "MobileNo"
+    // },
+    // {
+    //     accessorKey: "address",
+    //     header: "Address"
+    // },
     {
         accessorKey: "gender",
         header: "Gender"

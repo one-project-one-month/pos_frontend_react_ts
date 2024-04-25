@@ -1,5 +1,5 @@
 import { useToast } from "@/components/ui/use-toast"
-import { customerFormConst } from "@/constants/form-constant.ts"
+import { customerFormConst } from "@/constants/form-constant"
 import { useCreateNew } from "@/hook/management/useAddQuery"
 import useRenderForm from "@/hook/useRenderForm"
 import { Inputs } from "@/type/formSchema"
@@ -10,7 +10,7 @@ const CustomerForm = () => {
     const navigate = useNavigate()
     const { toast } = useToast()
     const { register, handleSubmit, formState: { errors } } = useForm<Inputs>()
-    const formElements = useRenderForm({ formconst: customerFormConst, errors, register, title: "Customer" })
+    const formElements = useRenderForm({ formconst: customerFormConst, errors, register, title: "Add new customer" })
     const { mutateAsync } = useCreateNew<Inputs>("customers")
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         await mutateAsync({ formData: data, route: 'customers' })
@@ -19,7 +19,7 @@ const CustomerForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="w-4/6 m-auto">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-3/6 m-auto">
             {formElements}
         </form >
     )

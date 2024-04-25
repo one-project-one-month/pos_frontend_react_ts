@@ -3,8 +3,6 @@ import { TShop } from "@/type/type"
 import DataTable from "../../ui/DataTable"
 import { shopColumns } from "./ShopColumns"
 
-
-
 const ShopList = () => {
     const { data: shops, isLoading } = useCustomQuery<TShop>("shops")
 
