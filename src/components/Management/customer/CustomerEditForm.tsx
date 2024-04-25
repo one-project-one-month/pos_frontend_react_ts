@@ -4,7 +4,6 @@ import { useUpdateQuery } from "@/hook/management/useUpateQuery"
 import useRenderForm from "@/hook/useRenderForm"
 import apiClient from "@/services/api/api-client"
 import { Inputs } from "@/type/formSchema"
-import { TCustomer } from "@/type/type"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useNavigate, useParams } from "react-router-dom"
 
@@ -15,7 +14,6 @@ const CustomerEditForm = () => {
     const navigate = useNavigate()
 
     const { register, handleSubmit, formState: { errors, isLoading } } = useForm<Inputs>({
-
         defaultValues: async () => {
             const { data } = await apiClient.get(`customer/${customerId}`)
             data.data.customer.customerDOB = data.data.customer.customerDOB.slice(0, 10)

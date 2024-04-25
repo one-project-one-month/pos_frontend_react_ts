@@ -6,13 +6,12 @@ import { ColumnDef } from "@tanstack/react-table";
 import { useNavigate } from "react-router-dom";
 
 
-const CellComponent = ({ row }: { row: any }) => {
+const CellComponent = ({ row }: { row: { original: TStaff } }) => {
     const staff = row.original;
     const { mutateAsync } = useDeleteQuery("staffs")
     const navigator = useNavigate()
 
     const handleDelete = async (id: string) => {
-        console.log(id)
         await mutateAsync({ url: "staffs", id })
         toast({ description: "Successfully Deleted" })
     }
@@ -20,17 +19,18 @@ const CellComponent = ({ row }: { row: any }) => {
     return (
         <div className="flex">
             <Button
-                className="mr-3 bg-red-600 text-white"
-                variant={"outline"}
+                className="mr-3 bg-zinc-700"
+                variant={"default"}
+                onClick={() => navigator(`edit/${staff.staffId}`)}
+            >
+                Edit
+            </Button>
+            <Button
+                variant={"destructive"}
                 onClick={() => handleDelete(staff.staffId)}
             >
                 Delete
             </Button>
-            <Button
-                className="bg-green-600 text-white"
-                variant={"outline"}
-                onClick={() => navigator(`edit/${staff.staffId}`)}>
-                Edit</Button>
         </div>
     )
 
@@ -66,6 +66,7 @@ export const staffColumns: ColumnDef<TStaff>[] = [
     },
     {
         id: "actions",
+        header: "Actions",
         cell: CellComponent
     }
 ]

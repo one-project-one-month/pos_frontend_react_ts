@@ -1,11 +1,11 @@
 import { ColumnDef, ColumnFiltersState, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from "@tanstack/react-table"
 import { Table, TableHeader, TableHead, TableCell, TableBody, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Input } from "@/components/ui/input"
-import {useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Plus } from "lucide-react"
-import {capitalize, cn} from "@/lib/utils";
+import { capitalize, cn } from "@/lib/utils";
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[],
@@ -15,9 +15,9 @@ interface DataTableProps<TData, TValue> {
     className?: string,
     pageSize?: number
 }
-const DataTable = <TData, TValue>({ columns, data, endPont, filterField , className, pageSize}: DataTableProps<TData, TValue>) => {
+const DataTable = <TData, TValue>({ columns, data, endPont, filterField, className, pageSize }: DataTableProps<TData, TValue>) => {
     const navigate = useNavigate();
-    const {pathname} = useLocation();
+    const { pathname } = useLocation();
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
 
     const [pagination, setPagination] = useState({
@@ -43,7 +43,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField , classN
 
 
     return (
-        <div className={cn("flex flex-col w-full m-8", className)}>
+        <div className={cn("flex flex-col w-full mx-8 my-4", className)}>
             <div className="flex justify-between mb-4 items-center">
                 <Input
                     placeholder={`Filter by ${filterField}`}

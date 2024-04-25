@@ -18,17 +18,18 @@ const CellComponent = ({ row }: { row: any }) => {
     return (
         <div className="flex">
             <Button
-                className="mr-3 bg-red-600 text-white"
-                variant={"outline"}
+                className="mr-3 bg-zinc-700"
+                variant={"default"}
+                onClick={() => navigator(`edit/${customer.customerId}`)}
+            >
+                Edit
+            </Button>
+            <Button
+                variant={"destructive"}
                 onClick={() => handleDelete(customer.customerId)}
             >
                 Delete
             </Button>
-            <Button
-                className="bg-green-600 text-white"
-                variant={"outline"}
-                onClick={() => navigator(`edit/${customer.customerId}`)}>
-                Edit</Button>
         </div>
     )
 }
