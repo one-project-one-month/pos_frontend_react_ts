@@ -1,5 +1,8 @@
+
+import { Inputs } from "@/type/formSchema";
+
 export type TFromConst = {
-  name: string;
+ name: keyof Inputs;
   placeholder: string;
   isSelect?: boolean;
   selectValue?: {
@@ -7,7 +10,7 @@ export type TFromConst = {
     placeholder: string;
   }[];
   type: string;
-};
+}
 
 export const shopFormConst: TFromConst[] = [
   {
@@ -23,7 +26,7 @@ export const shopFormConst: TFromConst[] = [
   {
     name: "mobileNo",
     placeholder: "Mobile No",
-    type: "number",
+    type: "text",
   },
   {
     name: "address",
@@ -193,3 +196,4 @@ export const categoryFormConst: TFromConst[] = [
     type: "text",
   },
 ];
+

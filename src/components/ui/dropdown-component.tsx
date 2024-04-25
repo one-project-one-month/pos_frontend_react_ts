@@ -3,7 +3,7 @@ import React from 'react'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuPortal, DropdownMenuTrigger } from './dropdown-menu'
 import { EllipsisVertical } from 'lucide-react'
 
-const DropdownComponnet = ({ children }: { children: React.ReactNode }) => {
+const DropdownComponent = ({ children }: { children: React.ReactNode }) => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger>
@@ -20,4 +20,4 @@ const DropdownComponnet = ({ children }: { children: React.ReactNode }) => {
     )
 }
 
-export default DropdownComponnet
+export default DropdownComponent

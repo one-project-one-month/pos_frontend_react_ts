@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import DropdownComponnet from "@/components/ui/dropdown-component";
+import DropdownComponent from "@/components/ui/dropdown-component";
 import { toast } from "@/components/ui/use-toast";
 import { useDeleteQuery } from "@/hook/management/useDeleteQuery";
 import { TShop } from "@/type/type";
@@ -17,7 +17,7 @@ const CellComponent = ({ row }: { row: any }) => {
     }
 
     return (
-        <DropdownComponnet>
+        <DropdownComponent>
             <Button
                 className="w-full 
                  mb-2" variant={"outline"}
@@ -30,7 +30,7 @@ const CellComponent = ({ row }: { row: any }) => {
                 variant={"outline"}
                 onClick={() => navigator(`edit/${customer.id}`)}>
                 Edit</Button>
-        </DropdownComponnet>
+        </DropdownComponent>
     )
 }
 

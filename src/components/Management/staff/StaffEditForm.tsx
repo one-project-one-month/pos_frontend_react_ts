@@ -13,8 +13,6 @@ const StaffEditForm = () => {
     const { staffId } = useParams()
     const navigate = useNavigate()
 
-
-
     const { register, handleSubmit, formState: { errors, isLoading } } = useForm<Inputs>({
         defaultValues: async () => {
             const { data } = await apiClient.get(`staffs/${staffId!}`)
@@ -23,11 +21,11 @@ const StaffEditForm = () => {
         }
 
     })
+    
     const formElements = useRenderForm({ formconst: staffFormConst, errors, register, title: "Edit staff info" })
 
-
-    const { mutateAsync, error } = useUpdateQuery<Inputs>("staffs")
-    console.log(error)
+    const { mutateAsync } = useUpdateQuery<Inputs>("staffs")
+ 
     const onSubmit: SubmitHandler<Inputs> = async (data: Inputs) => {
         navigate('..')
         toast({

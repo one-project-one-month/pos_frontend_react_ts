@@ -25,6 +25,8 @@ export const formSchema = z.object({
   customerStateCode: z.number(),
   customerTownShipCode: z.number(),
   customerDOB: z.string(),
+ categoryCode: z.string(),
+  productCategoryName: z.string()
 });
 
 export type Inputs = z.infer<typeof formSchema>;

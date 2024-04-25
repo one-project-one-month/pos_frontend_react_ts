@@ -1,6 +1,5 @@
 import { useToast } from "@/components/ui/use-toast"
-import { customerFormConst } from "@/constants/form-constant"
-import { useCustomQueryById } from "@/hook/management/useCustomQuery"
+import { customerFormConst } from "@/constants/form-constant.ts"
 import { useUpdateQuery } from "@/hook/management/useUpateQuery"
 import useRenderForm from "@/hook/useRenderForm"
 import apiClient from "@/services/api/api-client"

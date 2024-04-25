@@ -32,8 +32,6 @@ const CellComponent = ({ row }: { row: any }) => {
                 onClick={() => navigator(`edit/${staff.staffId}`)}>
                 Edit</Button>
         </div>
-
-
     )
 
 }
