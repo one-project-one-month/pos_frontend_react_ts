@@ -1,13 +1,13 @@
 import CartList from "@/components/Product/Cart/CartList.tsx";
-import {useBillingCartStore} from "@/store/billingCartStore.ts";
+import {useCartStore} from "@/store/cartStore.ts";
 import CartEmpty from "@/components/Product/Cart/CartEmpty.tsx";
 
 export default function Cart(){
-    const {cart} = useBillingCartStore()
+    const {products} = useCartStore()
 
     return (
         <div>
-            {cart.length === 0 ? <CartEmpty/> : <CartList/>}
+            {products.length === 0 ? <CartEmpty/> : <CartList/>}
         </div>
     )
 }

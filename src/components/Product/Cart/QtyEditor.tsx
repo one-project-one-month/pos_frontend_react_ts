@@ -1,9 +1,9 @@
 import QtyBtn from "@/components/Product/Cart/QtyBtn.tsx";
-import {useBillingCartStore} from "@/store/billingCartStore.ts";
+import {useCartStore} from "@/store/cartStore.ts";
 
 export default function QtyEditor({value, productCode}: { value: number, productCode: string }) {
 
-    const {increaseItemCount, reduceItemCount} = useBillingCartStore();
+    const {increaseItemCount, reduceItemCount} = useCartStore();
     const increaseBtnHandler = () => {
         increaseItemCount(productCode)
     }

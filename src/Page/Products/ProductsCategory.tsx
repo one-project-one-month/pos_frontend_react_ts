@@ -5,7 +5,10 @@ const ProductsCategory = () => {
 
 
     return (
-            <CategoryList/>
+            <section className={"w-full p-8"}>
+                <h1 className={"mx-8 text-cyan-900 font-bold text-xl"}>Product Categories</h1>
+                <CategoryList/>
+            </section>
     );
 };
 

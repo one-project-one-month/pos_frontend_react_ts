@@ -127,7 +127,7 @@ export const productFormConst: TFromConst[] = [
     type: "number"
   },
   {
-    name: "productCategoryCode",
+    name: "categoryCode",
     placeholder: "Product CategoryCode",
     type: "text",
   }

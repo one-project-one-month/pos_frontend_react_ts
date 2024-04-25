@@ -1,5 +1,5 @@
 import { useToast } from "@/components/ui/use-toast"
-import { staffFormConst } from "@/constants/form-constate"
+import { staffFormConst } from "@/constants/form-constant.ts"
 import { useCreateNew } from "@/hook/management/useAddQuery"
 import useRenderForm from "@/hook/useRenderForm"
 
