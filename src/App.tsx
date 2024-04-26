@@ -5,7 +5,6 @@ import Layout from "./Page/Layout/Layout";
 import Products from "./Page/Products/Products";
 import Customers from "./Page/Management/Customers";
 import Staffs from "./Page/Management/Staffs";
-import SaleInvoice from "./Page/SaleInvoice/SaleInvoice";
 import ProductsCategory from "./Page/Products/ProductsCategory";
 import SaleInvoiceDetails from "./Page/SaleInvoice/SaleInvoiceDetail";
 import ShopForm from "./components/Management/shop/ShopForm";
@@ -73,8 +72,7 @@ const router = createBrowserRouter([
             {
                 path: "sale-invoice",
                 children: [
-                    { index: true, element: <SaleInvoice /> },
-                    { path: "history", element: <SaleInvoiceHistory /> },
+                    { index: true, element: <SaleInvoiceHistory />  },
                     { path: "detail", element: <SaleInvoiceDetails /> }
                 ]
             }
