@@ -22,16 +22,16 @@ export const navLinks = [
     routeName: "Invoice",
     icon: <NotepadText />,
     route: "/sale-invoice",
-    subRoutes: [
-      {
-        routeName: "Invoice",
-        route: "/sale-invoice",
-      },
-      {
-        routeName: "History",
-        route: "/sale-invoice/history",
-      },
-    ],
+    // subRoutes: [
+    //   {
+    //     routeName: "Invoice History",
+    //     route: "/sale-invoice",
+    //   },
+      // {
+      //   routeName: "History",
+      //   route: "/sale-invoice/history",
+      // },
+    // ],
   },
   {
     routeName: "Customers",

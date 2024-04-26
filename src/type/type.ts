@@ -65,8 +65,8 @@ export interface TApiResponse<T> {
 
 
 export interface TInvoice {
-  id: number;
-  saleInvoiceDateTime: string;
+  saleInvoiceId: string;
+  dateTime: string;
   voucherNo: string;
   totalAmount: number;
   discount: number;
@@ -98,11 +98,3 @@ export interface TInvoiceItemProps {
   value: string | number;
 }
 
-export interface DateTimeOptions {
-  year: "numeric" | "2-digit" | undefined;
-  month: "numeric" | "2-digit" | "narrow" | "short" | "long" | undefined;
-  day: "numeric" | "2-digit" | undefined;
-  hour: "numeric" | "2-digit" | undefined;
-  minute: "numeric" | "2-digit" | undefined;
-  hour12: boolean | undefined;
-}
