@@ -20,7 +20,7 @@ const StaffList = () => {
                     filterField="staffName"
                 />
             ) : (
-                <Loading />
+                <Loading message="Fetching Data" />
             )}
         </>
 

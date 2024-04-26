@@ -13,7 +13,7 @@ export const navLinks = [
   },
 
   {
-    routeName: "Products Category",
+    routeName: "Category",
     icon: <Layers3 />,
     route: "/product-category",
   },
