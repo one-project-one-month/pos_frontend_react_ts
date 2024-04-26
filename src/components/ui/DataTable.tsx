@@ -13,9 +13,10 @@ interface DataTableProps<TData, TValue> {
     endPont: string,
     filterField: string,
     className?: string,
-    pageSize?: number
+    pageSize?: number,
+    error?: Error | null
 }
-const DataTable = <TData, TValue>({ columns, data, endPont, filterField, className, pageSize }: DataTableProps<TData, TValue>) => {
+const DataTable = <TData, TValue>({ columns, data, endPont, filterField, className, pageSize,error }: DataTableProps<TData, TValue>) => {
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
@@ -102,7 +103,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                         ) : (
                             <TableRow>
                                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                                    No results
+                                    {error? <span className={"font-bold text-xl text-red-600"}>{error.message}</span> :"No result"}
                                 </TableCell>
                             </TableRow>
                         )}
