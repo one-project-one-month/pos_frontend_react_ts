@@ -1,12 +1,13 @@
 
+import { cn } from "@/lib/utils"
 import { Loader2 } from "lucide-react"
 
 
-const Loading = () => {
+const Loading = ({ message, className }: { message: string, className?: string }) => {
     return (
-        <div className="px-8 flex items-center  justify-center w-full" >
+        <div className={cn("px-8 flex items-center", className)} >
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            Fetching data
+            {message}
         </div>
     )
 }

@@ -2,6 +2,7 @@ import { TFromConst } from "@/constants/form-constant"
 import { FieldErrors, UseFormRegister } from "react-hook-form"
 import { Inputs } from "@/type/formSchema"
 import { cn } from "@/lib/utils"
+import { CircleAlert } from 'lucide-react';
 
 type TRenderFormProps = {
     formconst: TFromConst[],
@@ -13,7 +14,7 @@ type TRenderFormProps = {
 const useRenderForm = ({ formconst, errors, register, title }: TRenderFormProps) => {
     return (
         <div className={cn("w-3/5 m-auto", { "w-full": formconst.length > 4 })} >
-            <h1 className="text-3xl my-5 text-cyan-900">{title}</h1>
+            <h1 className={"mt-4 text-cyan-900 font-bold text-xl"}>{title}</h1>
             <div className={cn("grid gap-x-8 ", { "grid-cols-2": formconst.length > 4 })}>
                 {formconst.map((item) => {
                     const hasError = errors[item.name as keyof Inputs];
@@ -27,7 +28,7 @@ const useRenderForm = ({ formconst, errors, register, title }: TRenderFormProps)
                                     id={item.placeholder}
                                     {...register(item.name as keyof Inputs, isRequired)}
                                     placeholder={`Enter ${item.placeholder}`}
-                                    className="border border-gray-300 py-1 px-3 focus:outline outline-blue-100 rounded text-slate-700 placeholder:text-sm"
+                                    className={cn("border border-gray-300 py-1 px-3 focus:outline outline-blue-100 rounded text-slate-700 placeholder:text-sm", { "border border-red-600": hasError })}
                                 />
                             );
                             break;
@@ -37,7 +38,7 @@ const useRenderForm = ({ formconst, errors, register, title }: TRenderFormProps)
                                     type="date"
                                     id={item.placeholder}
                                     {...register(item.name as keyof Inputs, isRequired)}
-                                    className="border border-gray-300 focus:outline outline-blue-100 text-slate-700 rounded py-1 px-2  placeholder:text-sm"
+                                    className={cn("border border-gray-300 focus:outline outline-blue-100 text-slate-700 rounded py-1 px-2  placeholder:text-sm", { "border border-red-600": hasError })}
                                 />
                             );
                             break;
@@ -46,7 +47,7 @@ const useRenderForm = ({ formconst, errors, register, title }: TRenderFormProps)
                                 <select
                                     id={item.placeholder}
                                     {...register(item.name as keyof Inputs, isRequired)}
-                                    className="border bg-transparent  focus:outline-none  rounded py-1 px-2 text-slate-700  placeholder:text-sm"
+                                    className={cn("border bg-transparent  focus:outline outline-blue-100 rounded py-1 px-2 text-slate-700  placeholder:text-sm", { "border border-red-600": hasError })}
                                 >
                                     {item.selectValue?.map((value, index) => (
                                         <option key={value.value} value={value.value} hidden={index === 0}>
@@ -63,7 +64,7 @@ const useRenderForm = ({ formconst, errors, register, title }: TRenderFormProps)
                                     id={item.placeholder}
                                     {...register(item.name as keyof Inputs, { ...isRequired, valueAsNumber: true })}
                                     placeholder={`Enter ${item.placeholder}`}
-                                    className="border border-gray-300 py-1 px-3 focus:outline outline-blue-100 rounded text-slate-700 placeholder:text-sm"
+                                    className={cn("border border-gray-300 py-1 px-3 focus:outline outline-blue-100 rounded text-slate-700 placeholder:text-sm", { "border border-red-600": hasError })}
                                 />
                             )
                             break;
@@ -75,7 +76,12 @@ const useRenderForm = ({ formconst, errors, register, title }: TRenderFormProps)
                         <div key={item.name} className="flex flex-col my-2">
                             <label className="mb-1 text-l" htmlFor={item.placeholder}>{item.placeholder}</label>
                             {inputElement}
-                            {hasError ? <p className="text-red-500">{errors[item.name as keyof Inputs]?.message}</p> : null}
+                            {hasError ?
+                                <div className="text-red-500 flex mt-1">
+                                    <CircleAlert />
+                                    <p className="ml-1">{errors[item.name as keyof Inputs]?.message}</p>
+                                </div>
+                                : null}
                         </div>
                     );
                 })}

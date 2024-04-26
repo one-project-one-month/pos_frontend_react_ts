@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Loading from "@/components/ui/loading";
 import { toast } from "@/components/ui/use-toast";
 import { useDeleteQuery } from "@/hook/management/useDeleteQuery";
 import { TCustomer } from "@/type/type";
@@ -7,11 +8,12 @@ import { useNavigate } from "react-router-dom";
 
 const CellComponent = ({ row }: { row: any }) => {
     const customer = row.original;
-    const { mutate } = useDeleteQuery("shops")
+    const { mutateAsync } = useDeleteQuery("customer")
     const navigator = useNavigate()
 
-    const handleDelete = (id: string) => {
-        mutate({ url: "customer", id })
+    const handleDelete = async (id: string) => {
+        toast({ description: <Loading message="Deleting" className="p-0" /> })
+        await mutateAsync({ url: "customer", id })
         toast({ description: "Successfully Deleted" })
     }
 
@@ -65,6 +67,7 @@ export const customerColumns: ColumnDef<TCustomer>[] = [
     // },
     {
         id: "actions",
+        header: "Actions",
         cell: CellComponent
     }
 
