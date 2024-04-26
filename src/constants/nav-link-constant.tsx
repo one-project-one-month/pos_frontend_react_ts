@@ -48,13 +48,13 @@ export const navLinks = [
     route: "/sale-invoice",
     subRoutes: [
       {
-        routeName: "Invoice",
+        routeName: "Invoice History",
         route: "/sale-invoice",
       },
-      {
-        routeName: "History",
-        route: "/sale-invoice/history",
-      },
+      // {
+      //   routeName: "History",
+      //   route: "/sale-invoice/history",
+      // },
     ],
   },
 ];

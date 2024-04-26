@@ -12,9 +12,10 @@ interface DataTableProps<TData, TValue> {
     data: TData[]
     endPont: string,
     filterField: string,
-    className?: string
+    className?: string,
+    notInclude?: boolean
 }
-const DataTable = <TData, TValue>({ columns, data, endPont, filterField , className}: DataTableProps<TData, TValue>) => {
+const DataTable = <TData, TValue>({ columns, data, endPont, filterField , className, notInclude}: DataTableProps<TData, TValue>) => {
     const navigate = useNavigate();
     const {pathname} = useLocation();
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
@@ -42,7 +43,8 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField , classN
                     }
                     className="max-w-sm"
                 />
-                <Button
+                {
+                    notInclude ? <>Date filter</> : <Button
                     variant="outline"
                     size="default"
                     className="ml-2"
@@ -50,6 +52,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField , classN
                 >
                     <Plus size={18} className="mr-2" /> Add {capitalize(endPont)}
                 </Button>
+                }
             </div>
 
             <div className="rounded-md border">
