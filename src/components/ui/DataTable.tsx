@@ -13,13 +13,11 @@ interface DataTableProps<TData, TValue> {
     endPont: string,
     filterField: string,
     className?: string,
-    notInclude?: boolean
-}
-const DataTable = <TData, TValue>({ columns, data, endPont, filterField , className, notInclude}: DataTableProps<TData, TValue>) => {
-
+    notInclude?: boolean,    
     pageSize?: number
 }
-const DataTable = <TData, TValue>({ columns, data, endPont, filterField, className, pageSize }: DataTableProps<TData, TValue>) => {
+
+const DataTable = <TData, TValue>({ columns, data, endPont, filterField, className, pageSize, notInclude }: DataTableProps<TData, TValue>) => {
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
