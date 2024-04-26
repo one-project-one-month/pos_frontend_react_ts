@@ -6,9 +6,8 @@ import {getProducts} from "@/services/api/productApi.ts";
 import {productColumn} from "@/components/Product/ProductColumn.tsx";
 import ListSkeleton from "@/components/Product/ListSekeleton.tsx";
 
-
 export default function ProductList() {
-    const {data: products} = useQuery<TProduct[]>({
+    const {data: products, isFetched,error} = useQuery<TProduct[]>({
         queryKey: ["products"],
         queryFn: getProducts,
         staleTime: 60 * 60 * 1000 * 365
@@ -18,10 +17,10 @@ export default function ProductList() {
     return (
 
         <section>
-            {products ? <DataTable columns={productColumn}
-									data={products}
+            {isFetched ? <DataTable columns={productColumn}
+									data={products ? products : []}
 									endPont="products" filterField="productName"
-									className={"mx-0"} pageSize={8}/>: <ListSkeleton/>}
+									className={"mx-0"} pageSize={8} error={error}/>: <ListSkeleton/>}
 
         </section>
     );
