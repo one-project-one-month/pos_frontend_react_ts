@@ -4,6 +4,7 @@ import DataTable from "@/components/ui/DataTable.tsx";
 import {categoryColumns} from "@/components/Category/CategoryColumn.tsx";
 import {getProductCategories} from "@/services/api/productApi.ts";
 import ListSkeleton from "@/components/Product/ListSekeleton.tsx";
+import Loading from "@/components/ui/loading.tsx";
 
 
 export default function CategoryList() {
@@ -24,7 +25,10 @@ export default function CategoryList() {
                 filterField="productCategoryName"
                 className={"w-[unset]"}
                 pageSize={8}
-            /> : <ListSkeleton className={"w-[80vw] mx-8 my-4"}/>}
+            /> : <div>
+                <Loading/>
+                <ListSkeleton className={"w-[80vw] mx-8 my-4"}/>
+            </div>}
         </>
     );
 }
