@@ -2,7 +2,7 @@ import { useCustomQuery } from "@/hook/management/useCustomQuery"
 import { TCustomer } from "@/type/type"
 import DataTable from "@/components/ui/DataTable"
 import { customerColumns } from "./customerColumn"
-import Loading from "@/components/ui/loading"
+import ListSkeleton from "@/components/Product/ListSekeleton"
 
 
 
@@ -23,7 +23,9 @@ const CustomerList = () => {
                     filterField="customerName" />
             ) :
                 (
-                    <Loading message="Fetching data" />
+                    <div className="m-8 flex">
+                        <ListSkeleton className="w-[600px]" />
+                    </div>
                 )
             }
         </>
