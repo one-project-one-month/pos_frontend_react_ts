@@ -1,38 +1,38 @@
 import {useDeleteQuery} from "@/hook/management/useDeleteQuery.ts";
 import {useNavigate} from "react-router-dom";
 import {toast} from "@/components/ui/use-toast.ts";
-import DropdownComponent from "@/components/ui/dropdown-component.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {ColumnDef} from "@tanstack/react-table";
 import {TProductCategory} from "@/type/type.ts";
 
-const CellComponent = ({ row }: { row: {original: TProductCategory} }) => {
+const CellComponent = ({row}: { row: { original: TProductCategory } }) => {
     const category = row.original;
-    const { mutate } = useDeleteQuery("product-categories")
-    const navigator = useNavigate()
+    const {mutate} = useDeleteQuery("product-categories");
+    const navigator = useNavigate();
 
     const handleDelete = (id: string) => {
-        mutate({ url: "product-categories", id })
-        toast({ description: "Successfully Deleted" })
-    }
+        mutate({url: "product-categories", id});
+        toast({description: "Successfully Deleted"});
+    };
 
     return (
-        <DropdownComponent>
+        <div className={"flex justify-center items-center  gap-x-4 "}>
             <Button
-                className="w-full
-                 mb-2" variant={"outline"}
+                className="w-20 font-bold bg-zinc-700"
+                variant={"default"}
+                onClick={() => navigator(`edit/${category.productCategoryId}`)}
+            >
+                Edit
+            </Button>
+            <Button
+                className="w-20 font-bold" variant={"destructive"}
                 onClick={() => handleDelete(category.productCategoryId)}
             >
                 Delete
             </Button>
-            <Button
-                className="w-full"
-                variant={"outline"}
-                onClick={() => navigator(`edit/${category.productCategoryId}`)}>
-                Edit</Button>
-        </DropdownComponent>
-    )
-}
+        </div>
+    );
+};
 
 export const categoryColumns: ColumnDef<TProductCategory>[] = [
     {
@@ -47,4 +47,4 @@ export const categoryColumns: ColumnDef<TProductCategory>[] = [
         id: "actions",
         cell: CellComponent
     }
-]
+];

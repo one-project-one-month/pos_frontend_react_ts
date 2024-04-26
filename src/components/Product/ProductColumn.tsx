@@ -1,21 +1,21 @@
-import {useDeleteQuery} from "@/hook/management/useDeleteQuery.ts";
-import {useNavigate} from "react-router-dom";
-import {toast} from "@/components/ui/use-toast.ts";
+import { useDeleteQuery } from "@/hook/management/useDeleteQuery.ts";
+import { useNavigate } from "react-router-dom";
+import { toast } from "@/components/ui/use-toast.ts";
 import DropdownComponent from "@/components/ui/dropdown-component.tsx";
-import {Button} from "@/components/ui/button.tsx";
-import {ColumnDef} from "@tanstack/react-table";
-import {TProduct} from "@/type/type.ts";
-import {useBillingCartStore} from "@/store/billingCartStore.ts";
+import { Button } from "@/components/ui/button.tsx";
+import { ColumnDef } from "@tanstack/react-table";
+import { TProduct } from "@/type/type.ts";
+import { useCartStore } from "@/store/cartStore.ts";
 
-const CellComponent = ({row}: { row: { original: TProduct } }) => {
+const CellComponent = ({ row }: { row: { original: TProduct } }) => {
     const product = row.original;
-    const {mutate} = useDeleteQuery("products");
+    const { mutate } = useDeleteQuery("products");
     const navigator = useNavigate();
-    const { addToCart } = useBillingCartStore();
+    const { addToCart } = useCartStore();
 
     const handleDelete = (id: string) => {
-        mutate({url: "products", id});
-        toast({description: "Successfully Deleted"});
+        mutate({ url: "products", id });
+        toast({ description: "Successfully Deleted" });
     };
 
     const handleAddToCart = () => {
@@ -24,7 +24,6 @@ const CellComponent = ({row}: { row: { original: TProduct } }) => {
 
     return (
         <DropdownComponent>
-
             <Button
                 className="w-full mb-2"
                 variant={"outline"}
@@ -61,7 +60,7 @@ export const productColumn: ColumnDef<TProduct>[] = [
     {
         accessorKey: "category",
         header: "Category",
-        cell: cellInfo => (<p>{cellInfo.row.original.category.productCategoryName}</p>)
+        cell: cellInfo => (<p>{cellInfo.row.original?.category?.productCategoryName ?? ""}</p>)
     },
     {
         accessorKey: "price",

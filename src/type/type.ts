@@ -8,14 +8,14 @@ export interface TProduct {
 }
 
 export interface TCustomer {
-  id: string;
+  customerId: string;
   customerCode: string;
   customerName: string;
-  mobileNo: number;
-  dateOfBirth: string;
-  gender: string;
-  stateCode: string;
-  townshipCode: string;
+  customerMobileNo: number;
+  customerDOB: string;
+  customerGender: string;
+  customerStateCode: number;
+  customerTownShipCode: number;
 }
 
 export interface TProductCategory {
@@ -25,14 +25,15 @@ export interface TProductCategory {
 }
 
 export interface TStaff {
-  id: string;
+  staffId: string;
   staffCode: string;
   staffName: string;
+  password: string;
   dateOfBirth: Date;
   mobileNo: string;
   address: string;
-  gender: "Male" | "Female" | "Other";
-  position: "Manager" | "Sales Associate" | "Storekeeper";
+  gender: "male" | "female" | "other";
+  position: "cashier" | "admin";
 }
 
 export interface TShop {
@@ -53,6 +54,14 @@ export interface TJSONServerPaginationResponse<T> {
   items: number;
 }
 
+
+export interface TApiResponse<T> {
+  data: {
+    [key: string]: T[];
+  };
+  message: string;
+  result: number;
+}
 
 
 export interface TInvoice {
@@ -76,15 +85,16 @@ export interface TProductInCart {
 }
 
 export interface TInvoiceFormValues {
-  voucherNo: string,
-  customers: string,
-  staffs: string,
-  paymentType: string,
-  paymentAmount: number,
-  receiveAmount: number,
+  voucherNo: string;
+  customers: string;
+  staffs: string;
+  paymentType: string;
+  paymentAmount: number;
+  receiveAmount: number;
 }
 
 export interface TInvoiceItemProps {
   label: string;
   value: string | number;
 }
+

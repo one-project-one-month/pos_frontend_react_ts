@@ -2,24 +2,28 @@ import { useCustomQuery } from "@/hook/management/useCustomQuery"
 import { TStaff } from "@/type/type"
 import DataTable from "@/components/ui/DataTable"
 import { staffColumns } from "./StaffColumns"
-
-
+import Loading from "@/components/ui/loading"
 
 
 const StaffList = () => {
-    const { data: staffs } = useCustomQuery<TStaff>(
+    const { data: staffs, isFetched } = useCustomQuery<TStaff>(
         "staffs",
-
     )
 
-
     return (
-        <DataTable
-            columns={staffColumns}
-            data={staffs ? staffs : []}
-            endPont="staffs"
-            filterField="staffName"
-        />
+        <>
+            {isFetched ? (
+                <DataTable
+                    columns={staffColumns}
+                    data={staffs ? staffs : []}
+                    endPont="staffs"
+                    filterField="staffName"
+                />
+            ) : (
+                <Loading />
+            )}
+        </>
+
     )
 }
 

@@ -2,21 +2,34 @@ import { useCustomQuery } from "@/hook/management/useCustomQuery"
 import { TCustomer } from "@/type/type"
 import DataTable from "@/components/ui/DataTable"
 import { customerColumns } from "./customerColumn"
+import Loading from "@/components/ui/loading"
 
 
 
 
 const CustomerList = () => {
-    const { data: customers } = useCustomQuery<TCustomer>(
-        "customers",
+    const { data: customers, isFetched } = useCustomQuery<TCustomer>(
+        "customer",
     )
 
     return (
-        <DataTable
-            columns={customerColumns}
-            data={customers ? customers : []}
-            endPont="customers"
-            filterField="customerName" />
+        <>
+            {isFetched ? (
+                <DataTable
+                    data={customers ? customers : []}
+                    columns={customerColumns}
+                    endPont="customers"
+                    filterField="customerName" />
+            ) :
+                (
+                    <Loading />
+                )
+            }
+        </>
+
+
+
+
     )
 }
 

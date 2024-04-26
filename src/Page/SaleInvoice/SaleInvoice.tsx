@@ -4,7 +4,7 @@ import { TCustomer, TInvoiceFormValues, TStaff, TInvoiceItemProps, TProductInCar
 import { useRef } from "react"
 import { Path, useForm, UseFormRegister, SubmitHandler, FieldErrors } from "react-hook-form"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../components/ui/table"
-import { useBillingCartStore } from "@/store/billingCartStore"
+import { useCartStore } from "@/store/cartStore.ts"
 import { useCreateNew } from "@/hook/management/useAddQuery"
 import { useNavigate } from "react-router-dom"
 import { useToast } from "@/components/ui/use-toast"
@@ -101,7 +101,7 @@ const SaleInvoice = () => {
   const { data: staffs } = useCustomQuery<TStaff>(
     "staffs"
   )
-  const orderProducts = useBillingCartStore((state) => state.cart);
+  const orderProducts = useCartStore((state) => state.products);
 
   const priceArr = orderProducts?.map((product: TProductInCart) => product?.product.price)
   const subTotal = priceArr.reduce((acc, curr) => acc + curr, 0);

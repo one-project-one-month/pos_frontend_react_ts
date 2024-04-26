@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import DropdownComponent from "@/components/ui/dropdown-component";
 import { toast } from "@/components/ui/use-toast";
 import { useDeleteQuery } from "@/hook/management/useDeleteQuery";
 import { TStaff } from "@/type/type";
@@ -7,31 +6,32 @@ import { ColumnDef } from "@tanstack/react-table";
 import { useNavigate } from "react-router-dom";
 
 
-const CellComponent = ({ row }: { row: any }) => {
+const CellComponent = ({ row }: { row: { original: TStaff } }) => {
     const staff = row.original;
-    const { mutate } = useDeleteQuery("staffs")
+    const { mutateAsync } = useDeleteQuery("staffs")
     const navigator = useNavigate()
 
-    const handleDelete = (id: string) => {
-        mutate({ url: "staffs", id })
+    const handleDelete = async (id: string) => {
+        await mutateAsync({ url: "staffs", id })
         toast({ description: "Successfully Deleted" })
     }
 
     return (
-        <DropdownComponent>
+        <div className="flex">
             <Button
-                className="w-full 
-                 mb-2" variant={"outline"}
-                onClick={() => handleDelete(staff.id)}
+                className="mr-3 bg-zinc-700"
+                variant={"default"}
+                onClick={() => navigator(`edit/${staff.staffId}`)}
+            >
+                Edit
+            </Button>
+            <Button
+                variant={"destructive"}
+                onClick={() => handleDelete(staff.staffId)}
             >
                 Delete
             </Button>
-            <Button
-                className="w-full"
-                variant={"outline"}
-                onClick={() => navigator(`edit/${staff.id}`)}>
-                Edit</Button>
-        </DropdownComponent>
+        </div>
     )
 
 }
@@ -44,18 +44,18 @@ export const staffColumns: ColumnDef<TStaff>[] = [
         accessorKey: "staffName",
         header: "StaffName"
     },
-    {
-        accessorKey: "dateOfBirth",
-        header: "DateOfBirth"
-    },
-    {
-        accessorKey: "mobileNo",
-        header: "MobileNo"
-    },
-    {
-        accessorKey: "address",
-        header: "Address"
-    },
+    // {
+    //     accessorKey: "dateOfBirth",
+    //     header: "DateOfBirth"
+    // },
+    // {
+    //     accessorKey: "mobileNo",
+    //     header: "MobileNo"
+    // },
+    // {
+    //     accessorKey: "address",
+    //     header: "Address"
+    // },
     {
         accessorKey: "gender",
         header: "Gender"
@@ -66,6 +66,7 @@ export const staffColumns: ColumnDef<TStaff>[] = [
     },
     {
         id: "actions",
+        header: "Actions",
         cell: CellComponent
     }
 ]
