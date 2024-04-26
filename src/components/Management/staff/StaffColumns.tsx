@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Loading from "@/components/ui/loading";
 import { toast } from "@/components/ui/use-toast";
 import { useDeleteQuery } from "@/hook/management/useDeleteQuery";
 import { TStaff } from "@/type/type";
@@ -12,6 +13,7 @@ const CellComponent = ({ row }: { row: { original: TStaff } }) => {
     const navigator = useNavigate()
 
     const handleDelete = async (id: string) => {
+        toast({ description: <Loading message="Deleting" className="p-0" /> })
         await mutateAsync({ url: "staffs", id })
         toast({ description: "Successfully Deleted" })
     }

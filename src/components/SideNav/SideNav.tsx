@@ -4,7 +4,7 @@ import SideNavLink from './SideNavLink';
 
 const SideNav = () => {
     return (
-        <aside className="w-64 flex flex-col border-r border-slate-200 bg-white/70 px-3 py-4 dark:border-slate-700 dark:bg-slate-900 ">
+        <aside className="flex flex-col border-r border-slate-200 bg-white/70 px-3 py-4 dark:border-slate-700 dark:bg-slate-900 ">
             <div
                 className="mb-5 flex justify-center items-center rounded-lg px-3 py-2 text-slate-900 dark:text-white"
             >

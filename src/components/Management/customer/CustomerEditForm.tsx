@@ -1,3 +1,4 @@
+import Loading from "@/components/ui/loading"
 import { useToast } from "@/components/ui/use-toast"
 import { customerFormConst } from "@/constants/form-constant.ts"
 import { useUpdateQuery } from "@/hook/management/useUpateQuery"
@@ -20,20 +21,26 @@ const CustomerEditForm = () => {
             return data.data.customer
         }
     })
-    const { mutate: updateForm } = useUpdateQuery<Inputs>("customers")
+    const { mutateAsync: updateForm } = useUpdateQuery<Inputs>("customer")
     const formElements = useRenderForm({ formconst: customerFormConst, errors, register, title: "Edit customer info" })
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
-        updateForm({ formData: data, route: 'customers', id: customerId! })
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
         navigate('..')
+        toast({ description: <Loading message="Updating" className="p-0" /> })
+        await updateForm({ formData: data, route: 'customers', id: customerId! })
         toast({ description: "Successfully updated" })
     }
 
     if (isLoading) {
-        return <h1>Loading</h1>
+        return (
+            <div className="flex flex-col mt-4">
+                <Loading message="Getting infos" />
+            </div>
+        )
     }
+
     return (
-        <form className="w-3/6 m-auto" onSubmit={handleSubmit(onSubmit)}>
+        <form className="w-3/6 m-auto flex h-screen items-center" onSubmit={handleSubmit(onSubmit)}>
             {formElements}
         </form>
     )
