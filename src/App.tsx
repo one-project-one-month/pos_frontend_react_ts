@@ -20,7 +20,7 @@ import CategoryEditForm from "@/components/Category/CategoryEditForm.tsx";
 import CategoryCreateForm from "@/components/Category/CategoryCreateForm.tsx";
 import ProductCreateFrom from "@/components/Product/ProductForm/ProductCreateFrom.tsx";
 import ShopList from "./components/Management/shop/ShopList";
-import NotFound from "./components/NotFound";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 
 
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Layout />,
-        errorElement: <NotFound />,
+        errorElement: <ErrorBoundary />,
         children: [
             {
                 index: true,
@@ -72,7 +72,7 @@ const router = createBrowserRouter([
             {
                 path: "sale-invoice",
                 children: [
-                    { index: true, element: <SaleInvoiceHistory />  },
+                    { index: true, element: <SaleInvoiceHistory /> },
                     { path: "detail", element: <SaleInvoiceDetails /> }
                 ]
             }
