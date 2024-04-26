@@ -1,10 +1,10 @@
+import Loading from "@/components/ui/loading"
 import { toast } from "@/components/ui/use-toast"
 import { staffFormConst } from "@/constants/form-constant"
 import { useUpdateQuery } from "@/hook/management/useUpateQuery"
 import useRenderForm from "@/hook/useRenderForm"
 import apiClient from "@/services/api/api-client"
 import { Inputs } from "@/type/formSchema"
-import { Loader2 } from "lucide-react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useNavigate, useParams } from "react-router-dom"
 
@@ -29,23 +29,25 @@ const StaffEditForm = () => {
     const onSubmit: SubmitHandler<Inputs> = async (data: Inputs) => {
         navigate('..')
         toast({
-            description: <span className="flex items-center">
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Updating
-            </span>
+            description: <Loading message="Updating" className="p-0" />
         })
         await mutateAsync({ formData: data, route: 'staffs', id: staffId! })
         toast({ description: "✅ Successfully updated" })
     }
 
     if (isLoading) {
-        return <h1>Loading</h1>
+        return (
+            <div className="flex flex-col mt-4">
+                <Loading message="Getting infos" />
+            </div>
+        )
+
     }
 
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)} className="w-3/6 m-auto" >
+            <form onSubmit={handleSubmit(onSubmit)} className="w-3/6 m-auto flex h-screen items-center" >
                 {formElements}
             </form>
         </>

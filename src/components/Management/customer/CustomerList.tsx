@@ -12,6 +12,7 @@ const CustomerList = () => {
         "customer",
     )
 
+
     return (
         <>
             {isFetched ? (
@@ -22,7 +23,7 @@ const CustomerList = () => {
                     filterField="customerName" />
             ) :
                 (
-                    <Loading />
+                    <Loading message="Fetching data" />
                 )
             }
         </>

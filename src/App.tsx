@@ -21,6 +21,7 @@ import CategoryEditForm from "@/components/Category/CategoryEditForm.tsx";
 import CategoryCreateForm from "@/components/Category/CategoryCreateForm.tsx";
 import ProductCreateFrom from "@/components/Product/ProductForm/ProductCreateFrom.tsx";
 import ShopList from "./components/Management/shop/ShopList";
+import NotFound from "./components/NotFound";
 
 
 
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Layout />,
+        errorElement: <NotFound />,
         children: [
             {
                 index: true,
