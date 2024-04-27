@@ -15,7 +15,7 @@ const CellComponent = ({ row }: { row: { original: TProduct } }) => {
 
     const handleDelete = (id: string) => {
         mutate({ url: "products", id });
-        toast({ description: "Successfully Deleted" });
+        toast({ description: "✅ Successfully Deleted" });
     };
 
     const handleAddToCart = () => {

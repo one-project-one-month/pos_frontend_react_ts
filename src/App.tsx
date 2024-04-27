@@ -1,4 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+// App.tsx
+import 'react-day-picker/dist/style.css';
 
 import { Home } from "./Page/Home/Home";
 import Layout from "./Page/Layout/Layout";

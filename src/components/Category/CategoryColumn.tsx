@@ -1,18 +1,18 @@
-import {useDeleteQuery} from "@/hook/management/useDeleteQuery.ts";
-import {useNavigate} from "react-router-dom";
-import {toast} from "@/components/ui/use-toast.ts";
-import {Button} from "@/components/ui/button.tsx";
-import {ColumnDef} from "@tanstack/react-table";
-import {TProductCategory} from "@/type/type.ts";
+import { useDeleteQuery } from "@/hook/management/useDeleteQuery.ts";
+import { useNavigate } from "react-router-dom";
+import { toast } from "@/components/ui/use-toast.ts";
+import { Button } from "@/components/ui/button.tsx";
+import { ColumnDef } from "@tanstack/react-table";
+import { TProductCategory } from "@/type/type.ts";
 
-const CellComponent = ({row}: { row: { original: TProductCategory } }) => {
+const CellComponent = ({ row }: { row: { original: TProductCategory } }) => {
     const category = row.original;
-    const {mutate} = useDeleteQuery("product-categories");
+    const { mutate } = useDeleteQuery("product-categories");
     const navigator = useNavigate();
 
     const handleDelete = (id: string) => {
-        mutate({url: "product-categories", id});
-        toast({description: "Successfully Deleted"});
+        mutate({ url: "product-categories", id });
+        toast({ description: "✅ Successfully Deleted" });
     };
 
     return (

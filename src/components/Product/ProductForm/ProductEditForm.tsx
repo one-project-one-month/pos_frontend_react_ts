@@ -26,7 +26,7 @@ export default function ProductEditForm() {
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         updateForm({ formData: data, route: "products", id: productId! });
         navigate("../..", { relative: "path" });
-        toast({ description: "Successfully updated" });
+        toast({ description: "✅ Successfully updated" });
     };
 
     return (

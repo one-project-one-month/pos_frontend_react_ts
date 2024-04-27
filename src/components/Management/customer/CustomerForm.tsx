@@ -10,20 +10,22 @@ import { useNavigate } from "react-router-dom"
 const CustomerForm = () => {
     const navigate = useNavigate()
     const { toast } = useToast()
-    const { register, handleSubmit, formState: { errors } } = useForm<Inputs>()
-    const formElements = useRenderForm({ formconst: customerFormConst, errors, register, title: "Add new customer" })
+    const { register, handleSubmit, control, formState: { errors } } = useForm<Inputs>()
+    const formElements = useRenderForm({ formconst: customerFormConst, errors, register, title: "Add new customer", control })
     const { mutateAsync } = useCreateNew<Inputs>("customer")
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         navigate('..')
         toast({ description: <Loading message="Adding new" className="p-0" /> })
         await mutateAsync({ formData: data, route: 'customer' })
-        toast({ description: "Successfully added" })
+        toast({ description: "✅ Successfully added" })
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="w-3/6 m-auto flex h-screen items-center">
-            {formElements}
-        </form >
+        <div className="w-full mt-8">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-3/6 m-auto">
+                {formElements}
+            </form >
+        </div>
     )
 
 }

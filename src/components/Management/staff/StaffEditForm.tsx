@@ -13,16 +13,16 @@ const StaffEditForm = () => {
     const { staffId } = useParams()
     const navigate = useNavigate()
 
-    const { register, handleSubmit, formState: { errors, isLoading } } = useForm<Inputs>({
+    const { register, handleSubmit, control, formState: { errors, isLoading } } = useForm<Inputs>({
         defaultValues: async () => {
             const { data } = await apiClient.get(`staffs/${staffId!}`)
-            data.data.staff.dateOfBirth = data.data.staff.dateOfBirth.slice(0, 10)
+            // data.data.staff.dateOfBirth = data.data.staff.dateOfBirth.slice(0, 10)
             return data.data.staff
         }
 
     })
 
-    const formElements = useRenderForm({ formconst: staffFormConst, errors, register, title: "Edit staff info" })
+    const formElements = useRenderForm({ formconst: staffFormConst, errors, register, title: "Edit staff info", control })
 
     const { mutateAsync } = useUpdateQuery<Inputs>("staffs")
 
@@ -46,12 +46,11 @@ const StaffEditForm = () => {
 
 
     return (
-        <>
-            <form onSubmit={handleSubmit(onSubmit)} className="w-3/6 m-auto flex h-screen items-center" >
+        <div className="w-full mt-8">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-3/6 m-auto">
                 {formElements}
-            </form>
-        </>
-
+            </form >
+        </div>
     )
 }
 

@@ -14,7 +14,7 @@ const CellComponent = ({ row }: { row: any }) => {
     const handleDelete = async (id: string) => {
         toast({ description: <Loading message="Deleting" className="p-0" /> })
         await mutateAsync({ url: "customer", id })
-        toast({ description: "Successfully Deleted" })
+        toast({ description: "✅ Successfully Deleted" })
     }
 
     return (

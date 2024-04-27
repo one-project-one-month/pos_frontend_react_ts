@@ -14,21 +14,22 @@ const CustomerEditForm = () => {
     const { toast } = useToast()
     const navigate = useNavigate()
 
-    const { register, handleSubmit, formState: { errors, isLoading } } = useForm<Inputs>({
+    const { register, handleSubmit, control, formState: { errors, isLoading } } = useForm<Inputs>({
         defaultValues: async () => {
             const { data } = await apiClient.get(`customer/${customerId}`)
-            data.data.customer.customerDOB = data.data.customer.customerDOB.slice(0, 10)
+            // data.data.customer.customerDOB = data.data.customer.customerDOB.slice(0, 10)
             return data.data.customer
         }
     })
     const { mutateAsync: updateForm } = useUpdateQuery<Inputs>("customer")
-    const formElements = useRenderForm({ formconst: customerFormConst, errors, register, title: "Edit customer info" })
+    const formElements = useRenderForm({ formconst: customerFormConst, errors, register, title: "Edit customer info", control })
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        console.log(data)
         navigate('..')
         toast({ description: <Loading message="Updating" className="p-0" /> })
-        await updateForm({ formData: data, route: 'customers', id: customerId! })
-        toast({ description: "Successfully updated" })
+        await updateForm({ formData: data, route: 'customer', id: customerId! })
+        toast({ description: "✅Successfully updated" })
     }
 
     if (isLoading) {
@@ -40,9 +41,11 @@ const CustomerEditForm = () => {
     }
 
     return (
-        <form className="w-3/6 m-auto flex h-screen items-center" onSubmit={handleSubmit(onSubmit)}>
-            {formElements}
-        </form>
+        <div className="w-full mt-8">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-3/6 m-auto">
+                {formElements}
+            </form >
+        </div>
     )
 }
 
