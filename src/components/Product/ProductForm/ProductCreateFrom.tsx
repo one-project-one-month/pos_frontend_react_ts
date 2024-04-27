@@ -17,7 +17,7 @@ export default function ProductCreateFrom() {
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         mutate({ formData: data, route: pathName });
         navigate(`..`, { relative: "path" });
-        toast({ description: "Successfully added" });
+        toast({ description: "✅ Successfully added" });
     };
 
 

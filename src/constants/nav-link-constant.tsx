@@ -13,7 +13,7 @@ export const navLinks = [
   },
 
   {
-    routeName: "Category",
+    routeName: "Product Category",
     icon: <Layers3 />,
     route: "/product-category",
   },
@@ -27,10 +27,10 @@ export const navLinks = [
     //     routeName: "Invoice History",
     //     route: "/sale-invoice",
     //   },
-      // {
-      //   routeName: "History",
-      //   route: "/sale-invoice/history",
-      // },
+    // {
+    //   routeName: "History",
+    //   route: "/sale-invoice/history",
+    // },
     // ],
   },
   {

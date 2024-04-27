@@ -1,8 +1,7 @@
-
 import { Inputs } from "@/type/formSchema";
 
 export type TFromConst = {
- name: keyof Inputs;
+  name: keyof Inputs;
   placeholder: string;
   isSelect?: boolean;
   selectValue?: {
@@ -10,7 +9,7 @@ export type TFromConst = {
     placeholder: string;
   }[];
   type: string;
-}
+};
 
 export const shopFormConst: TFromConst[] = [
   {
@@ -102,6 +101,11 @@ export const staffFormConst: TFromConst[] = [
       },
     ],
     type: "select",
+  },
+  {
+    name: "password",
+    placeholder: "Password",
+    type: "text",
   },
 ];
 
@@ -196,4 +200,3 @@ export const categoryFormConst: TFromConst[] = [
     type: "text",
   },
 ];
-

@@ -23,7 +23,6 @@ export const useCustomQuery = <T>(endpoint: string) => {
 const queryFnById = async (url: string, id: string) => {
   const { data } = await apiClient.get(`/${url}/${id}`);
   const dynamicKey = Object.keys(data.data)[0];
-
   return data.data[dynamicKey];
 };
 

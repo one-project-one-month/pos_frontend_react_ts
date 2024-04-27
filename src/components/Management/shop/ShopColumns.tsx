@@ -13,7 +13,7 @@ const CellComponent = ({ row }: { row: any }) => {
 
     const handleDelete = (id: string) => {
         mutate({ url: "shops", id })
-        toast({ description: "Successfully Deleted" })
+        toast({ description: "✅ Successfully Deleted" })
     }
 
     return (

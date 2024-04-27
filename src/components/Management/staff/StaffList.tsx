@@ -2,7 +2,7 @@ import { useCustomQuery } from "@/hook/management/useCustomQuery"
 import { TStaff } from "@/type/type"
 import DataTable from "@/components/ui/DataTable"
 import { staffColumns } from "./StaffColumns"
-import Loading from "@/components/ui/loading"
+import ListSkeleton from "@/components/Product/ListSekeleton"
 
 
 const StaffList = () => {
@@ -20,7 +20,9 @@ const StaffList = () => {
                     filterField="staffName"
                 />
             ) : (
-                <Loading message="Fetching Data" />
+                <div className="m-8 flex">
+                    <ListSkeleton className="w-[600px]" />
+                </div>
             )}
         </>
 

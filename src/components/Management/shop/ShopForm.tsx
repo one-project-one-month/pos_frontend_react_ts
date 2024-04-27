@@ -16,7 +16,7 @@ const ShopForm = () => {
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         await mutateAsync({ formData: data, route: pathName })
         navigate('..')
-        toast({ description: "Successfully added" })
+        toast({ description: "✅ Successfully added" })
     }
 
     return (

@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input"
 import { useLocation, useNavigate } from "react-router-dom";
 import { Plus } from "lucide-react"
 import { capitalize, cn } from "@/lib/utils";
-import { DatePicker } from "../Invoice/DateFilter";
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[],
@@ -14,13 +13,13 @@ interface DataTableProps<TData, TValue> {
     endPont: string,
     filterField: string,
     className?: string,
-    notInclude?: boolean,    
+    notInclude?: boolean,
     pageSize?: number,
     dates?: React.ReactNode
     error?: Error | null
 }
-const DataTable = <TData, TValue>({ columns, data, endPont, filterField, className, pageSize, error, notInclude, dates }: DataTableProps<TData, TValue>) => {
 
+const DataTable = <TData, TValue>({ columns, data, endPont, filterField, className, pageSize, error, notInclude, dates }: DataTableProps<TData, TValue>) => {
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
@@ -98,6 +97,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                                 <TableRow
                                     key={row.id}
                                     data-state={row.getIsSelected() && "selected"}
+                                    className="dark:text-white"
                                 >
                                     {row.getVisibleCells().map(cell => (
                                         <TableCell key={cell.id}>
@@ -109,7 +109,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                         ) : (
                             <TableRow>
                                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                                    {error? <span className={"font-bold text-xl text-red-600"}>{error.message}</span> :"No result"}
+                                    {error ? <span className={"font-bold text-xl text-red-600"}>{error.message}</span> : <span className="dark:text-white">"No result"</span>}
                                 </TableCell>
                             </TableRow>
                         )}
@@ -118,6 +118,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
             </div>
             <div className="flex items-center justify-end space-x-2 py-4">
                 <Button
+                    className="dark:text-white"
                     variant="outline"
                     size="sm"
                     onClick={() => table.previousPage()}
@@ -126,6 +127,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                     Previous
                 </Button>
                 <Button
+                    className="dark:text-white"
                     variant="outline"
                     size="sm"
                     onClick={() => table.nextPage()}
