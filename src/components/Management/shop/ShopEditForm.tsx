@@ -24,7 +24,7 @@ const ShopEditForm = () => {
     const onSubmit: SubmitHandler<Inputs> = (data: Inputs) => {
         updateForm({ formData: data, route: 'shops', id: shopId! })
         navigate('..')
-        toast({ description: "Successfully updated" })
+        toast({ description: "✅ Successfully updated" })
     }
 
     const { mutate: updateForm } = useUpdateQuery<Inputs>("shops")

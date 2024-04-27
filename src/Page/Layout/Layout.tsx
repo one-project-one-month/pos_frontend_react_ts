@@ -3,7 +3,7 @@ import SideNav from "../../components/SideNav/SideNav"
 
 const Layout = () => {
     return (
-        <div className="flex dark:bg-black">
+        <div className="flex dark:bg-[#212121]">
             <SideNav />
             <Outlet />
         </div>

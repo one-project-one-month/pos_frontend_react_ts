@@ -16,7 +16,6 @@ export const useDeleteQuery = (url: string) => {
   return useMutation({
     mutationFn: deleteData,
     onSuccess: async () => {
-      console.log("success");
       return await queryClient.invalidateQueries({ queryKey: [url] });
     },
     onError: () => {
