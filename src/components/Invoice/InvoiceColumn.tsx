@@ -1,5 +1,20 @@
+import { formattedDateTime } from '@/lib/utils';
 import { TInvoice } from '@/type/type';
 import { ColumnDef } from '@tanstack/react-table';
+import { useNavigate } from 'react-router-dom';
+
+const routeToDetail = (row: any) => {
+    const navigate = useNavigate();
+    
+    return (
+        <p className="underline cursor-pointer" onClick={() => navigate(`/sale-invoice/detail`,
+            {
+                state: {
+                    detail: row?.original
+                }
+            })}>Detail</p>
+    )
+}
 
 export const InvoiceColumn: ColumnDef<TInvoice, any>[] = [
     {
@@ -19,17 +34,8 @@ export const InvoiceColumn: ColumnDef<TInvoice, any>[] = [
     {
         accessorKey: "dateTime",
         header: "Date",
-        cell: ({row}) => {
-            const date = new Date(row.getValue('dateTime'));
-            const formattedDateTime = new Intl.DateTimeFormat("en-US", {
-                day: '2-digit',
-                month: 'short',
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: true,
-            }).format(date);
-            return <p>{formattedDateTime}</p>
+        cell: ({row}) => {            
+            return <p>{formattedDateTime(row.getValue('dateTime'))}</p>
         }
     },
     {
@@ -63,15 +69,6 @@ export const InvoiceColumn: ColumnDef<TInvoice, any>[] = [
     {
         accessorKey: "detail",
         header: "Detail",
-        // cell: ({ row }) => {
-        //     return (
-        //         <p className="underline cursor-pointer" onClick={() => navigate(`/sale-invoice/detail`,
-        //             {
-        //                 state: {
-        //                     detail: row?.original
-        //                 }
-        //             })}>Detail</p>
-        //     )
-        // }
+        cell: ({ row }) => routeToDetail(row)
     }
 ]

@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { useLocation, useNavigate } from "react-router-dom";
 import { Plus } from "lucide-react"
 import { capitalize, cn } from "@/lib/utils";
+import { DatePicker } from "../Invoice/DateFilter";
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[],
@@ -14,10 +15,11 @@ interface DataTableProps<TData, TValue> {
     filterField: string,
     className?: string,
     notInclude?: boolean,    
-    pageSize?: number
+    pageSize?: number,
+    dates?: React.ReactNode
 }
 
-const DataTable = <TData, TValue>({ columns, data, endPont, filterField, className, pageSize, notInclude }: DataTableProps<TData, TValue>) => {
+const DataTable = <TData, TValue>({ columns, data, endPont, filterField, className, pageSize, notInclude, dates }: DataTableProps<TData, TValue>) => {
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
@@ -56,7 +58,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                     className="w-1/3"
                 />
                 {
-                    notInclude ? <>Date filter</> : <Button
+                    notInclude ? dates : <Button
                     variant="outline"
                     size="default"
                     className="ml-2"

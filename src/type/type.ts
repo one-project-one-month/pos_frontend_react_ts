@@ -77,6 +77,16 @@ export interface TInvoice {
   receiveAmount: number;
   change: number;
   customerCode: string;
+  invoiceDetail: TInvoiceDetail
+}
+
+export interface TInvoiceDetail {
+  saleInvoiceDetailsId: string,
+  voucherNo: string,
+  productCode: string,
+  quantity: number,
+  price: number,
+  amount: number
 }
 
 export interface TProductInCart {

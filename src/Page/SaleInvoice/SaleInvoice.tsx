@@ -1,6 +1,5 @@
-import { useCustomQuery } from "@/hook/management/useCustomQuery"
-import { queryFn } from "@/services/api/management/queryFn"
-import { TCustomer, TInvoiceFormValues, TStaff, TInvoiceItemProps, TProductInCart, DateTimeOptions } from "@/type/type"
+import { useCustomQuery } from "@/hook/management/useCustomQuery";
+import { TCustomer, TInvoiceFormValues, TStaff, TInvoiceItemProps, TProductInCart } from "@/type/type"
 import { useRef } from "react"
 import { Path, useForm, UseFormRegister, SubmitHandler, FieldErrors } from "react-hook-form"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../components/ui/table"
@@ -54,7 +53,7 @@ const Select = ({ label, register, errors, datas }: InputProps) => (
             </option>
           ))
         ) : (
-          datas?.map((data) => {
+          datas?.map((data,index) => {
             let name = ""
             switch (label) {
               case 'customers':
@@ -69,7 +68,7 @@ const Select = ({ label, register, errors, datas }: InputProps) => (
                 break;
             }
             return (
-              <option key={data?.id} value={name}>
+              <option key={index} value={name}>
                 {name}
               </option>
             );
@@ -109,15 +108,14 @@ const SaleInvoice = () => {
   const totalAmount: number = subTotal - 50
   const currentDate = new Date();
 
-  const options: DateTimeOptions = {
+  const formattedDateTime = currentDate.toLocaleString('en-US',  {
     day: '2-digit',
     month: 'short',
     year: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
     hour12: true,
-  }
-  const formattedDateTime = currentDate.toLocaleString('en-US', options).replace(/,/, '');
+  }).replace(/,/, '');
 
   const { mutate } = useCreateNew('saleInvoice');
 

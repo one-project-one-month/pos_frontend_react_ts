@@ -21,3 +21,28 @@ export const getCart = () => useCartStore.getState().products.map(item => {
     };
 });
 
+export const formattedDateTime = (dateTime: any) => {
+ const date = new Date(dateTime);
+ return new Intl.DateTimeFormat("en-US", {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true,
+}).format(date);   
+}
+
+export const apiFormattedDate = (dateTime: any) => {
+    const date = new Date(dateTime);
+    const formattedDate = new Intl.DateTimeFormat("en-US", {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+   }).format(date);   
+
+   const [month,day,year] = formattedDate.split('/');
+   const formattedDateString = `${year}-${month}-${day}`
+
+   return formattedDateString
+   }
