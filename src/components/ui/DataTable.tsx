@@ -15,10 +15,11 @@ interface DataTableProps<TData, TValue> {
     className?: string,
     notInclude?: boolean,
     pageSize?: number,
+    dates?: React.ReactNode
     error?: Error | null
 }
-const DataTable = <TData, TValue>({ columns, data, endPont, filterField, className, pageSize, error, notInclude }: DataTableProps<TData, TValue>) => {
 
+const DataTable = <TData, TValue>({ columns, data, endPont, filterField, className, pageSize, error, notInclude, dates }: DataTableProps<TData, TValue>) => {
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
@@ -57,18 +58,14 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                     className="w-1/3"
                 />
                 {
-                    notInclude ?
-                        <>Date filter</>
-                        :
-                        <Button
-                            variant="outline"
-                            size="default"
-                            className="ml-2"
-                            onClick={() => navigate(`${pathname}/create`)}
-                        >
-                            <Plus size={18} className="mr-2 dark:text-white" />
-                            <span className="dark:text-white"> Add {capitalize(endPont)}</span>
-                        </Button>
+                    notInclude ? dates : <Button
+                    variant="outline"
+                    size="default"
+                    className="ml-2"
+                    onClick={() => navigate(`${pathname}/create`)}
+                >
+                    <Plus size={18} className="mr-2" /> Add {capitalize(endPont)}
+                </Button>
                 }
             </div>
 

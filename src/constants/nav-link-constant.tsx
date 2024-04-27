@@ -19,7 +19,7 @@ export const navLinks = [
   },
 
   {
-    routeName: "Invoice",
+    routeName: "Invoices",
     icon: <NotepadText />,
     route: "/sale-invoice",
     // subRoutes: [
