@@ -1,11 +1,19 @@
-import { ColumnDef, ColumnFiltersState, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from "@tanstack/react-table"
-import { Table, TableHeader, TableHead, TableCell, TableBody, TableRow } from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
-import React, { useState } from "react";
-import { Input } from "@/components/ui/input"
-import { useLocation, useNavigate } from "react-router-dom";
-import { Plus } from "lucide-react"
-import { capitalize, cn } from "@/lib/utils";
+import {
+    ColumnDef,
+    ColumnFiltersState,
+    flexRender,
+    getCoreRowModel,
+    getFilteredRowModel,
+    getPaginationRowModel,
+    useReactTable
+} from "@tanstack/react-table";
+import {Table, TableHeader, TableHead, TableCell, TableBody, TableRow} from "@/components/ui/table";
+import {Button} from "@/components/ui/button";
+import React, {useState} from "react";
+import {Input} from "@/components/ui/input";
+import {useLocation, useNavigate} from "react-router-dom";
+import {Plus} from "lucide-react";
+import {capitalize, cn} from "@/lib/utils";
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[],
@@ -19,15 +27,17 @@ interface DataTableProps<TData, TValue> {
     error?: Error | null
 }
 
+
 const DataTable = <TData, TValue>({ columns, data, endPont, filterField, className, pageSize, error, notInclude, dates }: DataTableProps<TData, TValue>) => {
     const navigate = useNavigate();
-    const { pathname } = useLocation();
-    const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
+    const location = useLocation();
+    const pathName = location.pathname === "/" ? "" : location.pathname;
+    const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
 
     const [pagination, setPagination] = useState({
         pageIndex: 0,
         pageSize: pageSize ?? 10
-    })
+    });
 
 
     const table = useReactTable({
@@ -43,7 +53,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
             columnFilters,
             pagination
         }
-    })
+    });
 
 
     return (
@@ -66,6 +76,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                 >
                     <Plus size={18} className="mr-2" /> Add {capitalize(endPont)}
                 </Button>
+
                 }
             </div>
 
@@ -85,7 +96,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                                                 )
                                             }
                                         </TableHead>
-                                    )
+                                    );
                                 })}
                             </TableRow>
                         ))
@@ -109,7 +120,8 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                         ) : (
                             <TableRow>
                                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                                    {error ? <span className={"font-bold text-xl text-red-600"}>{error.message}</span> : <span className="dark:text-white">"No result"</span>}
+                                    {error ? <span className={"font-bold text-xl text-red-600"}>{error.message}</span> :
+                                        <span className="dark:text-white">"No result"</span>}
                                 </TableCell>
                             </TableRow>
                         )}
@@ -139,7 +151,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
             </div>
         </div>
 
-    )
-}
+    );
+};
 
-export default DataTable
+export default DataTable;

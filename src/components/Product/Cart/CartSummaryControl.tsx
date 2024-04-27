@@ -25,9 +25,9 @@ export default function CartSummaryControl() {
 
     return (
         <div className={"flex justify-center items-center gap-x-4"}>
-            <Button className={"bg-orange-500 text-[17px] font-bold"} onClick={cancelOrderBtnHandler}>Cancel
+            <Button className={"bg-orange-500 text-[17px] font-bold dark:bg-amber-300 dark:text-red-600"} onClick={cancelOrderBtnHandler}>Cancel
                 Order</Button>
-            <Button className={"text-[17px] font-bold"} onClick={placeOrderBtnHandler} disabled={!staffCode}>Place Order</Button>
+            <Button className={"text-[17px] font-bold dark:bg-blue-300 dark:hover:bg-emerald-400"} onClick={placeOrderBtnHandler} disabled={!staffCode}>Place Order</Button>
         </div>
     );
 }
