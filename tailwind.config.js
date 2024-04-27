@@ -19,8 +19,11 @@ module.exports = {
       },
     },
     extend: {
+      colors: {
+        background: "hsl(var(--background))",
+      },
       maxWidth: {
-        productList: "600px"
+        productList: "600px",
       },
       keyframes: {
         "accordion-down": {

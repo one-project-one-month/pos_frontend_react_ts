@@ -57,14 +57,18 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                     className="w-1/3"
                 />
                 {
-                    notInclude ? <>Date filter</> : <Button
-                        variant="outline"
-                        size="default"
-                        className="ml-2"
-                        onClick={() => navigate(`${pathname}/create`)}
-                    >
-                        <Plus size={18} className="mr-2" /> Add {capitalize(endPont)}
-                    </Button>
+                    notInclude ?
+                        <>Date filter</>
+                        :
+                        <Button
+                            variant="outline"
+                            size="default"
+                            className="ml-2"
+                            onClick={() => navigate(`${pathname}/create`)}
+                        >
+                            <Plus size={18} className="mr-2 dark:text-white" />
+                            <span className="dark:text-white"> Add {capitalize(endPont)}</span>
+                        </Button>
                 }
             </div>
 
@@ -96,6 +100,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                                 <TableRow
                                     key={row.id}
                                     data-state={row.getIsSelected() && "selected"}
+                                    className="dark:text-white"
                                 >
                                     {row.getVisibleCells().map(cell => (
                                         <TableCell key={cell.id}>
@@ -107,7 +112,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                         ) : (
                             <TableRow>
                                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                                    {error ? <span className={"font-bold text-xl text-red-600"}>{error.message}</span> : "No result"}
+                                    {error ? <span className={"font-bold text-xl text-red-600"}>{error.message}</span> : <span className="dark:text-white">"No result"</span>}
                                 </TableCell>
                             </TableRow>
                         )}
@@ -116,6 +121,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
             </div>
             <div className="flex items-center justify-end space-x-2 py-4">
                 <Button
+                    className="dark:text-white"
                     variant="outline"
                     size="sm"
                     onClick={() => table.previousPage()}
@@ -124,6 +130,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                     Previous
                 </Button>
                 <Button
+                    className="dark:text-white"
                     variant="outline"
                     size="sm"
                     onClick={() => table.nextPage()}
