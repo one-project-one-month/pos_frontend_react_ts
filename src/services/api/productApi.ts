@@ -14,23 +14,16 @@ export const getProductCategories = async () => {
 };
 
 export const getProducts = async () => {
-    const {data} = await apiClient.get(
-        `/products`
-    );
-    const res = data.data as { products: TProduct[]}
-    return res.products;
+        const {data} = await apiClient.get(
+            `/products`
+        );
+        const res = data.data as { products: TProduct[]}
+        return res.products;
 };
 
 export const getProductByCode = async (productCode: string) => {
     const response = await apiClient.get<TProduct[]>(
         `/products?productCode=${capitalize(productCode)}`
-    );
-    return response.data;
-};
-
-export const editProductById = async (productId: number, payload: Partial<TProduct>) => {
-    const response = await apiClient.patch<TProduct>(
-        `/products/${productId}`, payload
     );
     return response.data;
 };
