@@ -39,22 +39,22 @@ const InvoicesList = () => {
   };
 
   const { data: invoices, isFetched } = useQuery<TInvoice[]>({
-    queryKey: ["sale-invoices",apiFormattedDate(fromDate), apiFormattedDate(toDate)],
-    queryFn: () => getInvoices({fromDate: apiFormattedDate(fromDate), toDate: apiFormattedDate(toDate)}),
-});
+    queryKey: ["sale-invoices", apiFormattedDate(fromDate), apiFormattedDate(toDate)],
+    queryFn: () => getInvoices({ fromDate: apiFormattedDate(fromDate), toDate: apiFormattedDate(toDate) }),
+  });
 
-return (
+  return (
     <>
-    {
-        isFetched ? 
-            <DataTable columns={InvoiceColumn} data={invoices ? invoices : []} endPont="sale-invoices" filterField="voucherNo" pageSize={8} notInclude={true} dates={<DateElements
-                fromDate={fromDate}
-                toDate={toDate}
-                handleStartDateChange={handleStartDateChange}
-                handleEndDateChange={handleEndDateChange}
-              />} /> : <ListSkeleton />
-    }
-    </> 
+      {
+        isFetched ?
+          <DataTable columns={InvoiceColumn} data={invoices ? invoices : []} endPont="sale-invoices" filterField="voucherNo" pageSize={8} notInclude={true} dates={<DateElements
+            fromDate={fromDate}
+            toDate={toDate}
+            handleStartDateChange={handleStartDateChange}
+            handleEndDateChange={handleEndDateChange}
+          />} /> : <ListSkeleton className="w-[50vw]" />
+      }
+    </>
   )
 }
 
