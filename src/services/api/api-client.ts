@@ -1,5 +1,6 @@
 import axios from "axios";
-const BASE_URL = "https://pos-frontend-next-ruby.vercel.app/api/v1";
+const BASE_URL = import.meta.env.VITE_API_URL;
+console.log(BASE_URL);
 
 export default axios.create({
   baseURL: BASE_URL,
