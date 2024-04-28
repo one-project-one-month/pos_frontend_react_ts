@@ -48,7 +48,7 @@ function DeleteBtn({productCode}: {productCode: string}) {
     }
 
     return (
-        <Button variant={"outline"} className={"aspect-square h-8  p-0.5 border-red-500"}
+        <Button variant={"outline"} className={"aspect-square h-8  p-0.5 border-red-500 dark:bg-emerald-400 dark:border-emerald-400"}
                 onClick={deleteBtnHandler}
         >
             <svg xmlns="http://www.w3.org/2000/svg"

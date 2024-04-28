@@ -53,7 +53,7 @@ const Select = ({ label, register, errors, datas }: InputProps) => (
             </option>
           ))
         ) : (
-          datas?.map((data,index) => {
+          datas?.map((data, index) => {
             let name = ""
             switch (label) {
               case 'customers':
@@ -108,7 +108,7 @@ const SaleInvoice = () => {
   const totalAmount: number = subTotal - 50
   const currentDate = new Date();
 
-  const formattedDateTime = currentDate.toLocaleString('en-US',  {
+  const formattedDateTime = currentDate.toLocaleString('en-US', {
     day: '2-digit',
     month: 'short',
     year: 'numeric',

@@ -26,7 +26,7 @@ export default function StaffSelection() {
 
     return (
         <Select onValueChange={onSelect}>
-            <SelectTrigger className={"w-60"}>
+            <SelectTrigger className={"w-60 dark:bg-emerald-400 outline-0"}>
                 <SelectValue placeholder={"Choose Staff"}/>
             </SelectTrigger>
             <SelectContent className={"w-60 gap-y-2 bg-zinc-700"}>

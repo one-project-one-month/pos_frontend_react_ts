@@ -21,11 +21,11 @@ type TRenderFormProps = {
 const useRenderForm = ({ formconst, errors, register, title, control }: TRenderFormProps) => {
     return (
         <div className={cn("w-3/5 m-auto", { "w-full": formconst.length > 4 })} >
-            <h1 className={"mt-4 text-cyan-900 dark:text-cyan-200 font-bold text-xl"}>{title}</h1>
+            <h1 className={"mt-4 text-tertiary dark:text-dark-tertiary font-bold text-xl"}>{title}</h1>
             <div className={cn("grid gap-x-8 ", { "grid-cols-2": formconst.length > 4 })}>
                 {formconst.map((item) => {
                     const hasError = errors[item.name];
-                    const isRequired = { required: `${item.placeholder} is required` };
+                    const isRequired = item.validation ?? {};
 
                     let inputElement;
                     switch (item.type) {
@@ -115,7 +115,7 @@ const useRenderForm = ({ formconst, errors, register, title, control }: TRenderF
                             {hasError ?
                                 <div className="text-red-500 flex items-center mt-1">
                                     <CircleAlert size={14} />
-                                    <p className="ml-1">{errors[item.name]?.message}</p>
+                                    <p className="ml-1">{errors[item.name] && item?.errorMessage}</p>
                                 </div>
                                 : null}
                         </div>

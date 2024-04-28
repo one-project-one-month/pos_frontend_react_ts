@@ -39,11 +39,11 @@ const InvoicesList = () => {
   };
 
   const { data: invoices, isFetched } = useQuery<TInvoice[]>({
-    queryKey: ["sale-invoices",apiFormattedDate(fromDate), apiFormattedDate(toDate)],
-    queryFn: () => getInvoices({fromDate: apiFormattedDate(fromDate), toDate: apiFormattedDate(toDate)}),
-});
+    queryKey: ["sale-invoices", apiFormattedDate(fromDate), apiFormattedDate(toDate)],
+    queryFn: () => getInvoices({ fromDate: apiFormattedDate(fromDate), toDate: apiFormattedDate(toDate) }),
+  });
 
-return (
+  return (
     <>
     {
         isFetched ? 

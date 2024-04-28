@@ -20,7 +20,12 @@ module.exports = {
     },
     extend: {
       colors: {
-        background: "hsl(var(--background))",
+        primary: "white",
+        "dark-primary": "#212121",
+        secondary: "black",
+        "dark-secondary": "#111827",
+        tertiary: "#164e63",
+        "dark-tertiary": "#cbd5e1",
       },
       maxWidth: {
         productList: "600px",

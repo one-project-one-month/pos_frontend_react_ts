@@ -26,7 +26,7 @@ const CustomerList = () => {
             ) :
                 (
                     <div className="m-8 flex">
-                        <ListSkeleton className="w-[600px]" />
+                        <ListSkeleton className="w-[600px] h-[80vh]" />
                     </div>
                 )
             }
