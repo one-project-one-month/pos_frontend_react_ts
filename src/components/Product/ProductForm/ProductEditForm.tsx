@@ -12,7 +12,7 @@ export default function ProductEditForm() {
     const { productId } = useParams();
     const navigate = useNavigate();
 
-    const { mutate: updateForm } = useUpdateQuery<Inputs>("products");
+    const { mutateAsync: updateForm } = useUpdateQuery<Inputs>("products");
 
 
     const { register, handleSubmit, formState: { errors } } = useForm<Inputs>({
@@ -23,8 +23,8 @@ export default function ProductEditForm() {
     });
     const formElements = useRenderForm({ formconst: productFormConst, errors, register, title: "Product Edit" });
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
-        updateForm({ formData: data, route: "products", id: productId! });
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        await updateForm({ formData: data, route: "products", id: productId! });
         navigate("../..", { relative: "path" });
         toast({ description: "✅ Successfully updated" });
     };
