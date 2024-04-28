@@ -1,5 +1,5 @@
 export const Home = () => {
   return (
-    <h1>This is Dashboard Page</h1>
+    <h1 className="dark:text-white">This is Dashboard Page</h1>
   )
 };

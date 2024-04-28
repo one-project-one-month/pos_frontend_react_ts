@@ -7,13 +7,13 @@ import {
     getPaginationRowModel,
     useReactTable
 } from "@tanstack/react-table";
-import {Table, TableHeader, TableHead, TableCell, TableBody, TableRow} from "@/components/ui/table";
-import {Button} from "@/components/ui/button";
-import React, {useState} from "react";
-import {Input} from "@/components/ui/input";
-import {useLocation, useNavigate} from "react-router-dom";
-import {Plus} from "lucide-react";
-import {capitalize, cn} from "@/lib/utils";
+import { Table, TableHeader, TableHead, TableCell, TableBody, TableRow } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import React, { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Plus } from "lucide-react";
+import { capitalize, cn } from "@/lib/utils";
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[],
@@ -68,14 +68,16 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                     className="w-1/3"
                 />
                 {
-                    notInclude ? dates : <Button
-                    variant="outline"
-                    size="default"
-                    className="ml-2"
-                    onClick={() => navigate(`${pathname}/create`)}
-                >
-                    <Plus size={18} className="mr-2" /> Add {capitalize(endPont)}
-                </Button>
+                    notInclude ? dates :
+                        <Button
+                            variant="outline"
+                            size="default"
+                            className="ml-2 dark:text-white"
+                            onClick={() => navigate(`${pathName}/create`)}
+                        >
+                            <Plus size={18} className="mr-2" />
+                            <span>Add {capitalize(endPont)}</span>
+                        </Button>
 
                 }
             </div>
@@ -149,7 +151,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                 </Button>
 
             </div>
-        </div>
+        </div >
 
     );
 };

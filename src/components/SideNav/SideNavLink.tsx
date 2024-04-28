@@ -36,7 +36,7 @@ const SideNavLink = ({ navLink }: { navLink: TRoutes }) => {
                 <NavLink
                     key={subroute.routeName}
                     to={subroute.route}
-                    className={({ isActive }) => cn("flex items-center rounded-lg px-8 py-2 text-slate-900  dark:text-white dark:hover:bg-gray-100 ", { "text-slate-600": isActive })}
+                    className={({ isActive }) => cn("flex items-center rounded-lg px-8 py-2 text-slate-900  dark:text-white dark:hover:bg-dark-tertiary ", { "text-slate-600": isActive })}
                     end
                 >
                     <span>{subroute.routeName}</span>
