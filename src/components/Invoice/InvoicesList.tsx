@@ -47,7 +47,7 @@ return (
     <>
     {
         isFetched ? 
-            <DataTable columns={InvoiceColumn} data={invoices ? invoices : []} endPont="sale-invoices" filterField="voucherNo" pageSize={8} notInclude={true} dates={<DateElements
+            <DataTable columns={InvoiceColumn} data={invoices ? invoices : []} endPont="sale-invoices" filterField="voucherNo" className="mx-0" pageSize={8} notInclude={true} dates={<DateElements
                 fromDate={fromDate}
                 toDate={toDate}
                 handleStartDateChange={handleStartDateChange}
