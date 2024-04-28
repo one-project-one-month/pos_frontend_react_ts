@@ -46,11 +46,9 @@ const StaffEditForm = () => {
 
 
     return (
-        <div className="w-full mt-8">
-            <form onSubmit={handleSubmit(onSubmit)} className="w-3/6 m-auto">
-                {formElements}
-            </form >
-        </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="w-5/6 m-auto ">
+            {formElements}
+        </form >
     )
 }
 

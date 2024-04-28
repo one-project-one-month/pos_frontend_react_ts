@@ -11,7 +11,7 @@ export default function ProductCreateFrom() {
     const { toast } = useToast();
     const pathName = "products";
     const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
-    const formElements = useRenderForm({ formconst: productFormConst, errors, register, title: "Product" });
+    const formElements = useRenderForm({ formconst: productFormConst, errors, register, title: "Add new product" });
     const { mutateAsync } = useCreateNew(pathName);
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {

@@ -12,7 +12,7 @@ export default function CategoryCreateForm() {
     const navigate = useNavigate();
 
     const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
-    const formElements = useRenderForm({ formconst: categoryFormConst, errors, register, title: "Product Category" });
+    const formElements = useRenderForm({ formconst: categoryFormConst, errors, register, title: "Create new product category" });
     const { mutateAsync } = useCreateNew(pathName);
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {

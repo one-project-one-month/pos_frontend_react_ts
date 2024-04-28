@@ -7,17 +7,17 @@ type TVariable<T> = {
   route: string;
 };
 
-const createNew = async <T>({
+const createNew = async <T, P>({
   formData,
   route,
-}: TVariable<T>): Promise<T[]> => {
-  const { data } = await apiClient.post<T[]>(`/${route}`, formData);
+}: TVariable<T>): Promise<P> => {
+  const { data } = await apiClient.post<P>(`/${route}`, formData);
   return data;
 };
 
 export const useCreateNew = <T = unknown>(url: string) => {
   const queryClient = useQueryClient();
-  return useMutation<T[], Error, TVariable<T>>({
+  return useMutation<T, Error, TVariable<T>>({
     mutationFn: createNew,
     onSuccess: async () => {
       return await queryClient.invalidateQueries({ queryKey: [url] });

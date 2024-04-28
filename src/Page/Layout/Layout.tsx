@@ -5,7 +5,10 @@ const Layout = () => {
     return (
         <div className="flex dark:bg-dark-primary">
             <SideNav />
-            <Outlet />
+            <div className="w-4/5">
+                <Outlet />
+            </div>
+
         </div>
     )
 }

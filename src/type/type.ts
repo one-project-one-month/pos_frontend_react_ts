@@ -4,7 +4,7 @@ export interface TProduct {
   productName: string;
   price: number;
   categoryCode: string;
-  category: TProductCategory,
+  category: TProductCategory;
 }
 
 export interface TCustomer {
@@ -54,15 +54,11 @@ export interface TJSONServerPaginationResponse<T> {
   items: number;
 }
 
-
-export interface TApiResponse<T> {
-  data: {
-    [key: string]: T[];
-  };
+export interface TApiResponse<T = any> {
+  data: T;
   message: string;
   result: number;
 }
-
 
 export interface TInvoice {
   saleInvoiceId: string;
@@ -77,7 +73,7 @@ export interface TInvoice {
   receiveAmount: number;
   change: number;
   customerCode: string;
-  invoiceDetail: TInvoiceDetail
+  invoiceDetail: TInvoiceDetail;
 }
 
 export interface GridItemProps {
@@ -87,12 +83,12 @@ export interface GridItemProps {
 }
 
 export interface TInvoiceDetail {
-  saleInvoiceDetailsId: string,
-  voucherNo: string,
-  productCode: string,
-  quantity: number,
-  price: number,
-  amount: number
+  saleInvoiceDetailsId: string;
+  voucherNo: string;
+  productCode: string;
+  quantity: number;
+  price: number;
+  amount: number;
 }
 
 export interface TProductInCart {
@@ -113,4 +109,3 @@ export interface TInvoiceItemProps {
   label: string;
   value: string | number;
 }
-

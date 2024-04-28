@@ -11,7 +11,6 @@ const SaleInvoiceDetails = () => {
     const componentRef = useRef<HTMLDivElement | null>(null);
     const { detail } = location.state;
     const totalQty = detail?.saleInvoiceDetails.reduce((acc: number, curr: any) => acc + curr.quantity, 0)
-
     const handlePrint = useReactToPrint({
         content: () => componentRef.current
     })

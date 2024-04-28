@@ -21,7 +21,7 @@ export default function ProductEditForm() {
             return data;
         }
     });
-    const formElements = useRenderForm({ formconst: productFormConst, errors, register, title: "Product Edit" });
+    const formElements = useRenderForm({ formconst: productFormConst, errors, register, title: "Edit product" });
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         await updateForm({ formData: data, route: "products", id: productId! });
