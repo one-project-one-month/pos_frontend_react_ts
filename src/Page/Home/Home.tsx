@@ -38,7 +38,7 @@ export const options = {
   },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September','Octomber','November','December'];
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octomber', 'November', 'December'];
 
 export const data = {
   labels,
@@ -56,35 +56,35 @@ export const data = {
 const products = [
   {
     "id": 1,
-    "productName" : "Handmade Soft Cheese",
+    "productName": "Handmade Soft Cheese",
     "price": 114,
     "quantity": 10,
     "total": 1140,
   },
   {
     "id": 1,
-    "productName" : "Handmade Soft Cheese",
+    "productName": "Handmade Soft Cheese",
     "price": 114,
     "quantity": 10,
     "total": 1140,
   },
   {
     "id": 2,
-    "productName" : "Handcrafted Soft Tuna",
+    "productName": "Handcrafted Soft Tuna",
     "price": 162,
     "quantity": 20,
     "total": 3240,
   },
   {
     "id": 3,
-    "productName" : "Modern Granite Sausages",
+    "productName": "Modern Granite Sausages",
     "price": 176,
     "quantity": 9,
     "total": 1584,
   },
   {
     "id": 4,
-    "productName" : "Bespoke Bronze Soap",
+    "productName": "Bespoke Bronze Soap",
     "price": 185,
     "quantity": 20,
     "total": 3700,
@@ -167,13 +167,13 @@ export const Home = () => {
     <div className="w-4/5 mx-auto mt-4">
       <div className="rounded-2xl mb-8 shadow-md flex gap-4 p-4 bg-gradient-to-tr from-pink-100 to-purple-300">
         <div className="grid grid-rows-2 grid-cols-2 w-2/4">
-        <GridItem icon={<UsersRound />} value="50" label="Total Customer"/>
-        <GridItem icon={<Users />} value="2" label="Total Staff" />
-        <GridItem icon={<Boxes />} value="120" label="Total Sales" />
-        <GridItem icon={<Receipt />} value="$20000" label="Total Revenue" />
+          <GridItem icon={<UsersRound />} value="50" label="Total Customer" />
+          <GridItem icon={<Users />} value="2" label="Total Staff" />
+          <GridItem icon={<Boxes />} value="120" label="Total Sales" />
+          <GridItem icon={<Receipt />} value="$20000" label="Total Revenue" />
         </div>
         <div className='flex-1'>
-          <Line data={data} options={options} />      
+          <Line data={data} options={options} />
         </div>
       </div>
       <div className='flex gap-4'>

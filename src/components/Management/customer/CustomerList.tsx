@@ -12,11 +12,8 @@ const CustomerList = () => {
         "customer",
     )
 
-
-
-
     return (
-        <>
+        <div className="w-full">
             {isFetched ? (
                 <DataTable
                     data={customers ? customers : []}
@@ -26,11 +23,11 @@ const CustomerList = () => {
             ) :
                 (
                     <div className="m-8 flex">
-                        <ListSkeleton className="w-[600px] h-[80vh]" />
+                        <ListSkeleton />
                     </div>
                 )
             }
-        </>
+        </div>
 
 
 

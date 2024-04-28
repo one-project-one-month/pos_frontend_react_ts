@@ -15,7 +15,7 @@ const SideNavLink = ({ navLink }: { navLink: TRoutes }) => {
             <li>
                 <NavLink
                     to={navLink.route}
-                    className={({ isActive }) => cn("w-full flex justify-between items-center rounded-lg px-3 py-2 text-slate-900  dark:text-white dark:hover:bg-slate-700", { "bg-slate-900 dark:bg-salte-900 text-white": isActive })}
+                    className={({ isActive }) => cn("w-full flex justify-between items-center rounded-lg px-3 py-2 text-slate-900 hover:bg-gray-700 hover:text-white dark:text-white dark:hover:bg-gray-800", { "bg-slate-900 dark:bg-salte-900 text-white": isActive })}
                     onClick={toggleDropDown}
 
                 >
