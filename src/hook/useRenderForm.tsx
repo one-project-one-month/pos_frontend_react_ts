@@ -25,7 +25,7 @@ const useRenderForm = ({ formconst, errors, register, title, control }: TRenderF
             <div className={cn("grid gap-x-8 ", { "grid-cols-2": formconst.length > 4 })}>
                 {formconst.map((item) => {
                     const hasError = errors[item.name];
-                    const isRequired = { required: `${item.placeholder} is required` };
+                    const isRequired = item.validation ?? {};
 
                     let inputElement;
                     switch (item.type) {
@@ -115,7 +115,7 @@ const useRenderForm = ({ formconst, errors, register, title, control }: TRenderF
                             {hasError ?
                                 <div className="text-red-500 flex items-center mt-1">
                                     <CircleAlert size={14} />
-                                    <p className="ml-1">{errors[item.name]?.message}</p>
+                                    <p className="ml-1">{errors[item.name] && item?.errorMessage}</p>
                                 </div>
                                 : null}
                         </div>
