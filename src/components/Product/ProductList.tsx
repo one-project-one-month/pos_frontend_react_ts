@@ -15,10 +15,11 @@ export default function ProductList() {
 
     return (
         <section className="w-[50%]">
+            <h1 className={"mb-2 text-cyan-900 font-bold text-xl dark:text-teal-50"}>Products</h1>
             {isFetched ? <DataTable columns={productColumn}
-                data={products ? products : []}
-                endPont="products" filterField="productName"
-                className={"mx-0"} pageSize={8} error={error} /> : <ListSkeleton />}
+                                    data={products ? products : []}
+                                    endPont="products" filterField="productName"
+                                    className={"mx-0"} pageSize={8} error={error}/> : <ListSkeleton/>}
         </section>
     );
 }
