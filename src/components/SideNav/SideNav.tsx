@@ -5,7 +5,7 @@ import { Store } from 'lucide-react';
 
 const SideNav = () => {
     return (
-        <aside className="min-h-screen w-60 flex flex-col border-r border-slate-200 bg-white/70 px-3 py-4 dark:border-slate-100/10 dark:bg-[#212121] ">
+        <aside className="min-h-screen flex flex-col border-r border-slate-200 bg-white/70 px-3 py-4 dark:border-slate-100/10 dark:bg-[#212121] ">
             <div
                 className="mb-5 flex justify-between items-center rounded-lg px-1 py-2 text-slate-900 dark:text-white"
             >
