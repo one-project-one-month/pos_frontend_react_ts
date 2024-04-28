@@ -1,3 +1,4 @@
+import BackButton from "@/components/BackButton"
 import Loading from "@/components/ui/loading"
 import { useToast } from "@/components/ui/use-toast"
 import { customerFormConst } from "@/constants/form-constant.ts"
@@ -40,8 +41,9 @@ const CustomerEditForm = () => {
     }
 
     return (
-        <div className="w-full mt-8">
-            <form onSubmit={handleSubmit(onSubmit)} className="w-3/6 m-auto">
+        <div  className="w-4/6 mx-auto mt-8">
+            <BackButton route="/customers" />
+            <form onSubmit={handleSubmit(onSubmit)} className="w-4/6 m-auto">
                 {formElements}
             </form >
         </div>

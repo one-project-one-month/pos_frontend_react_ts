@@ -27,9 +27,6 @@ export const InvoiceColumn: ColumnDef<TInvoice, any>[] = [
     {
         accessorKey: "voucherNo",
         header: "Voucher No",
-        cell: ({ row }) => (
-            <div className="capitalize">{row.getValue("voucherNo")}</div>
-        ),
     },
     {
         accessorKey: "dateTime",
@@ -62,9 +59,6 @@ export const InvoiceColumn: ColumnDef<TInvoice, any>[] = [
     {
         accessorKey: "staffCode",
         header: "Staff Name",
-        cell: ({ row }) => (
-            <div className="capitalize">{row.getValue("staffCode")}</div>
-        ),
     },
     {
         accessorKey: "detail",
