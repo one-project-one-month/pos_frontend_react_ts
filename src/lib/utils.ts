@@ -11,13 +11,13 @@ export const capitalize = (input: string) => produce([...input], (input) => {
 }).join("");
 
 export const getTotal = () => useCartStore.getState().products.reduce((total, cartItem) => {
-    return total += (cartItem.count * cartItem.product.price);
+    return total += (cartItem.quantity * cartItem.product.price);
 }, 0);
 
 export const getCart = () => useCartStore.getState().products.map(item => {
     return {
         productCode: item.product.productCode,
-        count: item.count
+        quantity: item.quantity
     };
 });
 

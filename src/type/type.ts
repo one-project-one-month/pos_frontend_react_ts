@@ -97,7 +97,7 @@ export interface TInvoiceDetail {
 
 export interface TProductInCart {
   product: TProduct;
-  count: number;
+  quantity: number;
 }
 
 export interface TInvoiceFormValues {

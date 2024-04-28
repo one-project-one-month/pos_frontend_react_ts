@@ -2,12 +2,13 @@ import { Button } from "@/components/ui/button.tsx";
 import { useCartStore } from "@/store/cartStore.ts";
 import { useDiscountStore } from "@/store/discountStore.ts";
 import {getCart} from "@/lib/utils.ts";
+import {useCreateNew} from "@/hook/management/useAddQuery.ts";
 
 export default function CartSummaryControl() {
     const { staffCode,clearCart } = useCartStore();
     const {setNoDiscount } = useDiscountStore();
     const products = getCart();
-
+    const {mutate} = useCreateNew("sale-invoices");
     const cancelOrderBtnHandler = () => {
         clearCart();
         setNoDiscount();
@@ -17,10 +18,7 @@ export default function CartSummaryControl() {
     const placeOrderBtnHandler = () => {
         clearCart();
         setNoDiscount();
-        console.log({
-            products: products,
-            staffCode: staffCode,
-        })
+        mutate({formData: {products: products, staffCode: staffCode}, route: "sale-invoices"})
     };
 
     return (
