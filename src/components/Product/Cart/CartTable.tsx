@@ -30,7 +30,7 @@ function CartDataRow({data}: {data: TProductInCart}) {
         <TableRow>
             <TableCell>{data.product.productName}</TableCell>
             <TableCell>
-                <QtyEditor value={data.count} productCode={data.product.productCode}/>
+                <QtyEditor value={data.quantity} productCode={data.product.productCode}/>
             </TableCell>
             <TableCell>{data.product.price}</TableCell>
             <TableCell className={"center"}>

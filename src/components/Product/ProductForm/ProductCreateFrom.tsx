@@ -12,10 +12,10 @@ export default function ProductCreateFrom() {
     const pathName = "products";
     const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
     const formElements = useRenderForm({ formconst: productFormConst, errors, register, title: "Product" });
-    const { mutate } = useCreateNew(pathName);
+    const { mutateAsync } = useCreateNew(pathName);
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
-        mutate({ formData: data, route: pathName });
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        await mutateAsync({ formData: data, route: pathName });
         navigate(`..`, { relative: "path" });
         toast({ description: "✅ Successfully added" });
     };

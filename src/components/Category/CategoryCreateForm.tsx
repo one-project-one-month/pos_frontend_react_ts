@@ -13,10 +13,10 @@ export default function CategoryCreateForm() {
 
     const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
     const formElements = useRenderForm({ formconst: categoryFormConst, errors, register, title: "Product Category" });
-    const { mutate } = useCreateNew(pathName);
+    const { mutateAsync } = useCreateNew(pathName);
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
-        mutate({ formData: data, route: "product-categories" });
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        await mutateAsync({ formData: data, route: "product-categories" });
         navigate("..", { relative: "path" });
         toast({ description: "✅ Successfully added" });
     };

@@ -1,6 +1,6 @@
 export default function CartEmpty(){
     return (
-        <div className={"p-8 mt-20  flex flex-col justify-center items-center gap-y-8 rounded-lg bg-teal-50"}>
+        <div className={"p-8   flex flex-col justify-center items-center gap-y-8 rounded-lg bg-blue-50"}>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 576 512"

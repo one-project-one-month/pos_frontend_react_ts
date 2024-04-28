@@ -7,11 +7,11 @@ import { TProductCategory } from "@/type/type.ts";
 
 const CellComponent = ({ row }: { row: { original: TProductCategory } }) => {
     const category = row.original;
-    const { mutate } = useDeleteQuery("product-categories");
+    const { mutateAsync } = useDeleteQuery("product-categories");
     const navigator = useNavigate();
 
-    const handleDelete = (id: string) => {
-        mutate({ url: "product-categories", id });
+    const handleDelete = async (id: string) => {
+        await mutateAsync({ url: "product-categories", id });
         toast({ description: "✅ Successfully Deleted" });
     };
 

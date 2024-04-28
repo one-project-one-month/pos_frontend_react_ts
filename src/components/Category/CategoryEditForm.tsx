@@ -10,7 +10,7 @@ export default function CategoryEditForm() {
     const {categoryId} = useParams();
     const navigate = useNavigate();
 
-    const {mutate} = useUpdateQuery("product-categories");
+    const {mutateAsync} = useUpdateQuery("product-categories");
 
     const { register, handleSubmit, formState: { errors } } = useForm<Inputs>({
         defaultValues: async () => {
@@ -31,8 +31,8 @@ export default function CategoryEditForm() {
     });
 
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
-        mutate({formData: data, route: "product-categories", id: categoryId!});
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        await mutateAsync({formData: data, route: "product-categories", id: categoryId!});
         navigate(`../..`, {relative: "path"});
     };
 

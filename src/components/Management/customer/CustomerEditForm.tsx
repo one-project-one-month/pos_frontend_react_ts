@@ -25,7 +25,6 @@ const CustomerEditForm = () => {
     const formElements = useRenderForm({ formconst: customerFormConst, errors, register, title: "Edit customer info", control })
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        console.log(data)
         navigate('..')
         toast({ description: <Loading message="Updating" className="p-0" /> })
         await updateForm({ formData: data, route: 'customer', id: customerId! })

@@ -25,14 +25,17 @@ export default function StaffSelection() {
     };
 
     return (
-        <Select onValueChange={onSelect}>
-            <SelectTrigger className={"w-60 dark:bg-emerald-400 outline-0"}>
-                <SelectValue placeholder={"Choose Staff"}/>
-            </SelectTrigger>
-            <SelectContent className={"w-60 gap-y-2 bg-zinc-700"}>
-                {staffs && staffs.map(staff => <SelectItem value={staff.staffCode} key={staff.staffId}
-                                                           className={"w-full py-3 text-white"}>{staff.staffName}</SelectItem>)}
-            </SelectContent>
-        </Select>
+        <div>
+            <Select onValueChange={onSelect}>
+                <SelectTrigger className={"w-60 dark:bg-dark-tertiary"}>
+                    <SelectValue placeholder={"Choose Staff"}/>
+                </SelectTrigger>
+                <SelectContent className={"w-60 h-50 overflow-y-scroll rounded bg-blue-200 backdrop-brightness-0 dark:bg-dark-primary"}>
+                    {staffs && staffs.map(staff => <SelectItem value={staff.staffCode}
+                                                               key={staff.staffId}
+                                                               className={"py-3  text-cyan-900 dark:text-dark-tertiary"}>{staff.staffName}</SelectItem>)}
+                </SelectContent>
+
+            </Select></div>
     );
 }

@@ -187,9 +187,9 @@ const SaleInvoice = () => {
                       return <TableRow>
                         <TableCell className="font-medium">{index + 1}</TableCell>
                         <TableCell>{product?.product?.productName}</TableCell>
-                        <TableCell>{product?.count}</TableCell>
+                        <TableCell>{product?.quantity}</TableCell>
                         <TableCell>{product?.product?.price}</TableCell>
-                        <TableCell className="text-right">{product?.product?.price * product?.count}  MMK</TableCell>
+                        <TableCell className="text-right">{product?.product?.price * product?.quantity} MMK</TableCell>
                       </TableRow>
                     }
                     )

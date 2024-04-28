@@ -9,7 +9,7 @@ type BillingCartStoreState = {
 }
 
 type BillCartStoreActions = {
-    addToCart: (product: TProduct, count: number) => void,
+    addToCart: (product: TProduct, quantity: number) => void,
     increaseItemCount: (productCode: TProduct["productCode"]) => void;
     reduceItemCount: (productCode: TProduct["productCode"]) => void;
     removeItemFromCart: (productCode: TProduct["productCode"]) => void;
@@ -22,14 +22,14 @@ export const useCartStore = create<TBillingCartStore>()(
     immer((set) => ({
         products: [],
         staffCode: null,
-        addToCart: (product, count) => (set(state => {
+        addToCart: (product, quantity) => (set(state => {
             const itemsInCart = state.products.map(item => item.product.productCode);
             if (itemsInCart.length === 0 || !itemsInCart.includes(product.productCode)) {
-                state.products.push({product, count});
+                state.products.push({product, quantity});
             } else if (itemsInCart.includes(product.productCode)) {
                 state.products.map(item => {
                     if (item.product === product) {
-                        item.count += 1;
+                        item.quantity += 1;
                     }
                 });
             }
@@ -37,17 +37,17 @@ export const useCartStore = create<TBillingCartStore>()(
         increaseItemCount: (productCode) => (set(state => {
             state.products.map(item => {
                 if (item.product.productCode === productCode) {
-                    item.count += 1;
+                    item.quantity += 1;
                 }
             });
         })),
         reduceItemCount: (productCode) => (set(state => {
             state.products.map(item => {
                 if (item.product.productCode === productCode) {
-                    item.count -= 1;
+                    item.quantity -= 1;
                 }
             });
-            state.products = state.products.filter(item => item.count !== 0);
+            state.products = state.products.filter(item => item.quantity !== 0);
         })),
         removeItemFromCart: (productCode) => (set(state => {
             state.products = state.products.filter(item => item.product.productCode !== productCode);

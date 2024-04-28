@@ -9,12 +9,12 @@ import { useCartStore } from "@/store/cartStore.ts";
 
 const CellComponent = ({ row }: { row: { original: TProduct } }) => {
     const product = row.original;
-    const { mutate } = useDeleteQuery("products");
+    const { mutateAsync } = useDeleteQuery("products");
     const navigator = useNavigate();
     const { addToCart } = useCartStore();
 
-    const handleDelete = (id: string) => {
-        mutate({ url: "products", id });
+    const handleDelete =  async (id: string) => {
+        await mutateAsync({ url: "products", id });
         toast({ description: "✅ Successfully Deleted" });
     };
 
