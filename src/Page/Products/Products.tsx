@@ -4,7 +4,7 @@ import ProductList from "@/components/Product/ProductList.tsx";
 
 export default function Products() {
     return (
-        <section className="flex m-8 bg-slate-50">
+        <section className="w-full flex m-8 bg-dark-primary">
             <ProductList />
             <BillingSection />
         </section>

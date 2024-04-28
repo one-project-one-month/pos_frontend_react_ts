@@ -13,15 +13,12 @@ export default function ProductList() {
         staleTime: 60 * 60 * 1000 * 365
     });
 
-
     return (
-
-        <section>
+        <section className="w-[50%]">
             {isFetched ? <DataTable columns={productColumn}
                 data={products ? products : []}
                 endPont="products" filterField="productName"
                 className={"mx-0"} pageSize={8} error={error} /> : <ListSkeleton />}
-
         </section>
     );
 }
