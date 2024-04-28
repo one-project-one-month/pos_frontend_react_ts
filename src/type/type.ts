@@ -80,6 +80,12 @@ export interface TInvoice {
   invoiceDetail: TInvoiceDetail
 }
 
+export interface GridItemProps {
+  icon: React.ReactNode;
+  value: string;
+  label: string;
+}
+
 export interface TInvoiceDetail {
   saleInvoiceDetailsId: string,
   voucherNo: string,
