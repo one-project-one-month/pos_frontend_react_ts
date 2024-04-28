@@ -165,7 +165,7 @@ export const Home = () => {
 
   return (
     <div className="w-4/5 mx-auto mt-4">
-      <div className="rounded-2xl mb-8 shadow-md flex gap-4 p-4 bg-gradient-to-tr from-pink-100 to-purple-300">
+      <div className="rounded-2xl mb-8 shadow-md flex gap-4 p-4 bg-gradient-to-tr from-slate-100 to-slate-300">
         <div className="grid grid-rows-2 grid-cols-2 w-2/4">
           <GridItem icon={<UsersRound />} value="50" label="Total Customer" />
           <GridItem icon={<Users />} value="2" label="Total Staff" />
@@ -178,11 +178,11 @@ export const Home = () => {
       </div>
       <div className='flex gap-4'>
         <div className='rounded-2xl shadow-md px-5 py-2'>
-          <h1 className={"my-2 text-cyan-900 font-bold text-xl"}>Best Selling Product</h1>
+          <h1 className={"my-2 text-tertiary dark:text-dark-tertiary font-bold text-xl"}>Best Selling Product</h1>
           <ProductTable />
         </div>
         <div className='rounded-2xl shadow-md px-5 py-2'>
-          <h1 className={"my-2 text-cyan-900 font-bold text-xl"}>Top Customers</h1>
+          <h1 className={"my-2 text-tertiary dark:text-dark-tertiary font-bold text-xl"}>Top Customers</h1>
           <CustomerTable />
         </div>
       </div>

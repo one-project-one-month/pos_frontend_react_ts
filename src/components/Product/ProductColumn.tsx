@@ -13,7 +13,7 @@ const CellComponent = ({ row }: { row: { original: TProduct } }) => {
     const navigator = useNavigate();
     const { addToCart } = useCartStore();
 
-    const handleDelete =  async (id: string) => {
+    const handleDelete = async (id: string) => {
         await mutateAsync({ url: "products", id });
         toast({ description: "✅ Successfully Deleted" });
     };
@@ -25,25 +25,23 @@ const CellComponent = ({ row }: { row: { original: TProduct } }) => {
     return (
         <DropdownComponent>
             <Button
-                className="w-full mb-2"
+                className="w-full mb-2 dark:hover:bg-gray-600"
                 variant={"outline"}
                 onClick={handleAddToCart}>
                 Add To Cart</Button>
 
             <Button
                 className="w-full
-                 mb-2" variant={"outline"}
+                 mb-2 dark:hover:bg-gray-600" variant={"outline"}
                 onClick={() => handleDelete(product.productId)}
             >
                 Delete
             </Button>
             <Button
-                className="w-full"
+                className="w-full dark:hover:bg-gray-600"
                 variant={"outline"}
                 onClick={() => navigator(`edit/${product.productId}`)}>
                 Edit</Button>
-
-
         </DropdownComponent>
     );
 };

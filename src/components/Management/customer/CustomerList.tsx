@@ -8,7 +8,7 @@ import ListSkeleton from "@/components/Product/ListSekeleton"
 
 
 const CustomerList = () => {
-    const { data: customers, isFetched } = useCustomQuery<TCustomer>(
+    const { data: customers, isFetched, error } = useCustomQuery<TCustomer>(
         "customer",
     )
 
@@ -19,7 +19,9 @@ const CustomerList = () => {
                     data={customers ? customers : []}
                     columns={customerColumns}
                     endPont="customers"
-                    filterField="customerName" />
+                    filterField="customerName"
+                    error={error}
+                />
             ) :
                 (
                     <div className="m-8 flex">

@@ -16,7 +16,7 @@ interface DateElementsProps {
 }
 
 const DateElements = ({ fromDate, toDate, handleStartDateChange, handleEndDateChange }: DateElementsProps) => (
-  <div className="flex gap-4">
+  <div className="flex gap-4 dark:text-dark-tertiary">
     <div>
       From Date: <DatePicker customDate={fromDate} onSelect={handleStartDateChange} />
     </div>
@@ -45,16 +45,24 @@ const InvoicesList = () => {
 
   return (
     <>
-    {
-        isFetched ? 
-            <DataTable columns={InvoiceColumn} data={invoices ? invoices : []} endPont="sale-invoices" filterField="voucherNo" className="mx-0" pageSize={8} notInclude={true} dates={<DateElements
-                fromDate={fromDate}
-                toDate={toDate}
-                handleStartDateChange={handleStartDateChange}
-                handleEndDateChange={handleEndDateChange}
-              />} /> : <ListSkeleton />
-    }
-    </> 
+      {
+        isFetched ?
+          <DataTable
+            columns={InvoiceColumn}
+            data={invoices ? invoices : []}
+            endPont="sale-invoices"
+            filterField="voucherNo"
+            className="mx-0"
+            pageSize={8}
+            notInclude={true}
+            dates={<DateElements
+              fromDate={fromDate}
+              toDate={toDate}
+              handleStartDateChange={handleStartDateChange}
+              handleEndDateChange={handleEndDateChange}
+            />} /> : <ListSkeleton />
+      }
+    </>
   )
 }
 

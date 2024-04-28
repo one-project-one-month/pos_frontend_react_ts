@@ -23,7 +23,7 @@ const StaffForm = () => {
         navigate("..")
         toast({ description: <Loading message="Adding new" className="p-0" /> })
         await mutateAsync({ formData: data, route: 'staffs' })
-        toast({ description: "Success added" })
+        toast({ description: "✅ Success added" })
     }
 
     return (

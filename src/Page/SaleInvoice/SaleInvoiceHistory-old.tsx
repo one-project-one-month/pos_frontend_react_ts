@@ -22,12 +22,10 @@ import {
 
 import { TInvoice } from "@/type/type.ts";
 import { useNavigate } from "react-router-dom"
-import useRenderPagination from "@/hook/management/useRenderPagination"
 import { useCustomQuery } from "@/hook/management/useCustomQuery"
-import { useCurrentPage } from "@/hook/useCurrentPage"
+
 
 const SaleInvoiceHistory = () => {
-    const { page } = useCurrentPage();
     const { data: invoices } = useCustomQuery<TInvoice>("saleInvoice")
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
         []

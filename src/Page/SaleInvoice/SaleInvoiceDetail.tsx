@@ -9,9 +9,9 @@ const SaleInvoiceDetails = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const componentRef = useRef<HTMLDivElement | null>(null);
-    const {detail} = location.state; 
-    const totalQty = detail?.saleInvoiceDetails.reduce((acc:number,curr: any) => acc + curr.quantity,0)
-        
+    const { detail } = location.state;
+    const totalQty = detail?.saleInvoiceDetails.reduce((acc: number, curr: any) => acc + curr.quantity, 0)
+
     const handlePrint = useReactToPrint({
         content: () => componentRef.current
     })
@@ -19,22 +19,25 @@ const SaleInvoiceDetails = () => {
     const { TableComponent: ProductTable } = useTable({
         data: detail.saleInvoiceDetails,
         columns: [
-          { label: 'Product Name', key: 'productCode' },
-          { label: 'Quantity', key: 'quantity', align: 'center' },
-          { label: 'Price', key: 'price' },
-          { label: 'Total($)', key: 'amount', align: 'center' },
+            { label: 'Product Name', key: 'productCode' },
+            { label: 'Quantity', key: 'quantity', align: 'center' },
+            { label: 'Price', key: 'price' },
+            { label: 'Total($)', key: 'amount', align: 'center' },
         ],
         className: 'mt-5'
-      });
+    });
 
     return (
         <>
             <div className="w-[30%] mx-auto my-5">
                 <div className="flex items-center justify-between mb-4">
-                    <p className="text-cyan-900 font-semibold text-lg cursor-pointer flex items-center" onClick={() => navigate('/sale-invoice')}><ArrowLeft size={15} /> Back</p>                
-                    <button className="bg-gray-900 text-white py-1 px-4 rounded-md flex items-center" onClick={handlePrint}><Printer className="mr-2" size={21} /> Print</button>                
+                    <p className="text-tertiary dark:text-dark-tertiary font-semibold text-lg cursor-pointer flex items-center" onClick={() => navigate('/sale-invoice')}>
+                        <ArrowLeft size={15} />
+                        <span className="ml-1">Back</span>
+                    </p>
+                    <button className="bg-gray-900 text-white py-1 px-4 rounded-md flex items-center" onClick={handlePrint}><Printer className="mr-2" size={21} /> Print</button>
                 </div>
-                <div className="border border-gray-200 py-2 px-5" ref={componentRef}>
+                <div className="border border-gray-200 py-2 px-5 dark:text-dark-tertiary" ref={componentRef}>
                     <div className="flex items-center flex-col gap-2 mb-2">
                         <h1>POS</h1>
                         <p>Open from 8AM - 10PM</p>
@@ -48,15 +51,15 @@ const SaleInvoiceDetails = () => {
                         <p className="pb-0">Total Qty {totalQty}</p>
                         <div>
                             <p className=" pb-0 flex justify-between">
-                                Sub Total: 
+                                Sub Total:
                                 <span className="pl-4 pr-2">{detail.totalAmount}</span>
                             </p>
                             <p className="py-0 flex justify-between">
-                                Discount:  
+                                Discount:
                                 <span className="pl-4 pr-2">{detail.discount}</span>
                             </p>
                             <p className="py-0 flex justify-between">
-                                Tax: 
+                                Tax:
                                 <span className="pl-4 pr-2">{detail.tax}</span>
                             </p>
                         </div>

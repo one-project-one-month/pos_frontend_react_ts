@@ -13,29 +13,28 @@ export type TFromConst = {
   validation?: any;
 };
 
-// export const shopFormConst: TFromConst[] = [
-//   {
-//     name: "shopCode",
-//     placeholder: "Shop Code",
-//     type: "text",
-
-//   },
-//   {
-//     name: "shopName",
-//     placeholder: "Shop Name",
-//     type: "text",
-//   },
-//   {
-//     name: "mobileNo",
-//     placeholder: "Mobile No",
-//     type: "text",
-//   },
-//   {
-//     name: "address",
-//     placeholder: "Address",
-//     type: "text",
-//   },
-// ];
+export const shopFormConst: TFromConst[] = [
+  {
+    name: "shopCode",
+    placeholder: "Shop Code",
+    type: "text",
+  },
+  {
+    name: "shopName",
+    placeholder: "Shop Name",
+    type: "text",
+  },
+  {
+    name: "mobileNo",
+    placeholder: "Mobile No",
+    type: "text",
+  },
+  {
+    name: "address",
+    placeholder: "Address",
+    type: "text",
+  },
+];
 
 export const staffFormConst: TFromConst[] = [
   {

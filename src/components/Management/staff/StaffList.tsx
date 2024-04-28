@@ -6,7 +6,7 @@ import ListSkeleton from "@/components/Product/ListSekeleton"
 
 
 const StaffList = () => {
-    const { data: staffs, isFetched } = useCustomQuery<TStaff>(
+    const { data: staffs, isFetched, error } = useCustomQuery<TStaff>(
         "staffs",
     )
 
@@ -18,6 +18,7 @@ const StaffList = () => {
                     data={staffs ? staffs : []}
                     endPont="staffs"
                     filterField="staffName"
+                    error={error}
                 />
             ) : (
                 <div className="m-8 flex">

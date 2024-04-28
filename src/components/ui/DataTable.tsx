@@ -7,7 +7,7 @@ import {
     getPaginationRowModel,
     useReactTable
 } from "@tanstack/react-table";
-import { Table, TableHeader, TableHead, TableCell, TableBody, TableRow } from "@/components/ui/table";
+import { Table as ShacnTable, TableHeader, TableHead, TableCell, TableBody, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
@@ -40,7 +40,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
     });
 
 
-    const table = useReactTable({
+    const reactTable = useReactTable({
         data,
         columns,
         getCoreRowModel: getCoreRowModel(),
@@ -61,11 +61,11 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
             <div className="flex justify-between mb-4 items-center">
                 <Input
                     placeholder={`Filter by ${filterField}`}
-                    value={(table.getColumn(filterField)?.getFilterValue() as string) ?? ""}
+                    value={(reactTable.getColumn(filterField)?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
-                        table.getColumn(filterField)?.setFilterValue(event.target.value)
+                        reactTable.getColumn(filterField)?.setFilterValue(event.target.value)
                     }
-                    className="w-1/3"
+                    className="w-1/3 text-dark-tertiary"
                 />
                 {
                     notInclude ? dates :
@@ -83,9 +83,9 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
             </div>
 
             <div className="rounded-md border">
-                <Table>
+                <ShacnTable>
                     <TableHeader>
-                        {table.getHeaderGroups().map((headerGroup) => (
+                        {reactTable.getHeaderGroups().map((headerGroup) => (
                             <TableRow key={headerGroup.id}>
                                 {headerGroup.headers.map((header) => {
                                     return (
@@ -105,8 +105,8 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                         }
                     </TableHeader>
                     <TableBody>
-                        {table.getRowModel().rows?.length ? (
-                            table.getRowModel().rows.map((row) => (
+                        {reactTable.getRowModel().rows?.length ? (
+                            reactTable.getRowModel().rows.map((row) => (
                                 <TableRow
                                     key={row.id}
                                     data-state={row.getIsSelected() && "selected"}
@@ -128,15 +128,15 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                             </TableRow>
                         )}
                     </TableBody>
-                </Table>
+                </ShacnTable>
             </div>
             <div className="flex items-center justify-end space-x-2 py-4">
                 <Button
                     className="dark:text-white"
                     variant="outline"
                     size="sm"
-                    onClick={() => table.previousPage()}
-                    disabled={!table.getCanPreviousPage()}
+                    onClick={() => reactTable.previousPage()}
+                    disabled={!reactTable.getCanPreviousPage()}
                 >
                     Previous
                 </Button>
@@ -144,8 +144,8 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                     className="dark:text-white"
                     variant="outline"
                     size="sm"
-                    onClick={() => table.nextPage()}
-                    disabled={!table.getCanNextPage()}
+                    onClick={() => reactTable.nextPage()}
+                    disabled={!reactTable.getCanNextPage()}
                 >
                     Next
                 </Button>
