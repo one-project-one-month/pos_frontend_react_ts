@@ -65,7 +65,7 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                     onChange={(event) =>
                         reactTable.getColumn(filterField)?.setFilterValue(event.target.value)
                     }
-                    className="w-1/3 text-dark-tertiary"
+                    className="w-1/3 text-tertiary dark:text-dark-tertiary"
                 />
                 {
                     notInclude ? dates :

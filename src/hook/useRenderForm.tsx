@@ -17,15 +17,15 @@ type TRenderFormProps = {
     register: UseFormRegister<Inputs>,
     control?: Control<Inputs>
     title: string,
-    selectionValue?: "string"
+    isRemoveButton?: boolean
 }
 
-const useRenderForm = ({ formconst, errors, register, title, control, selectionValue }: TRenderFormProps) => {
+const useRenderForm = ({ formconst, errors, register, title, control, isRemoveButton }: TRenderFormProps) => {
     const navigate = useNavigate()
     return (
-        <div className={cn("w-3/5 mx-auto my-16", { "w-full": formconst.length > 4 })} >
+        <div className={cn("w-3/5 mx-auto mt-16", { "w-full": formconst.length > 4 })} >
             <div
-                className="flex  w-fit py-4 rounded  items-center cursor-pointer "
+                className="flex  w-fit rounded  items-center cursor-pointer "
                 onClick={() => navigate("..")}
             >
                 <ArrowLeft className="mr-1 text-black dark:text-white" />
@@ -132,9 +132,12 @@ const useRenderForm = ({ formconst, errors, register, title, control, selectionV
                     );
                 })}
             </div>
-            <div className="flex">
-                <button type="submit" className={cn("bg-slate-900 dark:bg-white dark:text-black rounded py-2 text-white mt-3 w-full", { " w-22 py-1 px-6 flex-start": formconst.length > 4 })}>Submit</button>
-            </div>
+            {
+                isRemoveButton ? null : <div className="flex">
+                    <button type="submit" className={cn("bg-slate-900 dark:bg-white dark:text-black rounded py-2 text-white mt-3 w-full", { " w-22 py-1 px-6 flex-start": formconst.length > 4 })}>Submit</button>
+                </div>
+            }
+
         </div >
 
     )

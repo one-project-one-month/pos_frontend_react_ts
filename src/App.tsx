@@ -18,6 +18,7 @@ import CategoryCreateForm from "@/components/Category/CategoryCreateForm.tsx";
 import ProductCreateFrom from "@/components/Product/ProductForm/ProductCreateFrom.tsx";
 import ErrorBoundary from "./components/ErrorBoundary";
 import StaffForm from "./components/Management/staff/StaffForm";
+import ProductEditForm from "./components/Product/ProductForm/ProductEditForm";
 
 
 
@@ -32,8 +33,8 @@ const router = createBrowserRouter([
                 element: <Products />,
             },
             {
-                path: "edit/:categoryId",
-                element: <CategoryEditForm />
+                path: "edit/:productId",
+                element: <ProductEditForm />
             },
             {
                 path: "create",

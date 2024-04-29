@@ -5,6 +5,7 @@ import useRenderForm from "@/hook/useRenderForm.tsx";
 import { categoryFormConst } from "@/constants/form-constant.ts";
 import { useUpdateQuery } from "@/hook/management/useUpateQuery.ts";
 import apiClient from "@/services/api/api-client.ts";
+import Loading from "../ui/loading";
 
 export default function CategoryEditForm() {
     const { categoryId } = useParams();
@@ -12,7 +13,7 @@ export default function CategoryEditForm() {
 
     const { mutateAsync } = useUpdateQuery("product-categories");
 
-    const { register, handleSubmit, formState: { errors } } = useForm<Inputs>({
+    const { register, handleSubmit, formState: { errors, isLoading } } = useForm<Inputs>({
         defaultValues: async () => {
             try {
                 const { data } = await apiClient.get(`product-categories/${categoryId}`);
@@ -35,6 +36,10 @@ export default function CategoryEditForm() {
         await mutateAsync({ formData: data, route: "product-categories", id: categoryId! });
         navigate(`../..`, { relative: "path" });
     };
+
+    if (isLoading) {
+        return <Loading message="Getting the data ..." className="m-8" />
+    }
 
 
     return (

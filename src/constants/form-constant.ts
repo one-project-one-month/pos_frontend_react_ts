@@ -220,13 +220,13 @@ export const productFormConst: TFromConst[] = [
     errorMessage: "Product Price is required",
     validation: { required: true },
   },
-  {
-    name: "categoryCode",
-    placeholder: "Product Category Code",
-    type: "text",
-    errorMessage: "Product Category Code is required",
-    validation: { required: true },
-  },
+  // {
+  //   name: "categoryCode",
+  //   placeholder: "Product Category Code",
+  //   type: "text",
+  //   errorMessage: "Product Category Code is required",
+  //   validation: { required: true },
+  // },
 ];
 
 export const categoryFormConst: TFromConst[] = [
