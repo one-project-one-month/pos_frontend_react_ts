@@ -144,6 +144,13 @@ const DataTable = <TData, TValue>({ columns, data, endPont, filterField, classNa
                     className="dark:text-white"
                     variant="outline"
                     size="sm"
+                >
+                    {reactTable.getState().pagination.pageIndex + 1} / {reactTable.getPageCount()}
+                </Button>
+                <Button
+                    className="dark:text-white"
+                    variant="outline"
+                    size="sm"
                     onClick={() => reactTable.nextPage()}
                     disabled={!reactTable.getCanNextPage()}
                 >

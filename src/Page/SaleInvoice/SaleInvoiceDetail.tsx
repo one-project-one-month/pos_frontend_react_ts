@@ -6,7 +6,7 @@ import { formattedDateTime } from "@/lib/utils";
 import { useTable } from "@/hook/useCustomTable";
 
 const SaleInvoiceDetails = () => {
-    
+
     const location = useLocation();
     const navigate = useNavigate();
     const componentRef = useRef<HTMLDivElement | null>(null);
@@ -29,7 +29,7 @@ const SaleInvoiceDetails = () => {
 
     return (
         <>
-            <div className="w-[30%] mx-auto my-5">
+            <div className="w-[40%] mx-auto my-5 shadow">
                 <div className="flex items-center justify-between mb-4">
                     <p className="text-tertiary dark:text-dark-tertiary font-semibold text-lg cursor-pointer flex items-center" onClick={() => navigate('/sale-invoice')}>
                         <ArrowLeft size={15} />
@@ -38,13 +38,21 @@ const SaleInvoiceDetails = () => {
                     <button className="bg-gray-900 text-white py-1 px-4 rounded-md flex items-center" onClick={handlePrint}><Printer className="mr-2" size={21} /> Print</button>
                 </div>
                 <div className="border border-gray-200 py-2 px-5 dark:text-dark-tertiary" ref={componentRef}>
-                    <div className="flex items-center flex-col gap-2 mb-2">
+                    <div className="flex items-center flex-col  mb-2">
                         <h1>POS</h1>
-                        <p>Open from 8AM - 10PM</p>
+                        <p className="text-sm">Open from 8AM - 10PM</p>
                     </div>
-                    <p>Phone: 09-97234565434</p>
-                    <p>Casher: {detail?.staff.staffName}</p>
-                    <p>{formattedDateTime(detail?.dateTime)}</p>
+                    <div className="text-sm">
+                        <div className="flex justify-between">
+                            <p>Phone: 09-97234565434</p>
+                            <p>Casher: {detail?.staff.staffName}</p>
+                        </div>
+                        <div className="mt-2">
+                            <p>{formattedDateTime(detail?.dateTime)}</p>
+                            <p className="pt-2 font-bold">Vocher No : {detail?.voucherNo}</p>
+                        </div>
+                    </div>
+
                     <ProductTable />
                     <div className="w-full h-[1px] bg-gray-300" />
                     <div className="flex justify-between px-5 py-2">

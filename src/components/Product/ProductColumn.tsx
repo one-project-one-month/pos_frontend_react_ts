@@ -6,45 +6,60 @@ import { Button } from "@/components/ui/button.tsx";
 import { ColumnDef } from "@tanstack/react-table";
 import { TProduct } from "@/type/type.ts";
 import { useCartStore } from "@/store/cartStore.ts";
+import { Plus, ShoppingCart } from "lucide-react";
 
-const CellComponent = ({ row }: { row: { original: TProduct } }) => {
+const ActionsCellComponent = ({ row }: { row: { original: TProduct } }) => {
     const product = row.original;
     const { mutateAsync } = useDeleteQuery("products");
     const navigator = useNavigate();
-    const { addToCart } = useCartStore();
+
 
     const handleDelete = async (id: string) => {
         await mutateAsync({ url: "products", id });
         toast({ description: "✅ Successfully Deleted" });
     };
 
+
+
+    return (
+        <DropdownComponent>
+
+            <Button
+                className="w-full dark:hover:bg-gray-600  mb-2"
+                variant={"outline"}
+                onClick={() => navigator(`edit/${product.productId}`)}>
+                Edit</Button>
+            <Button
+                className="w-full
+                 dark:hover:bg-gray-600" variant={"outline"}
+                onClick={() => handleDelete(product.productId)}
+            >
+                Delete
+            </Button>
+        </DropdownComponent>
+    );
+};
+
+const AtToCartCellComponent = ({ row }: { row: { original: TProduct } }) => {
+    const product = row.original;
+    const { addToCart } = useCartStore();
     const handleAddToCart = () => {
         addToCart(product, 1)
     }
 
     return (
-        <DropdownComponent>
-            <Button
-                className="w-full mb-2 dark:hover:bg-gray-600"
-                variant={"outline"}
-                onClick={handleAddToCart}>
-                Add To Cart</Button>
+        <Button
+            className="px-3 mb-2 dark:hover:bg-gray-600 relative "
+            variant={"outline"}
+            onClick={handleAddToCart}>
+            <span className="absolute top-0 right-0 "><Plus size={14} /></span>
+            <ShoppingCart />
+        </Button>
+    )
 
-            <Button
-                className="w-full
-                 mb-2 dark:hover:bg-gray-600" variant={"outline"}
-                onClick={() => handleDelete(product.productId)}
-            >
-                Delete
-            </Button>
-            <Button
-                className="w-full dark:hover:bg-gray-600"
-                variant={"outline"}
-                onClick={() => navigator(`edit/${product.productId}`)}>
-                Edit</Button>
-        </DropdownComponent>
-    );
-};
+}
+
+
 
 export const productColumn: ColumnDef<TProduct>[] = [
     {
@@ -65,7 +80,12 @@ export const productColumn: ColumnDef<TProduct>[] = [
         header: "Price"
     },
     {
-        id: "actions",
-        cell: CellComponent
-    }
+        header: "Add",
+        cell: AtToCartCellComponent
+    },
+    {
+        header: "Actions",
+        cell: ActionsCellComponent
+    },
+
 ];

@@ -8,7 +8,7 @@ export default function CartList() {
         <div>
             <CartTable />
             <div className="w-full h-[1px] border border-tertiary border-dashed">
-                <span ></span>
+                <span></span>
             </div>
             <CartSummary />
         </div>

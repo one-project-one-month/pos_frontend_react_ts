@@ -27,12 +27,13 @@ const DateElements = ({ fromDate, toDate, handleStartDateChange, handleEndDateCh
 );
 
 const InvoicesList = () => {
-  const [fromDate, setFromDate] = React.useState<Date>(new Date(2024, 3, 1));
-  const [toDate, setToDate] = React.useState<Date>(new Date());
+  const [fromDate, setFromDate] = React.useState<Date>(new Date(2024, 2, 29));
+  const [toDate, setToDate] = React.useState<Date>(new Date(2024, 5, 29));
 
   const handleStartDateChange = (newDate: Date) => {
     setFromDate(newDate);
   };
+
 
   const handleEndDateChange = (newDate: Date) => {
     setToDate(newDate);

@@ -2,7 +2,7 @@ import { ShoppingCart } from "lucide-react";
 
 export default function CartEmpty() {
     return (
-        <div className={"p-8   flex flex-col justify-center items-center gap-y-8 rounded-2xl  dark:bg-dark-secondary "}>
+        <div className={"p-8   flex flex-col justify-center items-center gap-y-8 rounded-2xl  "}>
             <div>
                 <ShoppingCart size={100} className="dark:text-dark-tertiary" />
             </div>

@@ -16,7 +16,7 @@ const CellComponent = ({ row }: { row: { original: TProductCategory } }) => {
     };
 
     return (
-        <div className={"flex justify-center items-center  gap-x-4 "}>
+        <div className={"flex items-center  gap-x-4 "}>
             <Button
                 className="w-20 font-bold bg-zinc-700"
                 variant={"default"}
@@ -44,7 +44,7 @@ export const categoryColumns: ColumnDef<TProductCategory>[] = [
         header: "Product Category Name"
     },
     {
-        id: "actions",
+        header: "Actions",
         cell: CellComponent
     }
 ];
