@@ -48,13 +48,13 @@ export const InvoiceColumn: ColumnDef<TInvoice, any>[] = [
             return <div>{formatted}</div>
         },
     },
-    {
-        accessorKey: "paymentType",
-        header: "Payment Type",
-        cell: ({ row }) => (
-            <div className="capitalize">{row.getValue("paymentType")}</div>
-        ),
-    },
+    // {
+    //     accessorKey: "paymentType",
+    //     header: "Payment Type",
+    //     cell: ({ row }) => (
+    //         <div className="capitalize">{row.getValue("paymentType")}</div>
+    //     ),
+    // },
 
     {
         accessorKey: "staffCode",

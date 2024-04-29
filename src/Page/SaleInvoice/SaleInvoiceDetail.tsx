@@ -29,7 +29,7 @@ const SaleInvoiceDetails = () => {
 
     return (
         <>
-            <div className="w-[30%] mx-auto my-5">
+            <div className="w-[35%] mx-auto my-5">
                 <div className="flex items-center justify-between mb-4">
                     <p className="text-tertiary dark:text-dark-tertiary font-semibold text-lg cursor-pointer flex items-center" onClick={() => navigate('/sale-invoice')}>
                         <ArrowLeft size={15} />
