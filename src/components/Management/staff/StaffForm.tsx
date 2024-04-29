@@ -22,12 +22,9 @@ const StaffForm = () => {
     }
 
     return (
-        <div  className="w-4/6 mx-auto mt-8">
-            <BackButton route="/staffs" />
-            <form onSubmit={handleSubmit(onSubmit)} className="w-4/6 m-auto">
-                {formElements}
-            </form >
-        </div>
+        <form onSubmit={handleSubmit(onSubmit)} className=" w-5/6 m-auto">
+            {formElements}
+        </form >
     );
 }
 

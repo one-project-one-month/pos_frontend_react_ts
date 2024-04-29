@@ -5,12 +5,17 @@ import { getCart } from "@/lib/utils.ts";
 import { useCreateNew } from "@/hook/management/useAddQuery.ts";
 import { toast } from "@/components/ui/use-toast";
 import Loading from "@/components/ui/loading";
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function CartSummaryControl() {
+    const navigate = useNavigate()
     const { staffCode, clearCart } = useCartStore();
     const { setNoDiscount } = useDiscountStore();
     const products = getCart();
-    const { mutateAsync } = useCreateNew("sale-invoices");
+    console.log(products)
+    const { mutateAsync } = useCreateNew<any>("sale-invoices");
     const cancelOrderBtnHandler = () => {
         clearCart();
         setNoDiscount();
@@ -21,8 +26,14 @@ export default function CartSummaryControl() {
         clearCart();
         setNoDiscount();
         toast({ description: <Loading message="Creating your invoice..." className="p-0" /> })
-        await mutateAsync({ formData: { products: products, staffCode: staffCode }, route: "sale-invoices" })
+        const { data } = await mutateAsync({ formData: { products: products, staffCode: staffCode }, route: "sale-invoices" })
         toast({ description: "✅ Success" })
+        navigate(`/sale-invoice/detail`,
+            {
+                state: {
+                    detail: data.saleInvoice
+                }
+            })
     };
 
     return (

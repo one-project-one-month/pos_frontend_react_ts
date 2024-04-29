@@ -22,12 +22,12 @@ const CustomerForm = () => {
     }
 
     return (
-        <div  className="w-4/6 mx-auto mt-8">
-            <BackButton route="/customers" />
-            <form onSubmit={handleSubmit(onSubmit)} className="w-4/6 m-auto">
-                {formElements}
-            </form >
-        </div>
+        <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="w-4/5 m-auto"
+        >
+            {formElements}
+        </form >
     )
 
 }
