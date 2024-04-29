@@ -1,3 +1,4 @@
+import BackButton from "@/components/BackButton"
 import Loading from "@/components/ui/loading"
 import { useToast } from "@/components/ui/use-toast"
 import { staffFormConst } from "@/constants/form-constant"
@@ -6,12 +7,6 @@ import useRenderForm from "@/hook/useRenderForm"
 import { Inputs } from "@/type/formSchema"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
-
-
-
-
-
-
 
 const StaffForm = () => {
     const navigate = useNavigate()

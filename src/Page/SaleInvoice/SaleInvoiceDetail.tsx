@@ -6,6 +6,7 @@ import { formattedDateTime } from "@/lib/utils";
 import { useTable } from "@/hook/useCustomTable";
 
 const SaleInvoiceDetails = () => {
+    
     const location = useLocation();
     const navigate = useNavigate();
     const componentRef = useRef<HTMLDivElement | null>(null);

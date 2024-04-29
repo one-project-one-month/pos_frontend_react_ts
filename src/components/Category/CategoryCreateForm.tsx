@@ -5,6 +5,7 @@ import useRenderForm from "@/hook/useRenderForm.tsx";
 import { categoryFormConst } from "@/constants/form-constant.ts";
 import { useCreateNew } from "@/hook/management/useAddQuery.ts";
 import { toast } from "@/components/ui/use-toast.ts";
+import BackButton from "../BackButton";
 
 
 export default function CategoryCreateForm() {
@@ -21,8 +22,11 @@ export default function CategoryCreateForm() {
         toast({ description: "✅ Successfully added" });
     };
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="w-4/6 m-auto">
-            {formElements}
-        </form>
+        <div  className="w-4/6 m-auto">
+            <BackButton route="/product-category" />
+            <form onSubmit={handleSubmit(onSubmit)}>
+                {formElements}
+            </form>
+        </div>
     );
 }

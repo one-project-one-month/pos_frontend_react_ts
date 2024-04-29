@@ -1,3 +1,4 @@
+import BackButton from "@/components/BackButton"
 import Loading from "@/components/ui/loading"
 import { useToast } from "@/components/ui/use-toast"
 import { customerFormConst } from "@/constants/form-constant"
@@ -21,14 +22,12 @@ const CustomerForm = () => {
     }
 
     return (
-
         <form
             onSubmit={handleSubmit(onSubmit)}
             className="w-4/5 m-auto"
         >
             {formElements}
         </form >
-
     )
 
 }
