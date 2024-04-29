@@ -26,7 +26,7 @@ export default function CategoryList() {
                 className={"w-[unset]"}
                 pageSize={8}
                 error={error}
-            /> : <ListSkeleton className={"w-[80vw] pl-8"} />
+            /> : <ListSkeleton className={"p-8"} />
             }
         </>
     );

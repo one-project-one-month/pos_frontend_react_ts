@@ -24,11 +24,11 @@ const useRenderForm = ({ formconst, errors, register, title, control }: TRenderF
     return (
         <div className={cn("w-3/5 mx-auto my-16", { "w-full": formconst.length > 4 })} >
             <div
-                className="flex dark:text-primary items-center cursor-pointer "
+                className="flex dark:text-primary bg-white w-fit px-3 py-1 rounded  items-center cursor-pointer "
                 onClick={() => navigate("..")}
             >
-                <ArrowLeft className="mr-1" />
-                <span>Back</span>
+                <ArrowLeft className="mr-1 text-black" />
+                <span className="text-black">Back</span>
             </div>
             <h1 className={"mt-4 text-tertiary dark:text-dark-tertiary font-bold text-2xl"}>{title}</h1>
             <div className={cn("grid gap-x-8 ", { "grid-cols-2": formconst.length > 4 })}>

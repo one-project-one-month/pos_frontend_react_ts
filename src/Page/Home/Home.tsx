@@ -46,8 +46,8 @@ export const data = {
     {
       label: 'Revenue',
       data: labels.map(() => Math.floor(Math.random() * 20000) + 1),
-      borderColor: '#f5f5f5',
-      backgroundColor: '#f5f5f5',
+      borderColor: '#FAFAFA',
+      backgroundColor: '#164e63',
       fill: true
     }
   ],

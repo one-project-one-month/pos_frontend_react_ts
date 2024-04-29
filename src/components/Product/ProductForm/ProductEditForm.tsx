@@ -6,7 +6,7 @@ import useRenderForm from "@/hook/useRenderForm.tsx";
 import apiClient from "@/services/api/api-client.ts";
 import { useUpdateQuery } from "@/hook/management/useUpateQuery.ts";
 import { toast } from "@/components/ui/use-toast.ts";
-import BackButton from "@/components/BackButton";
+
 
 
 export default function ProductEditForm() {
@@ -31,8 +31,7 @@ export default function ProductEditForm() {
     };
 
     return (
-        <div  className="w-4/6 m-auto">
-            <BackButton route="/" />
+        <div className="w-4/6 m-auto">
             <form onSubmit={handleSubmit(onSubmit)}>
                 {formElements}
             </form>

@@ -5,7 +5,6 @@ import useRenderForm from "@/hook/useRenderForm.tsx";
 import { productFormConst } from "@/constants/form-constant";
 import { useToast } from "@/components/ui/use-toast.ts";
 import { useCreateNew } from "@/hook/management/useAddQuery.ts";
-import BackButton from "@/components/BackButton";
 
 export default function ProductCreateFrom() {
     const navigate = useNavigate();
@@ -23,11 +22,10 @@ export default function ProductCreateFrom() {
 
 
     return (
-        <div  className="w-4/6 m-auto">
-            <BackButton route="/" />
+        <div className="w-4/6 m-auto">
             <form onSubmit={handleSubmit(onSubmit)}>
                 {formElements}
             </form>
-        </div>        
+        </div>
     );
 }

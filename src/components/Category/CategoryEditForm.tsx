@@ -5,7 +5,6 @@ import useRenderForm from "@/hook/useRenderForm.tsx";
 import { categoryFormConst } from "@/constants/form-constant.ts";
 import { useUpdateQuery } from "@/hook/management/useUpateQuery.ts";
 import apiClient from "@/services/api/api-client.ts";
-import BackButton from "../BackButton";
 
 export default function CategoryEditForm() {
     const { categoryId } = useParams();
@@ -39,8 +38,7 @@ export default function CategoryEditForm() {
 
 
     return (
-        <div  className="w-4/6 m-auto">
-            <BackButton route="/product-category" />
+        <div className="w-4/6 m-auto">
             <form onSubmit={handleSubmit(onSubmit)}>
                 {formElements}
             </form>
