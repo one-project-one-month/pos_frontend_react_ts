@@ -23,7 +23,7 @@ const CustomerForm = () => {
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
-            className="w-4/5 m-auto"
+            className="w-4/5 m-auto "
         >
             {formElements}
         </form >

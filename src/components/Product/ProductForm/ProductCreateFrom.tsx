@@ -5,6 +5,7 @@ import useRenderForm from "@/hook/useRenderForm.tsx";
 import { productFormConst } from "@/constants/form-constant";
 import { useToast } from "@/components/ui/use-toast.ts";
 import { useCreateNew } from "@/hook/management/useAddQuery.ts";
+import Loading from "@/components/ui/loading";
 
 export default function ProductCreateFrom() {
     const navigate = useNavigate();
@@ -15,6 +16,7 @@ export default function ProductCreateFrom() {
     const { mutateAsync } = useCreateNew(pathName);
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        toast({ description: <Loading message="Adding new product" className="p-0" /> });
         await mutateAsync({ formData: data, route: pathName });
         navigate(`..`, { relative: "path" });
         toast({ description: "✅ Successfully added" });

@@ -45,18 +45,18 @@ export const staffFormConst: TFromConst[] = [
     validation: { required: true },
   },
   {
-    name: "staffName",
-    placeholder: "Staff Name",
-    type: "text",
-    errorMessage: "StaffName at least five characters",
-    validation: { required: true, minLength: 5 },
-  },
-  {
     name: "dateOfBirth",
     placeholder: "Date Of Birth",
     type: "date",
     errorMessage: "Date Of Birth is required",
     validation: { required: true },
+  },
+  {
+    name: "staffName",
+    placeholder: "Staff Name",
+    type: "text",
+    errorMessage: "StaffName at least five characters",
+    validation: { required: true, minLength: 5 },
   },
   {
     name: "mobileNo",
@@ -136,6 +136,13 @@ export const customerFormConst: TFromConst[] = [
     validation: { required: true },
   },
   {
+    name: "customerDOB",
+    placeholder: "Date Of Birth",
+    type: "date",
+    errorMessage: "Date Of Birth is required",
+    validation: { required: true },
+  },
+  {
     name: "customerName",
     placeholder: "Customer Name",
     type: "text",
@@ -149,13 +156,7 @@ export const customerFormConst: TFromConst[] = [
     errorMessage: "Mobile Number is required",
     validation: { required: true },
   },
-  {
-    name: "customerDOB",
-    placeholder: "Date Of Birth",
-    type: "date",
-    errorMessage: "Date Of Birth is required",
-    validation: { required: true },
-  },
+
   {
     name: "customerGender",
     placeholder: "Gender",
@@ -220,7 +221,7 @@ export const productFormConst: TFromConst[] = [
     validation: { required: true },
   },
   {
-    name: "productCategoryCode",
+    name: "categoryCode",
     placeholder: "Product Category Code",
     type: "text",
     errorMessage: "Product Category Code is required",

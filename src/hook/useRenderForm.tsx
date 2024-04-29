@@ -16,10 +16,11 @@ type TRenderFormProps = {
     errors: FieldErrors<Inputs>,
     register: UseFormRegister<Inputs>,
     control?: Control<Inputs>
-    title: string
+    title: string,
+    selectionValue?: "string"
 }
 
-const useRenderForm = ({ formconst, errors, register, title, control }: TRenderFormProps) => {
+const useRenderForm = ({ formconst, errors, register, title, control, selectionValue }: TRenderFormProps) => {
     const navigate = useNavigate()
     return (
         <div className={cn("w-3/5 mx-auto my-16", { "w-full": formconst.length > 4 })} >
