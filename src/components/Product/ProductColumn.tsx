@@ -49,7 +49,7 @@ const AtToCartCellComponent = ({ row }: { row: { original: TProduct } }) => {
 
     return (
         <Button
-            className="px-3 mb-2 dark:hover:bg-gray-600 relative "
+            className="px-3 mb-2 dark:hover:bg-gray-600 relative dark:bg-transparent"
             variant={"outline"}
             onClick={handleAddToCart}>
             <span className="absolute top-0 right-0 "><Plus size={14} /></span>
